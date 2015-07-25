@@ -1,0 +1,87 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/core-style/core-style.html">
+
+<link rel="import" href="login-service.html">
+<polymer-element name="login-card" attributes="username pass">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      width: 250px;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+     #paper_button1 {
+     top:30px;
+
+      }
+      #paper_input {
+        width: 200px;
+      }
+      #paper_input1 {
+        width: 200px;
+      }
+      #paper_item1 {
+
+        top: 10px;
+
+      }
+
+#paper_button {
+top:20px;
+        width: 150px;
+        background-color: rgb(86, 73, 237);
+      }
+
+
+    </style>
+<div layout vertical center center-justified>
+
+  <paper-item id="paper_item1" icon="settings" label="Item">LOGIN</paper-item>
+        <paper-input label="{{Unl}}" id="paper_input" value="{{name}}"></paper-input>
+        <paper-input type="password" required error="" label="{{Pal}}" id="paper_input1" value="{{pwd}}"></paper-input>
+        <paper-button id="paper_button" on-click="{{clickEvent}}" >Login</paper-button>
+  <paper-button id="paper_button1" on-click="{{clickEvent}}" >Signup here </paper-button>
+<login-service id="service"></login-service>
+</div>
+  </template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+  this.Unl="Username";
+  this.Pal="Password";
+  var uname=localStorage.getItem("nam");
+  },
+clickEvent:function(e)
+{
+if(e.target.id=='paper_button')
+{
+if(this.name==null||this.name==""){
+this.Unl="Enter username";
+}
+if(this.pwd==null||this.pwd==""){
+this.Pal="Enter password";
+}
+if(this.name!=null && this.pwd!=null)
+{
+this.username=this.name;
+this.pass=this.pwd;
+
+this.$.service.setValues(this.name,this.pwd);
+}
+}
+else
+{
+//window.location.href = 'registration.html';
+window.location.href = 'reg-card.html';
+}
+}
+  });
+  </script>
+</polymer-element>

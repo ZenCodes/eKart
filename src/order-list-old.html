@@ -1,0 +1,98 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<link rel="import" href="item-card.html">
+
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-collapse/core-collapse.html">
+<link href="../components/paper-input/paper-autogrow-textarea.html" rel="import">
+<link href="../components/paper-input/paper-input-decorator.html" rel="import">
+<link href="../components/paper-input/paper-input.html" rel="import">
+<link href="../components/paper-button/paper-button.html" rel="import">
+ <link href="../components/paper-button/paper-button.html" rel="import">
+ <link rel="import" href="../components/core-label/core-label.html">
+<link rel="import" href="../components/core-item/core-item.html">
+
+<link rel="import" href="order-service.html">
+ <!--<link rel="import" href="hotel-write.html">-->
+<polymer-element name="order-list" attributes="show">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+       }
+    product-card {
+      margin-bottom: 10px;
+    }
+    #scrollbar {
+		    width:700px ;
+		    max-height:420px;
+		    overflow:auto;
+
+	}
+
+	      :host {
+		          position: absolute;
+		          width: 200%;
+		          height: 100%;
+		          box-sizing: border-box;
+      }
+ #core_card {
+	        position: absolute;
+	        width: 700px;
+	        height: 420px;
+	        border-radius: 2px;
+	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+	        left: 100px;
+	        top: 100px;
+	        background-color: rgb(255, 255, 255);
+
+	      }
+
+#bor
+{
+ border-style: solid;
+ border-width: 2px;
+ border-color: #F8F8F8 ;
+}
+
+h5
+{
+margin-left: 100px;
+font-size: 1.1em;
+font-style: oblique;
+}
+
+paper-button
+{
+font-size: 13px;
+margin-left: 30px;
+}
+
+    </style>
+
+<order-service pr="{{pr}}" selflag="{{selflag}}" hflagg="{{hflagg}}"></order-service>
+<core-card id="core_card" hidden?="{{!showfooter}}"  class="core_card">
+	<div id="scrollbar">
+	<template id="order-list" repeat="{{product in pr}}">
+	<item-card>
+<div horizontal layout style="padding:15px;">
+	<div><img id="bor" src="{{product.value[0]}}" width="200" height="200"></div>
+	<div style="text-align:center;">
+	<h3 style="padding-left:100px;">{{product.value[1]}}</h3>
+	<h5 >Price -{{product.value[2]}}</h5>
+	<cb><paper-button id="{{product.id}}" on-click="{{clickEventt}}" >View status</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+	<paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Write review</paper-button>
+	</div>
+</div>
+	</item-card>
+	</template>
+	</div>
+</core-card>
+</template>
+
+<script>
+Polymer({});
+</script>
+
+</polymer-element>

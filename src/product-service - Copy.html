@@ -1,0 +1,78 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+<polymer-element name="product-service" attributes="products url skp">
+   <template  repeat="{{p in properties}}" >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+<core-ajax id="ajax"1
+
+      auto
+      url="http://hotelapp.iriscouch.com/product/_all_docs?include_docs=true&limit=3&skip={{skp}}"
+
+      handleAs="json"
+      on-core-response="{{productsLoaded}}"
+      id="productDataSource">
+    </core-ajax>
+
+  </template>
+  <script>
+
+  Polymer('product-service', {
+     ready: function()
+{
+//alert(this.skp);
+this.url="http://hotelapp.iriscouch.com/product/_all_docs?include_docs=true&limit=3&skip={{this.skp}}";
+},
+created: function() {
+
+this.products = [];
+this.pr=[];
+//this.val=JSON.stringify("desk_mac");
+//alert("hi");
+    },
+
+   productsLoaded: function(event,detail) {
+    this.products = this.$.ajax.response;
+   // alert (JSON.stringify(this.products.rows));
+    ///alert("hhh");
+    var r=this.products.total_rows;
+    localStorage.setItem("size",r);
+    document.querySelector('product-list').products=this.products.rows;
+    document.querySelector('product-list').reload;
+
+    },
+    setVal:function(val)
+    {
+
+var size=localStorage.getItem("size");
+         // alert("he he "+size);
+    if(val=='forward')
+    {
+   if(this.skp<size-3)
+    this.skp=this.skp-0+3;
+   else
+   this.skp=0;
+//    alert("forward "+this.skp);
+    }
+    if(val=='back')
+    {
+    if(this.skp>0)
+    this.skp=this.skp-3;
+    else
+    this.skp=size-3;
+
+    }
+   // this.url="http://localhost:5984/product/_all_docs?include_docs=true&limit=3&skip=0";
+    this.$.ajax.go();
+
+    }
+
+
+    });
+  </script>
+</polymer-element>
+`

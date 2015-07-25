@@ -1,0 +1,52 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="temp-list.html">
+<polymer-element name="temp-service" attributes="pr">
+   <template >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+	      auto="false"
+	      url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}"
+	      handleAs="json"
+	      on-core-response="{{productsLoaded}}">
+    </core-ajax>
+    </template>
+    <script>
+ Polymer('temp-service', {
+ ready: function()
+{
+
+},callfun:function()
+{
+var tempid=sessionStorage.getItem("tempid");
+
+if(tempid==null||tempid=="")
+{
+alert("No items");
+}
+else
+{
+this.docid=tempid;
+this.$.ajax.go();
+}
+
+},
+created: function() {
+this.pr=[];
+    },
+    productsLoaded: function(event,detail) {
+    this.pr = this.$.ajax.response;
+//alert(JSON.stringify(this.pr));
+//alert(document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list'));
+   document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list').pr=this.pr.products;
+
+    }
+
+    });
+  </script>
+</polymer-element>
+`

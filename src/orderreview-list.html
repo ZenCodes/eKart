@@ -1,0 +1,47 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="orderreview-service.html">
+<link rel="import" href="view-card.html">
+
+<polymer-element name="orderreview-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 650px;
+  	        height: 450px;
+  	        border-radius: 2px;
+  	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 0px;
+  	        top: 50px;
+  	        background-color: rgb(255, 255, 255);
+
+  	      }
+
+
+  </style>
+<orderreview-service pr="{{pr}}"></orderreview-service>
+
+ <core-card id="core_card2"   class="core_card2">
+
+ <template id="view-list" repeat="{{product in pr}}">
+
+<div horizontal layout>
+<h6>{{product.value[2]}}</h6>
+<h5 >Price -{{product.value[3]}}</h5>
+
+</div>
+</div>
+
+</template>
+</core-card>
+</template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+
+  }
+
+  });
+  </script>
+</polymer-element>

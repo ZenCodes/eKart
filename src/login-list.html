@@ -1,0 +1,41 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="login-service.html">
+<link rel="import" href="login-card.html">
+
+<polymer-element name="login-list" attributes="username password">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    login-card {
+      margin-bottom: 50px;
+width:350px;
+height:350px;
+    }
+
+	     div{
+		    border-radius: 2px;
+		    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    }
+    </style>
+
+    <login-service id="service" posts="{{posts}}"></login-service>
+
+    <div layout vertical center>
+      <template id="login-list" repeat="{{post in posts}}">
+        <login-card username="{{post.doc.username}}" pass="{{post.doc.password}}">
+
+        </login-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+
+
+  });
+  </script>
+</polymer-element>

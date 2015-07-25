@@ -1,0 +1,40 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="order-service.html">
+<link rel="import" href="order-card.html">
+<polymer-element name="order-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 1000px;
+  	        height: 450px;
+  	        //border-radius: 2px;
+  	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 150px;
+  	        top: 300px;
+  	        background-color: rgb(255, 255, 255);
+
+  	      }
+
+  </style>
+<order-service pr="{{pr}}"></order-service>
+ <core-card id="core_card2"   class="core_card2">
+ <template id="order-list" repeat="{{product in pr}}">
+ <order-card>
+<div horizontal layout style="padding:15px;">
+<div><img id="bor" src="{{product.value[1]}}" width="200" height="200"></div>
+<div style="text-align:center;">
+<h3 style="padding-left:100px;">{{product.value[2]}}</h3>
+<h5 >Price -{{product.value[3]}}</h5>
+<cb><paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Cancel order</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+<paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Delete</paper-button>
+</div>
+</div>
+</order-card>
+</template>
+</core-card>
+</template>
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>

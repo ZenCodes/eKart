@@ -1,0 +1,73 @@
+
+
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+
+  <link href="../components/core-collapse/core-collapse.html" rel="import">
+  <link href="../components/core-icons/core-icons.html" rel="import">
+  <link href="../components/core-icon-button/core-icon-button.html" rel="import">
+
+  <link href="../components/core-dropdown/core-dropdown.html" rel="import">
+  <link href="../components/paper-button/paper-button.html" rel="import">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../components/paper-tabs/paper-tab.html">
+<link href="../components/core-menu/core-menu.html" rel="import">
+<link href="../components/core-menu/core-submenu.html" rel="import">
+<link href="../components/core-item/core-item.html" rel="import">
+<link href="../components/core-label/core-label.html" rel="import">
+
+<link href="../components/paper-button/paper-button.html" rel="import">
+<link href="../components/core-dropdown/core-dropdown.html" rel="import">
+<link href="../components/paper-icon-button/paper-icon-button.html" rel="import">
+<link href="../components/paper-item/paper-item.html" rel="import">
+<link href="../components/paper-menu-button/paper-menu-button.html" rel="import">
+
+<polymer-element name="path-card" relative >
+
+
+<template>
+     <style>
+#div1
+{
+margin-top:110px;
+margin-left:52px;
+
+height:40px;
+box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+background:#ffffff;
+font-family:'Ek Mukta';
+font-size:20px;
+}
+     </style>
+<core-card id ="core_card">
+
+ <div id="div1" flex style="width:1150px;" hidden?="{{flag}}">
+ <a href="" style="text-decoration:none;">Home</a>
+ <img src="greater.gif" height="40" width="20" align="center">
+ <a href="" style="text-decoration:none;">{{rootpath}}</a>
+ <img src="greater.gif" height="40" width="20" align="center">
+ <a href="" style="text-decoration:none;"> {{menupath}}</a></div>
+
+</core-card>
+
+  </template>
+
+  <script>
+    Polymer({
+    ready:function()
+    {
+    },
+    setRoot:function(root)
+    {
+    this.rootpath=root;
+    },
+    setMenu:function(menu)
+    {
+    this.menupath=menu;
+    }
+    });
+  </script>
+</polymer-element>
+
+

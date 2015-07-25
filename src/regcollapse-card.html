@@ -1,0 +1,199 @@
+<script src="../components/webcomponentsjs/webcomponents.js"></script>
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-collapse/core-collapse.html">
+<link rel="import" href="register-card.html">
+<link rel="import" href="shipping-card.html">
+<link rel="import" href="billing-card.html">
+<link rel="import" href="../components/paper-button/paper-button.html" />
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<polymer-element name="regcollapse-card">
+
+  <template>
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card {
+        position: absolute;
+        width: 600px;
+        height: 900px;
+        //border-radius: 2px;
+        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 190px;
+        top: 90px;
+        border: 2 px solid;
+        opacity: 1.5;
+
+        background-color: rgb(255, 255, 255);
+      }
+      .heading {
+      width: 575px;
+	        padding: 15px 12px;
+	        background-color: #f3f3f3;
+	        border: 1px solid #dedede;
+	        border-top-left-radius: 5px;
+	        border-top-right-radius: 5px;
+	        font-size: 18px;
+	        cursor: pointer;
+	        -webkit-tap-highlight-color: rgba(0,0,0,0);
+	        background-color: rgb(0, 188, 212);
+	      }
+
+	      .content {
+	        padding: 15px;
+	        border: 1px solid #dedede;
+	        border-top: none;
+	        border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+    }
+    #cont2{
+    left:400px;
+    }
+    </style>
+    <core-card id="core_card" layout vertical >
+<div layout horizontal>
+  <div class="heading" on-click="{{click}}" id="collapse1">Register
+</div><div hidden?="{{h1}}">  <paper-button label="changeaddr" on-click="{{changeaddr}}">Change Address</paper-button>
+  </div></div>
+  <core-collapse id="collapse1" opened="{{div1}}">
+    <div class="content">
+      <div style="width: 280px;height: 400px;"><register-card></register-card>
+      <paper-button label="continue" on-click="{{cont1}}">Continue<paper-button>
+      </div>
+      <!--<div hidden?="{{h1}}"><paper-button label="changeaddr" on-click="{{changeaddr}}">Change Address<paper-button></div>-->
+    </div>
+  </core-collapse>
+  <div class="heading" on-click="{{click}}" id="collapse2">Shipping Address</div>
+  <core-collapse id="collapse2" opened="{{div2}}">
+    <div class="content">
+      <div style="width: 280px;height: 1100px;"><shipping-card></shipping-card>
+      <paper-button label="Skip" on-click="{{skipship}}">Skip<paper-button>
+      <paper-button id="cont2" label="continue" on-click="{{cont2}}">Continue<paper-button>
+      </div>
+      <br>
+   </div>
+  </core-collapse>
+  <div class="heading" on-click="{{click}}" id="collapse3">Billing Address</div>
+        <core-collapse id="collapse3" opened="{{div3}}">
+          <div class="content">
+            <div style="width: 300px;height: 1100px;"><billing-card></billing-card>
+            <paper-button label="Skip" on-click="{{skipbill}}">Skip<paper-button>
+			<paper-button label="Save" on-click="{{complete}}">Complete<paper-button>
+            </div>
+    </core-collapse>
+    </core-card>
+<core-ajax id="rajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/regcheckdesign/_view/regcheckview?key={{regname}}"
+on-core-response="{{regLoaded}}">
+</core-ajax>
+<core-ajax id="ajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/"
+body='{"regarr":{{register}},"shiparr":{{shipping}},"billarr":{{billing}}}'>
+</core-ajax>
+</template>
+<script>
+ Polymer({
+ ready:function()
+  {
+
+ this.div1=true;
+ this.div2=false;
+ this.div3=false;
+ this.regarr=[];
+ this.shiparr=[];
+ this.billarr=[];
+ this.h1=true;
+ this.reg=[];
+  },
+  regLoaded:function()
+  {
+    this.reg = this.$.rajax.response;
+    var len=this.reg.rows.length;
+    //alert(JSON.stringify(this.reg));
+    if(len>0)
+    alert("User already exist");
+    else
+    this.$.ajax.go();
+    //alert(JSON.stringify(this.reg));
+  },
+ cont1:function()
+  {
+ var reginfo=sessionStorage.getItem("reginfo");
+ var regval=JSON.parse(reginfo);
+ this.regarr.push(regval);
+ //alert(JSON.stringify(this.regarr[0].name));
+ this.$.collapse1.toggle();
+ //this.h1=false;
+  },
+  cont2:function()
+  {
+  var shipinfo=sessionStorage.getItem("shipinfo");
+  var shipval=JSON.parse(shipinfo);
+  this.shiparr.push(shipval);
+  //alert(JSON.stringify(this.regarr));
+  this.div2=false;
+  this.$.collapse2.toggle();
+  },
+ skipship:function()
+  {
+  var ship={"name": "","pin": "","addr":"","land":"","city":"","state":"","country":"","phone":""};
+  sessionStorage.setItem("shipinfo",JSON.stringify(ship));
+  var shipinfo=sessionStorage.getItem("shipinfo");
+  var shipval=JSON.parse(shipinfo);
+  this.shiparr.push(shipval);
+  this.$.collapse2.toggle();
+  },
+  skipbill:function()
+    {
+    var bill={"name": "","pin": "","addr":"","land":"","city":"","state":"","country":"","phone":""};
+    sessionStorage.setItem("billinfo",JSON.stringify(bill));
+    var billinfo=sessionStorage.getItem("billinfo");
+    var billval=JSON.parse(billinfo);
+    this.shiparr.push(billval);
+    this.$.collapse3.toggle();
+  },
+ complete:function()
+   {
+   var billinfo=sessionStorage.getItem("billinfo");
+   var billval=JSON.parse(billinfo);
+   this.billarr.push(billval);
+   this.register=JSON.stringify(this.regarr);
+   this.shipping=JSON.stringify(this.shiparr);
+   this.billing=JSON.stringify(this.billarr);
+
+  this.regname=JSON.stringify(this.regarr[0].name);
+  this.$.rajax.go();
+
+   //this.$.ajax.go();
+   //alert(JSON.stringify(this.regarr));
+   this.$.collapse3.toggle();
+   },
+ click:function(e)
+    {
+    if(e.target.id=='collapse1')
+    {
+    this.$.collapse1.toggle();
+    this.div2=false;
+    this.div3=false;
+    }
+    if(e.target.id=='collapse2')
+    {
+    this.$.collapse2.toggle();
+	this.div1=false;
+	this.div3=false;
+    }
+    if(e.target.id=='collapse3')
+    {
+    this.$.collapse3.toggle();
+	this.div1=false;
+	this.div2=false;
+    }
+    }
+    });
+
+  </script>
+
+</polymer-element>

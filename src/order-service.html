@@ -1,0 +1,41 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="product-list.html">
+<polymer-element name="order-service" attributes="pr selflag hflagg">
+   <template >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+	      auto
+	      url="http://hotelapp.iriscouch.com/addtocart/_design/orderDesign/_view/orderView?key={{name}}"
+	      handleAs="json"
+	      on-core-response="{{productsLoaded}}">
+    </core-ajax>
+    </template>
+    <script>
+ Polymer('order-service', {
+ ready: function()
+{
+this.name=JSON.stringify(localStorage.getItem("nam"));
+},
+created: function() {
+this.pr=[];
+    },
+    productsLoaded: function(event,detail) {
+    this.pr = this.$.ajax.response;
+    //alert(JSON.stringify(this.pr));
+    //document.querySelector('order-list').selflag=this.selflag;
+    //document.querySelector('order-list').hflagg=this.hflagg;
+    //document.querySelector('order-list').refresh();
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').pr=this.pr.rows;
+    //alert(JSON.stringify(document.querySelector('order-list').pr.value[0]));
+    //document.querySelector('order-list').reload;
+    }
+
+    });
+  </script>
+</polymer-element>
+`

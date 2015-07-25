@@ -1,0 +1,60 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<polymer-element name="login-service" attributes="nam">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+      auto="false"
+
+      url="http://hotelapp.iriscouch.com/websitelogin/_design/user/_view/userpwd?key={{n}}"
+      on-core-response="{{postsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+  Polymer('login-service', {
+    created: function() {
+      this.posts = [];
+    },
+    postsLoaded: function() {
+      // Make a copy of the loaded data
+      this.posts = this.$.ajax.response;
+  var na= localStorage.getItem("nam");
+      var pa= localStorage.getItem("pas");
+      //alert(JSON.stringify(this.posts.rows));
+      var arrlen=this.posts.rows.length;
+      if(arrlen==1)
+      {
+      var paa=this.posts.rows[0].value;
+      //alert(this.posts.rows[0].value);
+      if(pa==paa)
+	  	      {
+	  	      //alert("true");
+	  	      //localStorage.setItem("flag",true);
+	  	      localStorage.setItem("nam",na);
+           window.location.href = "indexx.html";
+           }
+           }
+	  	       else
+	             {
+	             alert("Invalid user");
+	             }
+
+    },
+    setValues:function(unamee,upasss)
+    {
+    alert(unamee+"    "+upasss);
+    localStorage.setItem("nam",unamee);
+    localStorage.setItem("pas",upasss);
+     var nn= localStorage.getItem("nam");
+     this.n=JSON.stringify(nn);
+    this.$.ajax.go();
+    }
+
+  });
+  </script>
+</polymer-element>

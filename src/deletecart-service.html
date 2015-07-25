@@ -1,0 +1,38 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="view-list.html">
+<polymer-element name="deletecart-service" attributes="pr">
+   <template >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="tempreadajax"
+	      auto="false"
+	      url="http://hotelapp.iriscouch.com/tempusercart/_design/tempdeletedesign/_view/tempdeleteview?key={{id}}"
+	      handleAs="json"
+	      on-core-response="{{productsLoaded}}">
+    </core-ajax>
+    </template>
+    <script>
+ Polymer('deletecart-service', {
+created: function() {
+this.pr=[];
+    },
+    productsLoaded: function(event,detail) {
+    this.pr = this.$.tempreadajax.response;
+    alert(JSON.stringify(this.pr));
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('view-list').pr=this.pr.rows;
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('view-list').reload;
+    },
+    deletefun:function()
+    {
+    var tempid=sessionStorage.getItem("tempid");
+    this.id=JSON.stringify(tempid);
+    this.$.tempreadajax.go();
+    }
+    });
+  </script>
+</polymer-element>
+`

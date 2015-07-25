@@ -1,0 +1,51 @@
+
+
+
+<script src="../webcomponentsjs/webcomponents.js"></script>
+<link href="../components/core-collapse/core-collapse.html" rel="import">
+<link href="../components/core-icons/core-icons.html" rel="import">
+<link href="../components/core-icon-button/core-icon-button.html" rel="import">
+<link href="../components/paper-button/paper-button.html" rel="import">
+
+<polymer-element name="Topmenu-card">
+<template>
+<style>
+#div1
+{
+height:45px;
+background:#ffffff;
+font-size:20px;
+margin-left:55px;
+}
+a,paper-button
+{
+font-size:18px;
+//font-family:'Ek Mukta';
+text-transform: none;
+//font-weight: bold;
+color:#663399;
+}
+</style>
+<core-card id ="core_card">
+
+ <div id="div1" flex style="width:700px;" layout horizontal>
+ <div style="margin-top:10px;">
+ <a href="aboutus.html" style="text-decoration:none;">About Us</a> <b>|</b>
+ <a href="showroom-index.html" style="text-decoration:none;">Showrooms</a> <b>|</b>
+ <a href="" style="text-decoration:none;">SMS Subscribe</a></div>
+ <div><a href="" style="margin-top:50px;margin-left:20px;"><img src="ekart.png" /></a></div>
+
+</core-card>
+
+</template>
+
+  <script>
+    Polymer({
+    ready:function()
+    {
+    }
+    });
+  </script>
+</polymer-element>
+
+

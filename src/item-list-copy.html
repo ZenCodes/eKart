@@ -1,0 +1,94 @@
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+<link rel="import" href="item-service.html">
+<link rel="import" href="cart-ajax.html">
+<link rel="import" href="temp-ajax.html">
+<link rel="import" href="info-service.html">
+<polymer-element name="item-list">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2 {
+      	        position: absolute;
+      	        width: 850px;
+      	        height: 420px;
+      	        border-radius: 2px;
+      	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 100px;
+      	        top: 100px;
+      	        background-color: rgb(255, 255, 255);
+
+      	      }
+
+    </style>
+     <item-service pr="{{pr}}"></item-service>
+
+    	    <core-card id="core_card2"  class="core_card2">
+
+    	       <template id="item-list" repeat="{{product in pr}}">
+
+    	 	<item-card>
+
+
+    <div horizontal layout style="padding:15px;">
+    <div>
+    	           <img id="bor" src="{{product.value[0]}}" width="200" height="200"></div>
+    <div style="text-align:center;">
+    	           <h3 style="padding-left:100px;"><paper-button id="{{product.id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{product.value[1]}}</paper-button></h3>
+    	           <h5 >Price -{{product.value[2]}}</h5>
+    <cb><paper-button id="{{product.id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+    <paper-button id="{{product.id}}" on-click="{{clickEventt}}" >BUY NOW</paper-button>
+    </div>
+    </div>
+    </item-card>
+
+    </template>
+
+</core-card>
+<cart-ajax id="ca"></cart-ajax>
+<temp-ajax id="ta"></temp-ajax>
+<info-service id="info"></info-service>
+  </template>
+
+  <script>
+
+    Polymer('item-list',{
+ready:function()
+{
+},
+clickLink:function(e)
+{
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false);
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hidemenu(true);
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewProduct(false);
+this.$.info.setProductid(e.target.id);
+
+},
+clickEvent:function(ee)
+{
+var name=localStorage.getItem("nam");
+if(name==""||name==null)
+{
+//window.location.href="index1.html";
+var tar=ee.target.id;
+this.$.ta.docValue(tar,"Temp user","Tempcart");
+}
+else
+{
+var tar=ee.target.id;
+this.$.ca.docValue(tar,name,"Incart");
+}
+}
+    });
+
+  </script>
+
+</polymer-element>

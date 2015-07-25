@@ -1,0 +1,55 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="view-service.html">
+<link rel="import" href="view-card.html">
+<polymer-element name="view-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 1000px;
+  	        height: 450px;
+  	        //border-radius: 2px;
+  	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 150px;
+  	        top: 300px;
+  	        background-color: rgb(255, 255, 255);
+
+  	      }
+
+
+  </style>
+<view-service pr="{{pr}}"></view-service>
+
+ <core-card id="core_card2"   class="core_card2">
+<paper-button id="{{product.id}}" on-click="{{continue}}" style="left:10px;background-color:#FF9933;">Continue To Shopping</paper-button>
+<paper-button class="check" id="{{product.id}}" on-click="{{proceed}}" style="left:500px;background-color:#FF9933;">Proceed To Checkout</paper-button>
+ <template id="view-list" repeat="{{product in pr}}">
+ <order-card>
+<div horizontal layout style="padding:15px;">
+<div><img id="bor" src="{{product.value[1]}}" width="200" height="200"></div>
+<div style="text-align:center;">
+<h3 style="padding-left:100px;">{{product.value[2]}}</h3>
+<h5 >Price -{{product.value[3]}}</h5>
+<cb><paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+<paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Save for Later</paper-button>
+</div>
+</div>
+</order-card>
+</template>
+</core-card>
+</template>
+  <script>
+  Polymer({
+  continue:function()
+  {
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(false);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,false);
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(true);
+  },
+  proceed:function()
+  {
+  window.location.href="sample.html";
+  }
+  });
+  </script>
+</polymer-element>
