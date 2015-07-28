@@ -6,7 +6,6 @@
 <link rel="import" href="billing-card.html">
 <link rel="import" href="../components/paper-button/paper-button.html" />
 <link rel="import" href="../components/core-ajax/core-ajax.html" />
-<link rel="import" href="../components/paper-checkbox/paper-checkbox.html" />
 <polymer-element name="regcollapse-card">
 
   <template>
@@ -20,7 +19,7 @@
       #core_card {
         position: absolute;
         width: 600px;
-        height: 950px;
+        height: 900px;
         //border-radius: 2px;
         //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
         left: 190px;
@@ -53,40 +52,6 @@
     #cont2{
     left:400px;
     }
-    #regcontinue{
-    margin-left:450px;
-    margin-top: 360px;
-    }
-    #shipskip{
-	    margin-left:20px;
-	    margin-top: 700px;
-    	//background-color: rgb(242, 172, 77);
-		//border: 1px solid #706D6C;
-
-    }
-    #shipcontinue{
-	    margin-left:370px;
-	    margin-top:10px;
-	    //background-color: rgb(242, 172, 77);
-		//border: 1px solid #706D6C;
-    }
-     #billskip{
-		    margin-left:20px;
-		    margin-top: 680px;
-			//background-color: rgb(242, 172, 77);
-		   // border: 1px solid #706D6C;
-	    }
-	  #billcontinue{
-		    margin-left:370px;
-		    margin-top:10px;
-		   // background-color: rgb(242, 172, 77);
-		   // border: 1px solid #706D6C;
-    }
-    #check{
-    margin-left:0px;
-    margin-top:0px;
-
-    }
     </style>
     <core-card id="core_card" layout vertical >
 <div layout horizontal>
@@ -96,7 +61,7 @@
   <core-collapse id="collapse1" opened="{{div1}}">
     <div class="content">
       <div style="width: 280px;height: 400px;"><register-card></register-card>
-      <paper-button id="regcontinue" label="continue" on-click="{{cont1}}">Continue<paper-button>
+      <paper-button label="continue" on-click="{{cont1}}">Continue<paper-button>
       </div>
       <!--<div hidden?="{{h1}}"><paper-button label="changeaddr" on-click="{{changeaddr}}">Change Address<paper-button></div>-->
     </div>
@@ -104,9 +69,9 @@
   <div class="heading" on-click="{{click}}" id="collapse2">Shipping Address</div>
   <core-collapse id="collapse2" opened="{{div2}}">
     <div class="content">
-      <div style="width: 280px;height: 1200px;"><shipping-card></shipping-card>
-      <paper-button id="shipskip" label="Skip" on-click="{{skipship}}">Skip<paper-button>
-      <paper-button id="shipcontinue" label="continue" on-click="{{cont2}}">Continue<paper-button>
+      <div style="width: 280px;height: 1100px;"><shipping-card></shipping-card>
+      <paper-button label="Skip" on-click="{{skipship}}">Skip<paper-button>
+      <paper-button id="cont2" label="continue" on-click="{{cont2}}">Continue<paper-button>
       </div>
       <br>
    </div>
@@ -114,11 +79,9 @@
   <div class="heading" on-click="{{click}}" id="collapse3">Billing Address</div>
         <core-collapse id="collapse3" opened="{{div3}}">
           <div class="content">
-            <div style="width: 300px;height: 1200px;">
-            <paper-checkbox id="check" on-core-change="{{corechange}}"></paper-checkbox>Same as Shipping Address
-            <billing-card style="left:100px;" id="bc"></billing-card>
-            <paper-button id="billskip" label="Skip" on-click="{{skipbill}}">Skip<paper-button>
-			<paper-button id="billcontinue" label="Save" on-click="{{complete}}">Complete<paper-button>
+            <div style="width: 300px;height: 1100px;"><billing-card></billing-card>
+            <paper-button label="Skip" on-click="{{skipbill}}">Skip<paper-button>
+			<paper-button label="Save" on-click="{{complete}}">Complete<paper-button>
             </div>
     </core-collapse>
     </core-card>
@@ -149,26 +112,20 @@ body='{"regarr":{{register}},"shiparr":{{shipping}},"billarr":{{billing}}}'>
   {
     this.reg = this.$.rajax.response;
     var len=this.reg.rows.length;
+    //alert(JSON.stringify(this.reg));
     if(len>0)
     alert("User already exist");
     else
     this.$.ajax.go();
-  },
-  corechange:function()
-  {
-  if(this.$.check.checked)
-  {
-  this.$.bc.setValues(this.shiparr[0].name,this.shiparr[0].pin,this.shiparr[0].addr,this.shiparr[0].land,this.shiparr[0].city,this.shiparr[0].state,this.shiparr[0].country,this.shiparr[0].phone);
-  }
+    //alert(JSON.stringify(this.reg));
   },
  cont1:function()
   {
  var reginfo=sessionStorage.getItem("reginfo");
  var regval=JSON.parse(reginfo);
  this.regarr.push(regval);
+ //alert(JSON.stringify(this.regarr[0].name));
  this.$.collapse1.toggle();
- this.div1=false;
- this.$.collapse2.toggle();
  //this.h1=false;
   },
   cont2:function()
@@ -176,10 +133,9 @@ body='{"regarr":{{register}},"shiparr":{{shipping}},"billarr":{{billing}}}'>
   var shipinfo=sessionStorage.getItem("shipinfo");
   var shipval=JSON.parse(shipinfo);
   this.shiparr.push(shipval);
+  //alert(JSON.stringify(this.regarr));
   this.div2=false;
   this.$.collapse2.toggle();
-  //this.div2=false;
- this.$.collapse3.toggle();
   },
  skipship:function()
   {
@@ -189,8 +145,6 @@ body='{"regarr":{{register}},"shiparr":{{shipping}},"billarr":{{billing}}}'>
   var shipval=JSON.parse(shipinfo);
   this.shiparr.push(shipval);
   this.$.collapse2.toggle();
-
- this.$.collapse3.toggle();
   },
   skipbill:function()
     {

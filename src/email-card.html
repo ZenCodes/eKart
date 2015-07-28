@@ -142,17 +142,7 @@ background-color:#FF9933;
     },
     Ecart:function()
     {
-    var name=localStorage.getItem("nam");
-    //alert("user: "+name);
-    if(name==null||name=="")
     document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,false);
-    else
-    {
-    //alert("user already logged in");
-    document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('shipping-card').setValues();
-    document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,false,true,true);
-
-    }
     }
 
     });

@@ -17,8 +17,8 @@
         height: 700px;
         border-radius: 2px;
         box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-        left: 0px;
-        top: 30px;
+        left: 100px;
+        top: 20px;
         background-color: rgb(255, 255, 255);
       }
      #input {
@@ -124,12 +124,11 @@
       {
       font-size : 20px;
       font-weight:bold;
-      text-align:center;
       }
     </style>
 
     <core-card id="core_card" layout vertical>
-      <core-label id="sa" >Billing Address</core-label>
+      <core-label id="sa" >Shipping Address</core-label>
     <div id="div" layout  horizontal>
  <core-label id="name" >Name</core-label>
  <input id="input" value="{{name}}" placeholder="" is="core-input">
@@ -186,18 +185,6 @@
 	        bill.country=this.country;
 	        bill.phone=this.phone;
 	        sessionStorage.setItem("billinfo",JSON.stringify(bill));
-        },
-        setValues:function(nam,pn,add,lan,cit,stat,count,phno)
-        {
-        alert("hi"+name+"  " +pn);
-        this.name=nam;
-	    this.pin=pn;
-	    this.addr=add;
-	    this.land=lan;
-	    this.city=cit;
-	    this.state=stat;
-	    this.country=count;
-	    this.phone=phno;
         }
     });
 

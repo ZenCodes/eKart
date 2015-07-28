@@ -33,20 +33,9 @@ this.$.ajax.go();
 },
 created: function() {
 this.pr=[];
-    this.sum=0;
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.ajax.response;
-
-    for(var n=0;n<this.pr.rows.length;n++)
-    {
-
-    this.sum+=parseInt(this.pr.rows[n].value[3]);
-    //this.sum=this.sum+5000;
-    }
-
-   //alert(this.sum);
-     document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').setTotal(this.sum);
     document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').pr=this.pr.rows;
     document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').reload;
     },
