@@ -1,0 +1,28 @@
+{
+  "name": "fancy-marquee",
+  "version": "0.0.1",
+  "authors": [
+    "Wassim Chegham <maneki.nekko@gmail.com>"
+  ],
+  "description": "The marquee element is used to insert a scrolling area of text, with custom speed and direction.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "marquee"
+  ],
+  "main": "fancy-marquee.html",
+  "license": "MIT",
+  "homepage": "https://github.com/manekinekko/fancy-marquee/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2",
+    "core-elements": "Polymer/core-elements#0.5.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  }
+}

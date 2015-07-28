@@ -1,6 +1,7 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="view-service.html">
 <link rel="import" href="view-card.html">
+<link rel="import" href="userdeletecart-service.html">
 <polymer-element name="view-list" attributes="show">
   <template>
   <style>
@@ -30,13 +31,14 @@
 <div style="text-align:center;">
 <h3 style="padding-left:100px;">{{product.value[2]}}</h3>
 <h5 >Price -{{product.value[3]}}</h5>
-<cb><paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-<paper-button id="{{product.id}}" on-click="{{clickEventt}}" >Save for Later</paper-button>
+<cb><paper-button id="{{product.value[0]}}" label="{{product.value[5]}}" value="{{product.id}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+<paper-button id="{{product.value[0]}}" label="{{product.value[5]}}" on-click="{{clickEventt}}" >Save for Later</paper-button>
 </div>
 </div>
 </order-card>
 </template>
 </core-card>
+<userdeletecart-service id="udcs"></userdeletecart-service>
 </template>
   <script>
   Polymer({
@@ -49,6 +51,12 @@
   proceed:function()
   {
   window.location.href="sample.html";
+  },
+  delete:function(e)
+  {
+
+//alert(e.target.id+" "+e.target.getAttribute('label')+" "+e.target.getAttribute('value'));
+  this.$.udcs.deletefun(e.target.id,e.target.getAttribute('label'),e.target.getAttribute('value'));
   }
   });
   </script>

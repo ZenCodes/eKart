@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<link rel="import" href="/bower_components/core-selector/core-selector.html">
+		<link rel="import" href="paper-collapse.html">
+	</head>
+	<body fullbleed unresolved>
+		<template is="auto-binding">
+			<div style="padding: 100px;">
+				<select id="selectionType">
+					<option value="single">Single Selection</option>
+					<option value="multiple">Multiple Selection</option>
+				</select>
+				<br><br>
+				<core-selector selectedAttribute="opened" selectedClass="" selectedProperty="" multi="{{$.selectionType.value === 'multiple' ? true : false}}">
+					<paper-collapse label="Cloud Storage" labelIcon="cloud">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</paper-collapse>
+					<paper-collapse label="Extensions" labelIcon="extension">
+						<ul>
+							<li>One</li>
+							<li>Two</li>
+							<li>Three</li>
+							<li>Four</li>
+						</ul>
+					</paper-collapse>
+					<paper-collapse label="Trends" labelIcon="trending-up">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</paper-collapse>
+					<paper-collapse label="No Label Icon">
+						<p>Add content here.</p>
+					</paper-collapse>
+				</core-selector>
+			</div>
+		</template>
+	</body>
+</html>

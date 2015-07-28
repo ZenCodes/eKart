@@ -12,6 +12,7 @@
  <link href="email-card.html" rel="import">
  <link href="shipping-card.html" rel="import">
  <link href="ecart-card.html" rel="import">
+ <link href="login-card.html" rel="import">
   <link href="orderreview-list.html" rel="import">
 <polymer-element name="Checkout-card">
 <template>
@@ -45,17 +46,17 @@ background-color:#FF9933;
 <div>--><core-card id ="core_card">
  <div id="div1" layout horizontal>
 <paper-button id="emailorlogin" Label="Email or Login" on-click="{{email}}">Email or Login</paper-button>
-<img src="chevron-right.png" width="20px" height="45px" >
+<img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="shipping" Label="Shipping Address" on-click="{{shipping}}">Shipping Address</paper-button>
-<img src="chevron-right.png" width="20px" height="45px" >
+<img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="orderreview" Label="Order Review" on-click="{{order}}">Order Review</paper-button>
-<img src="chevron-right.png" width="20px" height="45px" >
+<img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="payment" Label="Payment">Payment</paper-button>
  </div>
  <div hidden?="{{isHidden1}}"><email-card></email-card></div>
 <div hidden?="{{isHidden2}}"><shipping-card></shipping-card></div>
 <div hidden?="{{isHidden3}}"><orderreview-list></orderreview-list></div>
-<div hidden?="{{isHidden4}}"><ecart-card></ecart-card></div>
+<div hidden?="{{isHidden4}}"><login-card></login-card></div>
 
 </core-card>
 
