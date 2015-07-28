@@ -1,6 +1,7 @@
 <link rel="import" href="../components/core-input/core-input.html">
 <link href="../components/core-label/core-label.html" rel="import">
 <link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
 <polymer-element name="shipping-card">
 
   <template>
@@ -13,12 +14,12 @@
       }
       #core_card {
         position: absolute;
-        width: 400px;
+        width: 390px;
         height: 700px;
         border-radius: 2px;
         box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
         left: 100px;
-        top: 20px;
+        top: 30px;
         background-color: rgb(255, 255, 255);
       }
      #input {
@@ -46,7 +47,7 @@
 		  		  	             left:100px;
 		  		  	         position: absolute;
 		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
-		  		  	         height:30px;
+		  		  	         height:20px;
 
           }
           #input2 {
@@ -110,10 +111,10 @@
            padding:30px;
           }
            #paper_button {
-		          background-color: rgb(242, 172, 77);
-		           height:40px;
-		           width: 198px;
-		            border: 1px solid #706D6C;
+            height:40px;
+		    width: 198px;
+		    background-color: rgb(242, 172, 77);
+		    border: 1px solid #706D6C;
 
       }
       #d1
@@ -124,6 +125,7 @@
       {
       font-size : 20px;
       font-weight:bold;
+      text-align:center;
       }
     </style>
 
@@ -165,6 +167,11 @@
    <paper-button id="paper_button" on-click="{{save}}">Save</paper-button>
    </div>
     </core-card>
+    <core-ajax id="rajax" auto="false" handleAs="json"
+	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/shipdesign/_view/shipview?key={{regname}}"
+	on-core-response="{{regLoaded}}">
+    </core-ajax>
+
   </template>
 
   <script>
@@ -172,6 +179,23 @@
     Polymer({
 	 ready:function(){
 	        this.tempship=[];
+	        this.retarr=[];
+
+	        },
+	        regLoaded:function()
+	        {
+	        this.retarr=this.$.rajax.response;
+			this.name=this.retarr.rows[0].value.name;
+		    this.pin=this.retarr.rows[0].value.pin;
+		    this.addr=this.retarr.rows[0].value.addr;
+			this.land=this.retarr.rows[0].value.land;
+		    this.city=this.retarr.rows[0].value.city;
+			this.state=this.retarr.rows[0].value.state;
+		    this.country=this.retarr.rows[0].value.country;
+	        this.phone=this.retarr.rows[0].value.phone;
+	       //alert(JSON.stringify(this.retarr.rows[0].value.name));
+	        //alert(JSON.stringify(this.retarr.value[0].name));
+
 	        },
 	        save:function()
 	        {
@@ -185,6 +209,11 @@
 	        ship.country=this.country;
 	        ship.phone=this.phone;
 	        sessionStorage.setItem("shipinfo",JSON.stringify(ship));
+        },
+        setValues:function()
+        {
+        this.regname=JSON.stringify(localStorage.getItem("nam"));
+        this.$.rajax.go();
         }
     });
 

@@ -1,7 +1,7 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="orderreview-service.html">
 <link rel="import" href="view-card.html">
-
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
 <polymer-element name="orderreview-list" attributes="show">
   <template>
   <style>
@@ -22,26 +22,84 @@
 <orderreview-service pr="{{pr}}"></orderreview-service>
 
  <core-card id="core_card2"   class="core_card2">
-
+<h2 style="text-align:center;">Order summary</h2>
  <template id="view-list" repeat="{{product in pr}}">
 
 <div horizontal layout>
-<h6>{{product.value[2]}}</h6>
-<h5 >Price -{{product.value[3]}}</h5>
+
+<h6 style="width: 300px;margin-left:150px;">{{product.value[2]}}</h6>
+<h5 style="width: 100px;margin-left:50px;">Price - {{product.value[3]}}</h5>
 
 </div>
 </div>
 
 </template>
+<h4 style="margin-left:490px;">Total - {{totamt}}</h4>
+<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
 </core-card>
+
+<core-ajax id="rajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
+on-core-response="{{itemLoaded}}">
+</core-ajax>
+<core-ajax id="wajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+body='{"username":"{{uname}}","orderarr":{{order}}}'>
+</core-ajax>
+<core-ajax id="revajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}"
+on-core-response="{{revLoaded}}">
+<core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
+contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{revid}}">
+</core-ajax>
+
 </template>
   <script>
   Polymer({
   ready:function()
   {
-
+  this.readarr=[];
+  this.itemarr=[];
+  },
+  revLoaded:function(event,detail,sender)
+  {
+  var header=detail.xhr.getResponseHeader('ETag');
+  this.revid=JSON.parse(header);
+  alert(this.revid);
+  this.$.dajax.go();
+  },
+  placeorder:function()
+  {
+  this.name=JSON.stringify(localStorage.getItem("nam"));
+  this.$.rajax.go();
+  },
+  itemLoaded:function()
+  {
+  this.readarr=this.$.rajax.response;
+  this.uname=localStorage.getItem("nam");
+  this.docid=this.readarr.rows[0].id;
+  alert(this.readarr.rows[0].id);
+  for(var n=0;n<this.readarr.rows.length;n++)
+  {
+  var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
+  newval.prodid=this.readarr.rows[n].value[0];
+  newval.prodimg=this.readarr.rows[n].value[1];
+  newval.proddes=this.readarr.rows[n].value[2];
+  newval.prodprice=this.readarr.rows[n].value[3];
+  newval.prodsno=this.readarr.rows[n].value[5];
+  newval.prodstatus="ordered";
+  newval.orderdate=new Date().toDateString();
+  this.itemarr.push(newval);
   }
-
+  this.order=JSON.stringify(this.itemarr);
+  this.$.revajax.go();
+  this.$.wajax.go();
+  //window.location.href='indexx.html';
+  },
+  setTotal:function(sum)
+  {
+  this.totamt=sum;
+  }
   });
   </script>
 </polymer-element>
