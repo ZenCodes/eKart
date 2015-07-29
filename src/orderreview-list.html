@@ -65,7 +65,7 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
   {
   var header=detail.xhr.getResponseHeader('ETag');
   this.revid=JSON.parse(header);
-  alert(this.revid);
+  //alert(this.revid);
   this.$.dajax.go();
   },
   placeorder:function()
@@ -78,20 +78,22 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
   this.readarr=this.$.rajax.response;
   this.uname=localStorage.getItem("nam");
   this.docid=this.readarr.rows[0].id;
-  alert(this.readarr.rows[0].id);
+  //alert(this.readarr.rows[0].id);
   for(var n=0;n<this.readarr.rows.length;n++)
   {
-  var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
+  var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":"","trackstatus":""};
   newval.prodid=this.readarr.rows[n].value[0];
   newval.prodimg=this.readarr.rows[n].value[1];
   newval.proddes=this.readarr.rows[n].value[2];
   newval.prodprice=this.readarr.rows[n].value[3];
   newval.prodsno=this.readarr.rows[n].value[5];
   newval.prodstatus="ordered";
+  newval.trackstatus="ordered";
   newval.orderdate=new Date().toDateString();
   this.itemarr.push(newval);
   }
   this.order=JSON.stringify(this.itemarr);
+  alert(JSON.stringify(this.order));
   this.$.revajax.go();
   this.$.wajax.go();
   //window.location.href='indexx.html';

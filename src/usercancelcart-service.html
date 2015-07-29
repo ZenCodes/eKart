@@ -30,7 +30,7 @@
     this.revid=this.pr._rev;
     this.docid=this.pr._id;
     this.$.dajax.go();
-    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,false,true,true,true,true,true,true).reload(true);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('view-list').reload;
     },
     deletefun:function(pid,psno,docid)
     {
