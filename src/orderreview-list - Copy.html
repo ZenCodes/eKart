@@ -21,7 +21,7 @@
   </style>
 <orderreview-service pr="{{pr}}"></orderreview-service>
 
- <core-card id="core_card2"   class="core_carqd2">
+ <core-card id="core_card2"   class="core_card2">
 <h2 style="text-align:center;">Order summary</h2>
  <template id="view-list" repeat="{{product in pr}}">
 
@@ -46,20 +46,22 @@ on-core-response="{{itemLoaded}}">
 contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
 body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
 </core-ajax>
-<core-ajax id="orajax" auto="false" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/1f5c83015f6f12ca9612ee46530001b6"
-on-core-response="{{orderLoaded}}">
-</core-ajax>
-<core-ajax id="owajax" auto="false" method="POST" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
-body='{"_id":"{{odocid}}","_rev":"{{orevid}}","orderno":"{{orderno}}"}'>
-</core-ajax>
 <core-ajax id="revajax" auto="false" handleAs="json"
 contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}"
 on-core-response="{{revLoaded}}">
 <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
 contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{revid}}">
 </core-ajax>
+
+<core-ajax id="orajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/1f5c83015f6f12ca9612ee46530001b6"
+on-core-response="{{orderLoaded}}">
+</core-ajax>
+<core-ajax id="owajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+body='{"_id":"{{odocid}}","_rev":{{orevid}},"orderno":"{{orderno}}"}'>
+</core-ajax>
+
 </template>
   <script>
   Polymer({
@@ -68,52 +70,53 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
   this.readarr=[];
   this.itemarr=[];
   this.onoarr=[];
-  this.$.orajax.go();
-  },
-    revLoaded:function(event,detail,sender)
-    {
-    var header=detail.xhr.getResponseHeader('ETag');
-    //alert(header);
-    this.revid=JSON.parse(header);
-    this.$.dajax.go();
   },
   orderLoaded:function()
-    {
-    this.onoarr=this.$.orajax.response;
-    this.odocid=this.onoarr._id;
-    this.orevid=this.onoarr._rev;
-    this.orderno=parseInt(this.onoarr.orderno)+1;
-    this.$.owajax.go();
-    alert(this.orderno);
-  },
-   placeorder:function()
   {
-    this.name=JSON.stringify(localStorage.getItem("nam"));
-    this.$.rajax.go();
+  this.onoarr=this.$.orajax.response;
+  this.odocid=this.onoarr._id;
+  this.orevid=this.onoarr._rev;
+  this.orderno=this.onoarr.orderno;
+  //alert(JSON.stringify(this.onoarr));
+  },
+  revLoaded:function(event,detail,sender)
+  {
+  var header=detail.xhr.getResponseHeader('ETag');
+  this.revid=JSON.parse(header);
+  //alert(this.revid);
+  this.$.dajax.go();
+  },
+  placeorder:function()
+  {
+  this.name=JSON.stringify(localStorage.getItem("nam"));
+  this.$.rajax.go();
   },
   itemLoaded:function()
-    {
-    this.readarr=this.$.rajax.response;
-    this.uname=localStorage.getItem("nam");
-    this.docid=this.readarr.rows[0].id;
-    for(var n=0;n<this.readarr.rows.length;n++)
-    {
-    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
-    newval.prodid=this.readarr.rows[n].value[0];
-    newval.prodimg=this.readarr.rows[n].value[1];
-    newval.proddes=this.readarr.rows[n].value[2];
-    newval.prodprice=this.readarr.rows[n].value[3];
-    newval.prodsno=this.readarr.rows[n].value[5];
-    newval.prodstatus="ordered";
-    newval.orderdate=new Date().toDateString();
-    this.itemarr.push(newval);
-    }
-    this.trackstatus="ordered";
-    this.order=JSON.stringify(this.itemarr);
-    //alert(JSON.stringify(this.order));
-    this.$.revajax.go();
-    this.$.wajax.go();
+  {
+  this.readarr=this.$.rajax.response;
+  this.uname=localStorage.getItem("nam");
+  this.docid=this.readarr.rows[0].id;
+  //alert(this.readarr.rows[0].id);
+  for(var n=0;n<this.readarr.rows.length;n++)
+  {
+  var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
+  newval.prodid=this.readarr.rows[n].value[0];
+  newval.prodimg=this.readarr.rows[n].value[1];
+  newval.proddes=this.readarr.rows[n].value[2];
+  newval.prodprice=this.readarr.rows[n].value[3];
+  newval.prodsno=this.readarr.rows[n].value[5];
+  newval.prodstatus="ordered";
+  //newval.orderdate=new Date().toDateString();
+  newval.orderdate=new Date();
+  this.itemarr.push(newval);
+  }
+  this.trackstatus="ordered";
+  this.order=JSON.stringify(this.itemarr);
+  //alert(JSON.stringify(this.order));
+  this.$.revajax.go();
+  this.$.wajax.go();
 
+  //window.location.href='indexx.html';
   },
   setTotal:function(sum)
   {

@@ -29,7 +29,8 @@
     </template>
     <script>
  Polymer('deletecart-service', {
-created: function() {
+created: function(
+) {
 this.pid;
 this.psno;
 this.pr=[];
@@ -40,11 +41,10 @@ this.count=0;
     revLoaded:function(event,detail,sender)
     {
     this.header=JSON.parse(detail.xhr.getResponseHeader('ETag'));
-    //alert(this.header);
     if(this.count==0)
 		    {
 		    sessionStorage.setItem("tempsession","");
-		    //alert("hi");
+		    //sessionStorage.setItem("tempdocid","");
 		    this.$.dajax.go();
      }
     },
