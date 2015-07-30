@@ -93,9 +93,10 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
   this.itemarr.push(newval);
   }
   this.order=JSON.stringify(this.itemarr);
-  alert(JSON.stringify(this.order));
+  //alert(JSON.stringify(this.order));
   this.$.revajax.go();
   this.$.wajax.go();
+
   //window.location.href='indexx.html';
   },
   setTotal:function(sum)

@@ -26,13 +26,12 @@ this.pr=[];
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.ajax.response;
-    //alert(JSON.stringify(this.pr));
-    //document.querySelector('order-list').selflag=this.selflag;
-    //document.querySelector('order-list').hflagg=this.hflagg;
-    //document.querySelector('order-list').refresh();
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').pr=this.pr.rows;
-    //alert(JSON.stringify(document.querySelector('order-list').pr.value[0]));
-    //document.querySelector('order-list').reload;
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').reload;
+    },
+    refresh:function()
+    {
+    this.$.ajax.go();
     }
 
     });

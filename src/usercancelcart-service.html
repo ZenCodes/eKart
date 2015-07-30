@@ -2,6 +2,7 @@
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="view-list.html">
 <link rel="import" href="order-list.html">
+<link rel="import" href="order-service.html">
 <polymer-element name="usercancelcart-service" attributes="pr">
    <template >
     <style>
@@ -19,6 +20,7 @@
    <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
    contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/{{docid}}?rev={{revid}}">
    </core-ajax>
+
     </template>
     <script>
  Polymer('usercancelcart-service', {
@@ -30,7 +32,7 @@
     this.revid=this.pr._rev;
     this.docid=this.pr._id;
     this.$.dajax.go();
-    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('view-list').reload;
+
     },
     deletefun:function(pid,psno,docid)
     {

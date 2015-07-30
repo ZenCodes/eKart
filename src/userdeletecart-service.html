@@ -18,14 +18,21 @@
     <core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart"
 					   body='{"_id":"{{docid}}","_rev":"{{header}}","username":"{{uname}}","cartinfo":{{prodarr}}}'>
     </core-ajax>
+
+    <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
+	contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{header}}">
+    </core-ajax>
+
     </template>
     <script>
- Polymer('userdeletecart-service', {
+ Polymer('userdeletecart-service',
+ {
 created: function() {
 this.pid;
 this.psno;
 this.pr=[];
 this.newarr=[];
+this.count=0;
 this.uname="Temp user";
 
     },
@@ -48,8 +55,8 @@ this.uname="Temp user";
 	{}
 	else
 	{
-
-	var id=this.pr.cartinfo[n].prodid;
+        this.count=this.count+1;
+	    var id=this.pr.cartinfo[n].prodid;
 	    var img=this.pr.cartinfo[n].prodimg;
 	    var des=this.pr.cartinfo[n].proddes;
 	    var price=this.pr.cartinfo[n].prodprice;
@@ -61,19 +68,22 @@ this.uname="Temp user";
 	    newval.prodstatus="Incart";
 	    newval.prodsno=sno;
 	    this.newarr.push(newval);
-    this.prodarr=JSON.stringify(this.newarr);
+        this.prodarr=JSON.stringify(this.newarr);
 	}
 	}
-this.$.writeajax.go();
+
+    this.$.writeajax.go();
+        if(this.count==0)
+	    {
+	     this.$.dajax.go();
+	     alert("deleted");
+        }
     },
     deletefun:function(pid,psno,docid)
     {
     this.docid=docid;
     this.pid=pid;
     this.psno=psno;
-    //var name=sessionStorage.getItem("nam");
-    //alert("hi   "+this.pid+"  "+this.psno+"  "+docid);
-    //this.id=JSON.stringify(tempid);
     this.$.tempreadajax.go();
     }
     });

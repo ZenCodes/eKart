@@ -23,6 +23,9 @@
     <core-ajax auto id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart"
 					   body='{"_id":"{{docid}}","_rev":"{{header}}","username":"{{uname}}","products":{{prodarr}}}'>
     </core-ajax>
+    <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
+		contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}?rev={{header}}">
+    </core-ajax>
     </template>
     <script>
  Polymer('deletecart-service', {
@@ -32,12 +35,18 @@ this.psno;
 this.pr=[];
 this.newarr=[];
 this.uname="Temp user";
-
+this.count=0;
     },
     revLoaded:function(event,detail,sender)
     {
     this.header=JSON.parse(detail.xhr.getResponseHeader('ETag'));
     //alert(this.header);
+    if(this.count==0)
+		    {
+		    sessionStorage.setItem("tempsession","");
+		    //alert("hi");
+		    this.$.dajax.go();
+     }
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.tempreadajax.response;
@@ -55,6 +64,7 @@ this.uname="Temp user";
     }
     else
     {
+    this.count=this.count+1;
     var id=this.pr.rows[0].value[n].prodid;
     var img=this.pr.rows[0].value[n].prodimg;
     var des=this.pr.rows[0].value[n].proddes;
@@ -69,9 +79,7 @@ this.uname="Temp user";
     this.newarr.push(newval);
     this.prodarr=JSON.stringify(this.newarr);
     }
-
     }
-
     this.$.writeajax.go();
 
     },
