@@ -34,7 +34,6 @@
 </div>
 </div>
 </temp-card>
-
 </template>
 </core-card>
 <deletecart-service id="dcs"></deletecart-service>
@@ -48,7 +47,14 @@
   },
   proceed:function()
   {
-  window.location.href="sample.html";
+  if(localStorage.getItem("nam")==""||localStorage.getItem("name")==null)
+  {
+  alert("please login");
+  window.location.href="index1.html";
+  }
+  else
+  window.location.href="index1.html";
+  //window.location.href="sample.html";
   },
   delete:function(e)
   {
