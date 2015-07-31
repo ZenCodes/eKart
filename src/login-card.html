@@ -72,7 +72,9 @@ if(this.name!=null && this.pwd!=null)
 {
 this.username=this.name;
 this.pass=this.pwd;
-
+if(this.username=='Admin'&&this.pass=='Admin')
+window.location.href='adminindex.html';
+else
 this.$.service.setValues(this.name,this.pwd);
 }
 }

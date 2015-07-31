@@ -1,6 +1,8 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="view-list.html">
+<link rel="import" href="view-service.html">
+
 <polymer-element name="userdeletecart-service" attributes="pr">
    <template >
     <style>
@@ -22,7 +24,7 @@
     <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
 	contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{header}}">
     </core-ajax>
-
+<view-service id="vs"></view-service>
     </template>
     <script>
  Polymer('userdeletecart-service',
@@ -76,8 +78,11 @@ this.uname="Temp user";
         if(this.count==0)
 	    {
 	     this.$.dajax.go();
-	     alert("deleted");
+	     //alert("deleted");
+
         }
+        this.$.vs.callfun();
+        document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true);
     },
     deletefun:function(pid,psno,docid)
     {

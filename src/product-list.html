@@ -30,6 +30,7 @@
  <link rel="import" href="temp-list.html">
  <link rel="import" href="path-card.html">
  <link rel="import" href="cont-list.html">
+ <link rel="import" href="trackorder-list.html">
 <polymer-element name="product-list" attributes="isHidden isHidden1 isHidden2">
   <template>
     <style>
@@ -84,6 +85,7 @@ margin-left: 50px;
 <div hidden?="{{isHidden7}}"><path-card id="pathcard"></path-card></div>
 <div hidden?="{{isHidden8}}"><temp-list id="templist"></temp-list></div>
 <div hidden?="{{isHidden9}}"><cont-list id="contlist"></cont-list></div>
+<div hidden?="{{isHidden10}}"><trackorder-list id="contlist"></trackorder-list></div>
 </template>
 <script>
 Polymer('product-list',{
@@ -91,6 +93,7 @@ ready:function(){
 this.isHidden7=true;
 this.isHidden8=true;
 this.isHidden9=true;
+this.isHidden10=true;
 },
 setMenu:function(menu)
 {
@@ -100,7 +103,7 @@ setRoot:function(root)
 {
 this.rootpath=root;
 },
-hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9)
+hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10)
 {
 this.isHidden1=h1;
 this.isHidden2=h2;
@@ -111,6 +114,7 @@ this.isHidden6=h6;
 this.isHidden7=h7;
 this.isHidden8=h8;
 this.isHidden9=h9;
+this.isHidden10=h10;
 }
 });
 </script>

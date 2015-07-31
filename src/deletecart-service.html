@@ -1,6 +1,7 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="view-list.html">
+<link rel="import" href="temp-service.html">
 <polymer-element name="deletecart-service" attributes="pr">
    <template >
     <style>
@@ -26,7 +27,8 @@
     <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
 		contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}?rev={{header}}">
     </core-ajax>
-    </template>
+   <temp-service id="ts"></temp-service>
+   </template>
     <script>
  Polymer('deletecart-service', {
 created: function(
@@ -81,7 +83,10 @@ this.count=0;
     }
     }
     this.$.writeajax.go();
-
+    //alert("deleted");
+   // sessionStorage.setItem("tempid","")
+   // this.$.ts.callfun();
+   // document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true);
     },
     deletefun:function(pid,psno)
     {

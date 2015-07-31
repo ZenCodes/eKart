@@ -21,9 +21,9 @@
       this.posts = [];
     },
     postsLoaded: function() {
-      // Make a copy of the loaded data
+
       this.posts = this.$.ajax.response;
-  var na= localStorage.getItem("nam");
+  	  var na= localStorage.getItem("nam");
       var pa= localStorage.getItem("pas");
       //alert(JSON.stringify(this.posts.rows));
       var arrlen=this.posts.rows.length;
@@ -35,7 +35,7 @@
 	  	      {
 	  	      //alert("true");
 	  	      //localStorage.setItem("flag",true);
-	  	      localStorage.setItem("nam",na);
+	  	      //localStorage.setItem("nam",na);
            window.location.href = "indexx.html";
            }
            }
@@ -47,7 +47,7 @@
     },
     setValues:function(unamee,upasss)
     {
-    alert(unamee+"    "+upasss);
+    //alert(unamee+"    "+upasss);
     localStorage.setItem("nam",unamee);
     localStorage.setItem("pas",upasss);
      var nn= localStorage.getItem("nam");

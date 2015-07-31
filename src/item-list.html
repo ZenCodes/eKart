@@ -80,7 +80,7 @@ ready:function()
 },
 clickLink:function(e)
 {
- document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true);
 
  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewProduct(false);
 this.$.info.setProductid(e.target.id);
@@ -91,7 +91,6 @@ clickEvent:function(ee)
 var name=localStorage.getItem("nam");
 if(name==""||name==null)
 {
-//window.location.href="index1.html";
 var tar=ee.target.id;
 this.$.ta.docValue(tar,"Temp user","Tempcart");
 }

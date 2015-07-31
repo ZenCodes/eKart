@@ -1,0 +1,67 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="order-card.html">
+<link rel="import" href="trackorder-service.html">
+<polymer-element name="trackorder-list">
+  <template>
+  <style>
+  #core_card2
+  {
+  	        position: absolute;
+  	        width: 800px;
+  	        height: 250px;
+  	        //border-radius: 2px;
+  	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 150px;
+  	        top: 200px;
+  	        background-color: rgb(255, 255, 255);
+
+  	      }
+  	      h2
+  	      {
+  	      padding:30px;
+  	      }
+  </style>
+<trackorder-service pr="{{pr}}"></trackorder-service>
+
+ <core-card id="core_card2"   class="core_card2">
+
+
+ <order-card>
+
+<div vertical layout>
+<div horizontal layout>
+
+<h2>image</h2>
+<h2>Description</h2>
+<h2>order Date</h2>
+<h2>Price</h2>
+</div>
+<template repeat="{{pro in pr.orderarr}}">
+<div horizontal layout>
+<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
+<h3 style="padding-left:100px;">{{pro.proddes}}</h3>
+<h5 >{{pro.orderdate}}</h5>
+<h5 >{{pro.prodprice}}</h5>
+</div>
+</template>
+<center>
+<h3>status-{{pr.trackstatus}}</h3>
+<h3> OrderNumber-{{pr.orderno}}</h3></center>
+
+</div>
+</div>
+</order-card>
+
+</core-card>
+
+</template>
+  <script>
+  Polymer('trackorder-list',{
+  ready:function(e)
+  {
+
+  }
+
+  });
+  </script>
+</polymer-element>

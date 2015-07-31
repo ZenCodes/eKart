@@ -1,0 +1,45 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="adordered-list.html">
+<polymer-element name="adordered-service">
+   <template  repeat="{{p in properties}}" >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+
+
+     <core-ajax id="ajax1"
+
+	      auto
+	      url="http://hotelapp.iriscouch.com/orderedcart/_all_docs?include_docs=true"
+
+	      handleAs="json"
+	      on-core-response="{{productsLoaded1}}"
+	      >
+    </core-ajax>
+
+
+  </template>
+  <script>
+
+  Polymer('adordered-service', {
+     ready: function()
+{
+
+},
+created: function() {
+
+this.products = [];
+this.pr=[];
+    },
+    productsLoaded1: function(event,detail) {
+    this.pr = this.$.ajax1.response;
+    //alert(JSON.stringify(this.pr));
+    document.querySelector('adordered-list').pr=this.pr.rows;
+    alert(JSON.stringify(this.pr.rows));
+    }
+    });
+  </script>
+</polymer-element>

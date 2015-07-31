@@ -10,7 +10,7 @@
     </style>
     <core-ajax id="ajax"
 	      auto
-	      url="http://hotelapp.iriscouch.com/orderedcart/_design/orderdesign/_view/orderview?key={{name}}"
+	      url="http://hotelapp.iriscouch.com/orderedcart/_design/ordercartdesign/_view/ordercartview?key={{name}}"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
     </core-ajax>
@@ -26,7 +26,6 @@ this.pr=[];
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.ajax.response;
-    alert(JSON.stringify(this.pr));
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').pr=this.pr.rows;
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').reload;
     },
