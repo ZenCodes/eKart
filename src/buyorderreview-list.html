@@ -85,6 +85,9 @@ body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}
      this.order=JSON.stringify(this.orderarr);
      //alert(JSON.stringify(this.orderarr));
      this.$.wajax.go();
+     localStorage.setItem("buydocid","");
+     localStorage.setItem("buyflag","");
+     window.location.href='successindex.html';
   },
   orderLoaded:function()
   {
@@ -92,6 +95,7 @@ body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}
   this.odocid=this.onoarr._id;
   this.orevid=this.onoarr._rev;
   this.orderno=parseInt(this.onoarr.orderno)+1;
+  sessionStorage.setItem("succorderid",this.orderno);
   this.$.owajax.go();
   },
   placeorder:function()

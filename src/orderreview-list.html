@@ -83,6 +83,7 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
     this.odocid=this.onoarr._id;
     this.orevid=this.onoarr._rev;
     this.orderno=parseInt(this.onoarr.orderno)+1;
+    sessionStorage.setItem("succorderid",this.orderno);
     this.$.owajax.go();
     //alert(this.orderno);
   },
@@ -113,6 +114,7 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
     //alert(JSON.stringify(this.order));
     this.$.revajax.go();
     this.$.wajax.go();
+    window.location.href='successindex.html';
 
   },
   setTotal:function(sum)
