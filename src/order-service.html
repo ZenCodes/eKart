@@ -26,7 +26,7 @@ this.pr=[];
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.ajax.response;
-    alert(JSON.stringify(this.pr));
+
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').pr=this.pr.rows;
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').reload;
     },

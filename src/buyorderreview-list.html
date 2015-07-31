@@ -1,0 +1,107 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="buy-service.html">
+<link rel="import" href="view-card.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<polymer-element name="buyorderreview-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 650px;
+  	        height: 450px;
+  	        border-radius: 2px;
+  	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 0px;
+  	        top: 50px;
+  	        background-color: rgb(255, 255, 255);
+  	      }
+
+
+  </style>
+<buy-service pr="{{pr}}"></buy-service>
+ <core-card id="core_card2"   class="core_carqd2">
+ <h2 style="text-align:center;">Order summary</h2>
+ <template id="buyorderreview-list" bind="{{pr}}">
+
+<div horizontal layout>
+
+<h6 style="width: 300px;margin-left:150px;">{{des}}</h6>
+<h5 style="width: 100px;margin-left:50px;">Price - {{price}}</h5>
+
+</div>
+</div>
+<h4 style="margin-left:490px;">Total - {{price}}</h4>
+</template>
+
+<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
+</core-card>
+
+<core-ajax id="orajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/cbe43e6ca43124eef512217334003a6f"
+on-core-response="{{orderLoaded}}">
+</core-ajax>
+
+<core-ajax id="owajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+body='{"_id":"{{odocid}}","_rev":"{{orevid}}","orderno":"{{orderno}}"}'>
+</core-ajax>
+
+<core-ajax id="rajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/website/{{docid}}"
+on-core-response="{{itemLoaded}}">
+</core-ajax>
+
+<core-ajax id="wajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
+</core-ajax>
+
+
+
+</template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+  this.name;
+  this.onoarr=[];
+  this.itemarr=[];
+  this.$.orajax.go();
+  this.orderarr=[];
+ },
+  itemLoaded:function()
+  {
+  this.itemarr=this.$.rajax.response;
+  var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
+  newval.prodid=this.itemarr.id;
+      newval.prodimg=this.itemarr.img1;
+      newval.proddes=this.itemarr.des;
+      newval.prodprice=this.itemarr.price;
+      newval.prodsno=this.itemarr.sno;
+      newval.prodstatus="ordered";
+      newval.orderdate=new Date().toDateString();
+      this.trackstatus="ordered";
+     this.orderarr.push(newval);
+     this.order=JSON.stringify(this.orderarr);
+     //alert(JSON.stringify(this.orderarr));
+     this.$.wajax.go();
+  },
+  orderLoaded:function()
+  {
+  this.onoarr=this.$.orajax.response;
+  this.odocid=this.onoarr._id;
+  this.orevid=this.onoarr._rev;
+  this.orderno=parseInt(this.onoarr.orderno)+1;
+  this.$.owajax.go();
+  },
+  placeorder:function()
+  {
+  this.docid=sessionStorage.getItem("buydocid");
+  this.$.rajax.go();
+  this.uname=localStorage.getItem("nam");
+
+
+  }
+  });
+  </script>
+</polymer-element>

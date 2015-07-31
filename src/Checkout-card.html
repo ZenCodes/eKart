@@ -14,6 +14,7 @@
  <link href="ecart-card.html" rel="import">
  <link href="login-card.html" rel="import">
   <link href="orderreview-list.html" rel="import">
+  <link href="buyorderreview-list.html" rel="import">
 <polymer-element name="Checkout-card">
 <template>
 <style>
@@ -57,7 +58,7 @@ background-color:#FF9933;
 <div hidden?="{{isHidden2}}"><shipping-card></shipping-card></div>
 <div hidden?="{{isHidden3}}"><orderreview-list></orderreview-list></div>
 <div hidden?="{{isHidden4}}"><login-card></login-card></div>
-
+<div hidden?="{{isHidden5}}"><buyorderreview-list></buyorderreview-list></div>
 </core-card>
 
 </template>
@@ -70,6 +71,7 @@ this.isHidden1=false;
 this.isHidden2=true;
 this.isHidden3=true;
 this.isHidden4=true;
+this.isHidden5=true;
     }
     ,
     email:function()
@@ -81,18 +83,30 @@ this.isHidden4=true;
     },
     shipping:function()
     {
-    this.isHidden1=true;
+   this.isHidden1=true;
    this.isHidden2=false;
    this.isHidden3=true;
    this.isHidden4=true;
     },
      order:function()
 	 {
-	    this.isHidden1=true;
+	 //alert("hi!"+sessionStorage.getItem("buyflag"));
+	 if(sessionStorage.getItem("buyflag")=="true")
+	 {
+	 //alert("yes");
+	  this.isHidden1=true;
+	  this.isHidden2=true;
+	  this.isHidden5=false;
+	  this.isHidden4=true;
+	 }
+
+	else{
+	//alert("no");
+       this.isHidden1=true;
 	   this.isHidden2=true;
 	   this.isHidden3=false;
 	   this.isHidden4=true;
-
+        }
     },
     hiddenvalue:function(h1,h2,h3,h4)
     {

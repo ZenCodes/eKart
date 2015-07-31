@@ -8,6 +8,7 @@
 <link rel="import" href="temp-ajax.html">
 <link rel="import" href="info-service.html">
 <link rel="import" href="allroot-service.html">
+<link rel="import" href="buy-service.html">
 <polymer-element name="item-list">
 
 <template>
@@ -57,7 +58,7 @@
     	           <h5 >Price -{{product.value[2]}}</h5>
     	           <div  horizontal layout>
     <cb><paper-button id="{{product.id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>|
-    <paper-button id="{{product.id}}" on-click="{{clickEventt}}" >BUY NOW</paper-button>
+    <paper-button id="{{product.id}}" on-click="{{buy}}" >BUY NOW</paper-button>
     </div>
     </center>
     </div>
@@ -70,6 +71,7 @@
 <cart-ajax id="ca"></cart-ajax>
 <temp-ajax id="ta"></temp-ajax>
 <info-service id="info"></info-service>
+<buy-service id="bs"></buy-service>
   </template>
 
   <script>
@@ -99,6 +101,21 @@ else
 var tar=ee.target.id;
 this.$.ca.docValue(tar,name,"Incart");
 }
+},
+buy:function(e)
+{
+//alert("hi");
+sessionStorage.setItem("buyflag","true");
+sessionStorage.setItem("buydocid",e.target.id);
+if(localStorage.getItem("nam")==""||localStorage.getItem("nam")==null)
+{
+window.location.href="index1.html";
+}
+else
+{
+window.location.href="sample.html";
+}
+//this.$.bs.setDocid(e.target.id);
 }
     });
 

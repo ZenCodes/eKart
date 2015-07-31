@@ -20,7 +20,7 @@
    <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
    contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/{{docid}}?rev={{revid}}">
    </core-ajax>
-
+<<order-service id="os"></order-service>
     </template>
     <script>
  Polymer('usercancelcart-service', {
@@ -32,7 +32,9 @@
     this.revid=this.pr._rev;
     this.docid=this.pr._id;
     this.$.dajax.go();
-
+    alert("ordered items cancelled");
+    this.$.os.refresh();
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,false,true,true,true,true,true,true,true);
     },
     deletefun:function(pid,psno,docid)
     {
