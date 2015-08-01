@@ -53,7 +53,7 @@ on-core-response="{{itemLoaded}}">
 
 <core-ajax id="wajax" auto="false" method="POST" handleAs="json"
 contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
-body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
+body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
 </core-ajax>
 
 
@@ -68,6 +68,7 @@ body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}
   this.itemarr=[];
   this.$.orajax.go();
   this.orderarr=[];
+  this.addrarr=[];
  },
   itemLoaded:function()
   {
@@ -87,7 +88,7 @@ body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}
      this.$.wajax.go();
      localStorage.setItem("buydocid","");
      localStorage.setItem("buyflag","");
-     window.location.href='successindex.html';
+     //window.location.href='successindex.html';
   },
   orderLoaded:function()
   {
@@ -101,6 +102,10 @@ body='{"username":"{{uname}}","orderarr":{{order}},"trackstatus":"{{trackstatus}
   placeorder:function()
   {
   this.docid=sessionStorage.getItem("buydocid");
+  var shipinfo=sessionStorage.getItem("shipinfo");
+        var shipval=JSON.parse(shipinfo);
+        this.addrarr.push(shipval);
+    this.address=JSON.stringify(this.addrarr);
   this.$.rajax.go();
   this.uname=localStorage.getItem("nam");
 
