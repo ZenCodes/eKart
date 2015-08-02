@@ -111,8 +111,24 @@
           }
            #paper_button {
 		          background-color: rgb(242, 172, 77);
+		          left:10px;
+				  			top:1px;
+				          width: 150px;
+				  			   padding: 5px 10px;
+				  			   -webkit-border-radius: 8px;
+				  			   -moz-border-radius: 8px;
+				  			   border-radius: 8px;
+				  			   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+				  			   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+				  			   box-shadow: rgba(0,0,0,1) 0 1px 0;
+				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+				  			   color: white;
+				  			   font-size: 14px;
+				  			   font-family: Georgia, serif;
+				  			   text-decoration: none;
+   vertical-align: middle;
 		           height:40px;
-		           width: 198px;
+
 		            border: 1px solid #706D6C;
 
       }
@@ -173,6 +189,8 @@
     Polymer({
 	 ready:function(){
 	        this.tempbill=[];
+
+
 	        },
 	        save:function()
 	        {
@@ -185,7 +203,18 @@
 	        bill.state=this.state;
 	        bill.country=this.country;
 	        bill.phone=this.phone;
-	        sessionStorage.setItem("billinfo",JSON.stringify(bill));
+
+	        if(this.name!=null && this.name!="" && this.pin!=null && this.pin!="" && this.addr!=null && this.addr!="" && this.city!=null && this.city!="" && this.state!=null && this.state!="" && this.country!=null && this.country!="" && this.phone!=null && this.phone!="" )
+							   						        {
+							   						        localStorage.setItem("nnflag",1);
+							   						         sessionStorage.setItem("billinfo",JSON.stringify(bill));
+							   								}
+							   								else
+							   								{
+							   								localStorage.setItem("nnflag",0);
+							   								alert("all fields must be filled out");
+	   								}
+
         },
         setValues:function(nam,pn,add,lan,cit,stat,count,phno)
         {

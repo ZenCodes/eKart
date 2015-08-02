@@ -111,9 +111,30 @@
            padding:30px;
           }
            #paper_button {
+           background-color: rgb(242, 172, 77);
+		   		          left:10px;
+		   				  			top:1px;
+		   				          width: 150px;
+		   				  			   padding: 5px 10px;
+		   				  			   -webkit-border-radius: 8px;
+		   				  			   -moz-border-radius: 8px;
+		   				  			   border-radius: 8px;
+		   				  			   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   				  			   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   				  			   box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+		   				  			   color: white;
+		   				  			   font-size: 14px;
+		   				  			   font-family: Georgia, serif;
+		   				  			   text-decoration: none;
+		      vertical-align: middle;
+		   		           height:40px;
+
+		            border: 1px solid #706D6C;
+
             height:40px;
-		    width: 198px;
-		    background-color: rgb(242, 172, 77);
+
+
 		    border: 1px solid #706D6C;
 
       }
@@ -133,7 +154,7 @@
       <core-label id="sa" >Shipping Address</core-label>
     <div id="div" layout  horizontal>
  <core-label id="name" >Name</core-label>
- <input id="input" value="{{name}}" placeholder="" is="core-input">
+ <input id="input" value="{{name}}"  placeholder="" is="core-input">
  </div>
  <div id="div" layout  horizontal>
   <core-label id="Pincode" >Pincode</core-label>
@@ -181,6 +202,7 @@
 	        this.tempship=[];
 	        this.retarr=[];
 
+
 	        },
 	        regLoaded:function()
 	        {
@@ -193,7 +215,7 @@
 			this.state=this.retarr.rows[0].value.state;
 		    this.country=this.retarr.rows[0].value.country;
 	        this.phone=this.retarr.rows[0].value.phone;
-	        //alert(JSON.stringify(this.retarr.rows[0].value.name));
+	       //alert(JSON.stringify(this.retarr.rows[0].value.name));
 	        //alert(JSON.stringify(this.retarr.value[0].name));
 
 	        },
@@ -208,7 +230,17 @@
 	        ship.state=this.state;
 	        ship.country=this.country;
 	        ship.phone=this.phone;
-	        sessionStorage.setItem("shipinfo",JSON.stringify(ship));
+	        if(this.name!=null && this.name!="" && this.pin!=null && this.pin!="" && this.addr!=null && this.addr!="" && this.city!=null && this.city!="" && this.state!=null && this.state!="" && this.country!=null && this.country!="" && this.phone!=null && this.phone!="" )
+				   						        {
+				   						        localStorage.setItem("nnflag",1);
+				   						         sessionStorage.setItem("shipinfo",JSON.stringify(ship));
+				   								}
+				   								else
+				   								{
+				   								localStorage.setItem("nnflag",0);
+				   								alert("all fields must be filled out");
+	   								}
+
         },
         setValues:function()
         {

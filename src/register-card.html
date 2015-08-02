@@ -29,9 +29,24 @@
       #paper_button {
         top: 20px;
         width: 110px;
-        background-color: rgb(86, 73, 237);
+
         left: 10px;
-      }
+  background-color: rgb(242, 172, 77);
+
+     padding: 5px 10px;
+     -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+     border-radius: 8px;
+     -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+     -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+     box-shadow: rgba(0,0,0,1) 0 1px 0;
+     text-shadow: rgba(0,0,0,.4) 0 1px 0;
+     color: white;
+     font-size: 14px;
+     font-family: Georgia, serif;
+     text-decoration: none;
+   vertical-align: middle;
+  }
       #paper_button1 {
 		top: 30px;
 	          width: 200px;
@@ -65,10 +80,13 @@
 
     <core-card id="core_card" layout vertical center center-justified>
          <paper-item id="paper_item1" icon="settings" label="Item">REGISTRATION</paper-item>
-         <paper-input label="Username" value="{{name}}" id="paper_input"></paper-input>
-         <paper-input type="password" label="Password" value="{{pass}}" id="paper_input1"></paper-input>
-         <paper-input label="Email" id="paper_input3" value="{{email}}"></paper-input>
-         <paper-input label="PhoneNo" id="paper_input4" value="{{phone}}"></paper-input>
+         <paper-input label="{{Username}}" value="{{name}}" id="paper_input"></paper-input>
+         <paper-input-decorator label="{{Password}}" id="pass">
+		         <input id="paper_input1" label="{{Password}}" id="paper_input1" value="{{pass}}" type="Password" is="core-input" >
+        </paper-input-decorator>
+
+         <paper-input label="{{Email}}" id="paper_input3" value="{{email}}"></paper-input>
+         <paper-input label="{{PhoneNo}}" id="paper_input4" value="{{phone}}"></paper-input>
          <paper-button id="paper_button" on-click="{{save}}">Save</paper-button>
          <!--<paper-button id="paper_button1" on-click="{{clickEventt}}">SignIn Here</paper-button>-->
 
@@ -78,18 +96,92 @@
         Polymer({
         ready:function(){
         this.tempreg=[];
+        this.Username="Username";
+		            this.Password="Password";
+		            this.Email="Email";
+            this.PhoneNo="Phone no";
         },
         save:function()
         {
+
         var reg={"name": "","pass": "","email":"","phone":""};
         reg.name=this.name;
         reg.pass=this.pass;
         reg.email=this.email;
         reg.phone=this.phone;
-        sessionStorage.setItem("reginfo",JSON.stringify(reg));
+
+
+
+
+            if(this.name==null||this.name==""){
+			this.Username="valid username required";
+			}
+
+			if(this.pass==null||this.pass==""){
+			this.Password="valid password required";
+			}
+			if(this.email==null||this.email==""){
+			this.Email="valid email required";
+			}
+			if(this.phone==null||this.phone==""){
+			this.PhoneNo="valid phone no required";
+			}
+			var f1=0;
+			var f2=0;
+			var f3=0;
+
+
+			var paswd=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,16}$/;
+					  if(!(this.pass.match(paswd)))
+					  {
+					  this.name="";
+
+					  this.pass="";
+			          this.Password="should be alphanumeric";
+					  }
+					  else
+					  {
+					  f3++;
+					  }
+
+			var phoneno = /^\d{10}$/;
+			if(!(this.phone.match(phoneno)))
+		    {
+		    this.phone="";
+			this.PhoneNo="valid phone no required";
+			}
+			else
+			{
+			f1=1;
+			}
+
+
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(!(this.email.match(mailformat)))
+			{
+			this.email="";
+			this.Email="valid email required";
+            }
+            else
+            {
+            f2=1;
+            }
+
+
+
+       if(this.name!=null && this.name!="" && this.pass!=null && this.pass!="" && this.email!=null && this.email!="" && this.phone!=null && this.phone!="" )
+	   						        {
+	   						        localStorage.setItem("nnflag",1);
+	   						        sessionStorage.setItem("reginfo",JSON.stringify(reg));
+	   								}
+	   								else
+	   								{
+	   								localStorage.setItem("nnflag",0);
+	   								alert("all fields must be filled out");
+	   								}
+
         }
         });
 
     </script>
-</polym
-er-element>
+</polymer-element>
