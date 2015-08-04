@@ -3,6 +3,7 @@
 <link rel="import" href="order-card.html">
 <link rel="import" href="usercancelcart-service.html">
 <link rel="import" href="trackorder-service.html">
+<link rel="import" href="order-tab.html">
 <polymer-element name="order-list" attributes="show">
   <template>
   <style>
@@ -25,6 +26,7 @@
 
   </style>
 <order-service pr="{{pr}}"></order-service>
+<order-tab></order-tab>
  <core-card id="core_card2"   class="core_card2">
  <template id="order-list" repeat="{{product in pr}}">
  <order-card>

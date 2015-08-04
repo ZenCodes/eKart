@@ -42,6 +42,11 @@
     <div style="text-align:center;">
     	           <h3 style="padding-left:100px;"><a href="#" id="{{_id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{des}}</a></h3>
     	           <h5 >Price -{{price}}</h5>
+    	           <h3>Key Features</h3>
+    	           <template repeat="{{pro in proddesc}}">
+				       	           <li style="text-align:left;padding-left:100px;">{{pro}}</li>
+				       	           </template>
+
     <cb><paper-button id="{{_id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
     <paper-button id="{{_id}}" on-click="{{clickEventt}}" >More Info</paper-button>
     </div>
@@ -51,7 +56,8 @@
     </template>
 
 </core-card>
-
+<cart-ajax id="ca"></cart-ajax>
+<temp-ajax id="ta"></temp-ajax>
   </template>
 
   <script>
@@ -59,12 +65,6 @@
     Polymer('product-info',{
 ready:function()
 {
-}
-/*,
-clickLink:function(e)
-{
-e.target.id;
-//alert("wow!!"+e.target.id);
 },
 clickEvent:function(ee)
 {
@@ -80,7 +80,7 @@ else
 var tar=ee.target.id;
 this.$.ca.docValue(tar,name,"Incart");
 }
-}*/
+}
     });
 
   </script>

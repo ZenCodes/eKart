@@ -34,6 +34,12 @@ this.pr=[];
     refresh:function()
     {
     this.$.ajax.go();
+    },
+    setStatus:function(status)
+    {
+    this.status=JSON.stringify(status);
+     this.$.ajax.go();
+    //alert("hi "+status);
     }
 
     });

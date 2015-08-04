@@ -46,7 +46,7 @@
     	    <core-card id="core_card2"  class="core_card2" horizontal wrap layout >
 
     	       <template id="cont-list" repeat="{{product in pr}}">
-
+			<template if="{{product.doc._id}}">
     	 	<cont-card>
 
 
@@ -63,6 +63,7 @@
     </div>
 
     </cont-card>
+    </template>
 
     </template>
 
