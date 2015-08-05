@@ -28,9 +28,16 @@
     {
     this.itemarr=this.$.rajax.response;
     this.len=0;
+    if(this.itemarr.rows.length==0)
+    {
+    this.len=0;
+    }
+    else
+    {
     for(n=0;n<this.itemarr.rows.length;n++)
     {
     this.len=this.len+parseInt(this.itemarr.rows[n].value[6]);
+    }
     }
     },
     countValue:function(count)
