@@ -47,11 +47,11 @@ this.uname="Temp user";
     this.pr = this.$.tempreadajax.response;
     this.header=this.pr._rev;
     this.uname=this.pr.username;
-    alert(JSON.stringify(this.pr.cartinfo.length));
-    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
+    //alert(JSON.stringify(this.pr.cartinfo.length));
+    //var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
 	for(var n=0;n<this.pr.cartinfo.length;n++)
 	{
-	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
+	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":""};
 	var pid=this.pr.cartinfo[n].prodid;
 	var psno=this.pr.cartinfo[n].prodsno;
 	if(this.pid==pid&&this.psno==psno)
@@ -64,12 +64,14 @@ this.uname="Temp user";
 	    var des=this.pr.cartinfo[n].proddes;
 	    var price=this.pr.cartinfo[n].prodprice;
 	    var sno=this.pr.cartinfo[n].prodsno;
+	    var qty=this.pr.cartinfo[n].prodqty;
 	    newval.prodid=id;
 	    newval.prodimg=img;
 	    newval.proddes=des;
 	    newval.prodprice=price;
 	    newval.prodstatus="Incart";
 	    newval.prodsno=sno;
+	    newval.prodqty=qty;
 	    this.newarr.push(newval);
         this.prodarr=JSON.stringify(this.newarr);
 	}
@@ -86,7 +88,7 @@ this.uname="Temp user";
         alert("deleted");
         document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
         this.$.vs.callfun();
-        document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true);
+        document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true);
     },
     deletefun:function(pid,psno,docid)
     {
