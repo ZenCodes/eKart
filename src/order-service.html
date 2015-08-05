@@ -9,10 +9,16 @@
     }
     </style>
     <core-ajax id="ajax"
-	      auto
+	      auto="false"
 	      url="http://hotelapp.iriscouch.com/orderedcart/_design/ocategorydesign/_view/ocategoryview?key=[{{name}},{{status}}]"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
+    </core-ajax>
+    <core-ajax id="ajax1"
+		      auto
+		      url="http://hotelapp.iriscouch.com/orderedcart/_design/trackorderdesign/_view/trackorderview?key=[{{name}},{{status}}]"
+		      handleAs="json"
+		      on-core-response="{{ordereditem}}">
     </core-ajax>
     </template>
     <script>
@@ -24,12 +30,21 @@ this.name=JSON.stringify(localStorage.getItem("nam"));
 },
 created: function() {
 this.pr=[];
+this.odr=[];
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.ajax.response;
     //alert(JSON.stringify(this.pr));
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').pr=this.pr.rows;
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').reload;
+    },
+    ordereditem:function(event,detail)
+    {
+    this.odr = this.$.ajax1.response;
+	    //alert(JSON.stringify(this.pr));
+	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('trorder-list').pr=this.odr.rows;
+	    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-list').reload;
+
     },
     refresh:function()
     {
@@ -38,7 +53,14 @@ this.pr=[];
     setStatus:function(status)
     {
     this.status=JSON.stringify(status);
+    if(status=="ordered")
+    {
+    this.$.ajax1.go();
+    }
+    else
+    {
      this.$.ajax.go();
+     }
     //alert("hi "+status);
     }
 

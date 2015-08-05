@@ -24,6 +24,7 @@
 <link rel="import" href="element-service.html">
  <link rel="import" href="item-list.html">
  <link rel="import" href="order-list.html">
+  <link rel="import" href="trorder-list.html">
  <link rel="import" href="view-list.html">
  <link rel="import" href="menu-card.html">
   <link rel="import" href="product-info.html">
@@ -88,7 +89,7 @@ margin-left: 50px;
 <div hidden?="{{isHidden8}}"><temp-list id="templist"></temp-list></div>
 <div hidden?="{{isHidden9}}"><cont-list id="contlist"></cont-list></div>
 <div hidden?="{{isHidden10}}"><trackorder-list id="tracklist"></trackorder-list></div>
-
+<div hidden?="{{isHidden11}}"><trorder-list id="order"></trorder-list></div>
 </template>
 <script>
 Polymer('product-list',{
@@ -106,7 +107,7 @@ setRoot:function(root)
 {
 this.rootpath=root;
 },
-hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10)
+hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11)
 {
 this.isHidden1=h1;
 this.isHidden2=h2;
@@ -118,6 +119,7 @@ this.isHidden7=h7;
 this.isHidden8=h8;
 this.isHidden9=h9;
 this.isHidden10=h10;
+this.isHidden11=h11;
 }
 });
 </script>

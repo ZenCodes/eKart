@@ -39,6 +39,7 @@ this.pr=[];
     this.pr = this.$.ajax1.response;
 
    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('trackorder-list').pr=this.pr;
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('trackorder-list').trstatus(this.pr.trackstatus);
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('trackorder-list').reload;
 
     },

@@ -47,10 +47,11 @@ this.uname="Temp user";
     this.pr = this.$.tempreadajax.response;
     this.header=this.pr._rev;
     this.uname=this.pr.username;
-    //alert(JSON.stringify(header));
+    alert(JSON.stringify(this.pr.cartinfo.length));
     var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
 	for(var n=0;n<this.pr.cartinfo.length;n++)
 	{
+	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
 	var pid=this.pr.cartinfo[n].prodid;
 	var psno=this.pr.cartinfo[n].prodsno;
 	if(this.pid==pid&&this.psno==psno)
@@ -81,7 +82,9 @@ this.uname="Temp user";
 	     //alert("deleted");
 
         }
+
         alert("deleted");
+        document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
         this.$.vs.callfun();
         document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true);
     },

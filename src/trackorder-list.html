@@ -1,5 +1,10 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="order-card.html">
+ <link rel="import" href="../components/paper-tabs/paper-tabs.html">
+ <link rel="import" href="../components/paper-button/paper-button.html">
+
+
+<link rel="import" href="../components/core-selector/core-selector.html">
 <link rel="import" href="trackorder-service.html">
 <polymer-element name="trackorder-list">
   <template>
@@ -18,7 +23,11 @@
   	      }
   	      h2
   	      {
-  	      padding:30px;
+  	      padding:10px;
+  	      }
+  	      #p1
+  	      {
+  	      text-align:center;
   	      }
   </style>
 <trackorder-service pr="{{pr}}"></trackorder-service>
@@ -29,27 +38,31 @@
  <order-card>
 
 <div vertical layout>
-<div horizontal layout>
 
-<h2>image</h2>
-<h2>Description</h2>
-<h2>order Date</h2>
-<h2>Price</h2>
-</div>
 <template repeat="{{pro in pr.orderarr}}">
 <div horizontal layout>
 <div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
+<div id="p1" vertical layout>
 <h3 style="padding-left:100px;">{{pro.proddes}}</h3>
-<h5 >{{pro.orderdate}}</h5>
-<h5 >{{pro.prodprice}}</h5>
+<h5 >date:{{pro.orderdate}}</h5>
+<h5 >price:{{pro.prodprice}}</h5>
+</div>
 </div>
 </template>
+
 <center>
 <h3>status-{{pr.trackstatus}}</h3>
-<h3> OrderNumber-{{pr.orderno}}</h3></center>
+<h3 > OrderNumber-{{pr.orderno}}</h3></center>
 
 </div>
 </div>
+<paper-tabs id="selector" disableDrag="true" selected="{{select}}" class="transparent-teal">
+
+    <paper-tab><paper-button id="ordered" label="ordered" >Orderde</paper-button></paper-tab>
+    <paper-tab><paper-button id="packed" label="packed" >Packed</paper-button></paper-tab>
+    <paper-tab><paper-button id="shipped" label="shipped">Shipped</paper-button></paper-tab>
+
+  </paper-tabs>
 </order-card>
 
 </core-card>
@@ -59,8 +72,24 @@
   Polymer('trackorder-list',{
   ready:function(e)
   {
+this.select=2;
+  },
+trstatus:function(tr)
+{
 
-  }
+if(tr=="ordered")
+{
+this.select=0;
+}
+if(tr=="packed")
+{
+this.select=1;
+}
+if(tr=="shipped")
+{
+this.select=2;
+}
+}
 
   });
   </script>

@@ -8,7 +8,9 @@
   <link rel="import" href="../components/core-media-query/core-media-query.html">
   <link rel="import" href="../components/paper-button/paper-button.html">
     <link rel="import" href="order-service.html">
-  <polymer-element name="order-tab">
+      <link rel="import" href="admin-card.html">
+  <link rel="import" href="adordered-list.html">
+  <polymer-element name="admin-tab">
   <template>
 
   <style shim-shadowdom>
@@ -29,8 +31,8 @@
       color: #00bcd4;
       box-shadow: none;
       width:550px;
-      margin-top:130px;
-      margin-left:300px;
+      margin-top:30px;
+      margin-left:100px;
     }
 
     paper-tabs.transparent-teal::shadow #selectionBar {
@@ -46,30 +48,32 @@
 
   <paper-tabs selected="0" class="transparent-teal">
 
-    <paper-tab><paper-button id="ordered" label="ordered" on-click="{{order}}">Ordered Items</paper-button></paper-tab>
-    <paper-tab><paper-button id="cancelled" label="cancelled" on-click="{{cancel}}">Cancelled Orders</paper-button></paper-tab>
-    <paper-tab><paper-button id="History" label="History" on-click="{{history}}">Order History</paper-button></paper-tab>
+    <paper-tab><paper-button id="add" label="add" on-click="{{add}}">Add Product</paper-button></paper-tab>
+    <paper-tab><paper-button id="view" label="view" on-click="{{view}}">Track Order</paper-button></paper-tab>
 
   </paper-tabs>
-<order-service id="os"></order-service>
+
+<div hidden?="{{h1}}"><admin-card ></admin-card></div>
+<div hidden?="{{h2}}"><adordered-list></adordered-list></div>
 </template>
 <script>
 Polymer({
-order:function()
+ready:function()
 {
-this.$.os.setStatus("ordered");
-document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,false);
-//alert("order");
+this.h1=false;
+this.h2=true;
 },
-cancel:function()
+add:function()
 {
-this.$.os.setStatus("Cancelled");
-document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,false,true,true,true,true,true,true,true,true);
-//alert("cancel");
+this.h1=false;
+this.h2=true;
+//alert("add");
 },
-history:function()
+view:function()
 {
-//alert("history");
+this.h1=true;
+this.h2=false;
+//alert("view");
 }
 
 });

@@ -4,7 +4,7 @@
 <link rel="import" href="usercancelcart-service.html">
 <link rel="import" href="trackorder-service.html">
 <link rel="import" href="order-tab.html">
-<polymer-element name="order-list" attributes="show">
+<polymer-element name="trorder-list" attributes="show">
   <template>
   <style>
   #core_card2 {
@@ -27,8 +27,11 @@
   </style>
 <order-service pr="{{pr}}"></order-service>
 <order-tab></order-tab>
+
  <core-card id="core_card2"   class="core_card2">
  <template id="order-list" repeat="{{product in pr}}">
+
+ <template  if="{{product.value[2]!='Cancelled'}}">
  <order-card>
  <h3 style="padding-left:100px;">Order Number:{{product.value[1]}}</h3>
  <div id="d1">
@@ -48,6 +51,7 @@
 <center></div>
 </div>
 </order-card>
+</template>
 </template>
 </core-card>
 <usercancelcart-service id="uccs"></usercancelcart-service>

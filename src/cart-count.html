@@ -11,7 +11,7 @@
    <core-label id="cc" >{{len}}</core-label>
     <core-ajax id="rajax"
          auto
-         url="http://hotelapp.iriscouch.com/addtocart/_design/uname/_view/username?key={{uname}}"
+         url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{uname}}"
          on-core-response="{{itemLoaded}}"
          handleAs="json">
      </core-ajax>
@@ -22,20 +22,23 @@
     {
     this.itemarr=[];
     this.uname=JSON.stringify(localStorage.getItem("nam"));
-    this.len="0";
-    //this.len=sessionStorage.getItem("cartcount");
+    this.len=0;
     },
     itemLoaded:function()
     {
     this.itemarr=this.$.rajax.response;
-   this.len=JSON.stringify(this.itemarr.rows.length);
-   alert(JSON.stringify(this.itemarr.rows.length));
-    },
-    countValue:function()
+    this.len=0;
+    for(n=0;n<this.itemarr.rows.length;n++)
     {
+    this.len=this.len+parseInt(this.itemarr.rows[n].value[6]);
+    }
+    },
+    countValue:function(count)
+    {
+    this.len=this.len+1;
     this.uname=JSON.stringify(localStorage.getItem("nam"));
     this.$.rajax.go();
-    //this.len=len;
+
     }
       });
   </script>
