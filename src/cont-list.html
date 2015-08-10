@@ -54,7 +54,7 @@
 <center>
     	           <img id="bor" src="{{product.doc.img1}}" width="200" height="200">
     	           <h6><paper-button id="{{product.doc._id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{product.doc.des}}</paper-button></h6>
-    	           <h5 >Price -{{product.doc.price}}</h5>
+    	           <h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.doc.price}}</h5>
     	           <div  horizontal layout>
     <cb><paper-button id="{{product.doc._id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>|
     <paper-button id="{{product.doc._id}}" on-click="{{clickEventt}}" >BUY NOW</paper-button>
@@ -81,7 +81,7 @@ ready:function()
 },
 clickLink:function(e)
 {
- document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true,true,true,true);
  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hidemenu(true);
  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewProduct(false);
 this.$.info.setProductid(e.target.id);

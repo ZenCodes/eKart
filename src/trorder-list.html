@@ -1,56 +1,78 @@
 <link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-collapse/core-collapse.html">
 <link rel="import" href="order-service.html">
 <link rel="import" href="order-card.html">
 <link rel="import" href="usercancelcart-service.html">
 <link rel="import" href="trackorder-service.html">
 <link rel="import" href="order-tab.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <polymer-element name="trorder-list" attributes="show">
   <template>
   <style>
   #core_card2 {
-  	        position: absolute;
-  	        width: 1000px;
-  	        height: 450px;
-  	        //border-radius: 2px;
-  	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-  	        left: 150px;
-  	        top: 300px;
-  	        background-color: rgb(255, 255, 255);
-
+    	        position: absolute;
+    	        width: 1144px;
+    	        //height: 450px;
+    	        //border-radius: 2px;
+    	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	        left: 60px;
+    	        top: 150px;
+    	        background-color: rgb(255, 255, 255);
+  		        padding-top:10px;
+  		        padding-bottom:10px;
+    	      }
+    	      #card{
+    	      border-radius: 2px;
+    	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	      margin-top: 25px;
+    	      margin-left: 25px;
+    	      margin-right:25px;
   	      }
-  	      #d1
+  	      #expand{
+  	      margin-left:100px;
+  	      }
+  	      #fset
   	      {
   	      border-radius: 2px;
-  	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
   	      }
 
   </style>
 <order-service pr="{{pr}}"></order-service>
-<order-tab></order-tab>
 
- <core-card id="core_card2"   class="core_card2">
+ <div id="core_card2"   class="core_card2" style="border: 2px solid #00CED1;">
+ <order-tab></order-tab>
+
  <template id="order-list" repeat="{{product in pr}}">
 
- <template  if="{{product.value[2]!='Cancelled'}}">
- <order-card>
- <h3 style="padding-left:100px;">Order Number:{{product.value[1]}}</h3>
- <div id="d1">
-  <template id="order-list" repeat="{{pro in product.value[0]}}">
-<div horizontal layout style="padding:15px;">
-<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
-<div style="text-align:center;">
-<h3 style="padding-left:100px;">{{pro.proddes}}</h3>
-<h5 >Price -{{pro.prodprice}}</h5>
-</template>
-</div>
-<center>
-<cb><paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{cancel}}" >Cancel order</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-<!--<paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{clickEventt}}" >Delete</paper-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-->
-<paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{TrackEvent}}" >Track  Order</paper-button>
+ <template  id="order-list" if="{{product.value[2]!='Cancelled'}}">
 
-<center></div>
-</div>
-</order-card>
+    <template id="order-list" repeat="{{pro in product.value[0]}}">
+
+     <fieldset id="fset" style="width:950px;margin-left:50px;height:40px;margin-top:30px;border: 2px solid #E0E0E0 ;">
+	   <legend style="text-align: center;">{{pro.proddes}}</legend>
+        <div layout horizontal style="width:950px;margin-left:50px;height:40px;">
+	    <h4 style="margin-top:10px;margin-left:0px;">Order Number:{{product.value[1]}}</h4>
+
+		<h5 style="margin-top:10px;margin-left:500px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+
+	    <core-icon-button id="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
+	    </div>
+	 </fieldset>
+
+	<core-collapse id="collapse1" class="collaps" opened="{{open}}">
+  	<div style="width:950px;margin-left:50px;" horizontal layout>
+		<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
+		<div style="text-align:center;">
+		<div layout horizontal><h3 style="padding-left:100px;">{{pro.proddes}}</h3><core-icon-button id="less" icon="expand-less"  active="false" on-click="{{less}}" style="margin-left:100px;height:40px;"></core-icon-button></div>
+	    <h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+        <paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{cancel}}" >Cancel order</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+        <paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{TrackEvent}}" >Track  Order</paper-button>
+  	</div>
+  	</core-collapse>
+    </template>
+ </template>
+ </div>
 </template>
 </template>
 </core-card>
@@ -59,13 +81,29 @@
 </template>
   <script>
   Polymer({
+  ready:function()
+  {
+  //alert(shadowRoot.querySelector('trorder-list'));
+  },
+  expand:function(e)
+  {
+  //alert("hi");
+  this.open=true;
+  //alert(this.$.collapse1);
+  //document.querySelector('trorder-list').shadowRoot.querySelector('core-collapse').toggle();
+   //alert(document.querySelector('trorder-list').shadowRoot.querySelector('order-list'));
+  },
+  less:function()
+  {
+  this.open=false;
+  },
   cancel:function(e)
   {
   this.$.uccs.deletefun(e.target.id,e.target.getAttribute('label'),e.target.getAttribute('value'));
   },
   TrackEvent:function(e)
     {
-    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,false,true);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,false,true,true,true);
     this.$.tos.trackstatus(e.target.getAttribute('value'));
   }
   });

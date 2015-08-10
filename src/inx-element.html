@@ -54,7 +54,7 @@ border-radius: 3px;
 		     width: 250px;
       height: 40px;
         left: 600px;
-        top: 35px;
+        top: 40px;
         position: absolute;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
 
@@ -66,7 +66,7 @@ border-radius: 3px;
       border-radius: 7px;
 		     border: 1px solid #706D6C;
 	          left: 790px;
-	          top: 35px;
+	          top: 40px;
 	          position: absolute;
 	          background-color:rgb(0, 188, 212);
 	          width: 20px;
@@ -130,7 +130,7 @@ top: 10px;
     </style>
 
 
-<core-label id="cl" >Hi!!{{name}}</core-label>
+<core-label id="cl" >{{name}}</core-label>
 <paper-button class="signin" id="signin" on-click="{{clickEvent}}" label="{{bname}}">{{bname}}</paper-button>
 <paper-button id="signout" hidden>Signout</paper-button>
 <view-trigger></view-trigger>
@@ -255,7 +255,7 @@ else
 this.name=localStorage.getItem("nam");
 this.bname="Signout";
 }
-this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true);
+this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true);
 //this.$.pl.hidemenu(true);
 },
  toggleView: function(e) {
@@ -292,7 +292,7 @@ this.$.pl.setMenu=e.target.selectedItem.textContent;
 //this.$.mc.setMenuPath(this.menupath);
 //this.$.ps.setProductid(this.menupath);
 this.$.ps.setProductid(e.detail.item.id);
-this.$.pl.hiddenVal(true,false,true,true,false,true,false,true,true,true,true);
+this.$.pl.hiddenVal(true,false,true,true,false,true,false,true,true,true,true,true,true);
 //this.$.pl.viewPathcard(false);
 //this.$.pl.viewTempcard(true);
 },
@@ -324,7 +324,8 @@ if(e.target.id=="Desktop")
  if(e.target.textContent=="Signin")
  {
  this.bname="Signout";
- window.location.href="index1.html";
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,false,true);
+ //window.location.href="index1.html";
  }
  else
  {

@@ -29,7 +29,7 @@
       color: #00bcd4;
       box-shadow: none;
       width:550px;
-      margin-top:130px;
+      margin-top:0px;
       margin-left:300px;
     }
 
@@ -58,18 +58,17 @@ Polymer({
 order:function()
 {
 this.$.os.setStatus("ordered");
-document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,false);
-//alert("order");
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,false,true,true);
 },
 cancel:function()
 {
 this.$.os.setStatus("Cancelled");
-document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,false,true,true,true,true,true,true,true,true);
-//alert("cancel");
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,false,true,true,true,true,true,true,true,true,true,true);
+
 },
 history:function()
 {
-//alert("history");
+
 }
 
 });

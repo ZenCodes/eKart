@@ -1,0 +1,113 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+<link rel="import" href="adordered-service.html">
+<link href="../components/paper-button/paper-button.html" rel="import">
+<link href="../components/paper-dropdown/paper-dropdown.html" rel="import">
+<link href="../components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
+<link href="../components/paper-item/paper-item.html" rel="import">
+<link href="../components/core-menu/core-menu.html" rel="import">
+<link rel="import" href="change-service.html">
+<polymer-element name="adordered-list">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2
+            {
+      	        position: absolute;
+      	        width: 870px;
+      	        height: 820px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 100px;
+      	        top: 60px;
+      	        background-color: rgb(255, 255, 255);
+            }
+
+       h2
+       {
+       padding:35px;
+       }
+#d3
+{
+padding:25px;
+width:100px;
+}
+       paper-dropdown-menu
+       {
+       height:40px;
+       width:140px;
+       }
+    </style>
+
+
+
+     <adordered-service pr="{{pr}}"></adordered-service>
+
+
+    	    <core-card id="core_card2"  class="core_card2" vertical layout >
+<div horizontal layout id="d2">
+<h2>ID</h2><h2>image</h2>
+<h2>Description</h2><h2> price</h2>
+<h2>Orderdate</h2><h2>status</h2>
+<h2>Ordernumber</h2>
+<h2>change State</h2>
+</div>
+    	       <template id="adordered-list" repeat  ="{{product in pr}}">
+    	       <div  horizontal layout>
+<template if="{{product.doc.trackstatus}}">
+    	       <div vertical layout>
+<template repeat ="{{pro in product.doc.orderarr}}">
+ <div horizontal layout  id="d1" >
+                    <h5 id="d3">{{pro.prodsno}}</h5>
+    	           <img  src="{{pro.prodimg}}" width="100" height="100">
+    	           <h6 id="d3">{{pro.proddes}}</h6>
+    	           <h5 id="d3" ><sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+    	           <h5 id="d3">{{pro.orderdate}}</h5>
+</div>
+ </template>
+ </div>
+ <div horizontal layout>
+ <h5 id="d3">{{product.doc.trackstatus}}</h5>
+ <h5 id="d3">{{product.doc.orderno}}</h5>
+    <paper-dropdown-menu label="change status ">
+	    <paper-dropdown class="dropdown" on-core-select="{{item}}">
+	        <core-menu class="menu">
+	            <paper-item id="{{product.doc._id}}">ordered</paper-item>
+	            <paper-item id="{{product.doc._id}}" >packed</paper-item>
+	            <paper-item id="{{product.doc._id}}">shipped</paper-item>
+	          	        </core-menu>
+	    </paper-dropdown>
+</paper-dropdown-menu>
+</div>
+</template>
+</div>
+</template>
+</core-card>
+<change-service id="chn"></change-service>
+  </template>
+
+  <script>
+
+    Polymer('adordered-list',{
+ready:function()
+{
+},
+item:function(e)
+{
+var idd=e.detail.item.id;
+ var status=e.target.selectedItem.textContent;
+//alert(idd);
+this.$.chn.getstatus(status,idd);
+}
+    });
+
+  </script>
+
+</polymer-element>

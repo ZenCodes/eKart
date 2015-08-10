@@ -5,77 +5,158 @@
 <polymer-element name="x-ajax">
     <template>
     <style>
-    :host {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        background-color: rgb(192, 192, 192);
-      }
-      #section {
-        left: 550px;
-        top: 500px;
-        position: absolute;
-      }
-      #core_card {
-        position: absolute;
-        width: 300px;
-        height: 400px;
-        border-radius: 2px;
-        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-        left: 500px;
-        top: 50px;
-        background-color: rgb(255, 255, 255);
-      }
-      #paper_button {
-        top: 20px;
-        width: 110px;
-        background-color: rgb(86, 73, 237);
-        left: 10px;
-      }
-      #paper_button1 {
-		top: 30px;
-	          width: 200px;
-	          left: 8px;
-	          //background-color: rgb(86, 73, 237);
 
-      }
 
-      #paper_input {
-        width: 200px;
-      }
-      #paper_input1 {
-        width: 200px;
-      }
-      #paper_input2 {
-        width: 200px;
-      }
-      #paper_input3 {
-        width: 200px;
-      }
-      #paper_input4 {
-        width: 200px;
-      }
-#paper_item1 {
+       :host {
+	          position: absolute;
+	          width: 100%;
+	          height: 100%;
+	          box-sizing: border-box;
+	        }
+	        #core_card {
+	          position: absolute;
+	          width: 300px;
+	          height: 570px;
+	          border-radius: 2px;
+	          box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+	          left: 150px;
+	          top: 90px;
+	          background-color: rgb(255, 255, 255);
+	        }
+	       #input {
+	  	            border-radius: 2px;
+	  	 		     border: 1px solid #706D6C;
+	  	 		     width: 250px;
+	  	             left:30px;
+	  	         position: absolute;
+	  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  	         height:30px;
+	            }
 
-        top: 10px;
+	             #input1 {
+	  		  		  	            border-radius: 2px;
+	  		  		  	 		     border: 1px solid #706D6C;
+	  		  		  	 		     width: 250px;
+	  		  		  	             left:30px;
+	  		  		  	         position: absolute;
+	  		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  		  		  	         height:30px;
+
+	            }
+	            #input2 {
+	  		  	            border-radius: 2px;
+	  		  	 		     border: 1px solid #706D6C;
+	  		  	 		     width: 250px;
+	  		  	             left:30px;
+	  		  	         position: absolute;
+	  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  		  	         height:30px;
+
+	            }
+	            #input3 {
+	  		  		  	            border-radius: 2px;
+	  		  		  	 		     border: 1px solid #706D6C;
+	  		  		  	 		     width: 250px;
+	  		  		  	             left:30px;
+	  		  		  	         position: absolute;
+	  		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  		  		  	         height:30px;
+	            }
+	            #input4 {
+	  		  	            border-radius: 2px;
+	  		  	 		     border: 1px solid #706D6C;
+	  		  	 		     width: 250px;
+	  		  	             left:30px;
+	  		  	         position: absolute;
+	  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  		  	         height:30px;
+	            }
+	            #input5 {
+	  		  	            border-radius: 2px;
+	  		  	 		     border: 1px solid #706D6C;
+	  		  	 		     width: 250px;
+	  		  	             left:30px;
+	  		  	         position: absolute;
+	  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  		  	         height:30px;
+          }
+           #reg
+		        {
+		         position:absolute;
+		        font-size : 25px;
+		        font-weight:bold;
+		        text-align:center;
+		        top:7px;
+		        left:30px;
+      }
+       #div
+	            {
+	             padding:30px;
+          }
+          #paper_button {
+		             background-color: rgb(242, 172, 77);
+		             position:absolute;
+		  		   		          left:105px;
+		  		   				  			top:510px;
+		  		   				          width: 170px;
+		  		   				  			   padding: 5px 10px;
+		  		   				  			   -webkit-border-radius: 8px;
+		  		   				  			   -moz-border-radius: 8px;
+		  		   				  			   border-radius: 8px;
+		  		   				  			   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		  		   				  			   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		  		   				  			   box-shadow: rgba(0,0,0,1) 0 1px 0;
+		  		   				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+		  		   				  			   color: white;
+		  		   				  			   font-size: 12px;
+		  		   				  			   font-family: Georgia, serif;
+		  		   				  			   text-decoration: none;
+		  		      vertical-align: middle;
+		  		   		           height:40px;
+
+		  		            border: 1px solid #706D6C;
+
+
+
+
 
       }
 
     </style>
 
-    <core-card id="core_card" layout vertical center center-justified>
-         <paper-item id="paper_item1" icon="settings" label="Item">REGISTRATION</paper-item>
-         <paper-input label="{{Username}}" value="{{name}}" id="paper_input"></paper-input>
-		 <paper-input type="password" label="{{Password}}" value="{{pass}}" id="paper_input1"></paper-input>
-         <paper-input label="{{Email}}" id="paper_input3" value="{{email}}"></paper-input>
-         <paper-input label="{{PhoneNo}}" id="paper_input4" value="{{phone}}"></paper-input>
-         <paper-button id="paper_button" on-click="{{clickEvent}}">SignUp</paper-button>
-         <paper-button id="paper_button1" on-click="{{clickEventt}}">SignIn Here</paper-button>
+   <core-card id="core_card" layout vertical>
+    <core-label id="reg" >Registered Here</core-label><br>
+         <div id="div" layout  horizontal>
+         <core-label id="name" >Name*</core-label><br>
+		  <input id="input" value="{{name}}" label="{{Username}}" placeholder="Name" is="core-input">
+        </div>
+        <div id="div" layout  horizontal>
+		  <core-label id="Mobile" >Mobile*</core-label><br>
+		  <input id="input1" value="{{phone}}" label="{{PhoneNo}}" placeholder="Mobile Number" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+    <core-label id="Email" >Email*</core-label><br>
+    <input id="input2" value="{{email}}" label="{{Email}}" placeholder="Email" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+      <core-label id="Referrer" >Referrer(Optional)</core-label><br>
+      <input id="input3" value="{{ref}}" label="{{Ref}}" placeholder="Referrer" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+        <core-label id="pass" >Password*</core-label><br>
+        <input id="input4" value="{{pass}}"  label="{{Password}}" placeholder="Password" is="core-input">
+  </div>
+
+  <div id="div" layout  horizontal>
+        <core-label id="conpass" >Confirm Password*</core-label><br>
+        <input id="input5" value="{{conpass}}"  label="{{ConPassword}}" placeholder="Password" is="core-input">
+  </div>
+
+         <paper-button id="paper_button" on-click="{{clickEventt}}">Save & Continue</paper-button>
          <!--<paper-button id="paper_button1">SignIn</paper-button>-->
     </core-card>
          <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/websitelogin/"
-		   body='{"username":"{{uname}}","password":"{{upass}}","email":"{{uemail}}","phone":"{{uphone}}"}'>
+		   body='{"Register":[{"username":"{{uname}}","phone":"{{uphone}}","email":"{{uemail}}","ref":"{{uref}}","password":"{{upass}}","conpassword":"{{uconpass}}"}]}'>
     	 </core-ajax>
 <core-ajax id="rajax"
       auto="false"
@@ -92,15 +173,10 @@
             {
 
             this.htls=[];
-            this.Username="Username";
-            this.Password="Password";
-            this.Email="Email";
-            this.PhoneNo="Phone no";
+
+
             },
-clickEventt: function()
-{
- window.location.href="index1.html";
-},
+
             htlsLoaded:function()
             {
             	var chk=0;
@@ -126,9 +202,11 @@ clickEventt: function()
 														{
 														//alert("do well");
 													    this.uname=this.name;
+													    this.uphone=this.phone;
+													    this.uemail=this.email;
+													    this.uref=this.ref;
 														this.upass=this.pass;
-														this.uemail=this.email;
-														this.uphone=this.phone;
+														this.uconpass=this.conpass;
 														this.$.ajax.go();
 														alert("Registered successfully...");
 														}
@@ -139,7 +217,14 @@ clickEventt: function()
 														}
 
             },
-            clickEvent: function(event, detail, sender){
+            clickEventt: function(event, detail, sender)
+            {
+                      this.Username="Username";
+			            this.PhoneNo="Phoneno";
+			             this.Email="Email";
+			             this.ref="Ref";
+			            this.Password="Password";
+			             this.ConPassword="ConPassword";
 
             this.n=JSON.stringify(this.name);
 
@@ -150,6 +235,9 @@ clickEventt: function()
 
 			if(this.pass==null||this.pass==""){
 			this.Password="valid password required";
+			}
+			if(this.pass!=this.conpass){
+						this.ConPassword="Mismatching Password";
 			}
 			if(this.email==null||this.email==""){
 			this.Email="valid email required";
@@ -200,8 +288,9 @@ clickEventt: function()
 
 
 
- if(this.name!=null && this.name!="" && this.pass!=null && this.pass!="" && this.email!=null && this.email!="" && this.phone!=null && this.phone!="" && f1==1 && f2==1 && f3==1)
+ if(this.name!=null && this.name!="" && this.pass!=null && this.pass!="" && this.email!=null && this.email!="" && this.pass!=this.conpass && this.phone!=null && this.phone!="" && f1==1 && f2==1 && f3==1)
 						        {
+
 						        localStorage.setItem("nnflag",1);
 								}
 								else
@@ -210,6 +299,11 @@ clickEventt: function()
 								alert("all fields must be filled out");
 								}
 
+if(this.pass!=this.conpass)
+
+{
+alert("fail");
+}
 
 
 

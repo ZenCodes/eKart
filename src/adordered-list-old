@@ -30,7 +30,10 @@
       	        background-color: rgb(255, 255, 255);
             }
 
-
+       h2
+       {
+       padding:35px;
+       }
 #d3
 {
 padding:25px;
@@ -41,21 +44,6 @@ width:100px;
        height:40px;
        width:140px;
        }
-       table
-       {
-        border-radius: 2px;
-  	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-       }
-         tr
-	          {
-	           border-radius: 2px;
-	     	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-       }
-         td
-	          {
-	           border-radius: 2px;
-	     	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-       }
     </style>
 
 
@@ -63,67 +51,37 @@ width:100px;
      <adordered-service pr="{{pr}}"></adordered-service>
 
 
-    	    <core-card id="core_card2"  class="core_card2" vertical layout >
-
-<!--<div layout horizontal style="width:1030px;height:50px;border-radius: 2px;box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;">
-<h3 style="margin-left:30px;">Image</h3>
-<h3 style="margin-left:60px;">Description</h3>
-<h3 style="margin-left:80px;">Price</h3>
-<h3 style="margin-left:100px;">Orderdate</h3>
-<h3 style="margin-left:100px;">Status</h3>
-<h3 style="margin-left:50px;">Order number</h3>
-<h3 style="margin-left:40px;">Status change</h3>
+<core-card id="core_card2"  class="core_card2" vertical layout >
+<!--<div horizontal layout id="d2">
+<h2>ID</h2><h2>image</h2>
+<h2>Description</h2><h2> price</h2>
+<h2>Orderdate</h2><h2>status</h2>
+<h2>Ordernumber</h2>
+<h2>change State</h2>
 </div>-->
-<table style="width:1030px;height:30px;">
-<tr>
-<td style="width:105px;"><h3 style="margin-left:30px;">Image</h3></td>
-<td style="width:150px;"><h3 style="margin-left:40px;">Description</h3></td>
-<td style="width:150px;"><h3 style="margin-left:60px;">Price</h3></td>
-<td style="width:150px;"><h3 style="margin-left:40px;">Orderdate</h3></td>
-<td style="width:150px;"><h3 style="margin-left:50px;">Status</h3></td>
-<td><h3 style="margin-left:50px;">Order number</h3></td>
-<td><h3 style="margin-left:40px;">Status change</h3></td>
-</tr>
-</table>
-    <table>
-
-
-<!--<tr>
-<td><h2>ID</h2></td>
-<td><h2>image</h2></td>
-<td><h2>Description</h2></td>
-<td><h2> price</h2></td>
-<td><h2>Orderdate</h2></td>
-<td><h2>status</h2></td>
-<td><h2>Ordernumber</h2></td>
-<td><h2>change State</h2></td>
-</tr>-->
-
-
-<tr>
-
-    	       <template id="adordered-list" repeat  ="{{product in pr}}">
-    	      <!-- <div  horizontal layout>-->
-
-
+    	   <table border="1">
+    	   <template id="adordered-list" repeat  ="{{product in pr}}">
+    	   <tr>
+    	       <div  horizontal layout>
 <template if="{{product.doc.trackstatus}}">
-<tr>
+
+    	       <div vertical layout>
 
 <template repeat ="{{pro in product.doc.orderarr}}">
-<tr>
-				<!--<td><h5 id="d3">{{product.doc.orderno}}</h5></td>-->
-                   <!-- <td><h5 id="d3">{{pro.prodsno}}</h5></td> -->
+
+ <div horizontal layout  id="d1" >
+                   <!-- <h5 id="d3">{{pro.prodsno}}</h5>-->
     	           <td><img  src="{{pro.prodimg}}" width="100" height="100"></td>
     	           <td><h6 id="d3">{{pro.proddes}}</h6></td>
-    	           <td><h5 id="d3" > <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub> {{pro.prodprice}}</h5></td>
+    	           <td><h5 id="d3" ><sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5></td>
     	           <td><h5 id="d3">{{pro.orderdate}}</h5></td>
-
-
-</tr>
+</div>
  </template>
+ </div>
+ <div horizontal layout>
  <td><h5 id="d3">{{product.doc.trackstatus}}</h5></td>
  <td><h5 id="d3">{{product.doc.orderno}}</h5></td>
-    <td><paper-dropdown-menu label="change status ">
+   <td> <paper-dropdown-menu label="change status ">
 	    <paper-dropdown class="dropdown" on-core-select="{{item}}">
 	        <core-menu class="menu">
 	            <paper-item id="{{product.doc._id}}">ordered</paper-item>
@@ -131,11 +89,12 @@ width:100px;
 	            <paper-item id="{{product.doc._id}}">shipped</paper-item>
 	          	        </core-menu>
 	    </paper-dropdown>
-</paper-dropdown-menu></td>
+</paper-dropdown-menu> </td>
+</div>
 </template>
+</div>
+<tr>
 </template>
-</tr>
-</tr>
 </table>
 </core-card>
 <change-service id="chn"></change-service>

@@ -9,15 +9,15 @@
     <style>
     :host {
     position: absolute;
-	        width: 100%;
-	        height: 100%;
+	        //width: 100%;
+	        //height: 100%;
         box-sizing: border-box;
          background-color: rgb(255, 255, 255);
     }
 #core-card{
 
       left: 410px;
-        top: 75px;
+        top: 100px;
         width: 350px;
 	        height: 270px;
       position: absolute;
@@ -45,8 +45,8 @@ left:60px;
 
       }
       #paper_item1 {
-top:35px;
-   left:460px;
+top:50px;
+   left:500px;
 position:absolute;
 font-size: 1.2rem;
       font-weight: 300;
@@ -80,7 +80,7 @@ width:200px;
 }
 
     </style>
-    <paper-item id="paper_item1" icon="settings" label="Item">LOGIN TO CONTINUE</paper-item>
+<paper-item id="paper_item1" icon="settings" label="Item">LOGIN</paper-item>
 <core-card id="core-card" layout vertical center-justified>
 
 
@@ -124,8 +124,9 @@ this.$.service.setValues(this.name,this.pwd);
 }
 else
 {
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,false);
 //window.location.href = 'registration.html';
-window.location.href = 'reg-card.html';
+//window.location.href = 'reg-card.html';
 }
 }
   });

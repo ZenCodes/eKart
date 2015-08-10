@@ -9,18 +9,27 @@
 <polymer-element name="trackorder-list">
   <template>
   <style>
-  #core_card2
-  {
-  	        position: absolute;
-  	        width: 800px;
-  	        height: 250px;
-  	        //border-radius: 2px;
-  	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-  	        left: 150px;
-  	        top: 200px;
-  	        background-color: rgb(255, 255, 255);
+  #core_card2 {
+    	        position: absolute;
+    	        width: 1144px;
+    	        //height: 450px;
+    	        //border-radius: 2px;
+    	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	        left: 60px;
+    	        top: 150px;
+    	        background-color: rgb(255, 255, 255);
+  		    padding-top:10px;
+  		    padding-bottom:10px;
 
+    	      }
+    	      #card{
+    	      border-radius: 2px;
+    	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	      margin-top: 25px;
+    	      margin-left: 25px;
+    	      margin-right:25px;
   	      }
+
   	      h2
   	      {
   	      padding:10px;
@@ -32,8 +41,8 @@
   </style>
 <trackorder-service pr="{{pr}}"></trackorder-service>
 
- <core-card id="core_card2"   class="core_card2">
 
+<div id="core_card2"   class="core_card2" style="border: 2px solid #00CED1;">
 
  <order-card>
 
@@ -55,12 +64,13 @@
 
 
 <template repeat="{{pro in pr.orderarr}}">
+<div id="card">
 <div horizontal layout>
 <div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
 <div id="p1" vertical layout>
 <h3 style="padding-left:100px;">{{pro.proddes}}</h3>
 <h5 >date:{{pro.orderdate}}</h5>
-<h5 >price:{{pro.prodprice}}</h5>
+<h5 >price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub> {{pro.prodprice}}</h5>
 </div>
 </div>
 </template>

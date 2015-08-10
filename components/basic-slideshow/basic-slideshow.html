@@ -1,0 +1,119 @@
+<!--
+Cycles through a set of child elements (e.g., images).
+
+For the time being, image slideshows really only work well for slideshows which
+size to the images. It's currently hard to make the slideshow bigger (say, for a
+full-page or full-screen slideshow) and have it scale the images up to fit.
+
+@element basic-slideshow
+@demo http://basic-web-components.github.io/components/basic-slideshow/
+-->
+
+<link rel="import" href="../basic-sequence/basic-sequence.html">
+
+<polymer-element name="basic-slideshow" extends="basic-sequence" attributes="autoStart interval">
+
+<template>
+  <style>
+  polyfill-next-selector {
+    content: ':host([effect=crossfade]) #effectContainer > .sequenceTransition';
+  }
+  :host([effect=crossfade]) ::content > .sequenceTransition {
+    /* Slow down the standard crossfade effect. */
+    /*
+     * BUG: This used to work, but now no longer gets picked up. The polyfilled
+     * version does, but the native version doesn't.
+     */
+    transition: opacity 1.5s;
+  }
+  </style>
+  <shadow></shadow>
+</template>
+
+<script>
+Polymer({
+
+  /**
+   * If true, start the slideshow when the element is loaded.
+   *
+   * @property autoStart
+   * @type boolean
+   * @default true
+   */
+  autoStart: true,
+
+  attached: function() {
+    this.super();
+    if ( this.autoStart ) {
+      this.start();
+    }
+  },
+
+  /**
+   * The number of milliseconds (thousandths of a second) that will elapse
+   * before the slideshow advances to the next slide. This time is measured from
+   * the moment the transition to the next slide begins, so it must be longer
+   * than that transition time. Otherwise, the transition will not have time to
+   * complete before the transition to the next slide is begun.
+   *
+   * @property interval
+   * @default 3000
+   */
+  interval: 3000,
+
+  next: function() {
+    this.super();
+    if ( this.playing ) {
+      this._tick();
+    }
+  },
+
+  previous: function() {
+    this.super();
+    if ( this.playing ) {
+      this._tick();
+    }
+  },
+
+  ready: function() {
+    this.super();
+    if ( this.effect == null ) {
+      this.effect = "crossfade";
+    }
+    if ( this.wrapAround == null ) {
+      this.wrapAround = true;
+    }
+  },
+
+  /**
+   * Start the slideshow.
+   *
+   * @method start
+   */
+  start: function() {
+    this.playing = true;
+    this._tick();
+  },
+
+  /**
+   * Stop/pause the slideshow.
+   *
+   * @method stop
+   */
+  stop: function() {
+    clearTimeout( this._timeout );
+    this.playing = false;
+  },
+
+  _tick: function() {
+    this._timeout = setTimeout( function() {
+      this.next();
+    }.bind( this ), this.interval );
+  },
+
+  _timeour: null
+  
+});
+</script>
+
+</polymer-element>

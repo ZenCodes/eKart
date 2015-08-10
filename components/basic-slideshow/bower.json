@@ -1,0 +1,20 @@
+{
+  "name": "basic-slideshow",
+  "description": "Cycles through a set of child elements (e.g., images)",
+  "version": "0.5.0",
+  "license": "MIT",
+  "main": "basic-slideshow.html",
+  "dependencies": {
+    "basic-sequence": "basic-web-components/basic-sequence#^0.5.0"
+  },
+  "devDependencies": {
+    "basic-framed-content": "basic-web-components/basic-framed-content#^0.5.0"
+  },
+  "keywords": [
+    "basic-web-components",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*"
+  ]
+}

@@ -5,30 +5,40 @@
 <polymer-element name="temp-list">
   <template>
   <style>
-  #core_card2 {
-  	        position: absolute;
-  	        width: 1000px;
-  	        height: 450px;
-  	        //border-radius: 2px;
-  	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-  	        left: 150px;
-  	        top: 300px;
-  	        background-color: rgb(255, 255, 255);
+   #core_card2 {
+    	        position: absolute;
+    	        width: 1144px;
+    	        //height: 450px;
+    	        //border-radius: 2px;
+    	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	        left: 60px;
+    	        top: 150px;
+    	        background-color: rgb(255, 255, 255);
+  		    padding-top:10px;
+  		    padding-bottom:10px;
 
+    	      }
+    	      #card{
+    	      border-radius: 2px;
+    	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	      margin-top: 25px;
+    	      margin-left: 25px;
+    	      margin-right:25px;
   	      }
 
   </style>
 <temp-service pr="{{pr}}"></temp-service>
- <core-card id="core_card2"   class="core_card2">
+ <div id="core_card2"   class="core_card2" style="border: 2px solid #00CED1;">
  <paper-button id="{{product.prodid}}" on-click="{{continue}}" style="left:10px;background-color:#FF9933;">Continue To Shopping</paper-button>
  <paper-button id="{{product.prodid}}" on-click="{{proceed}}" style="left:500px;background-color:#FF9933;">Proceed To Checkout</paper-button>
  <template id="temp-list" repeat="{{product in pr}}">
+  <div id="card">
  <temp-card>
 <div horizontal layout style="padding:15px;">
 <div><img id="bor" src="{{product.prodimg}}" width="200" height="200"></div>
 <div style="text-align:center;">
 <h3 style="padding-left:100px;">{{product.proddes}}</h3>
-<h5 >Price -{{product.prodprice}}</h5>
+<h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.prodprice}}</h5>
 <cb><paper-button id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 <paper-button id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{clickEventt}}" >Save for Later</paper-button>
 </div>
@@ -43,7 +53,7 @@
 
   continue:function()
   {
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,false,true,true);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,false,true,true,true,true);
   },
   proceed:function()
   {
