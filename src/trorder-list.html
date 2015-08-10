@@ -49,19 +49,19 @@
 
     <template id="order-list" repeat="{{pro in product.value[0]}}">
 
-     <fieldset id="fset" style="width:950px;margin-left:50px;height:40px;margin-top:30px;border: 2px solid #E0E0E0 ;">
+     <fieldset id="fset" style="width:875px;margin-left:50px;height:40px;margin-top:30px;border: 2px solid #E0E0E0 ;">
 	   <legend style="text-align: center;">{{pro.proddes}}</legend>
-        <div layout horizontal style="width:950px;margin-left:50px;height:40px;">
+        <div layout horizontal style="width:875px;margin-left:50px;height:40px;">
 	    <h4 style="margin-top:10px;margin-left:0px;">Order Number:{{product.value[1]}}</h4>
 
-		<h5 style="margin-top:10px;margin-left:500px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+		<h5 style="margin-top:10px;margin-left:450px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
 
 	    <core-icon-button id="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
 	    </div>
 	 </fieldset>
 
 	<core-collapse id="collapse1" class="collaps" opened="{{open}}">
-  	<div style="width:950px;margin-left:50px;" horizontal layout>
+  	<div style="width:950px;margin-left:50px;border: 2px solid #E0E0E0 ;" horizontal layout>
 		<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
 		<div style="text-align:center;">
 		<div layout horizontal><h3 style="padding-left:100px;">{{pro.proddes}}</h3><core-icon-button id="less" icon="expand-less"  active="false" on-click="{{less}}" style="margin-left:100px;height:40px;"></core-icon-button></div>
