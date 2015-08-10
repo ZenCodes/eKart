@@ -28,7 +28,7 @@
     	      margin-left: 25px;
     	      margin-right:25px;
   	      }
-  	      #expand{
+  	      .expand{
   	      margin-left:100px;
   	      }
   	      #fset
@@ -56,7 +56,7 @@
 
 		<h5 style="margin-top:10px;margin-left:450px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
 
-	    <core-icon-button id="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
+	    <core-icon-button id="{{product.value[1]}}" class="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
 	    </div>
 	 </fieldset>
 
@@ -64,7 +64,8 @@
   	<div style="width:950px;margin-left:50px;border: 2px solid #E0E0E0 ;" horizontal layout>
 		<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
 		<div style="text-align:center;">
-		<div layout horizontal><h3 style="padding-left:100px;">{{pro.proddes}}</h3><core-icon-button id="less" icon="expand-less"  active="false" on-click="{{less}}" style="margin-left:100px;height:40px;"></core-icon-button></div>
+		<div layout horizontal><h3 style="padding-left:100px;">{{pro.proddes}}</h3>
+		<core-icon-button id="{{product.value[1]}}" icon="expand-less"  active="false" on-click="{{less}}" style="margin-left:100px;height:40px;"></core-icon-button></div>
 	    <h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
         <paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{cancel}}" >Cancel order</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
         <paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{TrackEvent}}" >Track  Order</paper-button>
@@ -83,18 +84,15 @@
   Polymer({
   ready:function()
   {
-  //alert(shadowRoot.querySelector('trorder-list'));
   },
   expand:function(e)
   {
-  //alert("hi");
-  this.open=true;
-  //alert(this.$.collapse1);
-  //document.querySelector('trorder-list').shadowRoot.querySelector('core-collapse').toggle();
-   //alert(document.querySelector('trorder-list').shadowRoot.querySelector('order-list'));
-  },
-  less:function()
+  alert("expand"+e.target.id);
+   this.open=true;
+   },
+  less:function(e)
   {
+  alert("less"+e.target.id);
   this.open=false;
   },
   cancel:function(e)

@@ -1,0 +1,134 @@
+<link rel="import" href="../components/polymer/polymer.html" />
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<link rel="import" href="../components/paper-button/paper-button.html" />
+<link rel="import" href="../components/paper-input/paper-input.html" />
+<link rel="import" href="cart-count.html">
+<polymer-element name="cart-ajax">
+    <template>
+     <core-ajax auto id="ajax2" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart"
+				   body='{"_id":"{{values}}","_rev":{{header}},"username":"{{uname}}","cartinfo":{{cmtarr}}}'>
+     </core-ajax>
+     <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/"
+		   body='{"username":"{{uname}}","cartinfo":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodstatus":"{{pstatus}}","prodsno":"{{psno}}","prodqty":"{{pqty}}"}]}'>
+     </core-ajax>
+	 <core-ajax id="rajax"
+      auto="false"
+      url="http://hotelapp.iriscouch.com/website/{{docid}}"
+      on-core-response="{{htlsLoaded}}"
+      handleAs="json">
+     </core-ajax>
+     <core-ajax id="readajax"
+	      auto="false"
+	      url="http://hotelapp.iriscouch.com/addtocart/{{values}}"
+	      on-core-response="{{Loaded}}"
+	      handleAs="json">
+     </core-ajax>
+     <core-ajax id="ajax1"
+		      auto="false"
+		      url="http://hotelapp.iriscouch.com/addtocart/_design/uname/_view/username?key={{val}}"
+
+		      handleAs="json"
+		      on-core-response="{{cartLoaded1}}"
+		      >
+    </core-ajax>
+    <!--<cart-count id="count"><cart-count>-->
+    </template>
+
+    <script>
+        Polymer({
+            ready:function()
+            {
+            this.cart=[];
+            this.prr=[];
+			this.product=[];
+			this.name;
+			this.values;
+			this.status;
+            },
+            Loaded:function (event, detail, sender)
+            {
+            this.cart=this.$.readajax.response;
+            this.header = detail.xhr.getResponseHeader('ETag');
+            this.uname=this.cart.username;
+		    this.cmtarr=JSON.stringify(this.cart.cartinfo);
+		    var arr=this.cart.cartinfo;
+		     this.l="0";
+
+						for(var i=0;i<this.cart.cartinfo.length;i++)
+						{
+			         if(this.cart.cartinfo[i].prodid==this.pid&&this.cart.cartinfo[i].prodsno==this.psno)
+			          {
+
+			          this.cart.cartinfo[i].prodqty=parseInt(this.cart.cartinfo[i].prodqty)+1;
+			          this.cmtarr=JSON.stringify(this.cart.cartinfo);
+			          this.l="1";
+			          break;
+					  }
+			           }
+
+			if(this.l=="0")
+			             {
+
+					    localStorage.setItem("cartcount",arr.length);
+						//alert("length: "+arr.length);
+									 var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":""};
+									 newval.prodid=this.pid;
+									 newval.prodimg=this.pimg;
+									 newval.proddes=this.pdes;
+									 newval.prodprice=this.pprice;
+									 newval.prodstatus=this.pstatus;
+									 newval.prodsno=this.psno;
+									 newval.prodqty=this.pqty;
+									 arr.push(newval);
+									 this.cmtarr=JSON.stringify(arr);
+									 }
+            },
+            cartLoaded1:function()
+            {
+            this.prr=this.$.ajax1.response;
+            var arrlen=this.prr.rows.length;
+            if(arrlen>0)
+            {
+            this.values=this.prr.rows[0].value;
+            this.$.readajax.go();
+            this.$.ajax2.go();
+ 			document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
+            alert("Item Added!!");
+            }
+            else
+            {
+			this.$.ajax.go();
+			document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
+			alert("Item Added!!");
+            }
+            },
+            htlsLoaded: function()
+            {
+            this.product = this.$.rajax.response;
+			this.pid=this.product.id;
+			this.pimg=this.product.img1;
+			this.pdes=this.product.des;
+			this.pprice=this.product.price;
+			this.pstatus=this.status;
+			this.psno=this.product.sno;
+			this.uname=this.name;
+			this.pqty="1";
+            },
+            docValue:function(id,username,status)
+            {
+            this.docid=id;
+            this.name=username;
+            this.status=status;
+            this.val=JSON.stringify(username);
+            //alert(this.val);
+            this.$.rajax.go();
+			this.$.ajax1.go();
+            },
+            viewcart:function()
+            {
+            this.uname=localStorage.getItem("nam");
+            }
+            });
+
+    </script>
+</polymer-element>
