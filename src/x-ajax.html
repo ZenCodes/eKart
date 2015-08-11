@@ -152,174 +152,49 @@
         <input id="input5" value="{{conpass}}"  label="{{ConPassword}}" placeholder="Password" is="core-input">
   </div>
 
-         <paper-button id="paper_button" on-click="{{clickEventt}}">Save & Continue</paper-button>
+         <paper-button id="paper_button" on-click="{{save}}">Save & Continue</paper-button>
          <!--<paper-button id="paper_button1">SignIn</paper-button>-->
     </core-card>
 
 
     <core-ajax id="rajax" auto="false" handleAs="json"
-	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/regcheckdesign/_view/regcheckview?key={{regname}}"
+	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/regcheckdesign/_view/regcheckview?key={{uname}}"
 	on-core-response="{{regLoaded}}">
 	</core-ajax>
 	<core-ajax id="ajax" auto="false" method="POST" handleAs="json"
 	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/"
-	body='{"regarr":[{"name": "{{}}","pass": "{{}}","email":"{{}}","phone":"{{}}"}]}'>
+	body='{"regarr":[{"name": "{{uname}}","pass": "{{upass}}","email":"{{uemail}}","phone":"{{uphone}}"}]}'>
 	</core-ajax>
-
-
-         <!--<core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/websitelogin/"
-		   body='{"Register":[{"username":"{{uname}}","phone":"{{uphone}}","email":"{{uemail}}","ref":"{{uref}}","password":"{{upass}}","conpassword":"{{uconpass}}"}]}'>
-    	 </core-ajax>
-    <core-ajax id="rajax"
-      auto="false"
-
-      url="http://hotelapp.iriscouch.com/websitelogin/_design/user/_view/userpwd?key={{n}}"
-      on-core-response="{{htlsLoaded}}"
-      handleAs="json">
-    </core-ajax>-->
     </template>
 
     <script>
         Polymer({
             ready:function()
             {
-
-            this.htls=[];
-
-
+            this.reg=[];
             },
-
-            htlsLoaded:function()
-            {
-            	var chk=0;
-            this.htls = this.$.rajax.response;
-            //alert(JSON.stringify(this.htls.rows));
-			            var arrlen=this.htls.rows.length;
-
-
-						//alert("arrlen: "+arrlen+"  "+chk);
-						if(arrlen==0)
-						{
-						ff2=1;
-						//alert("yes");
-						}
-						else
-						{
-                        ff2=0;
-						//alert("no");
-                        }
-                        localStorage.setItem("regflag",ff2);
-
-                        if(localStorage.getItem("regflag")==1&&localStorage.getItem("nnflag")==1)
-														{
-														//alert("do well");
-													    this.uname=this.name;
-													    this.uphone=this.phone;
-													    this.uemail=this.email;
-													    this.uref=this.ref;
-														this.upass=this.pass;
-														this.uconpass=this.conpass;
-														this.$.ajax.go();
-														alert("Registered successfully...");
-														}
-														else
-												        {
-														alert("Try another name");
-
-														}
-
+            save:function(){
+            this.uname=JSON.stringify(this.name);
+            this.$.rajax.go();
             },
-            clickEventt: function(event, detail, sender)
+            regLoaded:function()
             {
-                      this.Username="Username";
-			            this.PhoneNo="Phoneno";
-			             this.Email="Email";
-			             this.ref="Ref";
-			            this.Password="Password";
-			             this.ConPassword="ConPassword";
+            this.reg = this.$.rajax.response;
+            if(this.reg.rows.length==0)
+            {
+            this.uname=this.name;
+            this.upass=this.pass;
+            this.uemail=this.email;
+            this.uphone=this.phone;
+            if(this.pass==this.conpass)
+            this.$.ajax.go();
+            else
+            alert("Password and confirm password has to be same!!");
 
-            this.n=JSON.stringify(this.name);
-
-             this.$.rajax.go();
-            if(this.name==null||this.name==""){
-			this.Username="valid username required";
-			}
-
-			if(this.pass==null||this.pass==""){
-			this.Password="valid password required";
-			}
-			if(this.pass!=this.conpass){
-						this.ConPassword="Mismatching Password";
-			}
-			if(this.email==null||this.email==""){
-			this.Email="valid email required";
-			}
-			if(this.phone==null||this.phone==""){
-			this.PhoneNo="valid phone no required";
-			}
-			var f1=0;
-			var f2=0;
-			var f3=0;
-
-
-			var paswd=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,16}$/;
-					  if(!(this.pass.match(paswd)))
-					  {
-					  this.name="";
-
-					  this.pass="";
-			          this.Password="should be alphanumeric";
-					  }
-					  else
-					  {
-					  f3++;
-					  }
-
-			var phoneno = /^\d{10}$/;
-			if(!(this.phone.match(phoneno)))
-		    {
-		    this.phone="";
-			this.PhoneNo="valid phone no required";
-			}
-			else
-			{
-			f1=1;
-			}
-
-
-			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-			if(!(this.email.match(mailformat)))
-			{
-			this.email="";
-			this.Email="valid email required";
             }
             else
-            {
-            f2=1;
-            }
-
-
-
- if(this.name!=null && this.name!="" && this.pass!=null && this.pass!="" && this.email!=null && this.email!="" && this.pass!=this.conpass && this.phone!=null && this.phone!="" && f1==1 && f2==1 && f3==1)
-						        {
-
-						        localStorage.setItem("nnflag",1);
-								}
-								else
-								{
-								localStorage.setItem("nnflag",0);
-								alert("all fields must be filled out");
-								}
-
-if(this.pass!=this.conpass)
-
-{
-alert("fail");
-}
-
-
-
-		        }
+            alert("Try another name!!");
+		    }
 
         });
 
