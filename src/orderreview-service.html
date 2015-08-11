@@ -40,8 +40,8 @@ this.pr=[];
 
     for(var n=0;n<this.pr.rows.length;n++)
     {
-
-    this.sum+=parseInt(this.pr.rows[n].value[3])*(this.pr.rows[n].value[5]);
+   // alert("sum: "+parseInt(this.pr.rows[n].value[3])+"  "+parseInt(this.pr.rows[n].value[6]));
+    this.sum=this.sum+(parseInt(this.pr.rows[n].value[3])*parseInt(this.pr.rows[n].value[6]));
     //this.sum=this.sum+5000;
     }
 

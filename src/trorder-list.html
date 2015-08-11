@@ -44,23 +44,18 @@
  <order-tab></order-tab>
 
  <template id="order-list" repeat="{{product in pr}}">
-
- <template  id="order-list" if="{{product.value[2]!='Cancelled'}}">
-
+ <template id="order-list" if="{{product.value[2]!='Cancelled'}}">
     <template id="order-list" repeat="{{pro in product.value[0]}}">
-
      <fieldset id="fset" style="width:875px;margin-left:50px;height:40px;margin-top:30px;border: 2px solid #E0E0E0 ;">
 	   <legend style="text-align: center;">{{pro.proddes}}</legend>
         <div layout horizontal style="width:875px;margin-left:50px;height:40px;">
 	    <h4 style="margin-top:10px;margin-left:0px;">Order Number:{{product.value[1]}}</h4>
-
 		<h5 style="margin-top:10px;margin-left:450px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
-
 	    <core-icon-button id="{{product.value[1]}}" class="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
 	    </div>
 	 </fieldset>
 
-	<core-collapse id="collapse1" class="collaps" opened="{{open}}">
+	<core-collapse id="{{product.value[1]}}" class="collaps" opened="{{open}}">
   	<div style="width:950px;margin-left:50px;border: 2px solid #E0E0E0 ;" horizontal layout>
 		<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
 		<div style="text-align:center;">
@@ -73,9 +68,9 @@
   	</core-collapse>
     </template>
  </template>
- </div>
+
 </template>
-</template>
+</div>
 </core-card>
 <usercancelcart-service id="uccs"></usercancelcart-service>
 <trackorder-service id="tos"></trackorder-service>
@@ -84,15 +79,17 @@
   Polymer({
   ready:function()
   {
+  //alert(this.$.collapse1);
+  //alert("hi"+this.shadowRoot.querySelector('#trorder-list'));
   },
   expand:function(e)
   {
-  alert("expand"+e.target.id);
-   this.open=true;
-   },
+  //var v=this.shadowRoot.querySelectorAll('#trorder-list > #collapse1');
+  //v.toggle();
+  this.open=true;
+  },
   less:function(e)
   {
-  alert("less"+e.target.id);
   this.open=false;
   },
   cancel:function(e)
@@ -102,7 +99,9 @@
   TrackEvent:function(e)
     {
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,false,true,true,true);
+    //alert(e.target.getAttribute('value'));
     this.$.tos.trackstatus(e.target.getAttribute('value'));
+    //alert(this.$.tos);
   }
   });
   </script>
