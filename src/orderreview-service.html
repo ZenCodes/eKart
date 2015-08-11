@@ -46,9 +46,9 @@ this.pr=[];
     }
 
    //alert(this.sum);
-     document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').setTotal(this.sum);
-    document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').pr=this.pr.rows;
-    document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').reload;
+     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').setTotal(this.sum);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').pr=this.pr.rows;
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').reload;
     },
     callfun:function()
     {

@@ -255,7 +255,7 @@ else
 this.name=localStorage.getItem("nam");
 this.bname="Signout";
 }
-this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true);
+this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true,true);
 //this.$.pl.hidemenu(true);
 },
  toggleView: function(e) {
@@ -292,7 +292,7 @@ this.$.pl.setMenu=e.target.selectedItem.textContent;
 //this.$.mc.setMenuPath(this.menupath);
 //this.$.ps.setProductid(this.menupath);
 this.$.ps.setProductid(e.detail.item.id);
-this.$.pl.hiddenVal(true,false,true,true,false,true,false,true,true,true,true,true,true);
+this.$.pl.hiddenVal(true,false,true,true,false,true,false,true,true,true,true,true,true,true);
 //this.$.pl.viewPathcard(false);
 //this.$.pl.viewTempcard(true);
 },
@@ -324,7 +324,7 @@ if(e.target.id=="Desktop")
  if(e.target.textContent=="Signin")
  {
  this.bname="Signout";
- document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,false,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,false,true,true);
  //window.location.href="index1.html";
  }
  else

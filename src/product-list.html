@@ -35,6 +35,8 @@
  <link rel="import" href="cart-count.html">
  <link rel="import" href="login-card.html">
   <link rel="import" href="x-ajax.html">
+  <link rel="import" href="checkout-summary.html">
+
 <polymer-element name="product-list" attributes="isHidden isHidden1 isHidden2">
   <template>
     <style>
@@ -99,6 +101,7 @@ margin-left: 50px;
 <div hidden?="{{isHidden11}}"><trorder-list id="order"></trorder-list></div>
 <div hidden?="{{isHidden12}}"><login-card id="login"></login-card></div>
 <div hidden?="{{isHidden13}}"><x-ajax id="write"></x-ajax></div>
+<div hidden?="{{isHidden14}}"><checkout-summary id="summary"></checkout-summary></div>
 </template>
 <script>
 Polymer('product-list',{
@@ -117,7 +120,7 @@ setRoot:function(root)
 {
 this.rootpath=root;
 },
-hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13)
+hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14)
 {
 this.isHidden1=h1;
 this.isHidden2=h2;
@@ -132,6 +135,7 @@ this.isHidden10=h10;
 this.isHidden11=h11;
 this.isHidden12=h12;
 this.isHidden13=h13;
+this.isHidden14=h14;
 },
 showlog:function(h12)
 {
