@@ -2,6 +2,7 @@
 <link rel="import" href="buy-service.html">
 <link rel="import" href="view-card.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html" />
+<link rel="import" href="../components/paper-button/paper-button.html" />
 <polymer-element name="buyorderreview-list" attributes="show">
   <template>
   <style>
@@ -15,7 +16,10 @@
   	        top: 50px;
   	        background-color: rgb(255, 255, 255);
   	      }
-
+ 	      paper-button{
+		  font-size: 13px;
+		  background-color:rgb(0, 188, 212);
+}
 
   </style>
 <buy-service pr="{{pr}}"></buy-service>
@@ -31,9 +35,10 @@
 </div>
 </div>
 <h4 style="margin-left:490px;">Total - {{price}}</h4>
+<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}" >Place Order</paper-button></div>
 </template>
 
-<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
+
 </core-card>
 
 <core-ajax id="orajax" auto="false" handleAs="json"

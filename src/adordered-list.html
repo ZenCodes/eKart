@@ -56,6 +56,35 @@ width:100px;
 	           border-radius: 2px;
 	     	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
        }
+       #paper_button {
+	   		             background-color: rgb(0, 188, 212);
+	   		             //position:absolute;
+	   		  		   		          left:350px;
+	   		  		   				  			//top:510px;
+	   		  		   				          width: 150px;
+	   		  		   				  			   padding: 5px 10px;
+	   		  		   				  			   -webkit-border-radius: 4px;
+	   		  		   				  			   -moz-border-radius: 4px;
+	   		  		   				  			   border-radius: 4px;
+	   		  		   				  			   //-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		  		   				  			   //-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		  		   				  			   box-shadow: rgba(0,0,0,0) 0 1px 0;
+	   		  		   				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	   		  		   				  			   color: white;
+	   		  		   				  			   font-size: 12px;
+	   		  		   				  			   font-family: Georgia, serif;
+	   		  		   				  			   text-decoration: none;
+	   		  		      vertical-align: middle;
+	   		  		   		           height:40px;
+
+	   		  		            border: 1px solid #706D6C;
+
+								top: 20px;
+								right: 20px;
+
+
+
+      }
     </style>
 
 
@@ -65,15 +94,6 @@ width:100px;
 
     	    <core-card id="core_card2"  class="core_card2" vertical layout >
 
-<!--<div layout horizontal style="width:1030px;height:50px;border-radius: 2px;box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;">
-<h3 style="margin-left:30px;">Image</h3>
-<h3 style="margin-left:60px;">Description</h3>
-<h3 style="margin-left:80px;">Price</h3>
-<h3 style="margin-left:100px;">Orderdate</h3>
-<h3 style="margin-left:100px;">Status</h3>
-<h3 style="margin-left:50px;">Order number</h3>
-<h3 style="margin-left:40px;">Status change</h3>
-</div>-->
 <table style="width:1030px;height:30px;">
 <tr>
 <td style="width:105px;"><h3 style="margin-left:30px;">Image</h3></td>
@@ -86,20 +106,6 @@ width:100px;
 </tr>
 </table>
     <table>
-
-
-<!--<tr>
-<td><h2>ID</h2></td>
-<td><h2>image</h2></td>
-<td><h2>Description</h2></td>
-<td><h2> price</h2></td>
-<td><h2>Orderdate</h2></td>
-<td><h2>status</h2></td>
-<td><h2>Ordernumber</h2></td>
-<td><h2>change State</h2></td>
-</tr>-->
-
-
 <tr>
 
     	       <template id="adordered-list" repeat  ="{{product in pr}}">
@@ -123,7 +129,7 @@ width:100px;
  </template>
  <td><h5 id="d3">{{product.doc.trackstatus}}</h5></td>
  <td><h5 id="d3">{{product.doc.orderno}}</h5></td>
-    <td><paper-dropdown-menu label="change status ">
+    <td><paper-dropdown-menu label="{{changestatus}}">
 	    <paper-dropdown class="dropdown" on-core-select="{{item}}">
 	        <core-menu class="menu">
 	            <paper-item id="{{product.doc._id}}">ordered</paper-item>
@@ -138,22 +144,47 @@ width:100px;
 </tr>
 </tr>
 </table>
+<div layout horizontal>
+<paper-button id="paper_button" on-click="{{save}}">Save & Continue</paper-button>
+<paper-button id="paper_button" on-click="{{cancel}}">Cancel</paper-button>
+</div>
 </core-card>
+
 <change-service id="chn"></change-service>
   </template>
 
   <script>
 
-    Polymer('adordered-list',{
+Polymer('adordered-list',{
 ready:function()
 {
+this.idd;
+this.status;
+this.cnt=0;
+this.changestatus="Change status";
 },
 item:function(e)
 {
-var idd=e.detail.item.id;
- var status=e.target.selectedItem.textContent;
+this.cnt=this.cnt+1;
+if(this.cnt<=1){
+this.idd=e.detail.item.id;
+this.status=e.target.selectedItem.textContent;
+}
+else{
+alert("Status change can be done for single item!!!");
+}
 //alert(idd);
-this.$.chn.getstatus(status,idd);
+//this.$.chn.getstatus(status,idd);
+},
+save:function()
+{
+//alert(this.idd+"    "+this.status);
+this.$.chn.getstatus(this.status,this.idd);
+},
+cancel:function()
+{
+alert("Changes will not be persist!");
+this.item="Change status";
 }
     });
 
