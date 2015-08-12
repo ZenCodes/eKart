@@ -133,19 +133,23 @@
     },
     selectSubMenu:function(e)
     {
+    //alert("hello"+e.target.id);
     this.$.ps.setProductid(e.target.id);
     },
     setMenuPath:function(menu)
     {
+    //alert(menu);
     this.menupath=menu;
 
     },
     setRootPath:function(root)
 	{
+	//alert(root);
 	this.rootpath=root;
 	}
 	,select:function()
 	{
+	//alert("hi");
 	document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('path-card').setRoot(this.rootpath);
 	document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('path-card').setMenu(this.menupath);
 	}
