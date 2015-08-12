@@ -1,0 +1,77 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+
+<link rel="import" href="cart-ajax.html">
+<link rel="import" href="pass-change.html">
+<polymer-element name="profile-page">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2 {
+      	        position: absolute;
+      	        width: 850px;
+      	        height: 820px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 300px;
+      	        top: 60px;
+      	        background-color: rgb(255, 255, 255);
+
+
+      	      }
+      	      p{
+      	      padding-bottom:0px;
+      	      font-size-14px;
+      	      }
+
+    </style>
+     <core-ajax id="rajax" auto="false" handleAs="json"
+		contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/regcheckdesign/_view/regcheckview?key={{uname}}"
+		on-core-response="{{regLoaded}}">
+	</core-ajax>
+
+    	    <core-card id="core_card2"  class="core_card2" vertical wrap layout >
+
+            <p>Name: {{name}}</p>
+            <p>Email id: {{email}}</p>
+            <p>Phone no: {{phone}}</p>
+
+ <paper-button id="ch" on-click="{{change}}">change password</paper-button>
+			</core-card>
+			<pass-change id="chn"></pass-change>
+
+  </template>
+
+  <script>
+
+    Polymer({
+    ready:function()
+    {
+    this.regarr=[];
+    this.uname=JSON.stringify(localStorage.getItem("nam"));
+    this.$.rajax.go();
+    },
+    regLoaded:function(){
+    this.regarr=this.$.rajax.response;
+    this.name=this.regarr.rows[0].value.regarr[0].name;
+    this.email=this.regarr.rows[0].value.regarr[0].email;
+    this.phone=this.regarr.rows[0].value.regarr[0].phone;
+    //alert(JSON.stringify(this.regarr.rows[0].value.regarr[0].name));
+    },
+change:function(e)
+{
+alert(this.name);
+this.$.chn.chnpass(this.name);
+}
+    });
+
+  </script>
+
+</polymer-element>
