@@ -1,0 +1,110 @@
+
+
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+<link rel="import" href="cont-service.html">
+<link rel="import" href="cart-ajax.html">
+<link rel="import" href="temp-ajax.html">
+<link rel="import" href="info-service.html">
+<link rel="import" href="allroot-service.html">
+<polymer-element name="cont-list">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2 {
+      	        position: absolute;
+      	        width: 850px;
+      	        height: 820px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 300px;
+      	        top: 60px;
+      	        background-color: rgb(255, 255, 255);
+
+
+      	      }
+      	      #d1
+      	      {
+      	    width:250px;
+			height:400px;
+			display: block;
+			padding: 15px;
+       }
+
+    </style>
+     <cont-service pr="{{pr}}"></cont-service>
+
+
+    	    <core-card id="core_card2"  class="core_card2" horizontal wrap layout >
+
+    	       <template id="cont-list" repeat="{{product in pr}}">
+			<template if="{{product.doc._id}}">
+    	 	<cont-card>
+
+
+    <div vertical layout  id="d1" >
+<center>
+    	           <img id="bor" src="{{product.doc.img1}}" width="200" height="200">
+    	           <h6><paper-button id="{{product.doc._id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{product.doc.des}}</paper-button></h6>
+    	           <h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.doc.price}}</h5>
+    	           <div  horizontal layout>
+    <cb><paper-button id="{{product.doc._id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>|
+    <paper-button id="{{product.doc._id}}" on-click="{{clickEventt}}" >BUY NOW</paper-button>
+    </div>
+    </center>
+    </div>
+
+    </cont-card>
+    </template>
+
+    </template>
+
+</core-card>
+<cart-ajax id="ca"></cart-ajax>
+<temp-ajax id="ta"></temp-ajax>
+<info-service id="info"></info-service>
+  </template>
+
+  <script>
+
+    Polymer('cont-list',{
+ready:function()
+{
+},
+clickLink:function(e)
+{
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true,true,true,true,true);
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hidemenu(true);
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewProduct(false);
+this.$.info.setProductid(e.target.id);
+
+},
+clickEvent:function(ee)
+{
+var name=localStorage.getItem("nam");
+if(name==""||name==null)
+{
+//window.location.href="index1.html";
+var tar=ee.target.id;
+//alert("hi"+tar);
+this.$.ta.docValue(tar,"Temp user","Tempcart");
+}
+else
+{
+var tar=ee.target.id;
+this.$.ca.docValue(tar,name,"Incart");
+}
+}
+    });
+
+  </script>
+
+</polymer-element>

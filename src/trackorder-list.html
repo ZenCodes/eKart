@@ -1,0 +1,133 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="order-card.html">
+ <link rel="import" href="../components/paper-tabs/paper-tabs.html">
+ <link rel="import" href="../components/paper-button/paper-button.html">
+
+
+<link rel="import" href="../components/core-selector/core-selector.html">
+<link rel="import" href="trackorder-service.html">
+<polymer-element name="trackorder-list">
+  <template>
+  <style>
+  #core_card2 {
+    	        position: absolute;
+    	        width: 1144px;
+    	        //height: 450px;
+    	        //border-radius: 2px;
+    	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	        left: 60px;
+    	        top: 150px;
+    	        background-color: rgb(255, 255, 255);
+  		        padding-top:10px;
+  		        padding-bottom:10px;
+
+    	      }
+    	      #card{
+    	      border-radius: 2px;
+    	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	      margin-top: 25px;
+    	      margin-left: 25px;
+    	      margin-right:25px;
+  	      }
+
+  	      h2
+  	      {
+  	      padding:10px;
+  	      }
+  	      #p1
+  	      {
+  	      text-align:center;
+  	      }
+  </style>
+<trackorder-service pr="{{pr}}"></trackorder-service>
+
+
+<div id="core_card2"   class="core_card2" style="border: 2px solid #00CED1;">
+
+ <order-card>
+
+<div vertical layout>
+
+<div layout horizontal style="margin-left:200px;">
+  <core-icon-button icon="shopping-basket" style="margin-top:0px;border-radius:40px;background-color:#ffcc12;" disabled="{{d1}}"></core-icon-button><b>____________________</b>
+
+  <core-icon-button icon="shop" style="margin-top:0px;border-radius:40px;background-color:#ffcc12;" disabled="{{d2}}"></core-icon-button><b>_____________________</b>
+
+  <core-icon-button icon="done-all" style="margin-top:0px;border-radius:40px;background-color:#ffcc12;" disabled="{{d3}}"></core-icon-button>
+  </div>
+  <div style="margin-left:200px;">
+    <paper-button id="ordered" label="ordered" style="margin-left:0px;">Orderded</paper-button>
+    <paper-button id="packed" label="packed" style="margin-left:60px;">Packed</paper-button>
+    <paper-button id="shipped" label="shipped" style="margin-left:120px;">Shipped</paper-button>
+  </div>
+
+
+
+<template repeat="{{pro in pr.orderarr}}">
+<div id="card">
+<div horizontal layout>
+<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
+<div id="p1" vertical layout>
+<h3 style="padding-left:100px;">{{pro.proddes}}</h3>
+<h5 >date:{{pro.orderdate}}</h5>
+<h5 >price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub> {{pro.prodprice}}</h5>
+</div>
+</div>
+</template>
+
+<center>
+<h3>status-{{pr.trackstatus}}</h3>
+<h3 > OrderNumber-{{pr.orderno}}</h3></center>
+
+</div>
+</div>
+
+
+
+
+
+
+<!--<paper-tabs id="selector" disableDrag="true" noink="true" selected="{{select}}" class="transparent-teal">
+
+    <paper-tab><paper-button id="ordered" label="ordered">Orderde</paper-button></paper-tab>
+    <paper-tab><paper-button id="packed" label="packed">Packed</paper-button></paper-tab>
+    <paper-tab><paper-button id="shipped" label="shipped">Shipped</paper-button></paper-tab>
+
+  </paper-tabs>-->
+</order-card>
+
+</core-card>
+
+</template>
+  <script>
+  Polymer('trackorder-list',{
+  ready:function(e)
+  {
+this.select=2;
+  },
+trstatus:function(tr)
+{
+
+if(tr=="ordered")
+{
+this.d1=false;
+this.d2=true;
+this.d3=true;
+}
+if(tr=="packed")
+{
+this.d1=true;
+this.d2=false;
+this.d3=true;
+}
+if(tr=="shipped")
+{
+this.d1=true;
+this.d2=true;
+this.d3=false;
+}
+}
+
+  });
+  </script>
+</polymer-element>

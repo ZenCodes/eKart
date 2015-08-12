@@ -1,0 +1,103 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="view-list.html">
+<link rel="import" href="view-service.html">
+
+<polymer-element name="userdeletecart-service" attributes="pr">
+   <template >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="tempreadajax"
+	      auto="false"
+	      url="http://hotelapp.iriscouch.com/addtocart/{{docid}}"
+	      handleAs="json"
+	      on-core-response="{{productsLoaded}}">
+    </core-ajax>
+
+    <core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart"
+					   body='{"_id":"{{docid}}","_rev":"{{header}}","username":"{{uname}}","cartinfo":{{prodarr}}}'>
+    </core-ajax>
+
+    <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
+	contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{header}}">
+    </core-ajax>
+<view-service id="vs"></view-service>
+    </template>
+    <script>
+ Polymer('userdeletecart-service',
+ {
+created: function() {
+this.pid;
+this.psno;
+this.pr=[];
+this.newarr=[];
+this.count=0;
+this.uname="Temp user";
+
+    },
+    revLoaded:function(event,detail,sender)
+    {
+    this.header=JSON.parse(detail.xhr.getResponseHeader('ETag'));
+    //alert(this.header);
+    },
+    productsLoaded: function(event,detail) {
+    this.pr = this.$.tempreadajax.response;
+    this.header=this.pr._rev;
+    this.uname=this.pr.username;
+    //alert(JSON.stringify(this.pr.cartinfo.length));
+    //var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
+	for(var n=0;n<this.pr.cartinfo.length;n++)
+	{
+	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":""};
+	var pid=this.pr.cartinfo[n].prodid;
+	var psno=this.pr.cartinfo[n].prodsno;
+	if(this.pid==pid&&this.psno==psno)
+	{}
+	else
+	{
+        this.count=this.count+1;
+	    var id=this.pr.cartinfo[n].prodid;
+	    var img=this.pr.cartinfo[n].prodimg;
+	    var des=this.pr.cartinfo[n].proddes;
+	    var price=this.pr.cartinfo[n].prodprice;
+	    var sno=this.pr.cartinfo[n].prodsno;
+	    var qty=this.pr.cartinfo[n].prodqty;
+	    newval.prodid=id;
+	    newval.prodimg=img;
+	    newval.proddes=des;
+	    newval.prodprice=price;
+	    newval.prodstatus="Incart";
+	    newval.prodsno=sno;
+	    newval.prodqty=qty;
+	    this.newarr.push(newval);
+        this.prodarr=JSON.stringify(this.newarr);
+	}
+	}
+
+    this.$.writeajax.go();
+        if(this.count==0)
+	    {
+	     this.$.dajax.go();
+	     //alert("deleted");
+
+        }
+
+        alert("deleted");
+        document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
+        this.$.vs.callfun();
+        document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true);
+    },
+    deletefun:function(pid,psno,docid)
+    {
+    this.docid=docid;
+    this.pid=pid;
+    this.psno=psno;
+    this.$.tempreadajax.go();
+    }
+    });
+  </script>
+</polymer-element>
+`

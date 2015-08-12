@@ -1,0 +1,193 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+<link rel="import" href="adordered-service.html">
+<link href="../components/paper-button/paper-button.html" rel="import">
+<link href="../components/paper-dropdown/paper-dropdown.html" rel="import">
+<link href="../components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
+<link href="../components/paper-item/paper-item.html" rel="import">
+<link href="../components/core-menu/core-menu.html" rel="import">
+<link rel="import" href="change-service.html">
+<polymer-element name="adordered-list">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2
+            {
+      	        position: absolute;
+      	        width: 870px;
+      	        height: 820px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 100px;
+      	        top: 60px;
+      	        background-color: rgb(255, 255, 255);
+            }
+
+
+#d3
+{
+padding:25px;
+width:100px;
+}
+       paper-dropdown-menu
+       {
+       height:40px;
+       width:140px;
+       }
+       table
+       {
+        border-radius: 2px;
+  	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+       }
+         tr
+	          {
+	           border-radius: 2px;
+	     	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+       }
+         td
+	          {
+	           border-radius: 2px;
+	     	       box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+       }
+       #paper_button {
+	   		             background-color: rgb(0, 188, 212);
+	   		             //position:absolute;
+	   		  		   		          left:350px;
+	   		  		   				  			//top:510px;
+	   		  		   				          width: 150px;
+	   		  		   				  			   padding: 5px 10px;
+	   		  		   				  			   -webkit-border-radius: 4px;
+	   		  		   				  			   -moz-border-radius: 4px;
+	   		  		   				  			   border-radius: 4px;
+	   		  		   				  			   //-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		  		   				  			   //-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		  		   				  			   box-shadow: rgba(0,0,0,0) 0 1px 0;
+	   		  		   				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	   		  		   				  			   color: white;
+	   		  		   				  			   font-size: 12px;
+	   		  		   				  			   font-family: Georgia, serif;
+	   		  		   				  			   text-decoration: none;
+	   		  		      vertical-align: middle;
+	   		  		   		           height:40px;
+
+	   		  		            border: 1px solid #706D6C;
+
+								top: 20px;
+								right: 20px;
+
+
+
+      }
+    </style>
+
+
+
+     <adordered-service pr="{{pr}}"></adordered-service>
+
+
+    	    <core-card id="core_card2"  class="core_card2" vertical layout >
+
+<table style="width:1030px;height:30px;">
+<tr>
+<td style="width:105px;"><h3 style="margin-left:30px;">Image</h3></td>
+<td style="width:150px;"><h3 style="margin-left:40px;">Description</h3></td>
+<td style="width:150px;"><h3 style="margin-left:60px;">Price</h3></td>
+<td style="width:150px;"><h3 style="margin-left:40px;">Orderdate</h3></td>
+<td style="width:150px;"><h3 style="margin-left:50px;">Status</h3></td>
+<td><h3 style="margin-left:50px;">Order number</h3></td>
+<td><h3 style="margin-left:40px;">Status change</h3></td>
+</tr>
+</table>
+    <table>
+<tr>
+
+    	       <template id="adordered-list" repeat  ="{{product in pr}}">
+    	      <!-- <div  horizontal layout>-->
+
+
+<template if="{{product.doc.trackstatus}}">
+<tr>
+
+<template repeat ="{{pro in product.doc.orderarr}}">
+<tr>
+				<!--<td><h5 id="d3">{{product.doc.orderno}}</h5></td>-->
+                   <!-- <td><h5 id="d3">{{pro.prodsno}}</h5></td> -->
+    	           <td><img  src="{{pro.prodimg}}" width="100" height="100"></td>
+    	           <td><h6 id="d3">{{pro.proddes}}</h6></td>
+    	           <td><h5 id="d3" > <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub> {{pro.prodprice}}</h5></td>
+    	           <td><h5 id="d3">{{pro.orderdate}}</h5></td>
+
+
+</tr>
+ </template>
+ <td><h5 id="d3">{{product.doc.trackstatus}}</h5></td>
+ <td><h5 id="d3">{{product.doc.orderno}}</h5></td>
+    <td><paper-dropdown-menu label="{{changestatus}}">
+	    <paper-dropdown class="dropdown" on-core-select="{{item}}">
+	        <core-menu class="menu">
+	            <paper-item id="{{product.doc._id}}">ordered</paper-item>
+	            <paper-item id="{{product.doc._id}}" >packed</paper-item>
+	            <paper-item id="{{product.doc._id}}">shipped</paper-item>
+	            <paper-item id="{{product.doc._id}}">delivered</paper-item>
+	          	        </core-menu>
+	    </paper-dropdown>
+</paper-dropdown-menu></td>
+</template>
+</template>
+</tr>
+</tr>
+</table>
+<div layout horizontal>
+<paper-button id="paper_button" on-click="{{save}}">Save & Continue</paper-button>
+<paper-button id="paper_button" on-click="{{cancel}}">Cancel</paper-button>
+</div>
+</core-card>
+
+<change-service id="chn"></change-service>
+  </template>
+
+  <script>
+
+Polymer('adordered-list',{
+ready:function()
+{
+this.idd;
+this.status;
+this.cnt=0;
+this.changestatus="Change status";
+},
+item:function(e)
+{
+this.cnt=this.cnt+1;
+if(this.cnt<=1){
+this.idd=e.detail.item.id;
+this.status=e.target.selectedItem.textContent;
+}
+else{
+alert("Status change can be done for single item!!!");
+}
+//alert(idd);
+//this.$.chn.getstatus(status,idd);
+},
+save:function()
+{
+//alert(this.idd+"    "+this.status);
+this.$.chn.getstatus(this.status,this.idd);
+},
+cancel:function()
+{
+alert("Changes will not be persist!");
+this.item="Change status";
+}
+    });
+
+  </script>
+
+</polymer-element>

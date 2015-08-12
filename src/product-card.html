@@ -1,0 +1,249 @@
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link rel="import" href="../components/core-collapse/core-collapse.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-collapse/core-collapse.html">
+<link href="../components/paper-input/paper-autogrow-textarea.html" rel="import">
+
+
+<template id="product-card">
+  <style>
+  :host{
+    display: inline-block;
+  }
+    .flip-container{
+      font-family: 'Lobster', display;
+      font-weight: 100;
+      float: left;
+      -webkit-perspective: 1000px;
+      -o-perspective: 1000px;
+      perspective: 1000px;
+      transition: width .20s;
+    }
+    .flip-container,.front,.back{
+       width: 300px;
+       min-height: 100px;
+
+       //border-radius: 5px;
+    }
+    .front,.back{
+      box-shadow: 0 0 2px #444;
+      -webkit-backface-visibility: hidden;
+
+      -moz-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background-color: #ffcc66;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    .flipper,.flip{
+      -webkit-transition: 0.6s;
+      -webkit-transform-style: preserve-3d;
+      -moz-transition: 0.6s;
+      -moz-transform-style: preserve-3d;
+      -o-transition: 0.6s;
+      -o-transform-style: preserve-3d;
+      transition: 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+
+  }
+    .flip-container .flipper{
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+  .front
+{
+   -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+}
+    .back   {
+     -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+
+      font-size: 15pt;
+      text-align: left;
+      line-height: 1.7em;
+      letter-spacing: .2px;
+
+    }
+  polyfill-next-selector { content: '.flip h2'; }
+    .flip ::content h2 {
+      position: absolute;
+      top: 0px;
+      left:100px;
+      font-size: 1.1rem;
+    }
+ polyfill-next-selector { content: '.flip img'; }
+    .flip ::content img {
+      width: 90px;
+      height: 100px;
+      margin: 0px;
+      border-radius:4px;
+      //border: 2px solid #000000;
+
+  }
+    polyfill-next-selector { content: '.flip addr'; }
+    .flip ::content addr {
+      font-size: 1.0rem;
+      position: absolute;
+      top: 15px;
+      right: 50px;
+
+    }
+    polyfill-next-selector { content: '.flip smly'; }
+    .flip ::content smly {
+      position: absolute;
+      top: 15px;
+      left: 90px;
+    }
+ .corec{position:absolute;
+      top: 10px;
+      right: 5px; }
+ .coref{position:absolute;
+      top: 5px;
+      right: 5px; }
+ .coreb{position:absolute;
+      top: 70px;
+      right: 0px; }
+ polyfill-next-selector { content: '.flip address'; }
+    .flip ::content address {
+      position: absolute;
+      top: 35px;
+      left: 100px;
+    }
+
+.content{
+width: 260px;
+min-height: 200px;
+//border-radius: 5px;
+padding-left: 40px;
+background-color: #ffcc66;
+}
+
+core-collapse{
+margin-top: 100px;
+ box-shadow: 0 0 2px #444;
+}
+ .clback{position:absolute;
+
+      top: 5px;
+      left: 5px;
+      font-size: 10pt;
+}
+
+
+</style>
+  <div class="flip-container">
+    <!--<div class="flip">
+     <div class="front">-->
+
+
+<content select="img"></content>
+
+     <!-- <content select="h2"></content>
+      <content select="addr"></content>
+
+ <core-icon-button class="corec" icon="chevron-left"  id="{{cardid}}" active="false" ></core-icon-button>
+ <core-icon-button class="coreb" icon="expand-more"  id="{{cardid}}" active="false" ></core-icon-button>
+     <div class="smile"> <content select="smly"></content></div>
+     <div class="caddr"><content select="address"></content></div>
+
+
+</div>
+
+<div class="back"><p> <content select="cmts"></content></p>
+<core-icon-button class="coref" icon="chevron-right"  id="{{cardid}}" active="false"></core-icon-button>
+</div>
+    </div>
+<core-collapse id="collapse1" class="collaps">
+    <div class="content">
+    <div><content select="smly1"></content><br></div>
+    <div style="margin-top:30px;margin-right:40px;"><content select="pinput"></content></div>
+
+    <div style="margin-top:5px;margin-left:30px;"><content select="pbutton"></content>   </div>
+    <!--<div style="margin-top:5px;margin-left:120px;"> <facebook-share></facebook-share></div>
+
+
+    </div>
+</core-collapse> -->
+
+  </div>
+
+</template>
+
+<script>
+
+    var thisDoc = document._currentScript?document._currentScript.ownerDocument:document.currentScript.ownerDocument;
+    var template = thisDoc.querySelector('#product-card');
+
+    var proto = Object.create(HTMLElement.prototype, {
+    createdCallback: {
+      value: function() {
+	    var n=0;
+        var clone = document.importNode(template.content, true);
+        var flip = clone.querySelector('.flip');
+
+        var front =  clone.querySelector('.front');
+        var back =  clone.querySelector('.back');
+        var flipContainer =  clone.querySelector('.flip-container');
+        var height = parseInt(this.getAttribute('h'));
+        back.style.height = (12+(height*10))+"px";
+        front.style.height = (12+(height*10))+"px";
+        flipContainer.style.height = (12+(height*10))+"px";
+
+	var collap=clone.querySelector('.collaps');
+	var smile=clone.querySelector('.smile');
+	var cpladdr=clone.querySelector('.caddr');
+
+	var corebut=clone.querySelector('.coreb');
+
+
+	cpladdr.style.display='none';
+	corebut.onclick=function(e){
+
+	if(n==0)
+	{
+	n=n+1;
+	smile.style.display='none';
+	cpladdr.style.display='block';
+	}
+	else
+	{
+	cpladdr.style.display='none';
+	smile.style.display='block';
+	n=n-1;
+	}
+	collap.toggle();
+
+       };
+
+	var corecbut =  clone.querySelector('.corec');
+        corecbut.onclick=function(){
+
+        flip.classList.toggle('flipper');
+	flip.classList.remove('front');
+
+        };
+        var corefbut =  clone.querySelector('.coref');
+        corefbut.onclick=function(){
+
+        flip.classList.toggle('flipper');
+        };
+
+       this.createShadowRoot().appendChild(clone);
+      }
+    }
+  });
+  document.registerElement('product-card', {prototype: proto});
+</script>

@@ -1,0 +1,124 @@
+
+
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+<link rel="import" href="item-service.html">
+<link rel="import" href="cart-ajax.html">
+<link rel="import" href="temp-ajax.html">
+<link rel="import" href="info-service.html">
+<link rel="import" href="allroot-service.html">
+<link rel="import" href="buy-service.html">
+<polymer-element name="item-list">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2 {
+      	        position: absolute;
+      	        width: 850px;
+      	        height: 700px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 150px;
+      	        top: 30px;
+      	        background-color: rgb(255, 255, 255);
+
+
+      	      }
+      	      #d1
+      	      {
+      	    width:250px;
+			height:400px;
+			display: block;
+			padding: 15px;
+       }
+
+    </style>
+     <item-service pr="{{pr}}"></item-service>
+     <allroot-service pr="{{pr}}"></allroot-service>
+
+    	    <core-card id="core_card2"  class="core_card2" horizontal wrap layout >
+
+    	       <template id="item-list" repeat="{{product in pr}}">
+
+    	 	<item-card>
+
+
+    <div vertical layout  id="d1" >
+<center>
+    	           <img id="bor" src="{{product.value[0]}}" width="200" height="200">
+    	           <h6><paper-button id="{{product.id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{product.value[1]}}</paper-button></h6>
+    	           <h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[2]}}</h5>
+    	           <div  horizontal layout>
+    <cb><paper-button id="{{product.id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>|
+    <paper-button id="{{product.id}}" on-click="{{buy}}" >BUY NOW</paper-button>
+    </div>
+    </center>
+    </div>
+
+    </item-card>
+
+    </template>
+
+</core-card>
+<cart-ajax id="ca"></cart-ajax>
+<temp-ajax id="ta"></temp-ajax>
+<info-service id="info"></info-service>
+<buy-service id="bs"></buy-service>
+  </template>
+
+  <script>
+
+    Polymer('item-list',{
+ready:function()
+{
+},
+clickLink:function(e)
+{
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true,true,true,true,true);
+
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewProduct(false);
+this.$.info.setProductid(e.target.id);
+
+},
+clickEvent:function(ee)
+{
+var name=localStorage.getItem("nam");
+if(name==""||name==null)
+{
+var tar=ee.target.id;
+this.$.ta.docValue(tar,"Temp user","Tempcart");
+}
+else
+{
+var tar=ee.target.id;
+this.$.ca.docValue(tar,name,"Incart");
+}
+},
+buy:function(e)
+{
+//alert("hi");
+sessionStorage.setItem("buyflag","true");
+sessionStorage.setItem("buydocid",e.target.id);
+if(localStorage.getItem("nam")==""||localStorage.getItem("nam")==null)
+{
+window.location.href="index1.html";
+}
+else
+{
+window.location.href="sample.html";
+}
+//this.$.bs.setDocid(e.target.id);
+}
+    });
+
+  </script>
+
+</polymer-element>

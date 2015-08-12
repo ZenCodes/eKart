@@ -1,0 +1,61 @@
+
+
+
+<script src="../webcomponentsjs/webcomponents.js"></script>
+<link href="../components/core-collapse/core-collapse.html" rel="import">
+<link href="../components/core-icons/core-icons.html" rel="import">
+<link href="../components/core-icon-button/core-icon-button.html" rel="import">
+<link href="../components/paper-button/paper-button.html" rel="import">
+<link href="../components/core-item/core-item.html" rel="import">
+<script src="../components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="../components/fancy-marquee/fancy-marquee.html">
+<polymer-element name="Dealer-card">
+<template>
+<style>
+#div1
+{
+height:45px;
+background:#ffffff;
+font-size:20px;
+margin-left:10px;
+margin-top: 480px;
+}
+core-item{
+font-family:'Ek Mukta';
+color:#990000;
+font-weight:bold;
+}
+</style>
+<core-card id ="core_card">
+
+<!--<fancy-marquee duration='20' direction='alternate-horizontal'>-->
+ <div id="div1" flex  layout horizontal>
+
+<core-item label="Authorized Dealers"></core-item>
+
+ <img src="../res/apple-logo.jpeg" width="100px;" style="margin-left:30px;"/>
+
+ <img src="../res/hp-logo.png" width="100px;"/>
+ <img src="../res/dell-logo.png" width="100px;"/>
+ <img src="../res/Lenovo-logo.jpg" width="100px;"/>
+ <img src="../res/sony-logo.jpg" width="100px;"/>
+ <img src="../res/windows-logo.png" width="100px;"/>
+
+
+</core-card>
+
+</div>
+<!--</fancy-marquee>-->
+
+</template>
+
+  <script>
+    Polymer({
+    ready:function()
+    {
+    }
+    });
+  </script>
+</polymer-element>
+
+

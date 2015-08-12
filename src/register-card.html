@@ -1,0 +1,187 @@
+<link rel="import" href="../components/polymer/polymer.html" />
+<link rel="import" href="../components/paper-button/paper-button.html" />
+<link rel="import" href="../components/paper-input/paper-input.html" />
+<polymer-element name="register-card">
+    <template>
+    <style>
+    :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        //background-color: rgb(192, 192, 192);
+      }
+      #section {
+        left: 550px;
+        top: 500px;
+        position: absolute;
+      }
+      #core_card {
+        position: absolute;
+        width: 300px;
+        height: 350px;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 130px;
+        top: 0px;
+        background-color: rgb(255, 255, 255);
+      }
+      #paper_button {
+        top: 20px;
+        width: 110px;
+
+        left: 10px;
+  background-color: rgb(242, 172, 77);
+
+     padding: 5px 10px;
+     -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+     border-radius: 8px;
+     -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+     -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+     box-shadow: rgba(0,0,0,1) 0 1px 0;
+     text-shadow: rgba(0,0,0,.4) 0 1px 0;
+     color: white;
+     font-size: 14px;
+     font-family: Georgia, serif;
+     text-decoration: none;
+   vertical-align: middle;
+  }
+      #paper_button1 {
+		top: 30px;
+	          width: 200px;
+	          left: 8px;
+	          //background-color: rgb(86, 73, 237);
+
+      }
+
+      #paper_input {
+        width: 200px;
+      }
+      #paper_input1 {
+        width: 200px;
+      }
+      #paper_input2 {
+        width: 200px;
+      }
+      #paper_input3 {
+        width: 200px;
+      }
+      #paper_input4 {
+        width: 200px;
+      }
+      #paper_item1 {
+
+        top: 10px;
+
+      }
+
+    </style>
+
+    <core-card id="core_card" layout vertical center center-justified>
+         <paper-item id="paper_item1" icon="settings" label="Item">REGISTRATION</paper-item>
+         <paper-input label="{{Username}}" value="{{name}}" id="paper_input"></paper-input>
+         <paper-input-decorator label="{{Password}}" id="pass">
+		         <input id="paper_input1" label="{{Password}}" id="paper_input1" value="{{pass}}" type="Password" is="core-input" >
+        </paper-input-decorator>
+
+         <paper-input label="{{Email}}" id="paper_input3" value="{{email}}"></paper-input>
+         <paper-input label="{{PhoneNo}}" id="paper_input4" value="{{phone}}"></paper-input>
+         <paper-button id="paper_button" on-click="{{save}}">Save</paper-button>
+         <!--<paper-button id="paper_button1" on-click="{{clickEventt}}">SignIn Here</paper-button>-->
+
+    </core-card>
+    </template>
+    <script>
+        Polymer({
+        ready:function(){
+        this.tempreg=[];
+        this.Username="Username";
+		            this.Password="Password";
+		            this.Email="Email";
+            this.PhoneNo="Phone no";
+        },
+        save:function()
+        {
+
+        var reg={"name": "","pass": "","email":"","phone":""};
+        reg.name=this.name;
+        reg.pass=this.pass;
+        reg.email=this.email;
+        reg.phone=this.phone;
+
+
+
+
+            if(this.name==null||this.name==""){
+			this.Username="valid username required";
+			}
+
+			if(this.pass==null||this.pass==""){
+			this.Password="valid password required";
+			}
+			if(this.email==null||this.email==""){
+			this.Email="valid email required";
+			}
+			if(this.phone==null||this.phone==""){
+			this.PhoneNo="valid phone no required";
+			}
+			var f1=0;
+			var f2=0;
+			var f3=0;
+
+
+			var paswd=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,16}$/;
+					  if(!(this.pass.match(paswd)))
+					  {
+					  this.name="";
+
+					  this.pass="";
+			          this.Password="should be alphanumeric";
+					  }
+					  else
+					  {
+					  f3++;
+					  }
+
+			var phoneno = /^\d{10}$/;
+			if(!(this.phone.match(phoneno)))
+		    {
+		    this.phone="";
+			this.PhoneNo="valid phone no required";
+			}
+			else
+			{
+			f1=1;
+			}
+
+
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(!(this.email.match(mailformat)))
+			{
+			this.email="";
+			this.Email="valid email required";
+            }
+            else
+            {
+            f2=1;
+            }
+
+
+
+       if(this.name!=null && this.name!="" && this.pass!=null && this.pass!="" && this.email!=null && this.email!="" && this.phone!=null && this.phone!="" )
+	   						        {
+	   						        localStorage.setItem("nnflag",1);
+	   						        sessionStorage.setItem("reginfo",JSON.stringify(reg));
+	   								}
+	   								else
+	   								{
+	   								localStorage.setItem("nnflag",0);
+	   								alert("all fields must be filled out");
+	   								}
+
+        }
+        });
+
+    </script>
+</polymer-element>

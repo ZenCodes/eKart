@@ -1,0 +1,79 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="view-service.html">
+<link rel="import" href="view-card.html">
+<link rel="import" href="userdeletecart-service.html">
+<polymer-element name="view-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 1144px;
+  	        //height: 450px;
+  	        //border-radius: 2px;
+  	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 60px;
+  	        top: 150px;
+  	        background-color: rgb(255, 255, 255);
+		    padding-top:10px;
+		    padding-bottom:10px;
+
+  	      }
+  	      #card{
+  	      border-radius: 2px;
+  	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	      margin-top: 25px;
+  	      margin-left: 25px;
+  	      margin-right:25px;
+  	      }
+paper-button{
+font-size: 13px;
+background-color:rgb(0, 188, 212);
+}
+
+  </style>
+<view-service pr="{{pr}}"></view-service>
+
+ <div id="core_card2"   class="core_card2" style="border: 2px solid #00CED1;">
+<paper-button id="{{product.id}}" on-click="{{continue}}" style="left:20px;background-color:rgb(0, 188, 212);">Continue To Shopping</paper-button>
+<paper-button class="check" id="{{product.id}}" on-click="{{proceed}}" style="left:720px;background-color:rgb(0, 188, 212);">Proceed To Checkout</paper-button>
+<template id="view-list" repeat="{{product in pr}}">
+ <div id="card">
+ <order-card>
+<div horizontal layout style="padding:15px;">
+<div><img id="bor" src="{{product.value[1]}}" width="200" height="200"></div>
+<div style="text-align:center;">
+<h3 style="padding-left:100px;">{{product.value[2]}}</h3>
+<h5>Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[3]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Quantity-{{product.value[6]}}</h5>
+<cb><paper-button id="{{product.value[0]}}" label="{{product.value[5]}}" value="{{product.id}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<paper-button id="{{product.value[0]}}" label="{{product.value[5]}}" on-click="{{clickEventt}}" >Save for Later</paper-button>
+</div>
+</div>
+</order-card>
+</div>
+</template>
+</div>
+<userdeletecart-service id="udcs"></userdeletecart-service>
+</template>
+  <script>
+  Polymer({
+  continue:function()
+  {
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(false);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,false,true,false,true,false,true,true,true,true,true);
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(true);
+  },
+  proceed:function()
+  {
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false);
+  //window.location.href="sample.html";
+  },
+  delete:function(e)
+  {
+
+//alert(e.target.id+" "+e.target.getAttribute('label')+" "+e.target.getAttribute('value'));
+  this.$.udcs.deletefun(e.target.id,e.target.getAttribute('label'),e.target.getAttribute('value'));
+  }
+  });
+  </script>
+</polymer-element>

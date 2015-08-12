@@ -1,0 +1,139 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/core-style/core-style.html">
+
+<link rel="import" href="login-service.html">
+<polymer-element name="login-card" attributes="username pass">
+  <template>
+    <style>
+    :host {
+    position: absolute;
+	        //width: 100%;
+	        //height: 100%;
+        box-sizing: border-box;
+         background-color: rgb(255, 255, 255);
+    }
+#core-card{
+
+      left: 410px;
+        top: 100px;
+        width: 350px;
+	        height: 270px;
+      position: absolute;
+      //background-color: rgb(232,232,232) ;
+      background-color:rgb(240,240,240) ;
+      padding: 20px;
+      width: 250px;
+      font-size: 1.2rem;
+      font-weight: 300;
+      font-family:Times New Roman;
+border-radius: 2px;
+    }
+     #paper_button1 {
+     top:270px;
+position:absolute;
+left:90px;
+font-size: 0.8rem;
+      }
+      #paper_input {
+      padding-left:30px;
+        width: 200px;
+        text-align: center;
+      }
+      #paper_input1 {
+        width: 200px;
+         //padding-left:30px
+
+      }
+      #paper_item1 {
+top:20px;
+   left:90px;
+position:absolute;
+font-size: 1.1rem;
+      font-weight: 300;
+      font-family:Times New Roman;
+
+      }
+
+#paper_button {
+left:40px;
+top:20px;
+        width: 150px;
+background-color: rgb(0, 188, 212);
+
+   padding: 3px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   height: 35px;
+      }
+#pass
+{
+width:200px;
+margin-left:30px;
+text-align: left;
+}
+
+    </style>
+
+<core-card id="core-card" layout vertical center-justified>
+<paper-item id="paper_item1" icon="settings" label="Item">LOGIN</paper-item>
+
+        <paper-input label="{{Unl}}" id="paper_input" value="{{name}}"></paper-input>
+        <paper-input-decorator label="Password" id="pass">
+        <input id="paper_input1" label="{{Pal}}" id="paper_input1" value="{{pwd}}" type="Password" is="core-input" >
+        </paper-input-decorator>
+
+        <paper-button id="paper_button" on-click="{{clickEvent}}" >Login</paper-button>
+  <paper-button id="paper_button1" on-click="{{clickEvent}}" >Signup here </paper-button>
+<login-service id="service"></login-service>
+</core-card>
+  </template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+  this.Unl="Username";
+  this.Pal="Password";
+  var uname=localStorage.getItem("nam");
+  },
+clickEvent:function(e)
+{
+if(e.target.id=='paper_button')
+{
+if(this.name==null||this.name==""){
+this.Unl="Enter username";
+}
+if(this.pwd==null||this.pwd==""){
+this.Pal="Enter password";
+}
+if(this.name!=null && this.pwd!=null)
+{
+this.username=this.name;
+this.pass=this.pwd;
+if(this.username=='Admin' && this.pass=='Admin')
+window.location.href='adminindex.html';
+else
+this.$.service.setValues(this.name,this.pwd);
+}
+}
+else
+{
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,false,true);
+//window.location.href = 'registration.html';
+//window.location.href = 'reg-card.html';
+}
+}
+  });
+  </script>
+</polymer-element>

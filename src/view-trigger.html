@@ -1,0 +1,97 @@
+
+
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+
+  <link href="../components/core-collapse/core-collapse.html" rel="import">
+  <link href="../components/core-icons/core-icons.html" rel="import">
+  <link href="../components/core-icon-button/core-icon-button.html" rel="import">
+
+  <link href="../components/core-dropdown/core-dropdown.html" rel="import">
+<link href="../components/paper-button/paper-button.html" rel="import">
+
+<link rel="import" href="temp-service.html">
+<link rel="import" href="view-service.html">
+
+<polymer-element name="view-trigger" relative >
+
+
+<template>
+ <style shim-shadowdom>
+
+
+    section {
+      padding: 20px 0;
+    }
+
+    section > div {
+      padding: 14px;
+      font-size: 16px;
+    }
+
+     #cd{
+      //background-color: #eee;
+      color: #000;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 8px;
+      width: 155px;
+    }
+
+    .with-margin {
+      margin: 12px;
+    }
+
+    .open-below {
+      top: 38px;
+    }
+    a{
+    margin-left:60px;
+    }
+
+#viewcart {
+		        border-radius: 7px;
+		  		position: absolute;
+		  		width: 110px;
+	            height: 40px;
+	            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+	      }
+  </style>
+
+	  <paper-button class="signin" id="viewcart" on-click="{{clickEvent}}"><img src="../res/download.png" width="25px"></img></paper-button>
+
+<temp-service id="ts"></temp-service>
+<view-service id="vs"></view-service>
+  </template>
+  <script>
+    Polymer({
+    clickEvent:function(e)
+    {
+    if(e.target.id=='viewcart')
+    {
+    if(localStorage.getItem("nam")==null||localStorage.getItem("nam")=="")
+    {
+   this.$.ts.callfun();
+   document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true);
+   //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(false);
+   //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(true);
+	}
+    else
+    {
+    this.$.vs.callfun();
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true,true);
+    }
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewPathcard(true);
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(true);
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(true);
+    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hidemenu(true);
+    }
+    },
+      toggle: function() {
+this.$.cd.toggle();
+              }
+    });
+  </script>
+</polymer-element>
+
+

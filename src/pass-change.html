@@ -1,0 +1,115 @@
+
+
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../components/slide-page/slide-page.html">
+<link rel="import" href="cont-service.html">
+<link rel="import" href="cart-ajax.html">
+<link rel="import" href="temp-ajax.html">
+<link rel="import" href="info-service.html">
+<link rel="import" href="allroot-service.html">
+<polymer-element name="pass-change">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2 {
+      	        position: absolute;
+      	        width: 850px;
+      	        height: 820px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 300px;
+      	        top: 260px;
+      	        background-color: rgb(255, 255, 255);
+
+
+      	      }
+      	      #d1
+      	      {
+      	    width:250px;
+			height:400px;
+			display: block;
+			padding: 15px;
+       }
+
+    </style>
+
+ <core-ajax id="rajax" auto="false" handleAs="json"
+		contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/chndesign/_view/chnview?key={{uname}}"
+		on-core-response="{{chnLoaded}}">
+	</core-ajax>
+	<core-ajax id="ajax" auto="false" handleAs="json"
+			contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/{{id}}"
+			on-core-response="{{Loaded}}">
+	</core-ajax>
+
+    	    <core-card id="core_card2"  class="core_card2" vertical wrap layout >
+<paper-input label="{{currentpassword}}" id="paper_input3" value="{{cur}}"></paper-input>
+<paper-input label="{{new Password}}" id="paper_input3" value="{{newpass}}"></paper-input>
+<paper-input label="{{confirm}}" id="paper_input3" value="{{con}}"></paper-input>
+    <paper-button id="n1" on-click="{{chnpassword}}" >change password</paper-button>
+    </div>
+    </center>
+    </div>
+
+    </cont-card>
+    </template>
+
+    </template>
+
+</core-card>
+
+  </template>
+
+  <script>
+
+    Polymer('pass-change',{
+ready:function()
+{
+this.value=[];
+this.pass;
+this.id;
+},
+chnpass:function(name)
+{
+this.uname=JSON.stringify(name);
+alert(name);
+this.$.rajax.go();
+
+},
+chnLoaded:function()
+{
+this.value=this.$.rajax.response;
+this.pass=this.value.rows[0].value;
+this.id=this.value.rows[0].id;
+alert(JSON.stringify(this.id));
+},
+Loaded:function()
+{
+this.val=this.$.rajax.response;
+alert(JSON.stringify(this.val));
+},
+chnpassword:function(e)
+{
+if(this.cur==this.pass)
+{
+this.$.ajax.go();
+}
+else
+{
+alert("not");
+}
+}
+
+    });
+
+  </script>
+
+</polymer-element>

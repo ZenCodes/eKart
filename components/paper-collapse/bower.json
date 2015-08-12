@@ -1,0 +1,32 @@
+{
+  "name": "paper-collapse",
+  "version": "0.0.6",
+  "homepage": "https://github.com/miztroh/paper-collapse",
+  "authors": [
+    "miztroh <miztroh@gmail.com>"
+  ],
+  "description": "A Polymer custom element that expands and collapses vertically to show and hide its contents à la Material Design.",
+  "license": "MIT",
+  "main": "paper-collapse.html",
+  "keywords": [
+    "polymer",
+    "paper-collapse",
+    "web-components",
+    "collapse",
+    "paper-elements"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "polymer/polymer#^0.5.5",
+    "core-collapse": "polymer/core-collapse#^0.5.5",
+    "core-icon": "polymer/core-icon#^0.5.5",
+    "core-icons": "polymer/core-icons#^0.5.5",
+    "font-roboto": "polymer/font-roboto#^0.5.5"
+  }
+}

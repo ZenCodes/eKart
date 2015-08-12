@@ -1,0 +1,77 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-label/core-label.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<polymer-element name="showroom-card">
+
+  <template>
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card {
+        position: absolute;
+        width: 600px;
+        height: 550px;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 110px;
+        top: 90px;
+        background-color: rgb(255, 255, 255);
+      }
+      #p1
+      {
+      left:20px;
+      width:270px;
+      height:250px;
+      padding:10px;
+      }
+#sh{
+font-size: 35px;
+margin-top: 70px;
+margin-left: 20px;
+font-weight: bold;
+}
+
+    </style>
+    <div style="margin-top:30px;"> <core-icon-button icon="arrow-back" active="false" on-click="{{clickEvent}}" style="border-radius:50px;background-color:#FF9900;margin-left:40px;">
+    </core-icon-button>
+    <core-label label="Our Showrooms" id="sh" >Our Showrooms</core-label>
+    </div>
+    <core-card id="core_card" horizontal layout wrap>
+    <div id="p1">
+    <img src="showroom1.jpg"  id="img1"></img>
+    <core-label id="i1" >No.1070-A, Munuswamy Salai,
+      K. K. Nagar, Chennai - 600 078  Ph:+91 9841603330" </core-label></div>
+   <div id="p1">
+   <img src="showroom2.jpg"></img>
+    <core-label id="i2" >No.68, GST Road (Near Hot Chips)
+     Chrompet, Chennai - 600 045 Ph:+91 9841636517</core-label>
+    </div>
+    <div id="p1">
+    <img src="showroom3.jpg"></img>
+    <core-label id="i3" >965,Avinashi Road Avinashi Road Coimbatore, Tamil Nadu 641037
+0422 435 1310</core-label></div>
+<div id="p1">
+<img src="showroom4.jpg"></img>
+    <core-label id="i4" >Bharathiyar Rd, New Siddhapudur
+Coimbatore, Tamil Nadu
+0422 438 9886</core-label>
+    </div>
+    </core-card>
+  </template>
+
+  <script>
+
+    Polymer({
+clickEvent :function()
+{
+window.location.href="indexx.html";
+}
+    });
+
+  </script>
+
+</polymer-element>

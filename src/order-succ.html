@@ -1,0 +1,38 @@
+<script src="../webcomponentsjs/webcomponents.js"></script>
+<link rel="import" href="../components/polymer/polymer.html">
+<polymer-element name="order-succ">
+<template>
+<style>
+div{
+
+position: absolute;
+        width: 600px;
+        height: 350px;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 250px;
+        top: 150px;
+        background-color: rgb(255, 255, 255);
+        padding: 50px;
+        color: #ff0012;
+}
+</style>
+
+<div><br>
+<h2>Hi!!{{name}}</h2>
+<h2>Thanks for placing order</h2>
+<br>
+
+<h2>Your order id is: {{id}}</h2>
+</div>
+</template>
+<script>
+Polymer('order-succ',{
+ready:function()
+{
+this.name=localStorage.getItem("nam");
+this.id=sessionStorage.getItem("succorderid");
+}
+});
+</script>
+</polymer-element>

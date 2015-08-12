@@ -1,0 +1,132 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="orderreview-service.html">
+<link rel="import" href="view-card.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<polymer-element name="orderreview-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 650px;
+  	        height: 450px;
+  	        border-radius: 2px;
+  	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 0px;
+  	        top: 50px;
+  	        background-color: rgb(255, 255, 255);
+
+  	      }
+
+
+  </style>
+<orderreview-service pr="{{pr}}"></orderreview-service>
+
+ <core-card id="core_card2"   class="core_carqd2">
+<h2 style="text-align:center;">Order summary</h2>
+ <template id="view-list" repeat="{{product in pr}}">
+
+<div horizontal layout>
+
+<h6 style="width: 300px;margin-left:150px;">{{product.value[2]}}</h6>
+<h5 style="width: 100px;margin-left:50px;">Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[3]}}</h5>
+
+</div>
+</div>
+
+</template>
+<h4 style="margin-left:490px;">Total - {{totamt}}</h4>
+<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
+</core-card>
+
+<core-ajax id="rajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
+on-core-response="{{itemLoaded}}">
+</core-ajax>
+<core-ajax id="wajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
+</core-ajax>
+<core-ajax id="orajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
+on-core-response="{{orderLoaded}}">
+</core-ajax>
+<core-ajax id="owajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+body='{"_id":"{{odocid}}","_rev":"{{orevid}}","orderno":"{{orderno}}"}'>
+</core-ajax>
+<core-ajax id="revajax" auto="false" handleAs="json"
+contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}"
+on-core-response="{{revLoaded}}">
+<core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
+contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{revid}}">
+</core-ajax>
+</template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+  this.readarr=[];
+  this.itemarr=[];
+  this.onoarr=[];
+  this.addrarr=[];
+  this.$.orajax.go();
+  },
+    revLoaded:function(event,detail,sender)
+    {
+    var header=detail.xhr.getResponseHeader('ETag');
+    //alert(header);
+    this.revid=JSON.parse(header);
+    this.$.dajax.go();
+  },
+  orderLoaded:function()
+    {
+    this.onoarr=this.$.orajax.response;
+    this.odocid=this.onoarr._id;
+    this.orevid=this.onoarr._rev;
+    this.orderno=parseInt(this.onoarr.orderno)+1;
+    sessionStorage.setItem("succorderid",this.orderno);
+    this.$.owajax.go();
+    //alert(this.orderno);
+  },
+   placeorder:function()
+  {
+    this.name=JSON.stringify(localStorage.getItem("nam"));
+    var shipinfo=sessionStorage.getItem("shipinfo");
+    var shipval=JSON.parse(shipinfo);
+    this.addrarr.push(shipval);
+    this.address=JSON.stringify(this.addrarr);
+    this.$.rajax.go();
+
+  },
+  itemLoaded:function()
+    {
+    this.readarr=this.$.rajax.response;
+    this.uname=localStorage.getItem("nam");
+    this.docid=this.readarr.rows[0].id;
+    for(var n=0;n<this.readarr.rows.length;n++)
+    {
+    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
+    newval.prodid=this.readarr.rows[n].value[0];
+    newval.prodimg=this.readarr.rows[n].value[1];
+    newval.proddes=this.readarr.rows[n].value[2];
+    newval.prodprice=this.readarr.rows[n].value[3];
+    newval.prodsno=this.readarr.rows[n].value[5];
+    newval.prodstatus="ordered";
+    newval.orderdate=new Date().toDateString();
+    this.itemarr.push(newval);
+    }
+    this.trackstatus="ordered";
+    this.order=JSON.stringify(this.itemarr);
+    //alert(JSON.stringify(this.order));
+    this.$.revajax.go();
+    this.$.wajax.go();
+    //window.location.href='successindex.html';
+
+  },
+  setTotal:function(sum)
+  {
+  this.totamt=sum;
+  }
+  });
+  </script>
+</polymer-element>

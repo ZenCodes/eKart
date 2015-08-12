@@ -1,0 +1,186 @@
+<!--
+    @license
+    Copyright (c) 2014 Wassim Chegham. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <fancy-marquee></fancy-marquee>
+
+@element fancy-marquee
+@blurb The marquee element is used to insert a scrolling area of text, with custom speed and direction.
+@status alpha
+@homepage https://github.com/manekinekko/fancy-marquee
+-->
+<polymer-element name="fancy-marquee" attributes="scrolling direction duration">
+  <script>
+    Polymer({
+
+      /**
+       * Possible values are: 'normal', 'reverse', 'alternate', 'reverse-alternate'
+       * Possible modifiers are: '*-vertical', '*-horizontal'
+       *
+       * @property direction
+       * @type string
+       * @default 'normal'
+       */
+      direction: 'normal',
+
+      /**
+       * Possible values are: 'paused', 'running'
+       *
+       * @property scrolling
+       * @type string
+       * @default 'running'
+       */
+      scrolling: 'running', // css3 animation paused/running
+
+      /**
+       * Values are in seconds.
+       *
+       * @property duration
+       * @type number
+       * @default 1
+       */
+      duration: 1,
+
+      /**
+       * @private
+       */
+      // NOTE: will default to the content width
+      _width : null,
+      // NOTE: will default to the content height
+      _height : null,
+      _wrapMode: 'nowrap',
+
+      /**
+       * Triggered on duration change.
+       *
+       * @method durationChanged
+       */
+      durationChanged: function(oldVal, newVal) {
+        this.restartAnimation();
+      },
+
+      /**
+       * Triggered on direction change.
+       *
+       * @method directionChanged
+       */
+      directionChanged: function(oldVal, newVal) {
+        this.mode = (newVal.indexOf('vertical') === -1) ? 'horizontal' : 'vertical';
+        this._direction = newVal.replace('-horizontal', '').replace('-vertical', '');
+      },
+
+      /**
+       * This method toggles the scrolling values.
+       *
+       * @method toggleScrolling
+       * @param {string} 'running' or 'paused'
+       */
+      toggleScrolling: function(scrolling){
+        if(scrolling){
+          if(scrolling === 'running' || scrolling === 'paused'){
+            this.scrolling = scrolling;
+          }
+        }
+        else {
+          this.scrolling = (this.scrolling === 'running') ? 'paused' : 'running';
+        }
+      },
+
+      /**
+       * This method toggles the direction values.
+       *
+       * @method toggleDirection
+       * @param {string} One of these 'normal|reverse|alternate|alternate-reverse'. You can specify a modifier such '-vertical' or '-horizontal'
+       */
+      toggleDirection: function(direction){
+        if(direction && /(normal|reverse|alternate|alternate-reverse)(\-(vertical|horizontal))?/.test(direction)) {
+          this.direction = direction;
+          this.restartAnimation();
+        }
+      },
+
+      /**
+       * This method restarts the animation.
+       *
+       * @method restartAnimation
+       */
+      restartAnimation: function() {
+        this.$.content.classList.remove('scrolling');
+
+        this.async(function() {
+          this.$.content.classList.add('scrolling');
+        }, null, 10);
+      },
+
+      domReady: function() {
+        var style = this.$.content.getBoundingClientRect();
+        this._width = style.width;
+        this._height = style.height;
+        this.style.width = style.width+'px';
+        this.style.height = style.height+'px';
+        this.style.display = 'block';
+        this.textWidth = this.$.content.offsetWidth;
+        this.textHeight = this.$.content.offsetHeight;
+        this.$.content.classList.add('scrolling');
+      }
+    });
+  </script>
+  <!-- moved this bloc down here because it breaks the syntaxe highlighter in Sublime Text -->
+  <template>
+    <div id="content">
+      <content></content>
+    </div>
+    <style>
+
+      @-webkit-keyframes marquee-horizontal {
+        0% {
+          left: -{{textWidth}}px;
+        }
+        100%{
+          left: {{_width}}px;
+        }
+      }
+
+      @-webkit-keyframes marquee-vertical {
+        0% {
+          top: -{{textHeight}}px;
+        }
+        100%{
+          top: {{_height}}px;
+        }
+      }
+
+      :host div {
+        width: 100%;
+        height: 100%;
+      }
+
+      :host .scrolling {
+        position: relative;
+        white-space: {{_wrapMode}};
+        display: block;
+        -webkit-animation-delay: 0s;
+        -webkit-animation-direction: {{ _direction }};
+        -webkit-animation-duration: {{ duration }}s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-name: marquee-{{ mode }};
+        -webkit-animation-play-state: {{ scrolling }};
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-fill-mode: both;
+      }
+
+    </style>
+  </template>
+</polymer-element>

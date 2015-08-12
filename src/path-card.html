@@ -1,0 +1,95 @@
+
+
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+
+  <link href="../components/core-collapse/core-collapse.html" rel="import">
+  <link href="../components/core-icons/core-icons.html" rel="import">
+  <link href="../components/core-icon-button/core-icon-button.html" rel="import">
+
+  <link href="../components/core-dropdown/core-dropdown.html" rel="import">
+  <link href="../components/paper-button/paper-button.html" rel="import">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../components/paper-tabs/paper-tab.html">
+<link href="../components/core-menu/core-menu.html" rel="import">
+<link href="../components/core-menu/core-submenu.html" rel="import">
+<link href="../components/core-item/core-item.html" rel="import">
+<link href="../components/core-label/core-label.html" rel="import">
+
+<link href="../components/paper-button/paper-button.html" rel="import">
+<link href="../components/core-dropdown/core-dropdown.html" rel="import">
+<link href="../components/paper-icon-button/paper-icon-button.html" rel="import">
+<link href="../components/paper-item/paper-item.html" rel="import">
+<link href="../components/paper-menu-button/paper-menu-button.html" rel="import">
+<link rel="import" href="allroot-service.html">
+<polymer-element name="path-card" relative >
+
+
+<template>
+     <style>
+#div1
+{
+margin-top:60px;
+margin-left:52px;
+
+height:45px;
+box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+background:#ffffff;
+font-family:'Ek Mukta';
+font-size:20px;
+}
+a,paper-button
+{
+font-size:18px;
+font-family:'Ek Mukta';
+text-transform: none;
+font-weight: bold;
+color:#663399;
+}
+     </style>
+<core-card id ="core_card">
+
+ <div id="div1" flex style="width:1150px;" hidden?="{{flag}}">
+ <a href="" style="text-decoration:none;">Home</a>
+ <img src="../res/greater.gif" height="40" width="20" align="center">
+ <paper-button id="{{rootpath}}" label="{{rootpath}}" on-click="{{clickEvent}}">{{rootpath}}</paper-button>
+ <!--<a href="" style="text-decoration:none;">{{rootpath}}</a>-->
+ <img src="../res/greater.gif" height="40" width="20" align="center" hidden?="{{hideimg}}">
+ <paper-button id="{{menupath}}" label="{{menupath}}" hidden?="{{hidemenu}}">{{menupath}}</paper-button>
+ <!--<a href="" style="text-decoration:none;"> {{menupath}}</a></div>-->
+
+</core-card>
+<allroot-service id="ars"></allroot-service>
+  </template>
+
+  <script>
+    Polymer({
+    ready:function()
+    {
+    this.hideimg=false;
+    this.hidemenu=false;
+    },
+    setRoot:function(root)
+    {
+    this.rootpath=root;
+    },
+    setMenu:function(menu)
+    {
+    this.hideimg=false;
+    this.hidemenu=false;
+    this.menupath=menu;
+    },
+    clickEvent:function(e)
+    {
+    this.hideimg=true;
+    this.hidemenu=true;
+    this.$.ars.setRootname(e.target.id);
+    //alert(e.target.id);
+    //alert(this.rootpath+"  "+this.menupath)
+    }
+    });
+  </script>
+</polymer-element>
+
+
