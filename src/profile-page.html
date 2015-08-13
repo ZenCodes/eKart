@@ -2,7 +2,7 @@
 <link rel="import" href="../components/slide-page/slide-page.html">
 
 <link rel="import" href="cart-ajax.html">
-<link rel="import" href="pass-change.html">
+
 <polymer-element name="profile-page">
 
 <template>
@@ -16,19 +16,24 @@
       }
       #core_card2 {
       	        position: absolute;
-      	        width: 850px;
-      	        height: 820px;
-      	        //border-radius: 2px;
-      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        width: 400px;
+      	        height: 250px;
+      	        border-radius: 2px;
+      	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
       	        left: 300px;
       	        top: 60px;
       	        background-color: rgb(255, 255, 255);
 
 
       	      }
-      	      p{
-      	      padding-bottom:0px;
+      	      div{
+      	      padding-bottom:20px;
       	      font-size-14px;
+      	      margin-left:30px;
+      	      }
+      	      #ch{
+				font-size: 13px;
+		  		background-color:rgb(0, 188, 212);
       	      }
 
     </style>
@@ -38,14 +43,14 @@
 	</core-ajax>
 
     	    <core-card id="core_card2"  class="core_card2" vertical wrap layout >
+			<h4 style="margin-left:30px;">Profile</h4>
+            <div>Name: {{name}}</div>
+            <div>Email id: {{email}}</div>
+            <div>Phone no: {{phone}}</div>
 
-            <p>Name: {{name}}</p>
-            <p>Email id: {{email}}</p>
-            <p>Phone no: {{phone}}</p>
-
- <paper-button id="ch" on-click="{{change}}">change password</paper-button>
+     		<div><paper-button id="ch" on-click="{{change}}">change password</paper-button></div>
 			</core-card>
-			<pass-change id="chn"></pass-change>
+
 
   </template>
 
@@ -59,6 +64,7 @@
     this.$.rajax.go();
     },
     regLoaded:function(){
+
     this.regarr=this.$.rajax.response;
     this.name=this.regarr.rows[0].value.regarr[0].name;
     this.email=this.regarr.rows[0].value.regarr[0].email;
@@ -67,8 +73,9 @@
     },
 change:function(e)
 {
-alert(this.name);
-this.$.chn.chnpass(this.name);
+//alert(this.name);
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('profile-pass').shadowRoot.querySelector('change-page').hiddenVal(true,false);
+//this.$.chn.chnpass(this.name);
 }
     });
 

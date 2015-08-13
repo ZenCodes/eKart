@@ -37,11 +37,14 @@ this.pr=[];
     productsLoaded1: function(event,detail) {
     this.pr = this.$.ajax1.response;
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('item-list').pr=this.pr.rows;
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('item-list').reload;
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,false,true,true,false,true,false,true,true,true,true,true,true,true,true);
     },
     setProductid(prid)
     {
    	this.val=JSON.stringify(prid);
    	//alert(this.val);
+   	this.$.ajax1.go();
     }
     });
   </script>

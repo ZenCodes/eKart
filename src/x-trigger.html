@@ -74,7 +74,7 @@ background-color:#eee;
 
   </style>
 
-<paper-button class="order" id="yourorder" on-click="{{clickEvent}}">Your Orders</paper-button>
+<paper-button class="order" id="yourorder" on-click="{{clickEvent}}" >Your Orders</paper-button>
 
   </template>
 
@@ -87,7 +87,7 @@ background-color:#eee;
     {
     if(e.target.id=='yourorder')
     {
-    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,false,true,true,true);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,false,true,true,true,true);
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewPathcard(true);
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(true);
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hidemenu(true);

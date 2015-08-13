@@ -45,7 +45,7 @@ background-color:#FF9933;
 
 </style><!--<div layout horizontal>
 <div>--><core-card id ="core_card">
- <div id="div1" layout horizontal>
+<div id="div1" layout horizontal>
 <paper-button id="emailorlogin" Label="Email or Login" on-click="{{email}}">Email or Login</paper-button>
 <img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="shipping" Label="Shipping Address" on-click="{{shipping}}">Shipping Address</paper-button>
@@ -53,8 +53,8 @@ background-color:#FF9933;
 <paper-button id="orderreview" Label="Order Review" on-click="{{order}}">Order Review</paper-button>
 <img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="payment" Label="Payment">Payment</paper-button>
- </div>
- <div hidden?="{{isHidden1}}"><email-card></email-card></div>
+</div>
+<div hidden?="{{isHidden1}}"><email-card></email-card></div>
 <div hidden?="{{isHidden2}}"><shipping-card></shipping-card></div>
 <div hidden?="{{isHidden3}}"><orderreview-list></orderreview-list></div>
 <div hidden?="{{isHidden4}}"><login-card></login-card></div>
