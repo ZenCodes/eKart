@@ -1,0 +1,28 @@
+<link rel="import" href="profile-page.html">
+  <link rel="import" href="pass-change.html">
+<polymer-element name="change-page">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+       }
+
+       </style>
+       <div hidden?="{{isHidden1}}"><profile-page id="pro"></profile-page></div>
+             <div hidden?="{{isHidden2}}"><pass-change id="pass"></pass-change></div>
+</template>
+<script>
+Polymer('change-page',{
+ready:function(){
+this.isHidden2=true;
+this.isHidden1=false;
+},
+hiddenVal:function(h1,h2)
+{
+this.isHidden1=h1;
+this.isHidden2=h2;
+}
+});
+</script>
+</polymer-element>
