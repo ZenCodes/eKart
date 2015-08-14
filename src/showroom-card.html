@@ -17,26 +17,27 @@
         height: 550px;
         border-radius: 2px;
         box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-        left: 110px;
-        top: 90px;
+        left: 300px;
+        margin-top: 150px;
         background-color: rgb(255, 255, 255);
       }
       #p1
       {
-      left:20px;
+      left:25px;
       width:270px;
       height:250px;
       padding:10px;
       }
 #sh{
+position:absolute;
 font-size: 35px;
-margin-top: 70px;
-margin-left: 20px;
+margin-top: 60px;
+margin-left: 250px;
 font-weight: bold;
 }
 
     </style>
-    <div style="margin-top:30px;"> <core-icon-button icon="arrow-back" active="false" on-click="{{clickEvent}}" style="border-radius:50px;background-color:#FF9900;margin-left:40px;">
+    <div style="margin-top:30px;">
     </core-icon-button>
     <core-label label="Our Showrooms" id="sh" >Our Showrooms</core-label>
     </div>
@@ -66,10 +67,7 @@ Coimbatore, Tamil Nadu
   <script>
 
     Polymer({
-clickEvent :function()
-{
-window.location.href="../eKart/../index.html";
-}
+
     });
 
   </script>
