@@ -58,7 +58,7 @@
 	      }
   </style>
 
-	  <paper-button class="signin" id="viewcart" on-click="{{clickEvent}}"><img src="../res/download.png" width="25px"></img></paper-button>
+	  <paper-button class="signin" id="viewcart" on-click="{{clickEvent}}"><img src="../../res/download.png" width="25px"></img></paper-button>
 
 <temp-service id="ts"></temp-service>
 <view-service id="vs"></view-service>
@@ -72,14 +72,14 @@
     if(localStorage.getItem("nam")==null||localStorage.getItem("nam")=="")
     {
    this.$.ts.callfun();
-   document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true);
+   document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true);
    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(false);
    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(true);
 	}
     else
     {
     this.$.vs.callfun();
-    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true,true,true);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
     }
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewPathcard(true);
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(true);

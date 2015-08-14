@@ -37,6 +37,8 @@
   <link rel="import" href="x-ajax.html">
   <link rel="import" href="checkout-summary.html">
   <link rel="import" href="profile-pass.html">
+  <link rel="import" href="about-us.html">
+   <link rel="import" href="showroom-card.html">
 
 <polymer-element name="product-list" attributes="isHidden isHidden1 isHidden2">
   <template>
@@ -87,7 +89,7 @@ margin-left: 50px;
  }
 
 </style>
-<div><cart-count id="cartcount"></cart-count>
+<!--<div><cart-count id="cartcount"></cart-count></div>-->
 <div hidden?="{{isHidden1}}"><my-element id="myelement"></my-element></div>
 <div hidden?="{{isHidden2}}"><item-list id="itemlist"></item-list></div>
 <div hidden?="{{isHidden3}}"><order-list id="orderlist"></order-list></div>
@@ -104,6 +106,8 @@ margin-left: 50px;
 <div hidden?="{{isHidden13}}"><x-ajax id="write"></x-ajax></div>
 <div hidden?="{{isHidden14}}"><checkout-summary id="summary"></checkout-summary></div>
 <div hidden?="{{isHidden15}}"><profile-pass id="propass"></profile-pass></div>
+<div hidden?="{{isHidden16}}"><about-us id="aboutus"></about-us></div>
+<div hidden?="{{isHidden17}}"><showroom-card id="showroomcard"></showroom-card></div>
 </template>
 <script>
 Polymer('product-list',{
@@ -113,6 +117,7 @@ this.isHidden8=true;
 this.isHidden9=true;
 this.isHidden10=true;
 this.isHidden15=true;
+this.isHidden16=true;
 },
 setMenu:function(menu)
 {
@@ -122,7 +127,7 @@ setRoot:function(root)
 {
 this.rootpath=root;
 },
-hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15)
+hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17)
 {
 this.isHidden1=h1;
 this.isHidden2=h2;
@@ -139,6 +144,8 @@ this.isHidden12=h12;
 this.isHidden13=h13;
 this.isHidden14=h14;
 this.isHidden15=h15;
+this.isHidden16=h16;
+this.isHidden17=h17;
 },
 showlog:function(h12)
 {
