@@ -19,6 +19,7 @@
 <link rel="import" href="product-list.html">
 <link rel="import" href="menu-card.html">
 <link rel="import" href="Topmenu-card.html">
+<link rel="import" href="search-service.html">
 
 <polymer-element name="inx-element">
 
@@ -141,10 +142,12 @@ top: 10px;
 <paper-button id="signout" hidden>Signout</paper-button>
 <!--<cart-count id="cartcount"></cart-count>-->
 <view-trigger></view-trigger>
-<input id="input" placeholder="Search..." is="core-input">
-<paper-button id="paper_button">Search</paper-button>
+<!--<input id="input" placeholder="Search..." is="core-input" value="{{searchval}}">
+<paper-button id="paper_button" on-click="{{search}}">Search</paper-button>-->
+
 <x-trigger></x-trigger>
 <Topmenu-card></Topmenu-card>
+<search-service></search-service>
 <!--<cart-count id="cc"></cart-count>-->
 <paper-tabs selected="0" selectedindex="0" id="paper_tabs" horizontal center layout noink>
 <paper-tab id="paper_tab1" inline flex center-center horizontal layout active>
@@ -265,7 +268,7 @@ this.hi="Hi! ";
 this.name=localStorage.getItem("nam");
 this.bname="Signout";
 }
-this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
+this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
 //this.$.pl.hidemenu(true);
 },
  toggleView: function(e) {
@@ -302,7 +305,7 @@ this.$.pl.setMenu=e.target.selectedItem.textContent;
 //this.$.mc.setMenuPath(this.menupath);
 //this.$.ps.setProductid(this.menupath);
 this.$.ps.setProductid(e.detail.item.id);
-this.$.pl.hiddenVal(true,false,true,true,false,true,false,true,true,true,true,true,true,true,true,true,true);
+this.$.pl.hiddenVal(true,false,true,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true);
 //this.$.pl.viewPathcard(false);
 //this.$.pl.viewTempcard(true);
 },
@@ -335,7 +338,7 @@ if(e.target.id=="Desktop")
  {
  //this.hi="Hi! ";
  //this.bname="Signout";
- document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true);
  //window.location.href="index1.html";
  }
  else
@@ -354,7 +357,7 @@ if(e.target.id=="Desktop")
   profile:function()
   {
 //alert("Profile");
-document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true);
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true);
   }
     });
 

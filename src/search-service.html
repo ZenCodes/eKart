@@ -1,0 +1,106 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link href="../components/paper-button/paper-button.html" rel="import">
+<polymer-element name="search-service">
+   <template>
+    <style>
+
+    #input {
+	           border-radius: 7px;
+			     border: 1px solid #706D6C;
+
+			     width: 230px;
+	      height: 33px;
+	        left: 600px;
+	        top: 50px;
+	        position: absolute;
+	        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+
+      }
+      #paper_button {
+	        border-radius: 7px;
+	  		     border: 1px solid #706D6C;
+	  	          left: 790px;
+	  	          top: 50px;
+	  	          position: absolute;
+	  	          background-color:rgb(0, 188, 212);
+	  	          width: 20px;
+	       height: 33px;
+	        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+      }
+    </style>
+    <input id="input" placeholder="Search..." is="core-input" value="{{searchval}}">
+    <paper-button id="paper_button" on-click="{{search}}">Search</paper-button>
+    <core-ajax id="ajax"
+	      auto="false"
+	      url="http://hotelapp.iriscouch.com/website/_all_docs?include_docs=true"
+	      handleAs="json"
+	      on-core-response="{{searchItems}}">
+    </core-ajax>
+    </template>
+    <script>
+ Polymer('search-service',{
+ ready:function(){
+this.arr=[];
+this.temparr=[];
+this.waste=[];
+this.cnt=0;
+this.val="";
+ },
+ search:function()
+ {
+ this.val=this.searchval;
+ this.$.ajax.go();
+ //alert(this.val);
+ },
+ searchItems:function()
+ {
+this.arr=this.$.ajax.response;
+//alert(JSON.stringify(this.arr.rows));
+for(var n=0;n<this.arr.rows.length;n++)
+{
+var newval={"_id":"","id":"","des":"","img1":"","price":"","proddes":"","rootid":"","sno":""};
+if(this.arr.rows[n].doc.rootid!=null)
+{
+newval._id=this.arr.rows[n].doc._id;
+newval.id=this.arr.rows[n].doc.id;
+newval.des=this.arr.rows[n].doc.des;
+newval.img1=this.arr.rows[n].doc.img1;
+newval.price=this.arr.rows[n].doc.price;
+newval.proddes=this.arr.rows[n].doc.proddes;
+newval.rootid=this.arr.rows[n].doc.rootid;
+newval.sno=this.arr.rows[n].doc.sno;
+this.temparr.push(newval);
+}
+}
+
+for(var n=0;n<this.temparr.length;n++)
+{
+var newval={"_id":"","id":"","des":"","img1":"","price":"","proddes":"","rootid":"","sno":""};
+if(this.temparr[n].rootid.indexOf(this.val)!=-1||this.temparr[n].id.indexOf(this.val)!=-1||this.temparr[n].des.indexOf(this.val)!=-1){
+newval._id=this.temparr[n]._id;
+newval.id=this.temparr[n].id;
+newval.des=this.temparr[n].des;
+newval.img1=this.temparr[n].img1;
+newval.price=this.temparr[n].price;
+newval.proddes=this.temparr[n].proddes;
+newval.rootid=this.temparr[n].rootid;
+newval.sno=this.temparr[n].sno;
+this.waste.push(newval);
+}
+else{
+//alert("no");
+}
+}
+//alert(JSON.stringify(this.waste));
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('search-list').pr=this.waste;
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false);
+ },
+ setVal:function(inval)
+ {
+// alert(inval);
+ }
+    });
+  </script>
+</polymer-element>
+`

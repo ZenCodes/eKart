@@ -1,0 +1,74 @@
+
+
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="search-service.html">
+
+<polymer-element name="search-list">
+
+<template>
+
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+`        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card2 {
+      	        position: absolute;
+      	        width: 850px;
+      	        height: 700px;
+      	        //border-radius: 2px;
+      	        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+      	        left: 150px;
+      	        top: 50px;
+      	        background-color: rgb(255, 255, 255);
+
+
+      	      }
+      	      #d1
+      	      {
+      	    width:250px;
+			height:400px;
+			display: block;
+			padding: 15px;
+       }
+
+    </style>
+     <search-service id="ss" pr="{{pr}}"></search-service>
+
+
+    <core-card id="core_card2"  class="core_card2" horizontal wrap layout >
+
+    <template id="search-list" repeat="{{product in pr}}">
+
+    <div vertical layout  id="d1" >
+	<center>
+    <img id="bor" src="{{product.img1}}" width="200" height="200">
+    <h6><paper-button id="{{product.id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{product.des}}</paper-button></h6>
+    <h5 >Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.price}}</h5>
+    <div  horizontal layout>
+    <cb><paper-button id="{{product._id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>|
+    <paper-button id="{{product._id}}" on-click="{{buy}}" >BUY NOW</paper-button>
+    </div>
+    </center>
+    </div>
+
+
+</template>
+</core-card>
+
+  </template>
+
+  <script>
+
+    Polymer({
+ready:function()
+{
+}
+   } );
+
+  </script>
+
+</polymer-element>

@@ -1,0 +1,27 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link href="../components/paper-button/paper-button.html" rel="import">
+<link rel="import" href="search-service.html">
+<polymer-element name="search-card">
+   <template>
+    <style>
+    :host {
+
+    }
+    </style>
+    <input id="input" placeholder="Search..." is="core-input" value="{{searchval}}" />
+    <paper-button id="paper_button" on-click="{{search}}">Search</paper-button>
+
+    </template>
+    <script>
+    Polymer({
+    search:function()
+	 {
+	 var val=this.searchval;
+
+	 alert(val+"  "+this.$.ss);
+     }
+
+    });
+    </script>
+    </polymer-element>
