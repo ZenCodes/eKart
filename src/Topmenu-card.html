@@ -15,27 +15,32 @@
 {
 height:45px;
 background:#ffffff;
-font-size:20px;
-margin-left:40px;
-}
-#paper-button
-{
-position:absolute;
-margin-left:20px;
 font-size:10px;
+padding:2px;
+margin-left:45px;
+}
+#paper_button
+{
+font-size:18px;
 //font-family:'Ek Mukta';
 text-transform: none;
 //font-weight: bold;
 color:#663399;
 }
-#paper-button1
+#paper_button1
 {
-position:absolute;
-margin-left:30px;
-font-size:10px;
-//font-family:'Ek Mukta';
+font-size:18px;
+font-family:'Ek Mukta';
 text-transform: none;
-//font-weight: bold;
+color:#663399;
+}
+#sms
+{
+
+
+font-size:18px;
+font-family:'Ek Mukta';
+text-transform: none;
 color:#663399;
 }
 </style>
@@ -43,13 +48,13 @@ color:#663399;
 
  <div id="div1" flex style="width:700px;" layout horizontal>
  <div><a href="" style="margin-top:50px;"><img src="../eKart/../res/ekart.png" /></a></div>
- <div style="margin-top:10px;margin-left:50px;">
+ <div style="margin-top:5px;margin-left:20px;">
  <!--<a href="../../src/about-us.html" style="text-decoration:none;">About Us</a> <b>|</b>-->
  <paper-button id="paper_button" on-click="{{click}}">About us</paper-button>
 
  <paper-button id="paper_button1" on-click="{{click1}}">Showrooms</paper-button>
  <!--<a href="../../src/showroom-index.html" style="text-decoration:none;">Showrooms</a> <b>|</b>-->
- <a href="" style="text-decoration:none;">Your eKart.com</a></div>
+ <a href="" id="sms" style="text-decoration:none;">Your eKart.com</a></div>
 
 
 </core-card>
