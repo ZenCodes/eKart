@@ -174,7 +174,7 @@
 	</core-ajax>
 	<core-ajax id="ajax" auto="false" method="POST" handleAs="json"
 	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/"
-	body='{"regarr":[{"name": "{{uname}}","pass": "{{upass}}","email":"{{uemail}}","phone":"{{uphone}}"}],"shiparr":[{"name":"","pin":"","addr":"","land":"","city":"","state":"","country":"","phone":""}],"billarr":[{"name":"","pin":"","addr":"","land":"","city":"","state":"","country":"","phone":""}]}'>
+	body='{"regarr":[{"name": "{{uname}}","pass": "{{upass}}","email":"{{uemail}}","phone":"{{uphone}}"}]}'>
 	</core-ajax>
     </template>
 
