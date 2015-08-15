@@ -35,7 +35,11 @@ position: absolute;
 background-color:rgb(192,192,192);
 }
 
-
+#login
+{
+ left:0px;
+ mrgin-top: 10px;
+}
 
 #cc{
 top:175px;
@@ -54,11 +58,13 @@ background-color:#FF9933;
 <img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="payment" Label="Payment">Payment</paper-button>
 </div>
+
 <div hidden?="{{isHidden1}}"><email-card></email-card></div>
 <div hidden?="{{isHidden2}}"><shipping-card></shipping-card></div>
 <div hidden?="{{isHidden3}}"><orderreview-list></orderreview-list></div>
-<div hidden?="{{isHidden4}}"><login-card></login-card></div>
+<div hidden?="{{isHidden4}}"  id="lc"><login-card id="login"></login-card></div>
 <div hidden?="{{isHidden5}}"><buyorderreview-list></buyorderreview-list></div>
+
 </core-card>
 
 </template>
@@ -96,6 +102,7 @@ this.isHidden4=true;
 	 //alert("yes");
 	  this.isHidden1=true;
 	  this.isHidden2=true;
+	  this.isHidden3=true;
 	  this.isHidden5=false;
 	  this.isHidden4=true;
 	 }
@@ -106,15 +113,16 @@ this.isHidden4=true;
 	   this.isHidden2=true;
 	   this.isHidden3=false;
 	   this.isHidden4=true;
+	   this.isHidden5=true;
         }
     },
-    hiddenvalue:function(h1,h2,h3,h4)
+    hiddenvalue:function(h1,h2,h3,h4,h5)
     {
      this.isHidden1=h1;
 	this.isHidden2=h2;
 	  this.isHidden3=h3;
 	   this.isHidden4=h4;
-
+this.isHidden5=h5;
     }
     });
   </script>

@@ -9,7 +9,7 @@
     }
     </style>
     <core-ajax id="ajax"
-	      auto=
+	      auto="false"
 	      url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
@@ -41,7 +41,7 @@ this.pr=[];
     for(var n=0;n<this.pr.rows.length;n++)
     {
    // alert("sum: "+parseInt(this.pr.rows[n].value[3])+"  "+parseInt(this.pr.rows[n].value[6]));
-    this.sum=this.sum+(parseInt(this.pr.rows[n].value[7]));
+    this.sum=this.sum+(parseInt(this.pr.rows[n].value[3])*parseInt(this.pr.rows[n].value[6]));
     //this.sum=this.sum+5000;
     }
 
@@ -49,6 +49,7 @@ this.pr=[];
      document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').setTotal(this.sum);
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').pr=this.pr.rows;
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('orderreview-list').reload;
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true,true);
     },
     callfun:function()
     {
