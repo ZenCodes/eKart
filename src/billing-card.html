@@ -1,0 +1,235 @@
+<link rel="import" href="../components/core-input/core-input.html">
+<link href="../components/core-label/core-label.html" rel="import">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<polymer-element name="billing-card">
+
+  <template>
+    <style>
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_card {
+        position: absolute;
+        width: 400px;
+        height: 700px;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 0px;
+        top: 30px;
+        background-color: rgb(255, 255, 255);
+      }
+     #input {
+	            border-radius: 2px;
+	 		     border: 1px solid #706D6C;
+	 		     width: 200px;
+	             left:100px;
+	         position: absolute;
+	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	         height:30px;
+          }
+          #input {
+		  	            border-radius: 2px;
+		  	 		     border: 1px solid #706D6C;
+		  	 		     width: 200px;
+		  	             left:100px;
+		  	         position: absolute;
+		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  	         height:30px;
+          }
+           #input1 {
+		  		  	            border-radius: 2px;
+		  		  	 		     border: 1px solid #706D6C;
+		  		  	 		     width: 200px;
+		  		  	             left:100px;
+		  		  	         position: absolute;
+		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  		  	         height:30px;
+
+          }
+          #input2 {
+		  	            border-radius: 2px;
+		  	 		     border: 1px solid #706D6C;
+		  	 		     width: 200px;
+		  	             left:100px;
+		  	         position: absolute;
+		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  	         height:50px;
+		  	         padding:10px 0px 0px 0px;
+
+          }
+          #input3 {
+		  		  	            border-radius: 2px;
+		  		  	 		     border: 1px solid #706D6C;
+		  		  	 		     width: 200px;
+		  		  	             left:100px;
+		  		  	         position: absolute;
+		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  		  	         height:30px;
+          }
+          #input4 {
+		  	            border-radius: 2px;
+		  	 		     border: 1px solid #706D6C;
+		  	 		     width: 200px;
+		  	             left:100px;
+		  	         position: absolute;
+		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  	         height:30px;
+          }
+          #input5 {
+		  	            border-radius: 2px;
+		  	 		     border: 1px solid #706D6C;
+		  	 		     width: 200px;
+		  	             left:100px;
+		  	         position: absolute;
+		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  	         height:30px;
+          }
+          #input6 {
+		  		  	            border-radius: 2px;
+		  		  	 		     border: 1px solid #706D6C;
+		  		  	 		     width: 200px;
+		  		  	             left:100px;
+		  		  	         position: absolute;
+		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  		  	         height:30px;
+          }
+          #input7 {
+		  		  	            border-radius: 2px;
+		  		  	 		     border: 1px solid #706D6C;
+		  		  	 		     width: 200px;
+		  		  	             left:100px;
+		  		  	         position: absolute;
+		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+		  		  	         height:30px;
+          }
+          #div
+          {
+           padding:30px;
+          }
+           #paper_button {
+		          background-color: rgb(242, 172, 77);
+		          left:10px;
+				  			top:1px;
+				          width: 150px;
+				  			   padding: 5px 10px;
+				  			   -webkit-border-radius: 8px;
+				  			   -moz-border-radius: 8px;
+				  			   border-radius: 8px;
+				  			   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+				  			   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+				  			   box-shadow: rgba(0,0,0,1) 0 1px 0;
+				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+				  			   color: white;
+				  			   font-size: 14px;
+				  			   font-family: Georgia, serif;
+				  			   text-decoration: none;
+   vertical-align: middle;
+		           height:40px;
+
+		            border: 1px solid #706D6C;
+
+      }
+      #d1
+      {
+      padding:10px 5px 15px 99px;
+      }
+      #sa
+      {
+      font-size : 20px;
+      font-weight:bold;
+      text-align:center;
+      }
+    </style>
+
+    <core-card id="core_card" layout vertical>
+      <core-label id="sa" >Billing Address</core-label>
+    <div id="div" layout  horizontal>
+ <core-label id="name" >Name</core-label>
+ <input id="input" value="{{name}}" placeholder="" is="core-input">
+ </div>
+ <div id="div" layout  horizontal>
+  <core-label id="Pincode" >Pincode</core-label>
+  <input id="input1" value="{{pin}}" placeholder="" is="core-input">
+  </div>
+<div id="div" layout  horizontal>
+  <core-label id="address" >Address</core-label>
+  <input id="input2" value="{{addr}}" placeholder="" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+    <core-label id="Landmark" >Landmark</core-label>
+    <input id="input3" value="{{land}}" placeholder="Optional" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+      <core-label id="city" >City</core-label>
+      <input id="input4" value="{{city}}" placeholder="" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+      <core-label id="state" >State</core-label>
+      <input id="input5" value="{{state}}" placeholder="" is="core-input">
+  </div>
+  <div id="div" layout  horizontal>
+    <core-label id="country" >Country</core-label>
+    <input id="input6" value="{{country}}" placeholder="" is="core-input">
+  </div>
+<div id="div" layout  horizontal>
+  <core-label id="Phone" >Phone</core-label>
+  <input id="input7" value="{{phone}}" placeholder="" is="core-input">
+  </div>
+<div id="d1">
+   <paper-button id="paper_button" on-click="{{save}}">Save</paper-button>
+   </div>
+    </core-card>
+  </template>
+
+  <script>
+
+    Polymer({
+	 ready:function(){
+	        this.tempbill=[];
+
+
+	        },
+	        save:function()
+	        {
+	        var bill={"name": "","pin": "","addr":"","land":"","city":"","state":"","country":"","phone":""};
+	        bill.name=this.name;
+	       bill.pin=this.pin;
+	        bill.addr=this.addr;
+	       bill.land=this.land;
+	        bill.city=this.city;
+	        bill.state=this.state;
+	        bill.country=this.country;
+	        bill.phone=this.phone;
+
+	        if(this.name!=null && this.name!="" && this.pin!=null && this.pin!="" && this.addr!=null && this.addr!="" && this.city!=null && this.city!="" && this.state!=null && this.state!="" && this.country!=null && this.country!="" && this.phone!=null && this.phone!="" )
+							   						        {
+							   						        localStorage.setItem("nnflag",1);
+							   						         sessionStorage.setItem("billinfo",JSON.stringify(bill));
+							   								}
+							   								else
+							   								{
+							   								localStorage.setItem("nnflag",0);
+							   								alert("all fields must be filled out");
+	   								}
+
+        },
+        setValues:function(nam,pn,add,lan,cit,stat,count,phno)
+        {
+        alert("hi"+name+"  " +pn);
+        this.name=nam;
+	    this.pin=pn;
+	    this.addr=add;
+	    this.land=lan;
+	    this.city=cit;
+	    this.state=stat;
+	    this.country=count;
+	    this.phone=phno;
+        }
+    });
+
+  </script>
+
+</polymer-element>

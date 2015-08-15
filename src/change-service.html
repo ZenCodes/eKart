@@ -1,0 +1,61 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="adordered-list.html">
+<polymer-element name="change-service">
+   <template  repeat="{{p in properties}}" >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+
+<core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart"
+				   body='{"_id":"{{docid}}","_rev":{{header}},"username":"{{uname}}","orderarr":{{cmtarr}},"trackstatus":"{{track}}","orderno":"{{orderid}}"}'>
+     <core-ajax id="readajax"
+
+	      auto="false"
+	      url="http://hotelapp.iriscouch.com/orderedcart/{{docid}}"
+
+	      handleAs="json"
+	      on-core-response="{{Loaded}}"
+	      >
+    </core-ajax>
+
+
+  </template>
+  <script>
+
+  Polymer('change-service', {
+     ready: function()
+{
+
+},
+created: function() {
+
+this.pro = [];
+this.pr=[];
+this.psno;
+    },
+     Loaded:function (event, detail, sender)
+	            {
+	            this.pro=this.$.readajax.response;
+	            //alert(JSON.stringify(this.pro));
+            this.header = detail.xhr.getResponseHeader('ETag');
+            var arr=this.pro.orderarr;
+            this.track=this.status;
+            this.uname=this.pro.username;
+            this.orderid=this.pro.orderno;
+          this.cmtarr=JSON.stringify(arr);
+            this.$.writeajax.go();
+
+
+            },
+   getstatus:function(status,id)
+   {
+   this.docid=id;
+   this.status=status;
+   this.$.readajax.go();
+   }
+    });
+  </script>
+</polymer-element>

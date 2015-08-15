@@ -1,0 +1,48 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="cont-list.html">
+<polymer-element name="cont-service" attributes="pr selflag hflagg">
+   <template  repeat="{{p in properties}}" >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+
+
+     <core-ajax id="ajax1"
+
+	      auto
+	      url="http://hotelapp.iriscouch.com/website/_all_docs?include_docs=true"
+
+	      handleAs="json"
+	      on-core-response="{{productsLoaded1}}"
+	      >
+    </core-ajax>
+
+
+  </template>
+  <script>
+
+  Polymer('cont-service', {
+     ready: function()
+{
+
+},
+created: function() {
+
+this.products = [];
+this.pr=[];
+    },
+    productsLoaded1: function(event,detail) {
+    this.pr = this.$.ajax1.response;
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cont-list').pr=this.pr.rows;
+    },
+    setProductid(prid)
+    {
+   	this.val=JSON.stringify(prid);
+   	//alert(this.val);
+    }
+    });
+  </script>
+</polymer-element>

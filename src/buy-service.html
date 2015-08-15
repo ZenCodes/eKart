@@ -1,0 +1,38 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="temp-list.html">
+<polymer-element name="buy-service" attributes="pr">
+   <template >
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+	      auto
+	      url="http://hotelapp.iriscouch.com/website/{{docid}}"
+	      handleAs="json"
+	      on-core-response="{{itemLoaded}}">
+    </core-ajax>
+    </template>
+    <script>
+ Polymer('buy-service', {
+ ready: function()
+{
+this.docid=sessionStorage.getItem("buydocid");
+this.itemarr=[];
+},
+itemLoaded:function()
+{
+this.itemarr=this.$.ajax.response;
+
+//alert(JSON.stringify(this.itemarr));
+//alert(document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list'));
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list').pr=this.itemarr;
+//alert("value setted!!");
+}
+
+    });
+  </script>
+</polymer-element>
+`

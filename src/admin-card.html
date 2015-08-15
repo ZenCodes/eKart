@@ -1,0 +1,159 @@
+<link rel="import" href="../components/polymer/polymer.html" />
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<link rel="import" href="../components/paper-button/paper-button.html" />
+<link rel="import" href="../components/paper-input/paper-input.html" />
+<polymer-element name="admin-card">
+    <template>
+    <style>
+    :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: rgb(192, 192, 192);
+      }
+      #section {
+        left: 550px;
+        top: 500px;
+        position: absolute;
+      }
+      #core_card {
+        position: absolute;
+        width: 350px;
+        height: 450px;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 500px;
+        top: 50px;
+        background-color: rgb(255, 255, 255);
+      }
+      #paper_button {
+        top: 10px;
+        width: 110px;
+
+         background-color: rgb(242, 172, 77);
+        left: 10px;
+        padding: 5px 10px;
+		   -webkit-border-radius: 8px;
+		   -moz-border-radius: 8px;
+		   border-radius: 8px;
+		   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+		   color: white;
+		   font-size: 14px;
+		   font-family: Georgia, serif;
+		   text-decoration: none;
+   vertical-align: middle;
+      }
+      #paper_button1 {
+		top: 30px;
+	          width: 200px;
+	          left: 8px;
+	          //background-color: rgb(86, 73, 237);
+
+      }
+
+      #paper_input {
+        width: 200px;
+      }
+      #paper_input1 {
+        width: 200px;
+      }
+      #paper_input2 {
+        width: 200px;
+      }
+      #paper_input3 {
+        width: 200px;
+      }
+      #paper_input4 {
+        width: 200px;
+      }
+      #paper_input5 {
+	          width: 200px;
+      }
+      #paper_input6 {
+	          width: 200px;
+      }
+#paper_item1 {
+
+        top: 15px;
+        font-size: 1.2rem;
+		      font-weight: 300;
+      font-family:Times New Roman;
+
+      }
+
+    </style>
+
+    <core-card id="core_card" layout vertical center center-justified>
+         <paper-item id="paper_item1" icon="settings" label="Item">ADMIN</paper-item>
+          <paper-input label="productid" value="{{id}}" id="paper_input1"></paper-input>
+         <paper-input label="productimg" value="{{img}}" id="paper_input2"></paper-input>
+          <paper-input label="productdes" id="paper_input3" value="{{des}}"></paper-input>
+		 <paper-input label="productprice" value="{{price}}" id="paper_input4"></paper-input>
+         <paper-input label="productrootid" id="paper_input5" value="{{rootids}}"></paper-input>
+         <paper-input label="productsno" id="paper_input6" value="{{sno}}"></paper-input>
+         <paper-button id="paper_button" on-click="{{add}}">ADD</paper-button>
+
+    </core-card>
+         <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/website/"
+		   body='{"id":{{adid}},"img1":"{{adimg}}","des":"{{addes}}","price":"{{adprice}}","rootid":"{{adrootid}}","sno":{{adsno}}}'>
+    	 </core-ajax>
+    	 <core-ajax id="readajax"
+		 		      auto="false"
+		 		      url="http://hotelapp.iriscouch.com/website/_design/adminadddesign/_view/adminaddview?key=[{{adid}},{{adsno}}]"
+
+		 		      handleAs="json"
+		 		      on-core-response="{{Loaded}}"
+		      >
+
+    	 </template>
+
+		     <script>
+		         Polymer({
+		             ready:function()
+            {
+                  this.admins=[];
+
+            },
+
+             add:function()
+        {
+
+
+
+
+            this.adid=JSON.stringify(this.id);
+           //alert("hi"+this.adid);
+            this.adimg=this.img;
+            this.addes=this.des;
+			this.adprice=this.price;
+			this.adrootid=this.rootids;
+			this.adsno=JSON.stringify(this.sno);
+  this.$.readajax.go();
+		//	this.$.ajax.go();
+
+        },
+         Loaded:function()
+            {
+this.admins = this.$.readajax.response;
+var arrlen=this.admins.rows.length;
+
+alert(arrlen);
+if(arrlen>0)
+{
+alert("add with someother productid and serialnumber");
+}
+else
+{
+this.$.ajax.go();
+}
+            }
+
+        });
+        </script>
+</polymer-element>
+
+
