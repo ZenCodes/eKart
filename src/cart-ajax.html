@@ -9,7 +9,7 @@
 				   body='{"_id":"{{values}}","_rev":{{header}},"username":"{{uname}}","cartinfo":{{cmtarr}}}'>
      </core-ajax>
      <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/"
-		   body='{"username":"{{uname}}","cartinfo":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodstatus":"{{pstatus}}","prodsno":"{{psno}}","prodqty":"{{pqty}}"}]}'>
+		   body='{"username":"{{uname}}","cartinfo":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodstatus":"{{pstatus}}","prodsno":"{{psno}}","prodqty":"{{pqty}}","subtotal":"{{subtotal}}"}]}'>
      </core-ajax>
 	 <core-ajax id="rajax"
       auto="false"
@@ -60,6 +60,7 @@
 			          {
 
 			          this.cart.cartinfo[i].prodqty=parseInt(this.cart.cartinfo[i].prodqty)+1;
+			          this.cart.cartinfo[i].subtotal=parseInt(this.cart.cartinfo[i].prodprice)*parseInt(this.cart.cartinfo[i].prodqty);
 			          this.cmtarr=JSON.stringify(this.cart.cartinfo);
 			          this.l="1";
 			          break;
@@ -71,7 +72,7 @@
 
 					    localStorage.setItem("cartcount",arr.length);
 						//alert("length: "+arr.length);
-									 var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":""};
+									 var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":"","subtotal":""};
 									 newval.prodid=this.pid;
 									 newval.prodimg=this.pimg;
 									 newval.proddes=this.pdes;
@@ -79,6 +80,8 @@
 									 newval.prodstatus=this.pstatus;
 									 newval.prodsno=this.psno;
 									 newval.prodqty=this.pqty;
+									 newval.subtotal=parseInt(this.pprice)*parseInt(this.pqty);
+									 //alert(parseInt(this.pprice)+" "+this.pqty);
 									 arr.push(newval);
 									 this.cmtarr=JSON.stringify(arr);
 									 }
@@ -92,13 +95,13 @@
             this.values=this.prr.rows[0].value;
             this.$.readajax.go();
             this.$.ajax2.go();
- 			document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
+ 			//document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
             alert("Item Added!!");
             }
             else
             {
 			this.$.ajax.go();
-			document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
+			//document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
 			alert("Item Added!!");
             }
             },
@@ -113,6 +116,7 @@
 			this.psno=this.product.sno;
 			this.uname=this.name;
 			this.pqty="1";
+			this.subtotal=parseInt(this.pprice)*parseInt(this.pqty);
             },
             docValue:function(id,username,status)
             {
