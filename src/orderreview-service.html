@@ -9,7 +9,7 @@
     }
     </style>
     <core-ajax id="ajax"
-	      auto="false"
+	      auto=
 	      url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
@@ -37,11 +37,11 @@ this.pr=[];
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.ajax.response;
-
+//alert(JSON.stringify(this.pr));
     for(var n=0;n<this.pr.rows.length;n++)
     {
    // alert("sum: "+parseInt(this.pr.rows[n].value[3])+"  "+parseInt(this.pr.rows[n].value[6]));
-    this.sum=this.sum+(parseInt(this.pr.rows[n].value[3])*parseInt(this.pr.rows[n].value[6]));
+    this.sum=this.sum+(parseInt(this.pr.rows[n].value[7]));
     //this.sum=this.sum+5000;
     }
 

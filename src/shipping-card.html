@@ -2,6 +2,7 @@
 <link href="../components/core-label/core-label.html" rel="import">
 <link rel="import" href="../components/paper-button/paper-button.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="orderreview-service.html">
 <polymer-element name="shipping-card">
 
   <template>
@@ -204,7 +205,7 @@ background-color:rgb(0, 188, 212);
  <core-ajax auto="false" id="ajax2" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/webregister"
 					   body='{"_id":"{{id}}","_rev":{{header}},"regarr":{{rarr}},"shiparr":{{sarr}},"billarr":{{barr}}}'>
      </core-ajax>
-
+<orderreview-service id="ors"></orderreview-service>
   </template>
 
   <script>
@@ -243,7 +244,7 @@ this.val.shiparr[0].phone=this.phone;
 	        {
 	        this.retarr=this.$.rajax.response;
 	      this.id=this.retarr.rows[0].id;
-	        alert('hi'+JSON.stringify(this.retarr.rows.length));
+	       // alert('hi'+JSON.stringify(this.retarr.rows.length));
 
 			this.name=this.retarr.rows[0].value.name;
 		    this.pin=this.retarr.rows[0].value.pin;
@@ -273,7 +274,8 @@ this.val.shiparr[0].phone=this.phone;
 				   						        localStorage.setItem("nnflag",1);
 				   						        sessionStorage.setItem("shipinfo",JSON.stringify(ship));
 				   						         this.$.ajax.go();
-				   						         document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true);
+				   						        this.$.ors.callfun();
+				   						        document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true);
 
 				   								}
 				   								else
