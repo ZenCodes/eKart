@@ -164,35 +164,36 @@ background-color:rgb(0, 188, 212);
     </style>
 
     <core-card id="core_card" layout vertical>
-    <div layout vertical style="margin-left:200px;">
+    <div layout vertical style="margin-left:150px;">
       <core-label id="sa" >Shipping Address</core-label>
-
-<div id="div" layout  horizontal> <core-label id="cl" >Name</core-label><sup style="color:red;">*</sup></div>
- <input id="input" value="{{name}}"  placeholder="" is="core-input">
-
- <div id="div" layout  horizontal> <core-label id="cl" >Pincode</core-label><sup style="color:red;">*</sup></div>
-  <input id="input1" value="{{pin}}" placeholder="" is="core-input">
+<table>
+<div id="div" layout  horizontal> <tr><td><core-label id="cl" >Name</core-label><sup style="color:red;">* </sup></td><td><input id="input" value="{{name}}"  placeholder="" is="core-input"></td></tr></div>
 
 
- <div id="div" layout  horizontal> <core-label id="cl" >Address</core-label><sup style="color:red;">*</sup></div>
-  <input id="input2" value="{{addr}}" placeholder="" is="core-input">
+ <div id="div" layout  horizontal> <tr><td><core-label id="cl" >Pincode</core-label><sup style="color:red;">*</sup></td><td><input id="input1" value="{{pin}}" placeholder="" is="core-input"></td></tr></div>
 
-    <div id="div" layout  horizontal><core-label id="cl" >Landmark</core-label></div>
-    <input id="input3" value="{{land}}" placeholder="Optional" is="core-input">
 
-      <div id="div" layout  horizontal><core-label id="cl" >City</core-label><sup style="color:red;">*</sup></div>
-      <input id="input4" value="{{city}}" placeholder="" is="core-input">
 
-      <div id="div" layout  horizontal><core-label id="cl" >State</core-label><sup style="color:red;">*</sup></div>
-      <input id="input5" value="{{state}}" placeholder="" is="core-input">
+ <div id="div" layout  horizontal> <tr><td><core-label id="cl" >Address</core-label><sup style="color:red;">* </sup></td><td><input id="input2" value="{{addr}}" placeholder="" is="core-input"></td></tr></div>
 
-    <div id="div" layout  horizontal><core-label id="cl" >Country</core-label><sup style="color:red;">*</sup></div>
-    <input id="input6" value="{{country}}" placeholder="" is="core-input">
 
-  <div id="div" layout  horizontal><core-label id="cl" >Phone</core-label><sup style="color:red;">*</sup></div>
-  <input id="input7" value="{{phone}}" placeholder="" is="core-input">
+    <div id="div" layout  horizontal><tr><td><core-label id="cl" >Landmark</core-label></td><td> <input id="input3" value="{{land}}" placeholder="Optional" is="core-input"></td></tr></div>
 
-   <paper-button id="paper_button" on-click="{{save}}">Save</paper-button>
+
+      <div id="div" layout  horizontal><tr><td><core-label id="cl" >City</core-label><sup style="color:red;">* </sup></td><td><input id="input4" value="{{city}}" placeholder="" is="core-input"></td></tr></div>
+
+
+      <div id="div" layout  horizontal><tr><td><core-label id="cl" >State</core-label><sup style="color:red;">*</sup> </td><td><input id="input5" value="{{state}}" placeholder="" is="core-input"></td></tr></div>
+
+
+    <div id="div" layout  horizontal><tr><td><core-label id="cl" >Country</core-label><sup style="color:red;">*</sup>  </td><td> <input id="input6" value="{{country}}" placeholder="" is="core-input"></td></tr></div>
+
+
+  <div id="div" layout  horizontal><tr><td><core-label id="cl" >Phone</core-label><sup style="color:red;">*</sup> </td><td> <input id="input7" value="{{phone}}" placeholder="" is="core-input"></td></tr></div>
+
+
+   <tr><td colspan="2"><paper-button id="paper_button" on-click="{{save}}" style="margin-left:60px;">Save</paper-button></td></tr>
+   </table>
 </div>
     </core-card>
     <core-ajax id="rajax" auto="false" handleAs="json"
