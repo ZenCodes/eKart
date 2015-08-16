@@ -1,0 +1,133 @@
+<link rel="import" href="../components/polymer/polymer.html" />
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<link rel="import" href="../components/paper-button/paper-button.html" />
+<link rel="import" href="../components/paper-input/paper-input.html" />
+<polymer-element name="sms-subs">
+    <template>
+    <style>
+
+
+       :host {
+	          position: absolute;
+	          width: 100%;
+	          height: 100%;
+	          box-sizing: border-box;
+	        }
+	        #core_card {
+	          position: absolute;
+	          width: 400px;
+	          height: 250px;
+	          border-radius: 2px;
+	          box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+	          left: 400px;
+	          top: 150px;
+	          background-color:rgb(240,240,240) ;
+	        }
+	       #input {
+	  	            border-radius: 2px;
+	  	 		     border: 1px solid #E0E0E0;
+	  	 		     width: 250px;
+	  	             left:30px;
+	  	         position: absolute;
+	  	         box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+	  	         height:30px;
+	  	         background-color: white;
+	  	         top:70px;
+	            }
+
+	             #input1 {
+	  		  		  	            border-radius: 2px;
+	  		  		  	 		     border: 1px solid #E0E0E0;
+	  		  		  	 		     width: 250px;
+	  		  		  	             left:30px;
+	  		  		  	         position: absolute;
+	  		  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+	  		  		  	         height:30px;
+	  		  		  	         background-color: white;
+	  		  		  	         top:150px;
+
+	            }
+
+           #reg
+		        {
+		         position:absolute;
+		        font-size : 20px;
+		        font-family:Times New Roman;
+		        text-align:center;
+		        top:10px;
+		        left:20px;
+
+      }
+       #div
+	            {
+	             padding:20px;
+          }
+          #paper_button {
+		             background-color: rgb(0, 188, 212);
+		             position:absolute;
+		  		   		          left:100px;
+		  		   				  			top:200px;
+		  		   				          width: 140px;
+
+		  		   			padding: 5px 10px;
+		  		   				  			   -webkit-border-radius: 4px;
+		  		   				  			   -moz-border-radius: 4px;
+		  		   				  			   border-radius: 4px;
+		  		   				  			   -webkit-box-shadow: rgba(0,0,0,0) 0 1px 0;
+		  		   				  			   -moz-box-shadow: rgba(0,0,0,0) 0 1px 0;
+		  		   				  			   box-shadow: rgba(0,0,0,0) 0 1px 0;
+		  		   				  			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+		  		   				  			   color: white;
+		  		   				  			   font-size: 13px;
+		  		   				  			   font-family: Georgia, serif;
+		  		   				  			   text-decoration: none;
+		  		      vertical-align: middle;
+		  		   		           height:35px;
+
+		  		            border: 1px solid #706D6C;
+
+
+
+
+
+      }
+      #cl
+      {
+      position:absolute;
+      top:40px;
+      left: 30px;
+      }
+        #c2
+	        {
+	        position:absolute;
+	        top:120px;
+	        left: 30px;
+      }
+
+    </style>
+
+   <core-card id="core_card" layout vertical>
+    <core-label id="reg" ></core-label><br>
+         <div id="div" layout  horizontal>
+         <core-label id="cl" >Your Name is</core-label><br>
+		  <input id="input" value="" label="" placeholder="Name" is="core-input">
+        </div>
+        <div id="div" layout  horizontal>
+		  <core-label id="c2" >Your Number is</core-label><br>
+		  <input id="input1" value="" label="" placeholder="Mobile Number" is="core-input">
+  </div>
+
+
+         <paper-button id="paper_button" on-click="{{save}}">SMS Subscribe</paper-button>
+        <!-- <paper-button id="paper_button">SMS Subscribe</paper-button>-->
+    </core-card>
+    </template>
+
+    <script>
+        Polymer({
+
+
+        });
+
+    </script>
+</polymer-element>

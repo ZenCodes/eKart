@@ -15,12 +15,12 @@
 <style>
 #card{
 position: absolute;
-        width: 550px;
-        height: 350px;
+        width: 500px;
+        height: 300px;
         //border-radius: 2px;
         //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-        left: 330px;
-        top: 170px;
+        left: 200px;
+        top: 110px;
         background-color: rgb(255, 255, 255);
 
 }
@@ -44,24 +44,46 @@ tr{
 #top{
 
 }
+#payment
+{
+position:absolute;
+top:280px;
+left:140px;
+height:40px;
+width:200px;
+background-color:rgb(0, 188, 212);
+     padding: 5px 10px;
+     -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+     border-radius: 8px;
+     -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+     -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+     box-shadow: rgba(0,0,0,1) 0 1px 0;
+     text-shadow: rgba(0,0,0,.4) 0 1px 0;
+     color: white;
+     font-size: 14px;
+     font-family: Georgia, serif;
+     text-decoration: none;
+   vertical-align: middle;
+}
 </style>
   <div layout vertical id="card">
 
   <div layout horizontal id="top" style="border-bottom: 4px solid #F0F0F0 ;">
-  <p style="margin-left: 0px;color:#989898 ; ">Pay using Net Banking</p>
-  <p style="margin-left: 150px;color:#989898 ; ">You pay: Rs 20000 /-</p>
+  <p style="margin-left: 0px;color:#686868  ; ">Pay using Net Banking</p>
+  <p style="margin-left: 120px;color:#686868  ; ">You pay: Rs 20000 /-</p>
   </div>
-  <div style="margin-top: 10px;width:550px;background-color: #E8E8E8 ;"><p style="height:25px;font-family:'Ek Mukta';font-size: 14px;">Additional cashback Rs 100 caskback purchases above Rs 500 using credit / ,debit cards on some day,,T & C</p></div>
+  <div style="margin-top: 10px;width:500px;background-color: #E8E8E8 ;"><p style="height:25px;font-family:'Ek Mukta';font-size: 14px;">Additional cashback Rs 100 caskback purchases above Rs 500 using credit / ,debit cards on some day,,T & C</p></div>
   <div layout horizontal style="margin-top:40px;">
-  <div style="margin-top:10px;color:#989898 ;">Select Bank</div>
-<div style="margin-left:50px;"><paper-radio-group selected="1"layout horizontal >
-  <paper-radio-button name="1" label=""></paper-radio-button><img src="icici.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
-  <paper-radio-button name="2" label="" on-click="{{Ecart}}"></paper-radio-button><img src="axis.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
-  <paper-radio-button name="3" label="" on-click="{{Ecart}}"></paper-radio-button><img src="hdfc.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
+  <div style="margin-top:10px;color:#686868  ;">Select Bank</div>
+<div style="margin-left:50px;"><paper-radio-group selected="1" layout horizontal >
+  <paper-radio-button name="1" label=""></paper-radio-button><img src="../res/icici.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
+  <paper-radio-button name="2" label="" on-click="{{Ecart}}"></paper-radio-button><img src="../res/axis.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
+  <paper-radio-button name="3" label="" on-click="{{Ecart}}"></paper-radio-button><img src="../res/hdfc.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
 </paper-radio-group></div>
 </div>
 <div layout horizontal>
-  <div style="margin-top:25px;color:#989898 ;">Other Banks</div>
+  <div style="margin-top:25px;color:#686868  ;">Other Banks</div>
    <div style="margin-left:50px;"><paper-dropdown-menu label="-------------Select Bank------------" style="width:250px;">
           <paper-dropdown class="dropdown" style="width:250px;">
             <core-menu class="menu" style="width:250px;">

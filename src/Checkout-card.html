@@ -15,14 +15,15 @@
  <link href="login-card.html" rel="import">
   <link href="orderreview-list.html" rel="import">
   <link href="buyorderreview-list.html" rel="import">
+  <link href="payment-card.html" rel="import">
 <polymer-element name="Checkout-card">
 <template>
 <style>
 #core_card
 {
-position: absolute;
-        width: 650px;
-        height: 50px;
+		position: absolute;
+        width: 720px;
+        height: 40px;
         border-radius: 2px;
         box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
         left: 200px;
@@ -56,7 +57,7 @@ background-color:#FF9933;
 <img src="../res/chevron-right.png" width="20px" height="45px" >
 <paper-button id="orderreview" Label="Order Review" on-click="{{order}}">Order Review</paper-button>
 <img src="../res/chevron-right.png" width="20px" height="45px" >
-<paper-button id="payment" Label="Payment">Payment</paper-button>
+<paper-button id="payment" Label="Payment" on-click="{{payment}}">Payment</paper-button>
 </div>
 
 <div hidden?="{{isHidden1}}"><email-card></email-card></div>
@@ -64,6 +65,7 @@ background-color:#FF9933;
 <div hidden?="{{isHidden3}}"><orderreview-list></orderreview-list></div>
 <div hidden?="{{isHidden4}}"  id="lc"><login-card id="login"></login-card></div>
 <div hidden?="{{isHidden5}}"><buyorderreview-list></buyorderreview-list></div>
+<div hidden?="{{isHidden6}}"><payment-card></payment-card></div>
 
 </core-card>
 
@@ -71,7 +73,18 @@ background-color:#FF9933;
 
   <script>
     Polymer({
+    ready:function(){
 
+    this.isHidden6=true;
+    },
+payment:function(){
+this.isHidden1=true;
+		this.isHidden2=true;
+		  this.isHidden3=true;
+		   this.isHidden4=true;
+this.isHidden5=true;
+this.isHidden6=false;
+},
     hiddenvalue:function(h1,h2,h3,h4,h5)
     {
      this.isHidden1=h1;

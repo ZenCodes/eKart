@@ -11,16 +11,18 @@
   <link href="../components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
   <link href="../components/core-label/core-label.html" rel="import">
   <link href="netbanking-card.html" rel="import">
+  <link href="credit-card.html" rel="import">
+  <link href="debit-card.html" rel="import">
 <polymer-element name="payment-card">
 <template id="payment-card">
 <style>
 #card{
 height: 500px;
-width: 800px;
+width: 720px;
 border-radius: 2px;
 box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-margin-left:100px;
-margin-top:100px;
+margin-left:0px;
+margin-top:0px;
 font-family:'Ek Mukta';
 }
 paper-button{
@@ -49,27 +51,54 @@ text-transform: none;
 }
 </style>
 <div layout vertical id="card">
-<div layout vertical ><p style="font-size:25px;font-family:Ek Mukta;font-weight:15px;margin-bottom: -15px;">Make Payment</p>
-<p style="font-family:'Ek Mukta';font-size:16px;color:black ;">We have a host of paymet options to select from</p></div>
+<div layout vertical ><p style="font-size:20px;font-family:Ek Mukta;font-weight:10px;margin-bottom: -15px;">Make Payment</p>
+<p style="font-family:'Ek Mukta';font-size:16px;color: #686868;">We have a host of paymet options to select from</p></div>
 <div layout horizontal>
 <div layout vertical style="height:380px;background-color: lightgrey;width:160px;">
-<div class="arrow_box" style="width:160px;"><paper-button label="" id="p1" style="margin-left:40px;color:#989898 ;">Credit Card</paper-button></div>
-<paper-button label="" id="" style="margin-left:40px;color:black ;">Debit Card</paper-button>
-<paper-button label="" id="" style="margin-left:40px;color:black ;">Net Banking</paper-button>
+<div style="width:160px;"><paper-button label="" id="p1" style="margin-left:40px;color:black ;" on-click="{{credit}}">Credit Card</paper-button></div>
+<paper-button label="" id="" style="margin-left:40px;color:black ;" on-click="{{debit}}">Debit Card</paper-button>
+<paper-button label="" id="" style="margin-left:40px;color:black ;" on-click="{{netbank}}">Net Banking</paper-button>
 <paper-button label="" id="" style="margin-left:5px;color:black ;">Cash On Delivery</paper-button>
 <paper-button label="" id="" style="margin-left:10px;color:black ;">Credit Card EMI</paper-button>
 <paper-button label="" id="" style="margin-left:15px;color:black ;">e-Gift Voucher</paper-button>
 </div>
 <div>
-<div idHidden?="{{h1}}"><netbanking-card></netbanking-card></div>
 
+<div hidden?="{{h1}}"><credit-card></credit-card></div>
+<div hidden?="{{h2}}"><debit-card></debit-card></div>
+<div hidden?="{{h3}}"><netbanking-card></netbanking-card></div>
 </div>
 </div>
 </div>
 </template>
 
 <script>
-Polymer({});
+Polymer({
+ready:function(){
+this.h1=false;
+this.h2=true;
+this.h3=true;
+},
+credit:function()
+{
+//alert("credit");
+this.h1=false;
+this.h2=true;
+this.h3=true;
+},
+debit:function(){
+this.h1=true;
+this.h2=false;
+this.h3=true;
+},
+netbank:function()
+{
+//alert("netbank");
+this.h1=true;
+this.h2=true;
+this.h3=false;
+}
+});
 
 </script>
 </polymer-element>
