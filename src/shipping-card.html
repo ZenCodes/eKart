@@ -3,6 +3,7 @@
 <link rel="import" href="../components/paper-button/paper-button.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="orderreview-service.html">
+<link rel="import" href="buy-service.html">
 <polymer-element name="shipping-card">
 
   <template>
@@ -206,6 +207,7 @@ background-color:rgb(0, 188, 212);
 					   body='{"_id":"{{id}}","_rev":{{header}},"regarr":{{rarr}},"shiparr":{{sarr}},"billarr":{{barr}}}'>
      </core-ajax>
 <orderreview-service id="ors"></orderreview-service>
+<buy-service id="brs"></buy-service>
   </template>
 
   <script>
@@ -276,8 +278,18 @@ this.val.shiparr[0].phone=this.phone;
 				   						        localStorage.setItem("nnflag",1);
 				   						        sessionStorage.setItem("shipinfo",JSON.stringify(ship));
 				   						         this.$.ajax.go();
-				   						        this.$.ors.callfun();
+				   						         if(sessionStorage.getItem("buyflag")=="true")
+	                                             {
+	                                             sessionStorage.setItem("buyflag"," ");
+                                                 this.$.brs.buyfun();
 
+	                                             }
+	                                             else
+	                                             {
+	                                              document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true,true);
+
+				   						        this.$.ors.callfun();
+                                                  }
 
 				   								}
 				   								else

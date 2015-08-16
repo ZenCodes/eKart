@@ -107,14 +107,8 @@ buy:function(e)
 //alert("hi");
 sessionStorage.setItem("buyflag","true");
 sessionStorage.setItem("buydocid",e.target.id);
-if(localStorage.getItem("nam")==""||localStorage.getItem("nam")==null)
-{
-window.location.href="index1.html";
-}
-else
-{
-window.location.href="sample.html";
-}
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true);
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(false,true,true,true,true);
 //this.$.bs.setDocid(e.target.id);
 }
     });
