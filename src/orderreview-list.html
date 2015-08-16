@@ -8,7 +8,7 @@
   #core_card2 {
   	        position: absolute;
   	        width: 650px;
-  	        height: 450px;
+
   	        border-radius: 2px;
   	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
   	        left: 0px;
@@ -16,27 +16,79 @@
   	        background-color: rgb(255, 255, 255);
 
   	      }
+  	       tr
+		    	      {
+		  bottom-border-style:1px solid black;
+		    	      }
+		    	      td
+		  		    	      {
+
+		  		   border-bottom:1px solid black;
+		    	      }
+		    	      h5
+		    	      {
+		    	      padding-right: 70px;
+		    	      padding-left: 30px;
+		    	      }
+		    	      h6
+		    	      {
+		    	      width:60px;
+		    	      padding-left: 30px;
+		    	      padding-right: 40px;
+		    	      text-align:left;
+		    	      }
+		                #list
+		                {
+		                width:650px;
+              }
+              #des
+              {
+              width:150px;
+              }
+              #sp
+              {
+              padding-right:200px;
+              }
+
+              #id1
+              {
+               border-bottom:1px solid black;
+              }
+
 
 
   </style>
 <orderreview-service pr="{{pr}}"></orderreview-service>
-
- <core-card id="core_card2"   class="core_carqd2">
-<h2 style="text-align:center;">Order summary</h2>
+<table>
+ <div id="core_card2"   class="core_card2">
+ <div vertical layout>
+ <div id="id1" horizontal layout>
+<h5 id="sp" style="text-align:center;">ITEM</h5>
+<h5 style="text-align:center;">QTY</h5>
+<h5 style="text-align:center;">PRICE</h5>
+<h5 style="text-align:center;">SUB TOTAL</h5>
+</div>
  <template id="view-list" repeat="{{product in pr}}">
 
-<div horizontal layout>
-
-<h6 style="width: 300px;margin-left:150px;">{{product.value[2]}}</h6>
-<h5 style="width: 100px;margin-left:50px;">{{product.value[6]}}&nbsp;&nbsp;&nbsp;Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[7]}}</h5>
-
+<tr>
+<td>
+<div  id="list" horizontal layout>
+<img id="bor" src="{{product.value[1]}}" width="100" height="100">
+<h6 id="des">{{product.value[2]}}</h6>
+<h6>{{product.value[6]}}</h6>
+<h6><sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[3]}}</h6>
+<h6><sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[7]}}</h6>
 </div>
+</td>
+</tr>
 </div>
+
 
 </template>
-<h4 style="margin-left:490px;">Total - {{totamt}}</h4>
+<h4 style="margin-left:490px;">Total - <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{totamt}}</h4>
 <div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
-</core-card>
+</table>
+</div>>
 
 <core-ajax id="rajax" auto="false" handleAs="json"
 contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"

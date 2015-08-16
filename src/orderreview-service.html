@@ -21,21 +21,14 @@
 {
 var uname=localStorage.getItem("nam");
 this.name=JSON.stringify(localStorage.getItem("nam"));
-if(uname==null||uname=="")
-{
-//alert("no"+uname);
-}
-else
-{
-this.$.ajax.go();
-
-}
 },
 created: function() {
 this.pr=[];
-    this.sum=0;
+
     },
-    productsLoaded: function(event,detail) {
+    productsLoaded: function(event,detail)
+    {
+     this.sum=0;
     this.pr = this.$.ajax.response;
 //alert(JSON.stringify(this.pr));
     for(var n=0;n<this.pr.rows.length;n++)
