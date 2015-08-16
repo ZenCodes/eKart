@@ -71,51 +71,7 @@ background-color:#FF9933;
 
   <script>
     Polymer({
-    ready:function()
-    {
-this.isHidden1=false;
-this.isHidden2=true;
-this.isHidden3=true;
-this.isHidden4=true;
-this.isHidden5=true;
-    }
-    ,
-    email:function()
-    {
-this.isHidden1=false;
-this.isHidden2=true;
-this.isHidden3=true;
-this.isHidden4=true;
-    },
-    shipping:function()
-    {
-   this.isHidden1=true;
-   this.isHidden2=false;
-   this.isHidden3=true;
-   this.isHidden4=true;
-    },
-     order:function()
-	 {
-	 //alert("hi!"+sessionStorage.getItem("buyflag"));
-	 if(sessionStorage.getItem("buyflag")=="true")
-	 {
-	 //alert("yes");
-	  this.isHidden1=true;
-	  this.isHidden2=true;
-	  this.isHidden3=true;
-	  this.isHidden5=false;
-	  this.isHidden4=true;
-	 }
 
-	else{
-	//alert("no");
-       this.isHidden1=true;
-	   this.isHidden2=true;
-	   this.isHidden3=false;
-	   this.isHidden4=true;
-	   this.isHidden5=true;
-        }
-    },
     hiddenvalue:function(h1,h2,h3,h4,h5)
     {
      this.isHidden1=h1;

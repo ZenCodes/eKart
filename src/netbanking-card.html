@@ -1,0 +1,87 @@
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link href="../components/paper-button/paper-button.html" rel="import">
+  <script src="../components/webcomponentsjs/webcomponents.js"></script>
+
+  <link href="../components/core-collapse/core-collapse.html" rel="import">
+  <link href="../components/core-menu/core-menu.html" rel="import">
+  <link href="../components/paper-dropdown/paper-dropdown.html" rel="import">
+  <link href="../components/paper-item/paper-item.html" rel="import">
+<link rel="import" href="../components/paper-radio-group/paper-radio-group.html">
+  <link href="../components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
+  <link href="../components/core-label/core-label.html" rel="import">
+<polymer-element name="netbanking-card">
+<template id="netbanking-card">
+<style>
+#card{
+position: absolute;
+        width: 550px;
+        height: 350px;
+        //border-radius: 2px;
+        //box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 330px;
+        top: 170px;
+        background-color: rgb(255, 255, 255);
+
+}
+
+p{
+font-size:20px;
+font-family:'Ek Mukta';
+}
+div{
+font-family:'Ek Mukta';
+}
+#payment{
+margin-top:20px;
+font-family:'Ek Mukta';
+ font-size: 13px;
+		  background-color:rgb(0, 188, 212);
+}
+tr{
+ bottom-border-style:1px solid black;
+}
+#top{
+
+}
+</style>
+  <div layout vertical id="card">
+
+  <div layout horizontal id="top" style="border-bottom: 4px solid #F0F0F0 ;">
+  <p style="margin-left: 0px;color:#989898 ; ">Pay using Net Banking</p>
+  <p style="margin-left: 150px;color:#989898 ; ">You pay: Rs 20000 /-</p>
+  </div>
+  <div style="margin-top: 10px;width:550px;background-color: #E8E8E8 ;"><p style="height:25px;font-family:'Ek Mukta';font-size: 14px;">Additional cashback Rs 100 caskback purchases above Rs 500 using credit / ,debit cards on some day,,T & C</p></div>
+  <div layout horizontal style="margin-top:40px;">
+  <div style="margin-top:10px;color:#989898 ;">Select Bank</div>
+<div style="margin-left:50px;"><paper-radio-group selected="1"layout horizontal >
+  <paper-radio-button name="1" label=""></paper-radio-button><img src="icici.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
+  <paper-radio-button name="2" label="" on-click="{{Ecart}}"></paper-radio-button><img src="axis.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
+  <paper-radio-button name="3" label="" on-click="{{Ecart}}"></paper-radio-button><img src="hdfc.jpg" height="40px" width="60px" style="margin-top: -10px;"/>
+</paper-radio-group></div>
+</div>
+<div layout horizontal>
+  <div style="margin-top:25px;color:#989898 ;">Other Banks</div>
+   <div style="margin-left:50px;"><paper-dropdown-menu label="-------------Select Bank------------" style="width:250px;">
+          <paper-dropdown class="dropdown" style="width:250px;">
+            <core-menu class="menu" style="width:250px;">
+
+                <paper-item>one</paper-item>
+                <paper-item>two</paper-item>
+
+            </core-menu>
+          </paper-dropdown>
+      </paper-dropdown-menu></div>
+
+  </div>
+ <div style="margin-left:200px;"> <paper-button id="payment" label="Make payment">Make Payment</paper-button></div>
+
+  </div>
+
+</template>
+
+<script>
+Polymer({});
+
+</script>
+</polymer-element>

@@ -1,0 +1,75 @@
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link href="../components/paper-button/paper-button.html" rel="import">
+  <script src="../components/webcomponentsjs/webcomponents.js"></script>
+
+  <link href="../components/core-collapse/core-collapse.html" rel="import">
+  <link href="../components/core-menu/core-menu.html" rel="import">
+  <link href="../components/paper-dropdown/paper-dropdown.html" rel="import">
+  <link href="../components/paper-item/paper-item.html" rel="import">
+<link rel="import" href="../components/paper-radio-group/paper-radio-group.html">
+  <link href="../components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
+  <link href="../components/core-label/core-label.html" rel="import">
+  <link href="netbanking-card.html" rel="import">
+<polymer-element name="payment-card">
+<template id="payment-card">
+<style>
+#card{
+height: 500px;
+width: 800px;
+border-radius: 2px;
+box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+margin-left:100px;
+margin-top:100px;
+font-family:'Ek Mukta';
+}
+paper-button{
+font-size:17px;
+//font-family:'Ek Mukta';
+text-transform: none;
+
+}
+.arrow_box {
+	position: relative;
+	background: #989898;
+}
+.arrow_box:after {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-left-color: #989898;
+	border-width: 30px;
+	margin-top: -30px;
+}
+</style>
+<div layout vertical id="card">
+<div layout vertical ><p style="font-size:25px;font-family:Ek Mukta;font-weight:15px;margin-bottom: -15px;">Make Payment</p>
+<p style="font-family:'Ek Mukta';font-size:16px;color:#989898 ;">We have a host of paymet options to select from</p></div>
+<div layout horizontal>
+<div layout vertical style="height:380px;background-color: lightgrey;width:160px;">
+<div class="arrow_box" style="width:160px;"><paper-button label="" id="p1" style="margin-left:40px;color:#989898 ;">Credit Card</paper-button></div>
+<paper-button label="" id="" style="margin-left:40px;color:#989898 ;">Debit Card</paper-button>
+<paper-button label="" id="" style="margin-left:40px;color:#989898 ;">Net Banking</paper-button>
+<paper-button label="" id="" style="margin-left:5px;color:#989898 ;">Cash On Delivery</paper-button>
+<paper-button label="" id="" style="margin-left:10px;color:#989898 ;">Credit Card EMI</paper-button>
+<paper-button label="" id="" style="margin-left:15px;color:#989898 ;">e-Gift Voucher</paper-button>
+</div>
+<div>
+<div idHidden?="{{h1}}"><netbanking-card></netbanking-card></div>
+
+</div>
+</div>
+</div>
+</template>
+
+<script>
+Polymer({});
+
+</script>
+</polymer-element>
