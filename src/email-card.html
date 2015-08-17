@@ -145,7 +145,10 @@ background-color:#FF9933;
     var name=localStorage.getItem("nam");
     //alert("user: "+name);
     if(name==null||name=="")
+    {
+    sessionStorage.setItem("info","1");
      document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,false,true,true);
+    }
     else
     {
     //alert("user already logged in");

@@ -36,8 +36,19 @@
 	  	      //alert("true");
 	  	      //localStorage.setItem("flag",true);
 	  	      localStorage.setItem("nam",na);
+	  	      if(sessionStorage.getItem("info")=="1")
+	  	      {
+	  	      sessionStorage.setItem("info"," ");
+	  	      document.querySelector('inx-element').Toggle();
+	  	      document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('shipping-card').setValues();
+			  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,false,true,true,true,true);
+
+	  	      }
+	  	      else
+	  	      {
 	  	      document.querySelector('inx-element').Toggle();
            window.location.href = "../eKart/index.html";
+           }
            }
            }
 	  	       else
