@@ -49,12 +49,19 @@ this.val="";
  },
  search:function()
  {
+ //alert("hi");
  this.val=this.searchval;
  this.$.ajax.go();
  //alert(this.val);
  },
  searchItems:function()
  {
+ alert(this.waste.length);
+ for(var m=0;m<this.waste.length;m++)
+ {
+ this.waste.pop();
+ }
+ alert(JSON.stringify(this.waste));
 this.arr=this.$.ajax.response;
 //alert(JSON.stringify(this.arr.rows));
 for(var n=0;n<this.arr.rows.length;n++)
@@ -105,10 +112,13 @@ else{
 //alert(JSON.stringify(this.waste));
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('search-list').pr=this.waste;
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('search-list').reload;
+ //this.setVal();
  },
- setVal:function(inval)
+ setVal:function()
  {
-// alert(inval);
+ //this.$.ajax.go();
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
  }
     });
   </script>
