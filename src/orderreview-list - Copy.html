@@ -142,13 +142,12 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
   },
    placeorder:function()
   {
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
-   /* this.name=JSON.stringify(localStorage.getItem("nam"));
+    this.name=JSON.stringify(localStorage.getItem("nam"));
     var shipinfo=sessionStorage.getItem("shipinfo");
     var shipval=JSON.parse(shipinfo);
     this.addrarr.push(shipval);
     this.address=JSON.stringify(this.addrarr);
-    this.$.rajax.go();*/
+    this.$.rajax.go();
 
   },
   itemLoaded:function()
@@ -178,9 +177,6 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
   },
   setTotal:function(sum)
   {
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('credit-card').setAmount(sum);
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('debit-card').setAmount(sum);
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('netbanking-card').setAmount(sum);
   this.totamt=sum;
   }
   });

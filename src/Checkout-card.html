@@ -75,7 +75,7 @@ background-color:#FF9933;
     Polymer({
     ready:function(){
 
-    this.isHidden6=true;
+//    this.isHidden6=true;
     },
 payment:function(){
 this.isHidden1=true;
@@ -85,13 +85,17 @@ this.isHidden1=true;
 this.isHidden5=true;
 this.isHidden6=false;
 },
-    hiddenvalue:function(h1,h2,h3,h4,h5)
+    hiddenvalue:function(h1,h2,h3,h4,h5,h6)
     {
      this.isHidden1=h1;
 	this.isHidden2=h2;
 	  this.isHidden3=h3;
 	   this.isHidden4=h4;
 this.isHidden5=h5;
+this.isHidden6=h6;
+    },
+    hidepayment:function(h6){
+    this.isHidden6=h6;
     }
     });
   </script>
