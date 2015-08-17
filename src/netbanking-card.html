@@ -71,7 +71,7 @@ background-color:rgb(0, 188, 212);
 
   <div layout horizontal id="top" style="border-bottom: 4px solid #F0F0F0 ;">
   <p style="margin-left: 0px;color:#686868  ; ">Pay using Net Banking</p>
-  <p style="margin-left: 120px;color:#686868  ; ">You pay: Rs 20000 /-</p>
+  <p style="margin-left: 120px;color:#686868  ; ">You pay: Rs {{amt}} /-</p>
   </div>
   <div style="margin-top: 10px;width:500px;background-color: #E8E8E8 ;"><p style="height:25px;font-family:'Ek Mukta';font-size: 14px;">Additional cashback Rs 100 caskback purchases above Rs 500 using credit / ,debit cards on some day,,T & C</p></div>
   <div layout horizontal style="margin-top:40px;">
@@ -103,7 +103,11 @@ background-color:rgb(0, 188, 212);
 </template>
 
 <script>
-Polymer({});
+Polymer({
+setAmount:function(amt){
+this.amt=amt;
+}
+});
 
 </script>
 </polymer-element>

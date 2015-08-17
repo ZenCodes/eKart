@@ -161,7 +161,7 @@ position:absolute;
 top:300px;
 left:260px;
 }
-#reg{
+#reg,#pay{
 color:#686868   ;
 font-family:'Ek Mukta';
  font-size: 20px;
@@ -172,7 +172,7 @@ font-family:'Ek Mukta';
 
     <core-card id="core_card" layout vertical>
     <div style="border-bottom:4px solid #F0F0F0; font-size:15px; top:10px; padding-bottom:10px;">
-	    <core-label id="reg" >Pay Using Debit Card</core-label></div>
+	    <core-label id="reg" >Pay Using Debit Card</core-label><core-label id="pay" style="margin-left:100px;">You Pay: Rs {{amt}}/-</core-label></div>
 	   <div> <paper-radio-group selected="Medium" valueattr="label" selectedindex="1" id="paper_radio_group" style="margin-top:-30px; ">
 		      <table cellpadding="5px"><tr><td>  <paper-radio-button label="" id="paper_radio_button1" style="margin-top:20px;"></paper-radio-button></td><td><img src="../res/visa.png" height="40px" width="60px" style="margin-top:20px;"/></td>
          		        <td><paper-radio-button checked label="" id="paper_radio_button2" style="margin-top:20px;"></paper-radio-button></td><td><img src="../res/mastercard.jpg" height="45px" width="65px" style="margin-top:20px;"/></td>
@@ -213,7 +213,9 @@ font-family:'Ek Mukta';
   <script>
 
     Polymer({
-
+setAmount:function(amt){
+this.amt=amt;
+}
     });
 
   </script>
