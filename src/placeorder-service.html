@@ -2,7 +2,7 @@
 <link rel="import" href="orderreview-service.html">
 <link rel="import" href="view-card.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html" />
-<polymer-element name="orderreview-list" attributes="show">
+<polymer-element name="placeorder-service" attributes="show">
   <template>
   <style>
   #core_card2 {
@@ -14,82 +14,9 @@
   	        left: 0px;
   	        top: 50px;
   	        background-color: rgb(255, 255, 255);
-
-  	      }
-  	       tr
-		    	      {
-		  bottom-border-style:1px solid black;
-		    	      }
-		    	      td
-		  		    	      {
-
-		  		   border-bottom:1px solid black;
-		    	      }
-		    	      h5
-		    	      {
-		    	      padding-right: 70px;
-		    	      padding-left: 30px;
-		    	      }
-		    	      h6
-		    	      {
-		    	      width:60px;
-		    	      padding-left: 30px;
-		    	      padding-right: 40px;
-		    	      text-align:left;
-		    	      }
-		                #list
-		                {
-		                width:650px;
-              }
-              #des
-              {
-              width:150px;
-              }
-              #sp
-              {
-              padding-right:200px;
-              }
-
-              #id1
-              {
-               border-bottom:1px solid black;
-              }
-
-
+}
 
   </style>
-<orderreview-service pr="{{pr}}"></orderreview-service>
-<table>
- <div id="core_card2"   class="core_card2">
- <div vertical layout>
- <div id="id1" horizontal layout>
-<h5 id="sp" style="text-align:center;">ITEM</h5>
-<h5 style="text-align:center;">QTY</h5>
-<h5 style="text-align:center;">PRICE</h5>
-<h5 style="text-align:center;">SUB TOTAL</h5>
-</div>
- <template id="view-list" repeat="{{product in pr}}">
-
-<tr>
-<td>
-<div  id="list" horizontal layout>
-<img id="bor" src="{{product.value[1]}}" width="100" height="100">
-<h6 id="des">{{product.value[2]}}</h6>
-<h6>{{product.value[6]}}</h6>
-<h6><sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[3]}}</h6>
-<h6><sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[7]}}</h6>
-</div>
-</td>
-</tr>
-</div>
-
-
-</template>
-<h4 style="margin-left:490px;">Total - <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{totamt}}</h4>
-<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
-</table>
-</div>>
-
 <core-ajax id="rajax" auto="false" handleAs="json"
 contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
 on-core-response="{{itemLoaded}}">
@@ -140,15 +67,16 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
     this.$.owajax.go();
     //alert(this.orderno);
   },
-   placeorder:function()
+   placeorder:function(totamt)
   {
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
-    /* this.name=JSON.stringify(localStorage.getItem("nam"));
+  //alert("hello"+totamt);
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
+    this.name=JSON.stringify(localStorage.getItem("nam"));
     var shipinfo=sessionStorage.getItem("shipinfo");
     var shipval=JSON.parse(shipinfo);
     this.addrarr.push(shipval);
     this.address=JSON.stringify(this.addrarr);
-    this.$.rajax.go();*/
+    this.$.rajax.go();
 
   },
   itemLoaded:function()
@@ -175,13 +103,6 @@ contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{do
     this.$.wajax.go();
     //window.location.href='successindex.html';
 
-  },
-  setTotal:function(sum)
-  {
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('credit-card').setAmount(sum);
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('debit-card').setAmount(sum);
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('netbanking-card').setAmount(sum);
-  this.totamt=sum;
   }
   });
   </script>

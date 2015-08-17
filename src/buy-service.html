@@ -19,7 +19,7 @@
  Polymer('buy-service', {
  ready: function()
 {
-localStorage.setItem("buyprice",0);
+sessionStorage.setItem("buyprice",0);
 this.itemarr=[];
 },
 itemLoaded:function()
@@ -27,7 +27,7 @@ itemLoaded:function()
 this.itemarr=this.$.ajax.response;
 
 //alert(JSON.stringify(this.itemarr));
-localStorage.setItem("buyprice",parseInt(this.itemarr.price));
+sessionStorage.setItem("buyprice",parseInt(this.itemarr.price));
 //alert(document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list'));
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list').pr=this.itemarr;
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list').reload;

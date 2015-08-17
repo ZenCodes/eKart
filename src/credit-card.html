@@ -214,11 +214,27 @@ font-family:'Ek Mukta';
   <script>
 
     Polymer({
+    ready:function(){
+    this.totamt=0;
+    },
 setAmount:function(amt){
 this.amt=amt;
+this.totamt=amt;
 },
 payment:function(){
-alert("pay");
+
+if(sessionStorage.getItem("buyplaceorder")==1)
+{
+//alert("buy");
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('buyplaceorder-service').placeorder(this.totamt);
+}
+
+else
+{
+//alert("normal");
+
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('placeorder-service').placeorder(this.totamt);
+}
 }
     });
 

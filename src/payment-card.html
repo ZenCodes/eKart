@@ -13,6 +13,8 @@
   <link href="netbanking-card.html" rel="import">
   <link href="credit-card.html" rel="import">
   <link href="debit-card.html" rel="import">
+  <link href="placeorder-service.html" rel="import">
+  <link href="buyplaceorder-service.html" rel="import">
 <polymer-element name="payment-card">
 <template id="payment-card">
 <style>
@@ -67,6 +69,8 @@ text-transform: none;
 <div hidden?="{{h1}}"><credit-card></credit-card></div>
 <div hidden?="{{h2}}"><debit-card></debit-card></div>
 <div hidden?="{{h3}}"><netbanking-card></netbanking-card></div>
+<div hidden?="{{h4}}"><placeorder-service></placeorder-service></div>
+<div hidden?="{{h5}}"><buyplaceorder-service></buyplaceorder-service></div>
 </div>
 </div>
 </div>
@@ -78,6 +82,8 @@ ready:function(){
 this.h1=false;
 this.h2=true;
 this.h3=true;
+this.h4=true;
+this.h5=true;
 },
 credit:function()
 {
