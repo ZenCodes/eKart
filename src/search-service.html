@@ -74,15 +74,18 @@ newval.keys=this.arr.rows[n].doc.keys;
 this.temparr.push(newval);
 }
 }
-/*if(this.temparr[0].keys.indexOf(this.val)!=-1)
+/*for(var n=0;n<this.temparr.length;n++)
+{
+if(this.temparr[n].keys.indexOf(this.val)!=-1)
 alert("yes");
 else
-alert("no");*/
+alert("no");
+}*/
 //alert(JSON.stringify(this.temparr));
 for(var n=0;n<this.temparr.length;n++)
 {
 var newval={"_id":"","id":"","des":"","img1":"","price":"","proddes":"","rootid":"","sno":""};
-if(this.temparr[n].rootid.indexOf(this.val)!=-1||this.temparr[n].id.indexOf(this.val)!=-1||this.temparr[n].des.indexOf(this.val)!=-1)
+if(this.temparr[n].rootid.indexOf(this.val)!=-1||this.temparr[n].keys.indexOf(this.val)!=-1||this.temparr[n].des.indexOf(this.val)!=-1)
 //if(this.temparr[n].keys.indexOf(this.val)!=-1||this.temparr[n].des.indexOf(this.val)!=-1)
 {
 newval._id=this.temparr[n]._id;
