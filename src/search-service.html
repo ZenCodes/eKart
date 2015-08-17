@@ -43,12 +43,13 @@
  ready:function(){
 this.arr=[];
 this.temparr=[];
-this.waste=[];
+
 this.cnt=0;
 this.val="";
  },
  search:function()
  {
+ this.waste=[];
  //alert("hi");
  this.val=this.searchval;
  this.$.ajax.go();
@@ -56,12 +57,12 @@ this.val="";
  },
  searchItems:function()
  {
- alert(this.waste.length);
- for(var m=0;m<this.waste.length;m++)
+ //alert(this.waste.length);
+ /*for(var m=0;m<this.waste.length;m++)
  {
  this.waste.pop();
- }
- alert(JSON.stringify(this.waste));
+ }*/
+ //alert(JSON.stringify(this.waste));
 this.arr=this.$.ajax.response;
 //alert(JSON.stringify(this.arr.rows));
 for(var n=0;n<this.arr.rows.length;n++)
