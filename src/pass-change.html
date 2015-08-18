@@ -100,10 +100,19 @@ div{
      </core-ajax>
 
     	    <core-card id="core_card2"  class="core_card2" vertical wrap layout >
-    	    <h3 id="head">Change password</h3>
-<div><paper-input label="Current Password" id="paper_input" value="{{cur}}"></paper-input></div>
-<div><paper-input label="New Password" id="paper_input1" value="{{newpass}}"></paper-input></div>
-<div><paper-input label="Confirm Password" id="paper_input2" value="{{con}}"></paper-input></div>
+    	    <div><h3 id="head">Change password</h3></div>
+    	  <div>  <paper-input-decorator label="Current Password" id="paper_input">
+			        <input id="paper_input1" label="Current Password" id="paper_input1" value="{{cur}}" type="Password" is="core-input" >
+			        </paper-input-decorator> </div>
+
+ <div><paper-input-decorator label="New Password" id="paper_input1">
+        <input id="paper_input1" label="New Password" id="paper_input1" value="{{newpass}}" type="Password" is="core-input" >
+        </paper-input-decorator> </div>
+      <div>   <paper-input-decorator label="Confirm Password" id="paper_input2">
+		        <input id="paper_input1" label="Confirm Password" id="paper_input1" value="{{con}}" type="Password" is="core-input" >
+		        </paper-input-decorator> </div>
+
+
 <div><paper-button id="n1" on-click="{{chnpassword}}" >change password</paper-button></div>
     </div>
     </center>
