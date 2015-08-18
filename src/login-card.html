@@ -4,7 +4,7 @@
 <link rel="import" href="../components/core-style/core-style.html">
 
 <link rel="import" href="login-service.html">
-<polymer-element name="login-card" attributes="username pass">
+<polymer-element name="login-card" attributes="username pass" on-keypress="{{keypress}}">
   <template>
     <style>
     :host {
@@ -134,6 +134,27 @@ document.querySelector('inx-element').shadowRoot.querySelector('product-list').h
 //window.location.href = 'registration.html';
 //window.location.href = 'reg-card.html';
 }
+},
+keypress:function(event){
+ if (event.keyCode == 13) {
+if(this.name==null||this.name==""){
+this.Unl="Enter username";
+}
+if(this.pwd==null||this.pwd==""){
+this.Pal="Enter password";
+}
+if(this.name!=null && this.pwd!=null)
+{
+this.username=this.name;
+this.pass=this.pwd;
+if(this.username=='Admin' && this.pass=='Admin')
+window.location.href='src/adminindex.html';
+else
+this.$.service.setValues(this.name,this.pwd);
+}
+
+ //alert("enter key pressed");
+ }
 }
   });
   </script>
