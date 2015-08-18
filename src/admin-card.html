@@ -20,7 +20,7 @@
       #core_card {
         position: absolute;
         width: 350px;
-        height: 450px;
+        height: 500px;
         border-radius: 2px;
         box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
         left: 500px;
@@ -29,9 +29,10 @@
       }
       #paper_button {
         top: 10px;
-        width: 110px;
+        width: 150px;
+        height:40px;
+        background-color: rgb(0, 188, 212);
 
-         background-color: rgb(242, 172, 77);
         left: 10px;
         padding: 5px 10px;
 		   -webkit-border-radius: 8px;
@@ -55,10 +56,9 @@
 
       }
 
-      #paper_input {
-        width: 200px;
-      }
+
       #paper_input1 {
+      top:12px;
         width: 200px;
       }
       #paper_input2 {
@@ -76,30 +76,36 @@
       #paper_input6 {
 	          width: 200px;
       }
+      #paper_input7 {
+	  	          width: 200px;
+      }
 #paper_item1 {
 
-        top: 15px;
+        top: 7px;
+        left:100px;
         font-size: 1.2rem;
-		      font-weight: 300;
-      font-family:Times New Roman;
-
+		font-weight: 300;
+        font-family:Times New Roman;
+        position:absolute;
       }
 
     </style>
 
-    <core-card id="core_card" layout vertical center center-justified>
+         <core-card id="core_card" layout vertical center center-justified>
          <paper-item id="paper_item1" icon="settings" label="Item">ADMIN</paper-item>
-          <paper-input label="productid" value="{{id}}" id="paper_input1"></paper-input>
-         <paper-input label="productimg" value="{{img}}" id="paper_input2"></paper-input>
-          <paper-input label="productdes" id="paper_input3" value="{{des}}"></paper-input>
+         <paper-input label="productid" value="{{id}}" id="paper_input1"></paper-input>
+        <paper-input label="productimg" value="{{img}}" id="paper_input2"></paper-input>
+        <!--<input type="file" label="productimg" value="{{img}}" id="paper_input2" size="100">-->
+         <paper-input label="productdes" id="paper_input3" value="{{des}}"></paper-input>
 		 <paper-input label="productprice" value="{{price}}" id="paper_input4"></paper-input>
          <paper-input label="productrootid" id="paper_input5" value="{{rootids}}"></paper-input>
          <paper-input label="productsno" id="paper_input6" value="{{sno}}"></paper-input>
-         <paper-button id="paper_button" on-click="{{add}}">ADD</paper-button>
+         <paper-input label="productkeys" id="paper_input7" value="{{keys}}"></paper-input>
+         <paper-button id="paper_button" on-click="{{add}}">ADD PRODUCTS</paper-button>
 
     </core-card>
          <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/website/"
-		   body='{"id":{{adid}},"img1":"{{adimg}}","des":"{{addes}}","price":"{{adprice}}","rootid":"{{adrootid}}","sno":{{adsno}}}'>
+		   body='{"id":{{adid}},"img1":"{{adimg}}","des":"{{addes}}","price":"{{adprice}}","rootid":"{{adrootid}}","sno":{{adsno}},"keys":"{{adkeys}}"}'>
     	 </core-ajax>
     	 <core-ajax id="readajax"
 		 		      auto="false"
@@ -120,24 +126,21 @@
             },
 
              add:function()
-        {
-
-
-
-
+             {
             this.adid=JSON.stringify(this.id);
            //alert("hi"+this.adid);
             this.adimg=this.img;
             this.addes=this.des;
 			this.adprice=this.price;
 			this.adrootid=this.rootids;
-			this.adsno=JSON.stringify(this.sno);
-  this.$.readajax.go();
-		//	this.$.ajax.go();
+			this.adsno=this.sno;
+			this.adkeys=this.keys;
+            this.$.readajax.go();
+		   //this.$.ajax.go();
 
         },
-         Loaded:function()
-            {
+Loaded:function()
+{
 this.admins = this.$.readajax.response;
 var arrlen=this.admins.rows.length;
 
@@ -150,9 +153,8 @@ else
 {
 this.$.ajax.go();
 }
-            }
-
-        });
+}
+});
         </script>
 </polymer-element>
 
