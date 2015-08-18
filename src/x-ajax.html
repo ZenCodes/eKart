@@ -70,8 +70,8 @@
 	  		  	            border-radius: 2px;
 	  		  	 		     border: 1px solid #E0E0E0;
 	  		  	 		     width: 250px;
-	  		  	             left:22px;
-	  		  	         position: absolute;
+	  		  	            left:22px;
+	  		  		  	         position: absolute;
 	  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
 	  		  	         height:30px;
 	  		  	         background-color: white;
@@ -82,7 +82,7 @@
 	  		  	 		     border: 1px solid #E0E0E0;
 	  		  	 		     width: 250px;
 	  		  	             left:22px;
-	  		  	         position: absolute;
+	  		  		  	         position: absolute;
 	  		  	         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
 	  		  	         height:30px;
           }
@@ -132,7 +132,6 @@
       {
       left: 30px;
       }
-
     </style>
 
    <core-card id="core_card" layout vertical>
@@ -155,13 +154,15 @@
   </div>
   <div id="div" layout  horizontal>
         <core-label id="cl" >Password</core-label><sup style="color:red;">*</sup><br>
-        <input id="input4" value="{{pass}}"  label="{{Password}}" placeholder="Password" is="core-input">
+<input id="input4" label="{{Password}}"  value="{{pass}}" type="Password" placeholder="Password" is="core-input" >
   </div>
 
   <div id="div" layout  horizontal>
         <core-label id="cl" >Confirm Password</core-label><sup style="color:red;">*</sup><br>
-        <input id="input5" value="{{conpass}}"  label="{{ConPassword}}" placeholder="Password" is="core-input">
+	   <input id="input5"  label="{{ConPassword}}"  value="{{conpass}}" type="Password" placeholder="Confirm Password"  is="core-input" >
+
   </div>
+
 
          <paper-button id="paper_button" on-click="{{save}}">Save & Continue</paper-button>
          <!--<paper-button id="paper_button1">SignIn</paper-button>-->
