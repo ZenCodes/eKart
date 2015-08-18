@@ -30,14 +30,6 @@
     	      margin-right:25px;
   	      }
 
-  	      h2
-  	      {
-  	      padding:10px;
-  	      }
-  	      #p1
-  	      {
-  	      text-align:center;
-  	      }
   </style>
 <trackorder-service pr="{{pr}}"></trackorder-service>
 
@@ -67,12 +59,13 @@
 
 <template repeat="{{pro in pr.orderarr}}">
 <div id="card">
-<div horizontal layout>
+<div horizontal layout style="padding:15px;">
 <div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
-<div id="p1" vertical layout>
+<div style="text-align:center; width:650px;"  vertical layout>
 <h3 style="padding-left:100px;">{{pro.proddes}}</h3>
 <h5 >Ordered date:{{pro.orderdate}}</h5>
 <h5 >price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub> {{pro.prodprice}}</h5>
+</div>
 </div>
 </div>
 </template>
