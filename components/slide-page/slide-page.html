@@ -4,7 +4,7 @@
 <link href="../core-animated-pages/transitions/cross-fade.html" rel="import">
 <link href="../core-animated-pages/transitions/slide-from-right.html" rel="import">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
-  
+
 <link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="stylesheet" href="animate.css"/>
 
@@ -27,13 +27,13 @@ Element providing solution to build one page slide base on polymer.
 <polymer-element name="slide-page" on-keydown="{{keypressHandler}}">
   <template>
       <link rel="stylesheet" href="slide-page.css"/>
-  	  
+
 	  <core-animated-pages id="pages" transitions="slide-from-right" selected="{{pageIndex}}">
 	    <content></content>
 	  </core-animated-pages>
 	  <section class="nav" layout horizontal end-justified>
-	  	<div layout horizontal><paper-fab start-justified icon="icons:arrow-back" id="preBtn" on-click="{{prePage}}"><paper-shadow z="5"></paper-shadow></paper-fab></div>
-	  	<div layout horizontal><paper-fab icon="icons:arrow-forward" id="nextBtn" on-click="{{nextPage}}"><paper-shadow z="5"></paper-shadow></paper-fab></div>
+	  	<div layout horizontal><paper-fab start-justified icon="icons:more-horiz" id="preBtn" on-click="{{prePage}}"><paper-shadow z="5"></paper-shadow></paper-fab></div>
+	  	<div layout horizontal><paper-fab icon="icons:more-horiz" id="nextBtn" on-click="{{nextPage}}"><paper-shadow z="5"></paper-shadow></paper-fab></div>
 	  </section>
   </template>
   <script>
