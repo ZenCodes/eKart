@@ -65,9 +65,20 @@ Quantity-{{product.value[6]}}</h5>
   },
   proceed:function()
   {
+   var name=localStorage.getItem("nam");
+  if(name==null||name=="")
+    {
 
   document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true);
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(false,true,true,true,true,true);
+ }
+ else
+ {
+
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('shipping-card').setValues();
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,false,true,true,true,true);
+ }
   //window.location.href="sample.html";
   },
   delete:function(e)
