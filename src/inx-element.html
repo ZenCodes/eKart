@@ -11,6 +11,7 @@
 <link href="../components/paper-icon-button/paper-icon-button.html" rel="import">
 <link href="../components/paper-item/paper-item.html" rel="import">
 <link href="../components/paper-menu-button/paper-menu-button.html" rel="import">
+<link href="../components/core-collapse/core-collapse.html" rel="import">
 <link rel="import" href="product-list.html">
 <link rel="import" href="item-service.html">
 <link rel="import" href="x-trigger.html">
@@ -158,6 +159,7 @@ text-transform: none;
 <paper-tab id="paper_tab1" inline flex center-center horizontal layout active>
 				   <paper-button id="Desktop" label="Desktop" on-tap="{{toggle}}" noink style="color:white;">Desktop</paper-button>
 	  	          <br/>
+
 	  	          <core-dropdown id="d1" layered relatedTarget="{{$.Desktop}}" on-core-select="{{item}}" >
 
 	  	          <core-menu style="background-color: rgb(0, 188, 212);" id="menu" on-core-select="{{item}}">
@@ -166,6 +168,7 @@ text-transform: none;
 	  	          </core-menu>
 	  	          </div>
 	              </core-dropdown>
+
 	              </paper-tab>
 
 				<paper-tab id="paper_tab2" inline flex center-center horizontal layout active>
