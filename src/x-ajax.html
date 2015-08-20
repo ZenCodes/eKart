@@ -2,6 +2,7 @@
 <link rel="import" href="../components/core-ajax/core-ajax.html" />
 <link rel="import" href="../components/paper-button/paper-button.html" />
 <link rel="import" href="../components/paper-input/paper-input.html" />
+<link rel="import" href="../components/paper-checkbox/paper-checkbox.html" />
 <polymer-element name="x-ajax">
     <template>
     <style>
@@ -104,7 +105,7 @@
 		             background-color: rgb(0, 188, 212);
 		             position:absolute;
 		  		   		          left:125px;
-		  		   				  			top:400px;
+		  		   				  			top:420px;
 		  		   				          width: 140px;
 		  		   				  			   padding: 5px 10px;
 		  		   				  			   -webkit-border-radius: 4px;
@@ -162,9 +163,11 @@
 	   <input id="input5"  label="{{ConPassword}}"  value="{{conpass}}" type="Password" placeholder="Confirm Password"  is="core-input" >
 
   </div>
+ <div id="div" layout  horizontal>
+    <paper-checkbox label="I agree eKart"> <a href="#">terms and service policies</a></paper-checkbox>
+ </div>
 
-
-         <paper-button id="paper_button" on-click="{{save}}">Save & Continue</paper-button>
+         <paper-button id="paper_button" on-click="{{save}}">Sign up</paper-button>
          <!--<paper-button id="paper_button1">SignIn</paper-button>-->
     </core-card>
 
