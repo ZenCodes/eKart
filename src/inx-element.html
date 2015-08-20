@@ -111,16 +111,16 @@ font-family:'Ek Mukta';
 font-size:20px;
 }
 x-trigger{
-margin-left: 880px;
-margin-top:10px;
+margin-left: 130px;
+margin-top:-10px;
 }
  #cl{
 margin-left:950px;
 margin-top: 10px;
 }
 view-trigger{
-margin-left: 1080px;
-margin-top:10px;
+margin-left: 210px;
+margin-top:5px;
 }
 #signin{
 font-size:12px;
@@ -142,18 +142,21 @@ text-transform: none;
  }
     </style>
 
-
+<div layout horizontal>
 <core-label id="cl" >{{hi}}</core-label><paper-button class="profile" id="profile" on-click="{{profile}}" label="{{name}}">{{name}}</paper-button>
 <paper-button class="signin" id="signin" on-click="{{clickEvent}}" label="{{bname}}">{{bname}}</paper-button>
 <paper-button id="signout" hidden>Signout</paper-button>
+</div>
 <!--<cart-count id="cartcount"></cart-count>-->
-<view-trigger></view-trigger>
+<div layout horizontal>
 <!--<input id="input" placeholder="Search..." is="core-input" value="{{searchval}}">
 <paper-button id="paper_button" on-click="{{search}}">Search</paper-button>-->
 
-<x-trigger></x-trigger>
+
 <Topmenu-card></Topmenu-card>
 <search-service></search-service>
+<x-trigger></x-trigger>
+<view-trigger></view-trigger></div>
 <!--<cart-count id="cc"></cart-count>-->
 <paper-tabs selected="0" selectedindex="0" id="paper_tabs" horizontal center layout noink>
 <paper-tab id="paper_tab1" inline flex center-center horizontal layout active>
