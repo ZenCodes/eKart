@@ -3,7 +3,11 @@
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="search-service.html">
-
+<link rel="import" href="cart-ajax.html">
+<link rel="import" href="temp-ajax.html">
+<link rel="import" href="info-service.html">
+<link rel="import" href="allroot-service.html">
+<link rel="import" href="buy-service.html">
 <polymer-element name="search-list">
 
 <template>
@@ -58,7 +62,10 @@
 
 </template>
 </core-card>
-
+<cart-ajax id="ca"></cart-ajax>
+<temp-ajax id="ta"></temp-ajax>
+<info-service id="info"></info-service>
+<buy-service id="bs"></buy-service>
   </template>
 
   <script>
@@ -66,6 +73,49 @@
     Polymer({
 ready:function()
 {
+},
+clickLink:function(e)
+{
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
+
+ //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewProduct(false);
+this.$.info.setProductid(e.target.id);
+
+},
+clickEvent:function(ee)
+{
+var name=localStorage.getItem("nam");
+if(name==""||name==null)
+{
+var tar=ee.target.id;
+this.$.ta.docValue(tar,"Temp user","Tempcart");
+}
+else
+{
+var tar=ee.target.id;
+this.$.ca.docValue(tar,name,"Incart");
+}
+},
+buy:function(e)
+{
+
+//alert("hi");
+sessionStorage.setItem("buyflag","true");
+sessionStorage.setItem("buydocid",e.target.id);
+var name=localStorage.getItem("nam");
+  if(name==null||name=="")
+    {
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true);
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(false,true,true,true,true,true);
+//this.$.bs.setDocid(e.target.id);
+}
+ else
+ {
+
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true);
+ document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('shipping-card').setValues();
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,false,true,true,true,true);
+ }
 }
    } );
 
