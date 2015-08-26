@@ -89,21 +89,14 @@ background-color:#FF9933;
 //this.isHidden6=true;
     },
 
-payment:function(){
- if((this.isHidden1==true)&&(this.isHidden2==true)&&(this.isHidden3==true))
- {
+/*payment:function(){
 this.isHidden1=true;
 		this.isHidden2=true;
 		  this.isHidden3=true;
 		   this.isHidden4=true;
 this.isHidden5=true;
 this.isHidden6=false;
-}
-else
-{
-alert('not');
-}
-},
+},*/
     hiddenvalue:function(h1,h2,h3,h4,h5,h6)
     {
      this.isHidden1=h1;
@@ -115,61 +108,7 @@ this.isHidden6=h6;
     },
     hidepayment:function(h6){
     this.isHidden6=h6;
-    },
-     email:function()
-	    {
-	this.isHidden1=false;
-	this.isHidden2=true;
-	this.isHidden3=true;
-	this.isHidden4=true;
-	this.isHidden5=true;
-    this.isHidden6=true;
-    },
-      shipping:function()
-	    {
-
-	    if(this.isHidden1==true)
-	    {
-	    this.isHidden1=true;
-		this.isHidden2=false;
-	    this.isHidden3=true;
-	    this.isHidden4=true;
-	    this.isHidden5=true;
-        this.isHidden6=true;
-	    }
-	    else
-	    {
-	    alert('not');
-	    }
-
-    },
-    order:function()
-		 {
-		 if((this.isHidden1==true)&&this.isHidden2==true)
-         {
-		 if(sessionStorage.getItem("buyflag")=="true")
-		 {
-
-		  this.isHidden1=true;
-		  this.isHidden2=true;
-		  this.isHidden5=false;
-		  this.isHidden4=true;
-		 }
-
-		else{
-
-	       this.isHidden1=true;
-		   this.isHidden2=true;
-		   this.isHidden3=false;
-		   this.isHidden4=true;
-	        }
-	        }
-	        else
-	        {
-	        alert('not');
-	        }
-    },
-
+    }
     });
   </script>
 </polymer-element>
