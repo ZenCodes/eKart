@@ -201,19 +201,25 @@
             },
             save:function(){
             this.uname=JSON.stringify(this.name);
-            			if(this.name==null||this.name==""){
+            var letters = /^[A-Za-z]+$/;
+            			if(this.name==null||this.name==""||!(this.name.match(letters))){
+            			this.name="";
 						this.Name="valid username required";
 						}
 						if(this.conpass==null||this.conpass==""){
+
 						this.ConfirmPassword="valid password required";
 						}
 						if(this.pass==null||this.pass==""){
+
 						this.Password="valid password required";
 						}
 						if(this.email==null||this.email==""){
+
 						this.Email="valid email required";
 						}
 						if(this.phone==null||this.phone==""){
+
 						this.MobileNumber="valid phone no required";
 						}
 
