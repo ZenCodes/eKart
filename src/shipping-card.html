@@ -167,29 +167,37 @@ background-color:rgb(0, 188, 212);
     <div layout vertical style="margin-left:150px;">
       <!--<core-label id="sa" >Shipping Address</core-label>-->
 <table style="margin-top:20px;">
-<div id="div" layout  horizontal> <tr><td><core-label id="cl" >Name</core-label><sup style="color:red;">* </sup></td><td><input id="input" value="{{name}}"  placeholder="" is="core-input"></td></tr></div>
+<div id="div" layout  horizontal> <tr><td><core-label id="cl" >Name</core-label><sup style="color:red;">* </sup></td>
+<td><input id="input" value="{{name}}"  placeholder="{{username}}" is="core-input"></td></tr></div>
 
 
- <div id="div" layout  horizontal> <tr><td><core-label id="cl" >Pincode</core-label><sup style="color:red;">*</sup></td><td><input id="input1" value="{{pin}}" placeholder="" is="core-input"></td></tr></div>
+ <div id="div" layout  horizontal> <tr><td><core-label id="cl" >Pincode</core-label><sup style="color:red;">*</sup></td>
+ <td><input id="input1" value="{{pin}}" placeholder="{{pincode}}" is="core-input"></td></tr></div>
 
 
 
- <div id="div" layout  horizontal> <tr><td><core-label id="cl" >Address</core-label><sup style="color:red;">* </sup></td><td><input id="input2" value="{{addr}}" placeholder="" is="core-input"></td></tr></div>
+ <div id="div" layout  horizontal> <tr><td><core-label id="cl" >Address</core-label><sup style="color:red;">* </sup></td>
+ <td><input id="input2" value="{{addr}}" placeholder="{{address}}" is="core-input"></td></tr></div>
 
 
-    <div id="div" layout  horizontal><tr><td><core-label id="cl" >Landmark</core-label></td><td> <input id="input3" value="{{land}}" placeholder="Optional" is="core-input"></td></tr></div>
+    <div id="div" layout  horizontal><tr><td><core-label id="cl" >Landmark</core-label></td>
+    <td> <input id="input3" value="{{land}}" placeholder="{{landmark}}" is="core-input"></td></tr></div>
 
 
-      <div id="div" layout  horizontal><tr><td><core-label id="cl" >City</core-label><sup style="color:red;">* </sup></td><td><input id="input4" value="{{city}}" placeholder="" is="core-input"></td></tr></div>
+      <div id="div" layout  horizontal><tr><td><core-label id="cl" >City</core-label><sup style="color:red;">* </sup></td>
+      <td><input id="input4" value="{{city}}" placeholder="{{City}}" is="core-input"></td></tr></div>
 
 
-      <div id="div" layout  horizontal><tr><td><core-label id="cl" >State</core-label><sup style="color:red;">*</sup> </td><td><input id="input5" value="{{state}}" placeholder="" is="core-input"></td></tr></div>
+      <div id="div" layout  horizontal><tr><td><core-label id="cl" >State</core-label><sup style="color:red;">*</sup> </td>
+      <td><input id="input5" value="{{state}}" placeholder="{{State}}" is="core-input"></td></tr></div>
 
 
-    <div id="div" layout  horizontal><tr><td><core-label id="cl" >Country</core-label><sup style="color:red;">*</sup>  </td><td> <input id="input6" value="{{country}}" placeholder="" is="core-input"></td></tr></div>
+    <div id="div" layout  horizontal><tr><td><core-label id="cl" >Country</core-label><sup style="color:red;">*</sup>  </td>
+    <td> <input id="input6" value="{{country}}" placeholder="{{Country}}" is="core-input"></td></tr></div>
 
 
-  <div id="div" layout  horizontal><tr><td><core-label id="cl" >Mobile</core-label><sup style="color:red;">*</sup> </td><td> <input id="input7" value="{{phone}}" placeholder="" is="core-input"></td></tr></div>
+  <div id="div" layout  horizontal><tr><td><core-label id="cl" >Mobile</core-label><sup style="color:red;">*</sup> </td>
+  <td> <input id="input7" value="{{phone}}" placeholder="{{Phone}}" is="core-input"></td></tr></div>
 
 
    <tr><td colspan="2"><paper-button id="paper_button" on-click="{{save}}" style="margin-left:60px;">Next</paper-button></td></tr>
@@ -215,6 +223,8 @@ background-color:rgb(0, 188, 212);
 
     Polymer({
 	 ready:function(){
+	 this.f1=0;
+	 this.f2=0;
 	        this.tempship=[];
 	        this.retarr=[];
          this.rarr=[];
@@ -274,6 +284,58 @@ this.val.shiparr[0].phone=this.phone;
 	        ship.state=this.state;
 	        ship.country=this.country;
 	        ship.phone=this.phone;
+ 									   var letters = /^[A-Za-z]+$/;
+
+
+	        						if(this.name==null||this.name==""||!(this.name.match(letters))){
+	        						this.name="";
+									this.username="valid username required";
+									}
+									if(this.pin==null||this.pin==""){
+									this.pincode="valid pincode required";
+									}
+									if(this.addr==null||this.addr==""||!(this.addr.match(letters))){
+									this.addr="";
+									this.address="valid address required";
+									}
+									if(this.city==null||this.city==""||!(this.city.match(letters))){
+									this.city="";
+									this.City="valid name required";
+									}
+									if(this.state==null||this.state==""||!(this.state.match(letters))){
+									this.state="";
+									this.State="valid name required";
+									}
+									if(this.country==null||this.country==""||!(this.country.match(letters))){
+									this.country="";
+									this.Country="valid name required";
+									}
+									if(this.phone==null||this.phone==""){
+									this.Phone="valid phone no required";
+									}
+									var phoneno = /^\d{10}$/;
+									if(!(this.phone.match(phoneno)))
+									{
+									this.phone="";
+									this.Phone="valid phone no required";
+									}
+									else
+									{
+									this.f1=1;
+									}
+									var pinc = /^\d{6}$/;
+									if(!(this.pin.match(pinc)))
+									{
+									this.pin="";
+									this.pincode="valid pincode required";
+									}
+									else
+									{
+									this.f2=1;
+									}
+
+
+
 	        if(this.name!=null && this.name!="" && this.pin!=null && this.pin!="" && this.addr!=null && this.addr!="" && this.city!=null && this.city!="" && this.state!=null && this.state!="" && this.country!=null && this.country!="" && this.phone!=null && this.phone!="" )
 				   						        {
 				   						        localStorage.setItem("nnflag",1);

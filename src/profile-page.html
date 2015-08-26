@@ -86,6 +86,11 @@
     this.uname=JSON.stringify(localStorage.getItem("nam"));
     this.$.rajax.go();
     },
+    call:function(){
+    this.uname=JSON.stringify(localStorage.getItem("nam"));
+    //alert("hi"+this.uname);
+    this.$.rajax.go();
+    },
     regLoaded:function(){
 
     this.regarr=this.$.rajax.response;

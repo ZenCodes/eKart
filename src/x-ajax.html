@@ -3,6 +3,7 @@
 <link rel="import" href="../components/paper-button/paper-button.html" />
 <link rel="import" href="../components/paper-input/paper-input.html" />
 <link rel="import" href="../components/paper-checkbox/paper-checkbox.html" />
+<link rel="import" href="../components/webcomponentjs/webcomponentjs.html" />
 <polymer-element name="x-ajax">
     <template>
     <style>
@@ -17,7 +18,7 @@
 	        #core_card {
 	          position: absolute;
 	          width: 300px;
-	          height: 450px;
+	          height: 500px;
 	          border-radius: 2px;
 	          box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
 	          left: 250px;
@@ -139,28 +140,28 @@
     <core-label id="reg" >Register here</core-label><br>
          <div id="div" layout  horizontal>
          <core-label id="cl" >Name</core-label><sup style="color:red;">*</sup><br>
-		  <input id="input" value="{{name}}" label="{{Username}}" placeholder="Name" is="core-input">
+		  <input id="input" value="{{name}}" label="{{Username}}" placeholder="{{Name}}" is="core-input">
         </div>
         <div id="div" layout  horizontal>
 		  <core-label id="cl" >Mobile</core-label><sup style="color:red;">*</sup><br>
-		  <input id="input1" value="{{phone}}" label="{{PhoneNo}}" placeholder="Mobile Number" is="core-input">
+		  <input id="input1" value="{{phone}}" label="{{PhoneNo}}" placeholder="{{MobileNumber}}" is="core-input">
   </div>
   <div id="div" layout  horizontal>
     <core-label id="cl" >Email</core-label><sup style="color:red;">*</sup><br>
-    <input id="input2" value="{{email}}" label="{{Email}}" placeholder="Email" is="core-input">
+    <input id="input2" value="{{email}}" label="{{Email}}" placeholder="{{Email}}" is="core-input">
   </div>
   <div id="div" layout  horizontal>
       <core-label id="cl" >Referrer(Optional)</core-label><br>
-      <input id="input3" value="{{ref}}" label="{{Ref}}" placeholder="Referrer" is="core-input">
+      <input id="input3" value="{{ref}}" label="{{Ref}}" placeholder="{{Referrer}}" is="core-input">
   </div>
   <div id="div" layout  horizontal>
         <core-label id="cl" >Password</core-label><sup style="color:red;">*</sup><br>
-<input id="input4" label="{{Password}}"  value="{{pass}}" type="Password" placeholder="Password" is="core-input" >
+<input id="input4" label="{{Password}}"  value="{{pass}}" type="Password" placeholder="{{Password}}" is="core-input" >
   </div>
 
   <div id="div" layout  horizontal>
         <core-label id="cl" >Confirm Password</core-label><sup style="color:red;">*</sup><br>
-	   <input id="input5"  label="{{ConPassword}}"  value="{{conpass}}" type="Password" placeholder="Confirm Password"  is="core-input" >
+	   <input id="input5"  label="{{ConPassword}}"  value="{{conpass}}" type="Password" placeholder="{{ConfirmPassword}}"  is="core-input" >
 
   </div>
  <div id="div" layout  horizontal>
@@ -186,11 +187,74 @@
         Polymer({
             ready:function()
             {
+            this.f4=0;
+            this.f1=0;
+			this.f2=0;
+			this.f3=0;
             this.reg=[];
+            this.Name="Username";
+            this.MobileNumber="Mobile Number";
+            this.Email="Email id";
+            this.Referrer="Refferer";
+            this.Password="Password";
+            this.ConfirmPassword="Confirm Password";
             },
             save:function(){
             this.uname=JSON.stringify(this.name);
-            this.$.rajax.go();
+            var letters = /^[A-Za-z]+$/;
+            			if(this.name==null||this.name==""||!(this.name.match(letters))){
+            			this.name="";
+						this.Name="valid username required";
+						}
+						if(this.conpass==null||this.conpass==""){
+
+						this.ConfirmPassword="valid password required";
+						}
+						if(this.pass==null||this.pass==""){
+
+						this.Password="valid password required";
+						}
+						if(this.email==null||this.email==""){
+
+						this.Email="valid email required";
+						}
+						if(this.phone==null||this.phone==""){
+
+						this.MobileNumber="valid phone no required";
+						}
+
+										var phoneno = /^\d{10}$/;
+										if(!(this.phone.match(phoneno)))
+										{
+										this.phone="";
+										this.MobileNumber="valid phone no required";
+										}
+										else
+										{
+										this.f1=1;
+										}
+										var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+										if(!(this.email.match(mailformat)))
+										{
+										this.email="";
+										this.Email="valid email required";
+							            }
+							            else
+							            {
+							            this.f2=1;
+							            }
+							            var paswd=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,16}$/;
+										if(!(this.pass.match(paswd)))
+										{
+										//this.name="";
+									    this.pass="";
+										this.Password="should be alphanumeric";
+										}
+										else
+									    {
+										this.f3=1;
+										}
+										this.$.rajax.go();
             },
             regLoaded:function()
             {
@@ -202,9 +266,14 @@
             this.uemail=this.email;
             this.uphone=this.phone;
             if(this.pass==this.conpass)
+            {
+            this.f4=1;
+            if(this.f4==1 && this.name!=null && this.name!="" && this.pass!=null && this.pass!="" && this.email!=null && this.email!="" && this.phone!=null && this.phone!="" && this.f1==1 && this.f2==1 && this.f3==1)
             this.$.ajax.go();
+            }
             else
             alert("Password and confirm password has to be same!!");
+
 
             }
             else

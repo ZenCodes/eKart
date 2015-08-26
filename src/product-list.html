@@ -42,6 +42,7 @@
    <link rel="import" href="search-service.html">
    <link rel="import" href="search-list.html">
    <link rel="import" href="sms-subs.html">
+   <link rel="import" href="no-items.html">
 
 <polymer-element name="product-list" attributes="isHidden isHidden1 isHidden2">
   <template>
@@ -119,6 +120,7 @@ top: 100px;
 <div hidden?="{{isHidden17}}"><showroom-card id="showroomcard"></showroom-card></div>
 <div hidden?="{{isHidden18}}"><search-list id="searchlist"></search-list></div>
 <div hidden?="{{isHidden19}}"><sms-subs id="searchlist"></sms-subs></div>
+<div hidden?="{{isHidden20}}"><no-items id="noitem"></no-items></div>
 </template>
 <script>
 Polymer('product-list',{
@@ -138,7 +140,7 @@ setRoot:function(root)
 {
 this.rootpath=root;
 },
-hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19)
+hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20)
 {
 this.isHidden1=h1;
 this.isHidden2=h2;
@@ -159,6 +161,7 @@ this.isHidden16=h16;
 this.isHidden17=h17;
 this.isHidden18=h18;
 this.isHidden19=h19;
+this.isHidden20=h20;
 },
 showlog:function(h12)
 {
