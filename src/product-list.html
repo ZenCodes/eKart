@@ -43,6 +43,7 @@
    <link rel="import" href="search-list.html">
    <link rel="import" href="sms-subs.html">
    <link rel="import" href="no-items.html">
+   <link rel="import" href="terms-page.html">
 
 <polymer-element name="product-list" attributes="isHidden isHidden1 isHidden2">
   <template>
@@ -121,6 +122,7 @@ top: 100px;
 <div hidden?="{{isHidden18}}"><search-list id="searchlist"></search-list></div>
 <div hidden?="{{isHidden19}}"><sms-subs id="searchlist"></sms-subs></div>
 <div hidden?="{{isHidden20}}"><no-items id="noitem"></no-items></div>
+<div hidden?="{{isHidden21}}"><terms-page id="terms"></terms-page></div>
 </template>
 <script>
 Polymer('product-list',{
@@ -131,6 +133,7 @@ this.isHidden9=true;
 this.isHidden10=true;
 this.isHidden15=true;
 this.isHidden16=true;
+this.isHidden21=true;
 },
 setMenu:function(menu)
 {
@@ -140,7 +143,7 @@ setRoot:function(root)
 {
 this.rootpath=root;
 },
-hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20)
+hiddenVal:function(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21)
 {
 this.isHidden1=h1;
 this.isHidden2=h2;
@@ -162,10 +165,11 @@ this.isHidden17=h17;
 this.isHidden18=h18;
 this.isHidden19=h19;
 this.isHidden20=h20;
+this.isHidden21=h21;
 },
-showlog:function(h12)
+terms:function(h21)
 {
-this.isHidden12=h12;
+//this.isHidden21=h21;
 }
 });
 </script>
