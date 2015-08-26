@@ -33,7 +33,7 @@
       {
       position:absolute;
       margin-left:100px;
-      top:80px;
+      top:150px;
        height:30px;
 	        width:150px;
 	        font-color:#989898;
@@ -174,14 +174,14 @@ font-family:'Ek Mukta';
     <core-card id="core_card" layout vertical>
     <div style="border-bottom:4px solid #F0F0F0; font-size:15px; top:10px; padding-bottom:10px;" layout horizontal>
 	    <core-label id="reg" >Pay Using Credit Card</core-label><core-label id="pay" style="margin-left:100px;">You Pay: Rs {{amt}}/-</core-label></div>
-	   <div> <paper-radio-group selected="Medium" valueattr="label" selectedindex="1" id="paper_radio_group" style="margin-top:-30px; ">
-		      <table cellpadding="5px"><tr><td>  <paper-radio-button label="" id="paper_radio_button1" style="margin-top:20px;"></paper-radio-button></td><td><img src="../res/visa.png" height="40px" width="60px" style="margin-top:20px;"/></td>
-         		        <td><paper-radio-button checked label="" id="paper_radio_button2" style="margin-top:20px;"></paper-radio-button></td><td><img src="../res/mastercard.jpg" height="45px" width="65px" style="margin-top:20px;"/></td>
-         		        </table>
+	   <div> <paper-radio-group selected="1" selectedindex="1" id="paper_radio_group" style="margin-top:-30px; ">
+		     <paper-radio-button label="" name="1" id="paper_radio_button1" style="margin-top:20px;"></paper-radio-button><img src="../res/visa.png" height="40px" width="60px" style="margin-top:20px;"/>
+             <paper-radio-button label="" name="2" id="paper_radio_button2" style="margin-top:20px;"></paper-radio-button><img src="../res/mastercard.jpg" height="45px" width="65px" style="margin-top:20px;"/>
+
 
       </paper-radio-group></div>
 	         <div id="div" layout  horizontal>
-	         <core-label id="cl" style="margin-left:20px;color:#686868  ;" >Card Number</core-label>
+	         <core-label id="cl" style="margin-left:20px;color:#686868  ;margin-top:10px;" >Card Number</core-label>
 			  <input id="input1" value="" label="" placeholder="Card Number" is="core-input">
 	        </div>
 	        <div id="div" layout  horizontal>
