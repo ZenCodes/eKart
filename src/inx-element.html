@@ -368,9 +368,11 @@ if(e.target.id=="Desktop")
   },
   profile:function()
   {
-//alert("Profile");
+
+//document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('profile-pass').shadowRoot.querySelector('profile-page').call();
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true);
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('profile-pass').shadowRoot.querySelector('change-page').hiddenVal(false,true);
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('profile-pass').shadowRoot.querySelector('change-page').shadowRoot.querySelector('profile-page').call();
  }
     });
 
