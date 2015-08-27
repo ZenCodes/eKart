@@ -14,7 +14,7 @@
       handleAs="json">   </core-ajax>
 
      <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart/"
-	 		   body='{"username":"{{uname}}","products":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodsno":"{{psno}}","prodstatus":"{{pstatus}}","prodqty":"{{pqty}}","subtotal":"{{subtotal}}"}]}' on-core-response="{{htlswrite}}">
+	 		   body='{"username":"{{uname}}","products":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodsno":"{{psno}}"}],"prodstatus":"{{pstatus}}"}'  on-core-response="{{htlswrite}}">
      </core-ajax>
 
      <core-ajax id="tempreadajax"
@@ -24,7 +24,7 @@
       handleAs="json">   </core-ajax>
 
      <core-ajax id="tempwriteajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart"
-	  	 		   body='{"_id":"{{values}}","_rev":"{{header}}","username":"{{uname}}","products":{{newarr}}}'>
+	  	 		   body='{"_id":"{{values}}","_rev":"{{header}}","username":"{{uname}}","products":{{newarr}},"prodstatus":"{{status}}"}'>
      </core-ajax>
 
   </template>
@@ -51,18 +51,15 @@ this.temparr=this.$.tempreadajax.response;
 this.values=this.temparr._id;
 this.header=this.temparr._rev;
 this.uname=this.temparr.username;
-//this.status=this.temparr.prodstatus;
+this.status=this.temparr.prodstatus;
 this.tempprod=this.temparr.products;
 //alert("dbdoc: "+JSON.stringify(this.tempprod));
-var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":"","subtotal":""};
+var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodsno":""};
 				 newval.prodid=this.pid;
 				 newval.prodimg=this.pimg;
 				 newval.proddes=this.pdes;
 				 newval.prodprice=this.pprice;
-				 newval.prodstatus=this.pstatus;
 				 newval.prodsno=this.psno;
-				 newval.prodqty=this.pqty;
-				 newval.subtotal=this.subtotal;
 				 //alert(newval.prodid+""+newval.prodimg);
 this.tempprod.push(newval);
 //alert("new doc: "+JSON.stringify(this.tempprod));
@@ -86,20 +83,15 @@ sessionStorage.setItem("tempid",this.tempdocid);
 				this.pdes=this.product.des;
 				this.pprice=this.product.price;
 				this.psno=this.product.sno;
-				this.pqty="1";
-			this.subtotal=parseInt(this.pprice)*parseInt(this.pqty);
 				this.uname=	localStorage.getItem("urname");
 				this.pstatus= localStorage.getItem("prstatus");
 				var tempval=sessionStorage.getItem("tempsession");
-				var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":"","subtotal":""};
+				var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodsno":""};
 				 newval.prodid=this.pid;
 				 newval.prodimg=this.pimg;
 				 newval.proddes=this.pdes;
 				 newval.prodprice=this.pprice;
-				 newval.prodstatus=this.pstatus;
 				 newval.prodsno=this.psno;
-				 newval.prodqty=this.pqty;
-				 newval.subtotal=this.subtotal;
 				if(tempval==null||tempval=="")
 				{
 				//alert("no val");
@@ -115,10 +107,7 @@ sessionStorage.setItem("tempid",this.tempdocid);
 				this.img=this.pimg;
 				this.des=this.pdes;
 				this.price=this.pprice;
-				this.status=this.pstatus;
 				this.sno=this.psno;
-				this.qty=this.pqty;
-				this.subtotal=this.subtotal;
 				}
 				},
 
