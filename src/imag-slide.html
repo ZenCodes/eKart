@@ -1,0 +1,55 @@
+
+<!--<link rel="import" href="../components/polymer/polymer.html">
+
+    <script src="../components/platform/platform.js"></script>-->
+    <link rel="import" href="../components/simple-slider/src/simple-slider.html">
+
+<!--<polymer-element name="imag-slide">-->
+
+<template id="imag-slide">
+<style>
+#out
+{
+width:700px;
+height: 370px;
+border-radius: 2px;
+box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+margin-left: 270px;
+margin-top: 130px;
+background-color: rgb(255, 255, 255);
+}
+img{
+height: 200px;
+width: 220px;
+}
+</style>
+<div id="out">
+  <simple-slider style="width:800px; height:370px; top:70px;">
+       <div> <img src="../eKart/res/img2.jpg"/><img src="../eKart/res/img3.jpg"/><img src="../eKart/res/img4.jpg"/></div>
+       <div> <img src="../eKart/res/img5.jpg"/><img src="../eKart/res/img6.jpg"/><img src="../eKart/res/img7.jpg"/> </div>
+       <div> <img src="../eKart/res/img8.jpg"/><img src="../eKart/res/img9.jpg"/><img src="../eKart/res/img10.jpg"/> </div>
+  </simple-slider>
+</div>
+</template>
+<script>
+ var thisDoc = document._currentScript?document._currentScript.ownerDocument:document.currentScript.ownerDocument;
+    var template = thisDoc.querySelector('#imag-slide');
+    var proto = Object.create(HTMLElement.prototype, {
+    createdCallback: {
+      value: function() {
+	   var clone = document.importNode(template.content, true);
+       this.createShadowRoot().appendChild(clone);
+      }
+    }
+  });
+  document.registerElement('imag-slide', {prototype: proto});
+</script>
+
+
+ <!--<script>
+Polymer({
+
+    });
+
+    </script>
+</polymer-element>-->

@@ -44,6 +44,7 @@
    <link rel="import" href="sms-subs.html">
    <link rel="import" href="no-items.html">
    <link rel="import" href="terms-page.html">
+   <link rel="import" href="imag-slide.html">
 
 <polymer-element name="product-list" attributes="isHidden isHidden1 isHidden2">
   <template>
@@ -101,7 +102,7 @@ top: 100px;
 </style>
 <!--<div><search-service id="cartcount"></search-service></div>-->
 <!--<div><cart-count id="cartcount"></cart-count></div>-->
-<div hidden?="{{isHidden1}}"><my-element id="myelement"></my-element></div>
+<div hidden?="{{isHidden1}}"><!--<my-element id="myelement"></my-element>--><imag-slide id="imgslide"></imag-slide></div>
 <div hidden?="{{isHidden2}}"><item-list id="itemlist"></item-list></div>
 <div hidden?="{{isHidden3}}"><order-list id="orderlist"></order-list></div>
 <div hidden?="{{isHidden4}}"><view-list id="viewlist"></view-list></div>
@@ -123,10 +124,12 @@ top: 100px;
 <div hidden?="{{isHidden19}}"><sms-subs id="smssubs"></sms-subs></div>
 <div hidden?="{{isHidden20}}"><no-items id="noitem"></no-items></div>
 <div hidden?="{{isHidden21}}"><terms-page id="terms"></terms-page></div>
+
 </template>
 <script>
 Polymer('product-list',{
 ready:function(){
+this.isHidden1=true;
 this.isHidden7=true;
 this.isHidden8=true;
 this.isHidden9=true;
