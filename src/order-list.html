@@ -28,7 +28,7 @@
     	      margin-right: 25px;
   	      }
   	       .expand,.less{
-		    	      margin-left:130px;
+		    	      margin-left:150px;
 		    	      }
 		    	      #fset
 		    	      {
@@ -53,7 +53,7 @@
          <div layout horizontal style="width:875px;margin-left:50px;height:40px;">
  	    <h4 style="margin-top:10px;margin-left:0px;">Order Number:{{product.value[1]}}</h4>
 
- 		<h5 style="margin-top:10px;margin-left:400px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+ 		<h5 style="margin-top:10px;margin-left:400px;width:100px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
 
  	    <core-icon-button hidden?="{{h1}}" id="{{product.value[1]}}" class="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
 	    <core-icon-button hidden?="{{h2}}" id="{{product.value[1]}}" class="less" icon="expand-less"  active="false" on-click="{{less}}" ></core-icon-button>
