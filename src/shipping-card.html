@@ -285,9 +285,9 @@ this.val.shiparr[0].phone=this.phone;
 	        ship.state=this.state;
 	        ship.country=this.country;
 	        ship.phone=this.phone;
- 									   var letters = /^[A-Za-z]+$/;
+ 									   var letters = /^[A-Za-z.'\s]*$/;
 
-
+                                       var addrs = /^[A-Za-z.,'\s]*$/;
 	        						if(this.name==null||this.name==""||!(this.name.match(letters))){
 	        						this.name="";
 									this.username="valid username required";
@@ -295,7 +295,7 @@ this.val.shiparr[0].phone=this.phone;
 									if(this.pin==null||this.pin==""){
 									this.pincode="valid pincode required";
 									}
-									if(this.addr==null||this.addr==""||!(this.addr.match(letters))){
+									if(this.addr==null||this.addr==""||!(this.addr.match(addrs))){
 									this.addr="";
 									this.address="valid address required";
 									}

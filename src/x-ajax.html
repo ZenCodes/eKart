@@ -209,7 +209,7 @@
             },
             save:function(){
             this.uname=JSON.stringify(this.name);
-            var letters = /^[A-Za-z]+$/;
+            var letters = /^[A-Za-z.'\s]*$/;
             			if(this.name==null||this.name==""||!(this.name.match(letters))){
             			this.name="";
 						this.Name="valid username required";
