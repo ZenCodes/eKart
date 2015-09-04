@@ -19,32 +19,35 @@
  Polymer('temp-service', {
  ready: function()
 {
-
-},callfun:function()
+this.pr=[];
+},
+callfun:function()
 {
 var tempid=sessionStorage.getItem("tempid");
 
 if(tempid==null||tempid=="")
 {
 alert("No items");
-
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
 }
 else
 {
+//alert("hi"+tempid);
 this.docid=tempid;
 this.$.ajax.go();
 }
 
 },
 created: function() {
-this.pr=[];
+
     },
     productsLoaded: function(event,detail) {
+    this.pr=[];
     this.pr = this.$.ajax.response;
 //alert(JSON.stringify(this.pr));
 //alert(document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list'));
    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list').pr=this.pr.products;
-
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
     }
 
     });

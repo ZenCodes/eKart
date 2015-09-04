@@ -27,6 +27,14 @@
     <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
 		contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}?rev={{header}}">
     </core-ajax>
+
+     <core-ajax id="drajax"
+		      auto="false"
+		      url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}"
+		      handleAs="json"
+		      on-core-response="{{deleteafterLoaded}}">
+    </core-ajax>
+
    <temp-service id="ts"></temp-service>
    </template>
     <script>
@@ -39,6 +47,7 @@ this.pr=[];
 this.newarr=[];
 this.uname="Temp user";
 this.count=0;
+this.dri=[];
     },
     revLoaded:function(event,detail,sender)
     {
@@ -54,6 +63,7 @@ this.count=0;
     this.pr = this.$.tempreadajax.response;
 
     this.docid=this.pr.rows[0].id;
+    //alert(this.docid);
     this.$.revajax.go();
 
     var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
@@ -84,9 +94,16 @@ this.count=0;
     }
     this.$.writeajax.go();
     alert("Item deleted");
-    //sessionStorage.setItem("tempid","")
-    //this.$.ts.callfun();
-//document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true);
+    //alert(this.newarr.length);
+    if(this.newarr.length==0)
+    {
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
+    }
+   	else
+   	{
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list').pr=this.newarr;
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
+    }
     },
     deletefun:function(pid,psno)
     {
