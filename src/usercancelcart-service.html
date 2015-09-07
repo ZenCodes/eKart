@@ -12,7 +12,7 @@
     </style>
     <core-ajax id="tempreadajax"
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/orderedcart/{{docid}}"
+	      url="http://ekart.iriscouch.com/orderedcart/{{docid}}"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
     </core-ajax>
@@ -22,7 +22,7 @@
    </core-ajax>-->
 
    <core-ajax id="wajax" auto="false" method="POST" handleAs="json"
-   contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+   contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/"
    body='{"_id":"{{docid}}","_rev":"{{revid}}","username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
 </core-ajax>
 

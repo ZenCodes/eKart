@@ -9,21 +9,21 @@
     </style>
  	<core-ajax id="rajax"
       auto="false"
-      url="http://hotelapp.iriscouch.com/website/{{docid}}"
+      url="http://ekart.iriscouch.com/website/{{docid}}"
       on-core-response="{{htlsLoaded}}"
       handleAs="json">   </core-ajax>
 
-     <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart/"
+     <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/tempusercart/"
 	 		   body='{"username":"{{uname}}","products":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodsno":"{{psno}}","prodstatus":"{{pstatus}}","prodqty":"{{pqty}}","subtotal":"{{subtotal}}"}]}' on-core-response="{{htlswrite}}">
      </core-ajax>
 
      <core-ajax id="tempreadajax"
       auto="false"
-      url="http://hotelapp.iriscouch.com/tempusercart/{{tempdocid}}"
+      url="http://ekart.iriscouch.com/tempusercart/{{tempdocid}}"
       on-core-response="{{tempLoaded}}"
       handleAs="json">   </core-ajax>
 
-     <core-ajax id="tempwriteajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart"
+     <core-ajax id="tempwriteajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/tempusercart"
 	  	 		   body='{"_id":"{{values}}","_rev":"{{header}}","username":"{{uname}}","products":{{newarr}}}'>
      </core-ajax>
 

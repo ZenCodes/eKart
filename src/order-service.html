@@ -10,13 +10,13 @@
     </style>
     <core-ajax id="ajax"
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/orderedcart/_design/ocategorydesign/_view/ocategoryview?key=[{{name}},{{status}}]"
+	      url="http://ekart.iriscouch.com/orderedcart/_design/ocategorydesign/_view/ocategoryview?key=[{{name}},{{status}}]"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
     </core-ajax>
     <core-ajax id="ajax1"
 		      auto
-		      url="http://hotelapp.iriscouch.com/orderedcart/_design/trackorderdesign/_view/trackorderview?key=[{{name}},{{status}}]"
+		      url="http://ekart.iriscouch.com/orderedcart/_design/trackorderdesign/_view/trackorderview?key=[{{name}},{{status}}]"
 		      handleAs="json"
 		      on-core-response="{{ordereditem}}">
     </core-ajax>

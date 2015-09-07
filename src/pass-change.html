@@ -88,14 +88,14 @@ div{
     </style>
 
  <core-ajax id="rajax" auto="false" handleAs="json"
-		contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/chndesign/_view/chnview?key={{uname}}"
+		contentType="application/json" url="http://ekart.iriscouch.com/webregister/_design/chndesign/_view/chnview?key={{uname}}"
 		on-core-response="{{chnLoaded}}">
 	</core-ajax>
 	<core-ajax id="ajax" auto="false" handleAs="json"
-			contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/{{id}}"
+			contentType="application/json" url="http://ekart.iriscouch.com/webregister/{{id}}"
 			on-core-response="{{Loaded}}">
 	</core-ajax>
-	 <core-ajax auto id="ajax2" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/webregister"
+	 <core-ajax auto id="ajax2" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/webregister"
 					   body='{"_id":"{{id}}","_rev":{{header}},"regarr":{{rarr}},"shiparr":{{sarr}},"billarr":{{barr}}}'>
      </core-ajax>
 

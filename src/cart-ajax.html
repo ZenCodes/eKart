@@ -5,27 +5,27 @@
 <link rel="import" href="cart-count.html">
 <polymer-element name="cart-ajax">
     <template>
-     <core-ajax auto id="ajax2" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart"
+     <core-ajax auto id="ajax2" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/addtocart"
 				   body='{"_id":"{{values}}","_rev":{{header}},"username":"{{uname}}","cartinfo":{{cmtarr}}}'>
      </core-ajax>
-     <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/"
+     <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/addtocart/"
 		   body='{"username":"{{uname}}","cartinfo":[{"prodid":"{{pid}}","prodimg":"{{pimg}}","proddes":"{{pdes}}","prodprice":"{{pprice}}","prodstatus":"{{pstatus}}","prodsno":"{{psno}}","prodqty":"{{pqty}}","subtotal":"{{subtotal}}"}]}'>
      </core-ajax>
 	 <core-ajax id="rajax"
       auto="false"
-      url="http://hotelapp.iriscouch.com/website/{{docid}}"
+      url="http://ekart.iriscouch.com/website/{{docid}}"
       on-core-response="{{htlsLoaded}}"
       handleAs="json">
      </core-ajax>
      <core-ajax id="readajax"
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/addtocart/{{values}}"
+	      url="http://ekart.iriscouch.com/addtocart/{{values}}"
 	      on-core-response="{{Loaded}}"
 	      handleAs="json">
      </core-ajax>
      <core-ajax id="ajax1"
 		      auto="false"
-		      url="http://hotelapp.iriscouch.com/addtocart/_design/uname/_view/username?key={{val}}"
+		      url="http://ekart.iriscouch.com/addtocart/_design/uname/_view/username?key={{val}}"
 
 		      handleAs="json"
 		      on-core-response="{{cartLoaded1}}"

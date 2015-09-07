@@ -64,21 +64,30 @@
 <view-service id="vs"></view-service>
   </template>
   <script>
+
     Polymer({
+ready:function()
+{
+},
     clickEvent:function(e)
     {
+
     if(e.target.id=='viewcart')
     {
     if(localStorage.getItem("nam")==null||localStorage.getItem("nam")=="")
     {
+    history.pushState("temp", "temp", "temp-list.html");
    this.$.ts.callfun();
+
    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(false);
    //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(true);
 	}
     else
     {
+    history.pushState("view", "view", "view-list.html");
     this.$.vs.callfun();
+
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
     }
     //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewPathcard(true);

@@ -12,7 +12,7 @@
 <core-ajax id="ajax"
 
       auto
-      url="http://hotelapp.iriscouch.com/product/_all_docs?include_docs=true&limit=3&skip={{skp}}"
+      url="http://ekart.iriscouch.com/product/_all_docs?include_docs=true&limit=3&skip={{skp}}"
 
       handleAs="json"
       on-core-response="{{productsLoaded}}"
@@ -25,7 +25,7 @@
   Polymer('product-service', {
      ready: function()
 {
-this.url="http://hotelapp.iriscouch.com/product/_all_docs?include_docs=true&limit=3&skip={{this.skp}}";
+this.url="http://ekart.iriscouch.com/product/_all_docs?include_docs=true&limit=3&skip={{this.skp}}";
 },
 created: function() {
 

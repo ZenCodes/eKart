@@ -183,11 +183,11 @@
 
 
     <core-ajax id="rajax" auto="false" handleAs="json"
-	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/_design/regcheckdesign/_view/regcheckview?key={{uname}}"
+	contentType="application/json" url="http://ekart.iriscouch.com/webregister/_design/regcheckdesign/_view/regcheckview?key={{uname}}"
 	on-core-response="{{regLoaded}}">
 	</core-ajax>
 	<core-ajax id="ajax" auto="false" method="POST" handleAs="json"
-	contentType="application/json" url="http://hotelapp.iriscouch.com/webregister/"
+	contentType="application/json" url="http://ekart.iriscouch.com/webregister/"
 	body='{"regarr":[{"name": "{{uname}}","pass": "{{upass}}","email":"{{uemail}}","phone":"{{uphone}}"}],"shiparr":[{"name":"","pin":"","addr":"","land":"","city":"","state":"","country":"","phone":""}],"billarr":[{"name":"","pin":"","addr":"","land":"","city":"","state":"","country":"","phone":""}]}'>
 	</core-ajax>
     </template>

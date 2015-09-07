@@ -12,17 +12,17 @@
     </style>
     <core-ajax id="tempreadajax"
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/addtocart/{{docid}}"
+	      url="http://ekart.iriscouch.com/addtocart/{{docid}}"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
     </core-ajax>
 
-    <core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart"
+    <core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/addtocart"
 					   body='{"_id":"{{docid}}","_rev":"{{header}}","username":"{{uname}}","cartinfo":{{prodarr}}}'>
     </core-ajax>
 
     <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
-	contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{header}}">
+	contentType="application/json" url="http://ekart.iriscouch.com/addtocart/{{docid}}?rev={{header}}">
     </core-ajax>
 <view-service id="vs"></view-service>
     </template>

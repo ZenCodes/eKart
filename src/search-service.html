@@ -34,14 +34,16 @@
     <paper-button id="paper_button" on-click="{{search}}">Search</paper-button>
     <core-ajax id="ajax"
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/website/_all_docs?include_docs=true"
+	      url="http://ekart.iriscouch.com/website/_all_docs?include_docs=true"
 	      handleAs="json"
 	      on-core-response="{{searchItems}}">
     </core-ajax>
     </template>
     <script>
+
  Polymer('search-service',{
  ready:function(){
+
 this.arr=[];
 this.temparr=[];
 
@@ -49,6 +51,7 @@ this.cnt=0;
 this.val="";
  },
  keypress:function(event){
+ history.pushState("search", "search", "search-list.html");
  if (event.keyCode == 13) {
   this.val=(this.searchval).toLowerCase();
  this.$.ajax.go();
@@ -56,6 +59,7 @@ this.val="";
  },
  search:function()
  {
+history.pushState("search", "search", "search-list.html");
  this.waste=[];
 
  this.val=(this.searchval).toLowerCase();

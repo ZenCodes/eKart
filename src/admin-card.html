@@ -104,12 +104,12 @@
          <paper-button id="paper_button" on-click="{{add}}">ADD PRODUCTS</paper-button>
 
     </core-card>
-         <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/website/"
+         <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/website/"
 		   body='{"id":{{adid}},"img1":"{{adimg}}","des":"{{addes}}","price":"{{adprice}}","rootid":"{{adrootid}}","sno":{{adsno}},"keys":"{{adkeys}}"}'>
     	 </core-ajax>
     	 <core-ajax id="readajax"
 		 		      auto="false"
-		 		      url="http://hotelapp.iriscouch.com/website/_design/adminadddesign/_view/adminaddview?key=[{{adid}},{{adsno}}]"
+		 		      url="http://ekart.iriscouch.com/website/_design/adminadddesign/_view/adminaddview?key=[{{adid}},{{adsno}}]"
 
 		 		      handleAs="json"
 		 		      on-core-response="{{Loaded}}"

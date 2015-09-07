@@ -11,26 +11,26 @@
     </style>
     <core-ajax id="tempreadajax"
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/tempusercart/_design/tempdeletedesign/_view/tempdeleteview?key={{id}}"
+	      url="http://ekart.iriscouch.com/tempusercart/_design/tempdeletedesign/_view/tempdeleteview?key={{id}}"
 	      handleAs="json"
 	      on-core-response="{{productsLoaded}}">
     </core-ajax>
     <core-ajax id="revajax"
 		      auto="false"
-		      url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}"
+		      url="http://ekart.iriscouch.com/tempusercart/{{docid}}"
 		      handleAs="json"
 		      on-core-response="{{revLoaded}}">
     </core-ajax>
-    <core-ajax auto id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart"
+    <core-ajax auto id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/tempusercart"
 					   body='{"_id":"{{docid}}","_rev":"{{header}}","username":"{{uname}}","products":{{prodarr}}}'>
     </core-ajax>
     <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
-		contentType="application/json" url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}?rev={{header}}">
+		contentType="application/json" url="http://ekart.iriscouch.com/tempusercart/{{docid}}?rev={{header}}">
     </core-ajax>
 
      <core-ajax id="drajax"
 		      auto="false"
-		      url="http://hotelapp.iriscouch.com/tempusercart/{{docid}}"
+		      url="http://ekart.iriscouch.com/tempusercart/{{docid}}"
 		      handleAs="json"
 		      on-core-response="{{deleteafterLoaded}}">
     </core-ajax>
@@ -52,6 +52,7 @@ this.dri=[];
     revLoaded:function(event,detail,sender)
     {
     this.header=JSON.parse(detail.xhr.getResponseHeader('ETag'));
+    //alert(this.header);
     if(this.count==0)
 		    {
 		    sessionStorage.setItem("tempsession","");
@@ -61,7 +62,7 @@ this.dri=[];
     },
     productsLoaded: function(event,detail) {
     this.pr = this.$.tempreadajax.response;
-
+	alert(JSON.stringify(this.pr));
     this.docid=this.pr.rows[0].id;
     //alert(this.docid);
     this.$.revajax.go();
@@ -71,8 +72,10 @@ this.dri=[];
     {
     var id=this.pr.rows[0].value[n].prodid;
     var sno=this.pr.rows[0].value[n].prodsno;
+    alert(id+"   "+sno);
     if(this.pid==id&&this.psno==sno)
     {
+    alert("yes");
     }
     else
     {
@@ -92,9 +95,10 @@ this.dri=[];
     this.prodarr=JSON.stringify(this.newarr);
     }
     }
+    alert(JSON.stringify(this.newarr));
     this.$.writeajax.go();
     alert("Item deleted");
-    //alert(this.newarr.length);
+
     if(this.newarr.length==0)
     {
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
@@ -109,7 +113,9 @@ this.dri=[];
     {
     this.pid=pid;
     this.psno=psno;
+    //alert(this.pid+" "+this.psno);
     var tempid=sessionStorage.getItem("tempid");
+    //alert(JSON.stringify(tempid));
     this.id=JSON.stringify(tempid);
     this.$.tempreadajax.go();
     }

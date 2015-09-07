@@ -10,31 +10,31 @@
     <core-ajax id="ajax"
       auto="false"
 
-      url="http://hotelapp.iriscouch.com/webregister/_design/weblogcheckdesign/_view/weblogcheckview?key={{n}}"
+      url="http://ekart.iriscouch.com/webregister/_design/weblogcheckdesign/_view/weblogcheckview?key={{n}}"
       on-core-response="{{postsLoaded}}"
       handleAs="json">
     </core-ajax>
 
     <core-ajax id="tempreadajax"
 		      auto="false"
-		      url="http://hotelapp.iriscouch.com/tempusercart/{{tempdocid}}"
+		      url="http://ekart.iriscouch.com/tempusercart/{{tempdocid}}"
 		      on-core-response="{{tempLoaded}}"
 	      handleAs="json">
 	      </core-ajax>
 	       <core-ajax id="cartajax"
 		  		  		      auto="false"
-		  		  		      url="http://hotelapp.iriscouch.com/addtocart/_design/uname/_view/username?key={{n}}"
+		  		  		      url="http://ekart.iriscouch.com/addtocart/_design/uname/_view/username?key={{n}}"
 
 		  		  		      handleAs="json"
 		  		  		      on-core-response="{{cartLoaded}}">
 		      </core-ajax>
 		      <core-ajax id="readajax"
 			  			  	      auto="false"
-			  			  	      url="http://hotelapp.iriscouch.com/addtocart/{{values}}"
+			  			  	      url="http://ekart.iriscouch.com/addtocart/{{values}}"
 			  			  	      on-core-response="{{cartread}}"
 			  			  	      handleAs="json">
      </core-ajax>
-      <core-ajax auto id="twrite" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart"
+      <core-ajax auto id="twrite" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/addtocart"
 	 				   body='{"_id":"{{values}}","_rev":{{header}},"username":"{{uname}}","cartinfo":{{cartarr}}}'>
      </core-ajax>
   </template>

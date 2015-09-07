@@ -9,12 +9,12 @@
     }
     </style>
 
-<core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart"
+<core-ajax auto="false" id="writeajax" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/orderedcart"
 				   body='{"_id":"{{docid}}","_rev":{{header}},"username":"{{uname}}","orderarr":{{cmtarr}},"trackstatus":"{{track}}","orderno":"{{orderid}}"}'>
      <core-ajax id="readajax"
 
 	      auto="false"
-	      url="http://hotelapp.iriscouch.com/orderedcart/{{docid}}"
+	      url="http://ekart.iriscouch.com/orderedcart/{{docid}}"
 
 	      handleAs="json"
 	      on-core-response="{{Loaded}}"

@@ -95,22 +95,22 @@
 </div>
 
 <core-ajax id="orajax" auto="false" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
 on-core-response="{{orderLoaded}}">
 </core-ajax>
 
 <core-ajax id="owajax" auto="false" method="POST" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/"
 body='{"_id":"{{odocid}}","_rev":"{{orevid}}","orderno":"{{orderno}}"}'>
 </core-ajax>
 
 <core-ajax id="rajax" auto="false" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/website/{{docid}}"
+contentType="application/json" url="http://ekart.iriscouch.com/website/{{docid}}"
 on-core-response="{{itemLoaded}}">
 </core-ajax>
 
 <core-ajax id="wajax" auto="false" method="POST" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/"
 body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
 </core-ajax>
 

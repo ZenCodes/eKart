@@ -1,0 +1,33 @@
+
+<script src="../components/webcomponentsjs/webcomponents.min.js"></script>
+
+<link rel="import" href="../components/my-facebook-login/my-facebook-login.html">
+
+
+
+<template id="fb-login">
+<div>
+  <my-facebook-login appID="1573075826302402"></my-facebook-login>
+</div>
+</template>
+
+<script>
+ var thisDoc = document._currentScript?document._currentScript.ownerDocument:document.currentScript.ownerDocument;
+    var template = thisDoc.querySelector('#fb-login');
+    //alert("hi!"+template);
+    var proto = Object.create(HTMLElement.prototype, {
+    createdCallback: {
+      value: function() {
+	   var clone = document.importNode(template.content, true);
+       this.createShadowRoot().appendChild(clone);
+      }
+    }
+  });
+  document.registerElement('fb-login', {prototype: proto});
+</script>
+
+
+
+
+
+

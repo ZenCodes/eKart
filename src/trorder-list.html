@@ -110,6 +110,7 @@ background-color:rgb(0, 188, 212);
   },
   TrackEvent:function(e)
     {
+    history.pushState("track", "track", "trackorder-list.html");
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true);
     //alert(e.target.getAttribute('value'));
     this.$.tos.trackstatus(e.target.getAttribute('value'));

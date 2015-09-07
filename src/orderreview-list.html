@@ -91,26 +91,26 @@
 </div>>
 
 <core-ajax id="rajax" auto="false" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
+contentType="application/json" url="http://ekart.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
 on-core-response="{{itemLoaded}}">
 </core-ajax>
 <core-ajax id="wajax" auto="false" method="POST" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/"
 body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
 </core-ajax>
 <core-ajax id="orajax" auto="false" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
 on-core-response="{{orderLoaded}}">
 </core-ajax>
 <core-ajax id="owajax" auto="false" method="POST" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/orderedcart/"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/"
 body='{"_id":"{{odocid}}","_rev":"{{orevid}}","orderno":"{{orderno}}"}'>
 </core-ajax>
 <core-ajax id="revajax" auto="false" handleAs="json"
-contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}"
+contentType="application/json" url="http://ekart.iriscouch.com/addtocart/{{docid}}"
 on-core-response="{{revLoaded}}">
 <core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
-contentType="application/json" url="http://hotelapp.iriscouch.com/addtocart/{{docid}}?rev={{revid}}">
+contentType="application/json" url="http://ekart.iriscouch.com/addtocart/{{docid}}?rev={{revid}}">
 </core-ajax>
 </template>
   <script>
