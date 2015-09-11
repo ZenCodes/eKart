@@ -1,3 +1,4 @@
+
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="view-list.html">
@@ -66,10 +67,10 @@ this.dri=[];
     this.docid=this.pr.rows[0].id;
     //alert("no of rows: "+this.pr.rows[0].value.length);
     this.$.revajax.go();
-
     //var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
     for(var n=0;n<this.pr.rows[0].value.length;n++)
     {
+    this.count=0;
     var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
     var id=this.pr.rows[0].value[n].prodid;
     var sno=this.pr.rows[0].value[n].prodsno;
@@ -111,7 +112,12 @@ this.dri=[];
    	this.$.writeajax.go();
    	//this.$.revajax.go();
     alert("Item deleted");
+    if(this.count==0)
+		    {
+		     this.$.dajax.go();
+		     //alert("deleted");
 
+        }
    	//alert("yes");
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list').pr=this.newarr;
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
@@ -121,7 +127,7 @@ this.dri=[];
     {
     this.pid=pid;
     this.psno=psno;
-    //alert(this.pid+" "+this.psno);
+    //alert(this.pid+" "+this.psno3);
     var tempid=sessionStorage.getItem("tempid");
     //alert(JSON.stringify(tempid));
     this.id=JSON.stringify(tempid);

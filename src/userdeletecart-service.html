@@ -44,6 +44,7 @@ this.uname="Temp user";
     //alert(this.header);
     },
     productsLoaded: function(event,detail) {
+    this.newarr=[];
     this.pr = this.$.tempreadajax.response;
     this.header=this.pr._rev;
     this.uname=this.pr.username;
