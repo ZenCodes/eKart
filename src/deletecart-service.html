@@ -60,15 +60,17 @@ this.dri=[];
      }
     },
     productsLoaded: function(event,detail) {
+    this.newarr=[];
     this.pr = this.$.tempreadajax.response;
 	//alert(JSON.stringify(this.pr));
     this.docid=this.pr.rows[0].id;
-    //alert(this.docid);
+    //alert("no of rows: "+this.pr.rows[0].value.length);
     this.$.revajax.go();
 
-    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
+    //var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
     for(var n=0;n<this.pr.rows[0].value.length;n++)
     {
+    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
     var id=this.pr.rows[0].value[n].prodid;
     var sno=this.pr.rows[0].value[n].prodsno;
     //alert(id+"   "+sno);
@@ -91,20 +93,25 @@ this.dri=[];
     newval.prodstatus="Tempcart";
     newval.prodsno=sno;
     this.newarr.push(newval);
+    //alert(JSON.stringify(this.newarr));
     this.prodarr=JSON.stringify(this.newarr);
     }
     }
+    //alert(this.count);
     //alert(JSON.stringify(this.newarr));
-    this.$.writeajax.go();
-    alert("Item deleted");
-
+    //this.$.revajax.go();
     if(this.newarr.length==0)
     {
+    alert("Item deleted");
     //alert("no");
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
     }
    	else
    	{
+   	this.$.writeajax.go();
+   	//this.$.revajax.go();
+    alert("Item deleted");
+
    	//alert("yes");
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('temp-list').pr=this.newarr;
     document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
