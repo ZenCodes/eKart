@@ -14,7 +14,9 @@
       on-core-response="{{postsLoaded}}"
       handleAs="json">
     </core-ajax>
-
+ <core-ajax id="newajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/addtocart/"
+		   body='{"username":{{n}},"cartinfo":{{cartarr}}}'>
+     </core-ajax>
     <core-ajax id="tempreadajax"
 		      auto="false"
 		      url="http://ekart.iriscouch.com/tempusercart/{{tempdocid}}"
@@ -67,6 +69,18 @@
 		            {
 		            this.values=this.prr.rows[0].value;
 	                this.$.readajax.go();
+	            }
+	            else
+	            {
+	             var arr;
+	             for(var i=0;i<this.tempro.length;i++)
+										{
+										this.tempro[i].prodstatus="Incart";
+
+				            }
+this.cartarr=JSON.stringify(this.tempro);
+	            this.$.newajax.go();
+			alert("Item Added!!");
 	            }
             },
             cartread:function (event, detail, sender)
