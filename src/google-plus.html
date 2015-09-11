@@ -1,0 +1,112 @@
+<html>
+<head>
+<style>
+#layout
+{
+margin-left:200px;
+width:200px;
+height:100px;
+margin-top:100px;
+position:absolute;
+border-style: solid;
+border-width: 1px;
+}
+#l1
+{
+position:absolute;
+left:40px;
+top:30px;
+}
+#l2
+{
+position:absolute;
+left:100px;
+top:30px;
+}
+h1
+{
+margin-left:150px;
+margin-top:70px;
+}
+</style>
+</head>
+<body>
+<h1>GOOGLE PLUS SHARING</h1>
+<div id="layout">
+<input type="button"  value="Login" onclick="login()" id="l1" />
+<input type="button"  value="Logout" onclick="logout()" id="l2"/>
+</div>
+
+<div id="profile"></div>
+<script type="text/javascript">
+
+function logout()
+{
+    gapi.auth.signOut();
+    location.reload();
+}
+function login()
+{
+  var myParams = {
+    'clientid' : '673049300596-qhkib9bq8v8j286s68l1mcfr32ucbbp0.apps.googleusercontent.com',
+    'cookiepolicy' : 'single_host_origin',
+    'callback' : 'loginCallback',
+    'approvalprompt':'force',
+    'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+  };
+  gapi.auth.signIn(myParams);
+}
+
+function loginCallback(result)
+{
+    if(result['status']['signed_in'])
+    {
+    window.location.href="../index.html";
+        /*var request = gapi.client.plus.people.get(
+        {
+            'userId': 'me'
+        });
+        request.execute(function (resp)
+        {
+            var email = '';
+            if(resp['emails'])
+            {
+                for(i = 0; i < resp['emails'].length; i++)
+                {
+                    if(resp['emails'][i]['type'] == 'account')
+                    {
+                        email = resp['emails'][i]['value'];
+                    }
+                }
+            }
+
+            var str = "Name:" + resp['displayName'] + "<br>";
+            //str += "Image:" + resp['image']['url'] + "<br>";
+            //str += "<img src='" + resp['image']['url'] + "' /><br>";
+
+            //str += "URL:" + resp['url'] + "<br>";
+            str += "Email:" + email + "<br>";
+            document.getElementById("profile").innerHTML = str;
+        });*/
+
+    }
+
+}
+function onLoadCallback()
+{
+    gapi.client.setApiKey('AIzaSyCvbtqoAnWbm13vjsyDbUXXcqQkxwyRzBU');
+    gapi.client.load('plus', 'v1',function(){});
+}
+
+    </script>
+
+<script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+</script>
+
+</body>
+</html>
