@@ -262,11 +262,9 @@ height:10px;
 
   <script>
 window.addEventListener("popstate", function(e) {
-//history.back();
-//history.go((history.length)-1);
 //alert("hi"+"   "+history.length+""+document.location+"   "+e.state);
-//if(e.state==null)
-//alert("hi");
+if(e.state==null)
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
 if(e.state=='inx')
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
 if(e.state=='sms')
@@ -293,7 +291,6 @@ if(e.state=='track')
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true);
 if(e.state=='prodinfo')
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
-
 
 //alert(document.querySelector('inx-element').shadowRoot.querySelector('product-list'));
 });
