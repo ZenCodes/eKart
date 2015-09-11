@@ -52,6 +52,7 @@ this.uname="Temp user";
     //var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":""};
 	for(var n=0;n<this.pr.cartinfo.length;n++)
 	{
+	this.count=0;
 	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":""};
 	var pid=this.pr.cartinfo[n].prodid;
 	var psno=this.pr.cartinfo[n].prodsno;
@@ -74,16 +75,24 @@ this.uname="Temp user";
 	    newval.prodsno=sno;
 	    newval.prodqty=qty;
 	    this.newarr.push(newval);
+
         this.prodarr=JSON.stringify(this.newarr);
 	}
 	}
-
+	 if(this.newarr.length==0)
+	    {
+	    //alert("Item deleted");
+	    this.$.dajax.go();
+	    //alert("no");
+	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
+    }
+//alert(JSON.stringify(this.newarr));
     this.$.writeajax.go();
         if(this.count==0)
 	    {
 	     this.$.dajax.go();
 	     //alert("deleted");
-
+		 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
         }
 
         alert("deleted");
