@@ -1,0 +1,114 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="orderreview-service.html">
+<link rel="import" href="view-card.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html" />
+<polymer-element name="socialplaceorder-service" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+  	        position: absolute;
+  	        width: 720px;
+
+  	        border-radius: 2px;
+  	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	        left: 0px;
+  	        top: 50px;
+  	        background-color: rgb(255, 255, 255);
+}
+
+  </style>
+<core-ajax id="rajax" auto="false" handleAs="json"
+contentType="application/json" url="http://ekart.iriscouch.com/tempusercart/{{tempid}}"
+on-core-response="{{itemLoaded}}">
+</core-ajax>
+<core-ajax id="wajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://ekart.iriscouch.com/socialcart/"
+body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
+</core-ajax>
+<core-ajax id="orajax" auto="false" handleAs="json"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
+on-core-response="{{orderLoaded}}">
+</core-ajax>
+<core-ajax id="owajax" auto="false" method="POST" handleAs="json"
+contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/"
+body='{"_id":"{{odocid}}","_rev":"{{orevid}}","orderno":"{{orderno}}"}'>
+</core-ajax>
+<core-ajax id="revajax" auto="false" handleAs="json"
+contentType="application/json" url="http://ekart.iriscouch.com/tempusercart/{{tempid}}"
+on-core-response="{{revLoaded}}">
+<core-ajax id="dajax" auto="false" handleAs="json" method="DELETE"
+contentType="application/json" url="http://ekart.iriscouch.com/tempusercart/{{tempid}}?rev={{revid}}">
+</core-ajax>
+</template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+  this.readarr=[];
+  this.itemarr=[];
+  this.onoarr=[];
+  this.addrarr=[];
+  this.$.orajax.go();
+  },
+    revLoaded:function(event,detail,sender)
+    {
+    var header=detail.xhr.getResponseHeader('ETag');
+    alert(header);
+    this.revid=JSON.parse(header);
+    this.$.dajax.go();
+    alert("deleted");
+  },
+  orderLoaded:function()
+    {
+    this.onoarr=this.$.orajax.response;
+    this.odocid=this.onoarr._id;
+    this.orevid=this.onoarr._rev;
+    this.orderno=parseInt(this.onoarr.orderno)+1;
+    sessionStorage.setItem("succorderid",this.orderno);
+    this.$.owajax.go();
+    //alert(this.orderno);
+  },
+   placeorder:function(totamt)
+  {
+  alert("hello"+totamt);
+  //alert("docid"+sessionStorage.getItem("tempid"));
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
+    this.name=JSON.stringify(sessionStorage.getItem("fbinfo"));
+ 	this.tempid=sessionStorage.getItem("tempid");
+ 	var shipinfo=sessionStorage.getItem("shipinfo");
+    var shipval=JSON.parse(shipinfo);
+    this.addrarr.push(shipval);
+    this.address=JSON.stringify(this.addrarr);
+    this.$.rajax.go();
+
+  },
+  itemLoaded:function()
+    {
+    this.readarr=this.$.rajax.response;
+    alert(JSON.stringify(this.readarr));
+    //this.uname=localStorage.getItem("nam");
+    this.docid=this.readarr._id;
+    for(var n=0;n<this.readarr.products.length;n++)
+    {
+    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","orderdate":"","prodsno":""};
+    newval.prodid=this.readarr.products[n].prodid;
+    newval.prodimg=this.readarr.products[n].prodimg;
+    newval.proddes=this.readarr.products[n].proddes;
+    newval.prodprice=this.readarr.products[n].prodprice;
+    newval.prodsno=this.readarr.products[n].prodsno;
+    newval.prodstatus="ordered";
+    newval.orderdate=new Date().toDateString();
+    this.itemarr.push(newval);
+    }
+    this.trackstatus="ordered";
+    this.order=JSON.stringify(this.itemarr);
+    alert(this.order);
+    this.$.revajax.go();
+    this.$.wajax.go();
+    alert("written");
+    //window.location.href='successindex.html';
+
+  }
+  });
+  </script>
+</polymer-element>
