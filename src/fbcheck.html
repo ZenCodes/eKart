@@ -15,7 +15,8 @@
     {
      if (response.status === 'connected')
     {
-   //alert(response.name);
+    getUserInfo();
+   alert(response.name);
     window.location.href = "../index.html";
         document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
         //SUCCESS
@@ -54,6 +55,10 @@
   function getUserInfo() {
         FB.api('/me', function(response) {
 
+   var loginname=response.name;
+  // alert(loginname);
+   sessionStorage.setItem("fbinfo",loginname);
+   alert('hi'+sessionStorage.getItem("fbinfo"));
       var str="<b>Name</b> : "+response.name+"<br>";
           str +="<b>Link: </b>"+response.link+"<br>";
           str +="<b>Username:</b> "+response.username+"<br>";

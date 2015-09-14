@@ -5,6 +5,7 @@
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="orderreview-service.html">
 <link rel="import" href="buy-service.html">
+<link rel="import" href="social-service.html">
 <polymer-element name="shipping-card">
 
   <template>
@@ -218,6 +219,7 @@ background-color:rgb(0, 188, 212);
      </core-ajax>
 <orderreview-service id="ors"></orderreview-service>
 <buy-service id="brs"></buy-service>
+<social-service id="scs"></social-service>
   </template>
 
   <script>
@@ -348,11 +350,15 @@ this.val.shiparr[0].phone=this.phone;
                                                  this.$.brs.buyfun();
 
 	                                             }
+	                                             else if(sessionStorage.getItem("fbinfo")!=null)
+	                                             {
+	                                             alert("From fb");
+												this.$.scs.callfun();
+	                                             }
 	                                             else
 	                                             {
-	                                              document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true,true,true);
-
-				   						        this.$.ors.callfun();
+	                                              document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true,true,true,true);
+													this.$.ors.callfun();
                                                   }
 
 				   								}

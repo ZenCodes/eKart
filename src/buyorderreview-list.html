@@ -164,7 +164,7 @@ body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"tracks
   sessionStorage.setItem("buyplaceorder",1);
 //alert(sessionStorage.getItem("buyflag"));
   //localStorage.getItem("buyprice");
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false,true);
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('credit-card').setAmount(sessionStorage.getItem("buyprice"));
    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('debit-card').setAmount(sessionStorage.getItem("buyprice"));
   document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('netbanking-card').setAmount(sessionStorage.getItem("buyprice"));

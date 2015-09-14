@@ -15,6 +15,7 @@
  <link href="login-card.html" rel="import">
   <link href="orderreview-list.html" rel="import">
   <link href="buyorderreview-list.html" rel="import">
+    <link href="socialreview-list.html" rel="import">
   <link href="payment-card.html" rel="import">
 <polymer-element name="Checkout-card">
 <template>
@@ -78,6 +79,7 @@ background-color:#FF9933;
 <div hidden?="{{isHidden5}}"><buyorderreview-list></buyorderreview-list></div>
 <div hidden?="{{isHidden6}}"><payment-card></payment-card></div>
 
+<div hidden?="{{isHidden7}}"><socialreview-list></socialreview-list></div>
 </core-card>
 
 </template>
@@ -86,18 +88,22 @@ background-color:#FF9933;
     Polymer({
     ready:function(){
 
-//this.isHidden6=true;
+this.isHidden7=true;
     },
-
+    hidesocial:function()
+    {
+    this.isHidden7=false;
+    },
 payment:function(){
  if((this.isHidden1==true)&&(this.isHidden2==true)&&(this.isHidden3==true))
  {
-this.isHidden1=true;
+        this.isHidden1=true;
 		this.isHidden2=true;
 		  this.isHidden3=true;
 		   this.isHidden4=true;
-this.isHidden5=true;
-this.isHidden6=false;
+          this.isHidden5=true;
+          this.isHidden6=false;
+          this.isHidden7=true;
 }
 else
 {
@@ -105,7 +111,7 @@ else
 }
 },
 
-    hiddenvalue:function(h1,h2,h3,h4,h5,h6)
+    hiddenvalue:function(h1,h2,h3,h4,h5,h6,h7)
     {
      this.isHidden1=h1;
 	this.isHidden2=h2;
@@ -113,6 +119,8 @@ else
 	   this.isHidden4=h4;
 this.isHidden5=h5;
 this.isHidden6=h6;
+this.isHidden7=h7;
+
     },
     hidepayment:function(h6){
     this.isHidden6=h6;
@@ -137,6 +145,7 @@ this.isHidden6=h6;
 			    this.isHidden4=true;
 			    this.isHidden5=true;
 		        this.isHidden6=true;
+		        this.isHidden7=true;
 			    }
 			    else
 			    {
@@ -155,7 +164,16 @@ this.isHidden6=h6;
 				  this.isHidden2=true;
 				  this.isHidden5=false;
 				  this.isHidden4=true;
+				  this.isHidden7=true;
 				 }
+				  else if(sessionStorage.getItem("fbinfo")!=null)
+	                                             {
+	                    this.isHidden1=true;
+		                this.isHidden2=true;
+					    this.isHidden5=true;
+					    this.isHidden4=true;
+				        this.isHidden7=false;
+	                                             }
 
 				else{
 
@@ -163,6 +181,7 @@ this.isHidden6=h6;
 				   this.isHidden2=true;
 				   this.isHidden3=false;
 				   this.isHidden4=true;
+				   this.isHidden7=true;
 			        }
 			        }
 			        else
