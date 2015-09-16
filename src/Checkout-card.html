@@ -108,6 +108,7 @@ payment:function(){
           this.isHidden5=true;
           this.isHidden6=false;
           this.isHidden7=true;
+          this.isHidden8=true;
 }
 else
 {
@@ -115,7 +116,7 @@ else
 }
 },
 
-    hiddenvalue:function(h1,h2,h3,h4,h5,h6,h7)
+    hiddenvalue:function(h1,h2,h3,h4,h5,h6,h7,h8)
     {
      this.isHidden1=h1;
 	this.isHidden2=h2;
@@ -124,6 +125,7 @@ else
 this.isHidden5=h5;
 this.isHidden6=h6;
 this.isHidden7=h7;
+this.isHidden8=h8;
 
     },
     hidepayment:function(h6){
@@ -137,6 +139,7 @@ this.isHidden7=h7;
 			this.isHidden4=true;
 			this.isHidden5=true;
 		    this.isHidden6=true;
+		    this.isHidden8=true;
 		    },
 		      shipping:function()
 			    {
@@ -150,6 +153,7 @@ this.isHidden7=h7;
 			    this.isHidden5=true;
 		        this.isHidden6=true;
 		        this.isHidden7=true;
+		        this.isHidden8=true;
 			    }
 			    else
 			    {
@@ -169,6 +173,7 @@ this.isHidden7=h7;
 				  this.isHidden5=false;
 				  this.isHidden4=true;
 				  this.isHidden7=true;
+				  this.isHidden8=true;
 				 }
 				  else if(sessionStorage.getItem("fbinfo")!=null)
 	                                             {
@@ -177,6 +182,7 @@ this.isHidden7=h7;
 					    this.isHidden5=true;
 					    this.isHidden4=true;
 				        this.isHidden7=false;
+				        this.isHidden8=true;
 	                                             }
 
 				else{
@@ -186,6 +192,7 @@ this.isHidden7=h7;
 				   this.isHidden3=false;
 				   this.isHidden4=true;
 				   this.isHidden7=true;
+				   this.isHidden8=true;
 			        }
 			        }
 			        else
