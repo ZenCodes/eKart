@@ -296,16 +296,16 @@ shortView: true,
 flag:true,
 ready:function()
 {
-if(sessionStorage.getItem("fbinfo")!=null)
+/*if(sessionStorage.getItem("fbinfo")!=null)
 {
 alert('hello');
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true);
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,false,true,true,true,true,true);
 }
 else
-{
+{}*/
 this.$.pl.hiddenVal(false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
-}
+
 history.pushState("inx", "inx", "inx-element.html");
 var namee=localStorage.getItem("nam");
 if(namee==""||namee==null)

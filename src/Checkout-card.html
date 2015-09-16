@@ -17,6 +17,7 @@
   <link href="buyorderreview-list.html" rel="import">
     <link href="socialreview-list.html" rel="import">
   <link href="payment-card.html" rel="import">
+  <link href="order-succ.html" rel="import">
 <polymer-element name="Checkout-card">
 <template>
 <style>
@@ -80,6 +81,7 @@ background-color:#FF9933;
 <div hidden?="{{isHidden6}}"><payment-card></payment-card></div>
 
 <div hidden?="{{isHidden7}}"><socialreview-list></socialreview-list></div>
+<div hidden?="{{isHidden8}}"><order-succ></order-succ></div>
 </core-card>
 
 </template>
@@ -89,10 +91,11 @@ background-color:#FF9933;
     ready:function(){
 
 this.isHidden7=true;
+this.isHidden8=true;
     },
-    hidesocial:function()
+    hideorder:function()
     {
-    this.isHidden7=false;
+    this.isHidden8=false;
     },
 payment:function(){
  if((this.isHidden1==true)&&(this.isHidden2==true)&&(this.isHidden3==true))

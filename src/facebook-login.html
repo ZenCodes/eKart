@@ -1,0 +1,127 @@
+
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="post-card.html">
+
+<polymer-element name="facebook-login" attributes="type appid pageurl layout fbshare">
+    <template>
+        <!-- HTML5 -->
+        <div id="fbloginhtml5">
+            <div class="fb-login-button">
+            <fb:login-button scope="public_profile,email" onlogin="FB.customCheckLoginState();" data-auto-logout-link="true"></fb:login-button>
+            </div>
+        </div>
+        <!-- XFBML -->
+        <div id="fbloginxfbml">
+            <fb:login-button scope="public_profile,email" onlogin="FB.customCheckLoginState();" data-auto-logout-link="true"></fb:login-button>
+        </div>
+        <!-- IFRAME -->
+        <div id="fbloginiframe">
+            <iframe scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+        </div>
+    </template>
+    <script>
+    	function statusChangeCallback(response) {
+			if (response.status === 'connected')
+			{
+			getUserInfo();
+			Login();
+			}
+			else if (response.status === 'not_authorized')
+			{
+			}
+			else
+			{
+			}
+					}
+ function Login()
+    {
+	FB.login(function(response) {
+    if (response.authResponse)
+    {
+    getUserInfo();
+    } else
+    {
+    console.log('User cancelled login or did not fully authorize.');
+    }
+    },{scope: 'email,user_photos,user_videos'});
+    }
+  function getUserInfo() {
+   FB.api('/me', function(response) {
+   var loginname=response.name;
+   //alert(loginname);
+   sessionStorage.setItem("fbinfo",loginname);
+   document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,false,true,true,true,true,true);
+//window.location.href="index.html";
+    });
+    }
+    Polymer({
+        type: 'html5',
+        appid: '1130501530312645',
+        pageurl: 'https://developers.facebook.com/',
+        layout: 'icon_link',
+        renderFacebooklogin: function() {
+               (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            switch (this.type) {
+                case 'html5':
+                    var container = this.$.fbloginhtml5,
+                        that = this;
+                    window.fbAsyncInit = function() {
+                        FB.init({
+                            appId: that.appid,
+                            xfbml: true,
+                            version: 'v2.4'
+                        });
+                        FB.getLoginStatus(function(response) {
+							statusChangeCallback(response);
+						 });
+						    FB.XFBML.parse(container);
+							FB.customCheckLoginState = function() {
+							FB.getLoginStatus(function(response) {
+							statusChangeCallback(response);
+
+							 });
+							 };
+                    }
+                    break;
+                case 'xfbml':
+                    console.log('xfbml');
+                    var container = this.$.fbloginxfbml,
+                        that = this;
+                    window.fbAsyncInit = function() {
+                        FB.init({
+                            appId: that.appid,
+                            xfbml: true,
+                            version: 'v2.1'
+                        });
+                         FB.getLoginStatus(function(response) {
+				         statusChangeCallback(response);
+						               });
+                        FB.XFBML.parse(container);
+						              FB.customCheckLoginState = function() {
+						                  FB.getLoginStatus(function(response) {
+						                      statusChangeCallback(response);
+						                  });
+						              };
+
+                    }
+                    break;
+                case 'iframe':
+                    this.$.fbloginiframe.style.display = 'block';
+                    break;
+            }
+        },
+        ready: function() {
+            this.$.fbloginiframe.style.display = 'none';
+            this.async(this.renderFacebooklogin, null, 1000);
+        }
+
+    });
+    </script>
+</polymer-element>

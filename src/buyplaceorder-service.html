@@ -72,6 +72,10 @@ body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"tracks
      this.$.wajax.go();
      localStorage.setItem("buydocid","");
      localStorage.setItem("buyflag","");
+
+      alert("order placed");
+	     document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('order-succ').setInfo(this.uname,this.orderno);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hideorder();
      //window.location.href='successindex.html';
   },
   orderLoaded:function()
@@ -82,6 +86,7 @@ body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"tracks
   this.orderno=parseInt(this.onoarr.orderno)+1;
   sessionStorage.setItem("succorderid",this.orderno);
   this.$.owajax.go();
+
   },
   placeorder:function(totamt)
   {

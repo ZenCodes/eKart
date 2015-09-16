@@ -9,6 +9,7 @@
 <link href="../components/core-label/core-label.html" rel="import">
 <link href="checksummary-card.html" rel="import">
 <link href="Checkout-card.html" rel="import">
+<link href="facebook-login.html" rel="import">
  <link rel="import" href="../components/paper-radio-group/paper-radio-group.html">
 <polymer-element name="email-card">
 <template>
@@ -127,8 +128,10 @@ background-color:#FF9933;
 </div>
 <div id="div4" layout vertical>
 <core-label id="l2" >sign in With</core-label>
-<paper-button id="paper_button1" on-click="{{fb}}"><img src="../res/facebooklogin.jpg" width="80px" height="20px" ></paper-button>
+<div style="margin-left:15px;margin-top:10px;"><facebook-login></facebook-login></div>
+<!--<paper-button id="paper_button1" on-click="{{fb}}"><img src="../res/facebooklogin.jpg" width="80px" height="20px" ></paper-button>-->
 <paper-button id="paper_button2" on-click="{{google}}"><img src="../res/googlelogin.jpg" width="80px" height="30px" ></paper-button>
+
 </div>
 </div>
 </core-card>

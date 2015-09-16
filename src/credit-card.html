@@ -221,7 +221,7 @@ font-family:'Ek Mukta';
 setAmount:function(amt){
 this.amt=amt;
 this.totamt=amt;
-alert("Amount: "+amt);
+//alert("Amount: "+amt);
 },
 payment:function(){
 
@@ -232,7 +232,7 @@ document.querySelector('inx-element').shadowRoot.querySelector('product-list').s
 }
 else if(sessionStorage.getItem("fbinfo")!=null)
 {
-alert("via fb");
+//alert("via fb");
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('socialplaceorder-service').placeorder(this.totamt);
 }
 else

@@ -55,19 +55,22 @@ function login()
     'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
   };
   gapi.auth.signIn(myParams);
+
 }
 
 function loginCallback(result)
 {
+
     if(result['status']['signed_in'])
     {
-    window.location.href="../index.html";
-        /*var request = gapi.client.plus.people.get(
+
+        var request = gapi.client.plus.people.get(
         {
             'userId': 'me'
         });
         request.execute(function (resp)
         {
+        alert("Name:" + resp['displayName']);
             var email = '';
             if(resp['emails'])
             {
@@ -79,7 +82,8 @@ function loginCallback(result)
                     }
                 }
             }
-
+             alert("Name:" + resp['displayName']);
+             sessionStorage.setItem("fbinfo",resp['displayName']);
             var str = "Name:" + resp['displayName'] + "<br>";
             //str += "Image:" + resp['image']['url'] + "<br>";
             //str += "<img src='" + resp['image']['url'] + "' /><br>";
@@ -87,10 +91,15 @@ function loginCallback(result)
             //str += "URL:" + resp['url'] + "<br>";
             str += "Email:" + email + "<br>";
             document.getElementById("profile").innerHTML = str;
-        });*/
+        });
+
 
     }
-
+call();
+}
+function call()
+{
+window.location.href="../index.html";
 }
 function onLoadCallback()
 {

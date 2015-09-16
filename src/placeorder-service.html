@@ -101,6 +101,9 @@ contentType="application/json" url="http://ekart.iriscouch.com/addtocart/{{docid
     //alert(JSON.stringify(this.order));
     this.$.revajax.go();
     this.$.wajax.go();
+     alert("order placed");
+	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('order-succ').setInfo(this.uname,this.orderno);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hideorder();
     //window.location.href='successindex.html';
 
   }

@@ -30,8 +30,19 @@ position: absolute;
 Polymer('order-succ',{
 ready:function()
 {
+if(localStorage.getItem("nam")!=null)
 this.name=localStorage.getItem("nam");
+if(sessionStorage.getItem("fbinfo")!=null)
+this.name=sessionStorage.getItem("fbinfo");
+
 this.id=sessionStorage.getItem("succorderid");
+
+},
+setInfo:function(uname,orderno)
+{
+alert(uname+"  "+orderno);
+this.name=uname;
+this.id=orderno;
 }
 });
 </script>
