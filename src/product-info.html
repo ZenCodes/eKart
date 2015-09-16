@@ -26,6 +26,32 @@
 
       	      }
 
+                           #border
+			        	      {
+			        	      position: absolute;
+                               top:190px;
+                               left:240px;
+			        	      border-style: solid;
+			        	     border-color:rgb(217, 217,217);
+			        	      border-width:2px;
+			        	      background-color: rgb(242, 242,242);
+			        	       width:440px;
+
+			        	      }
+			        	      #p1
+			        	      {
+			        	      position: absolute;
+			        	      top:150px;
+                                left:240px;
+			        	      width:140px;
+			        	      height:40px;
+			        	      background-color: rgb(191, 191, 191);
+			        	       border:rgb(217, 217,217);
+			        	      border-width:2px;
+			        	       margin-bottom: 0px;
+			        	      }
+
+
     </style>
      <info-service pr="{{pr}}"></info-service>
 
@@ -36,19 +62,23 @@
     	 	<info-card>
 
 
-    <div horizontal layout style="padding:15px;">
+    <div horizontal layout style="">
     <div>
     	           <img id="bor" src="{{img1}}" width="200" height="200"></div>
     <div style="text-align:center;">
     	           <h3 style="padding-left:100px;"><a href="#" id="{{_id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{des}}</a></h3>
     	           <h5 >Price -{{price}}</h5>
-    	           <h3>Key Features</h3>
-    	           <template repeat="{{pro in proddesc}}">
-				       	           <li style="text-align:left;padding-left:100px;">{{pro}}</li>
-				       	           </template>
-
-    <cb><paper-button id="{{_id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+    	           <cb><paper-button id="{{_id}}" on-click="{{clickEvent}}" >ADD TO CART</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
     <paper-button id="{{_id}}" on-click="{{clickEventt}}" >More Info</paper-button>
+    	           <div id="p1">
+    	            <h3>Product Details</h3></div>
+    	            <div id="border">
+    	           <template repeat="{{pro in proddesc}}">
+				       	           <li style="text-align:left;padding-left:80px;">{{pro}}</li>
+				       	           </template>
+</div>
+
+
     </div>
     </div>
     </info-card>
