@@ -20,7 +20,15 @@
 	      >
     </core-ajax>
 
+ <core-ajax id="socialajax"
 
+	      auto
+	      url="http://ekart.iriscouch.com/socialcart/_all_docs?include_docs=true"
+
+	      handleAs="json"
+	      on-core-response="{{socialloaded}}"
+	      >
+    </core-ajax>
   </template>
   <script>
 
@@ -33,12 +41,22 @@ created: function() {
 
 this.products = [];
 this.pr=[];
+
     },
     productsLoaded1: function(event,detail) {
     this.pr = this.$.ajax1.response;
-    //alert(JSON.stringify(this.pr));
-    document.querySelector('admin-tab').shadowRoot.querySelector('adordered-list').pr=this.pr.rows;
+    alert('hi'+JSON.stringify(this.pr));
+
     //alert(JSON.stringify(this.pr.rows));
+    },
+      socialloaded: function(event,detail)
+      {
+
+	    this.products = this.$.socialajax.response;
+ alert('hii'+JSON.stringify(this.products));
+Array.prototype.push.apply(this.pr.rows,this.products.rows);
+alert(JSON.stringify(this.pr.rows));
+ document.querySelector('admin-tab').shadowRoot.querySelector('adordered-list').pr=this.pr.rows;
     }
     });
   </script>
