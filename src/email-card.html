@@ -10,6 +10,7 @@
 <link href="checksummary-card.html" rel="import">
 <link href="Checkout-card.html" rel="import">
 <link href="facebook-login.html" rel="import">
+<link href="google-login.html" rel="import">
  <link rel="import" href="../components/paper-radio-group/paper-radio-group.html">
 <polymer-element name="email-card">
 <template>
@@ -129,8 +130,11 @@ background-color:#FF9933;
 <div id="div4" layout vertical>
 <core-label id="l2" >sign in With</core-label>
 <div style="margin-left:15px;margin-top:10px;"><facebook-login></facebook-login></div>
+<div style="margin-left:0px;margin-top:10px;">
+<google-login callback="http://localhost:8000/Polymer0.5/googledemo/"  clientID="757265822570-es4qoi574tlefj8s35ci8tie3fd48ep1.apps.googleusercontent.com" scope="https://www.googleapis.com/auth/userinfo.profile"></google-login>
+</div>
 <!--<paper-button id="paper_button1" on-click="{{fb}}"><img src="../res/facebooklogin.jpg" width="80px" height="20px" ></paper-button>-->
-<paper-button id="paper_button2" on-click="{{google}}"><img src="../res/googlelogin.jpg" width="80px" height="30px" ></paper-button>
+<!--<paper-button id="paper_button2" on-click="{{google}}"><img src="../res/googlelogin.jpg" width="80px" height="30px" ></paper-button>-->
 
 </div>
 </div>
