@@ -38,6 +38,7 @@
   	      paper-button{
 		  font-size: 13px;
 		  background-color:rgb(248,139,48);
+		  color:white;
 }
 
   </style>
@@ -64,7 +65,7 @@
    	<div style="width:950px;margin-left:50px;border: 2px solid #E0E0E0 ;" horizontal layout>
  		<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
  		<div style="text-align:center;">
- 		<div layout horizontal><h3 style="padding-left:100px;">{{pro.proddes}}</h3></div>
+ 		<div layout horizontal><h3 style="padding-left:100px;text-decoration: none;">{{pro.proddes}}</h3></div>
  	    <h5 >Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
          <!--<paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{cancel}}" >Cancel order</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
          <!--<paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{TrackEvent}}" >Track  Order</paper-button>-->

@@ -29,12 +29,15 @@ paper-button{
 //width:120px;
 font-size: 13px;
 background-color:rgb(248,139,48);
+color:white;
+font-family: 'Ek Mukta';
+
 }
   </style>
 <temp-service pr="{{pr}}"></temp-service>
  <div id="core_card2"   class="core_card2" style="border: 2px solid #F88B30;">
- <paper-button id="{{product.prodid}}" on-click="{{continue}}" style="left:30px;background-color:rgb(248,139,48);">Continue To Shopping</paper-button>
- <paper-button id="{{product.prodid}}" on-click="{{proceed}}" style="left:720px;background-color:rgb(248,139,48);">Proceed To Checkout</paper-button>
+ <paper-button id="{{product.prodid}}" on-click="{{continue}}" style="left:30px;background-color:rgb(248,139,48);color:white;">Continue To Shopping</paper-button>
+ <paper-button id="{{product.prodid}}" on-click="{{proceed}}" style="left:720px;background-color:rgb(248,139,48);color:white;">Proceed To Checkout</paper-button>
  <template id="temp-list" repeat="{{product in pr}}">
   <div id="card">
  <temp-card>
@@ -43,7 +46,7 @@ background-color:rgb(248,139,48);
 <div style="text-align:center;width:650px;">
 <h3 style="padding-left:100px;">{{product.proddes}}</h3>
 <h5 >Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.prodprice}}</h5>
-<cb><paper-button style="width:120px" id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<cb><paper-button style="width:120px;color:white;" id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!--<paper-button id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{clickEventt}}" >Save for Later</paper-button>-->
 </div>
 </div>
