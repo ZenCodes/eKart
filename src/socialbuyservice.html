@@ -1,7 +1,7 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="temp-list.html">
-<polymer-element name="buy-service" attributes="pr">
+<polymer-element name="socialbuy-service" attributes="pr">
    <template >
     <style>
     :host {
@@ -31,7 +31,7 @@ sessionStorage.setItem("buyprice",parseInt(this.itemarr.price));
 //alert(document.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list'));
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list').pr=this.itemarr;
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('buyorderreview-list').reload;
-    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,false,true,true,true,true);
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,true,true,true,false);
 //alert("value setted!!");
 },
 buyfun:function()
@@ -45,4 +45,3 @@ this.$.ajax.go();
     });
   </script>
 </polymer-element>
-`

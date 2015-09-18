@@ -15,6 +15,7 @@
  <link href="login-card.html" rel="import">
   <link href="orderreview-list.html" rel="import">
   <link href="buyorderreview-list.html" rel="import">
+   <link href="socialbuyorderreview-list.html" rel="import">
     <link href="socialreview-list.html" rel="import">
   <link href="payment-card.html" rel="import">
   <link href="order-succ.html" rel="import">
@@ -80,9 +81,9 @@ background-color:#FF9933;
 <div hidden?="{{isHidden4}}"  id="lc"><login-card id="login"></login-card></div>
 <div hidden?="{{isHidden5}}"><buyorderreview-list></buyorderreview-list></div>
 <div hidden?="{{isHidden6}}"><payment-card></payment-card></div>
-
 <div hidden?="{{isHidden7}}"><socialreview-list></socialreview-list></div>
 <div hidden?="{{isHidden8}}"><order-succ></order-succ></div>
+<div hidden?="{{isHidden9}}"><socialbuyorderreview-list></socialbuyorderreview-list></div>
 </core-card>
 
 </template>
@@ -106,6 +107,7 @@ payment:function(){
           this.isHidden6=false;
           this.isHidden7=true;
           this.isHidden8=true;
+          this.isHidden9=true;
 }
 else
 {
@@ -113,7 +115,7 @@ else
 }
 },
 
-    hiddenvalue:function(h1,h2,h3,h4,h5,h6,h7,h8)
+    hiddenvalue:function(h1,h2,h3,h4,h5,h6,h7,h8,h9)
     {
      this.isHidden1=h1;
 	this.isHidden2=h2;
@@ -123,6 +125,7 @@ this.isHidden5=h5;
 this.isHidden6=h6;
 this.isHidden7=h7;
 this.isHidden8=h8;
+ this.isHidden9=h9;
 
     },
     hidepayment:function(h6){
@@ -138,6 +141,7 @@ this.isHidden8=h8;
 		    this.isHidden6=true;
 		      this.isHidden7=true;
 		    this.isHidden8=true;
+		     this.isHidden9=true;
 		    },
 		      shipping:function()
 			    {
@@ -152,6 +156,7 @@ this.isHidden8=h8;
 		        this.isHidden6=true;
 		        this.isHidden7=true;
 		        this.isHidden8=true;
+		         this.isHidden9=true;
 			    }
 			    else
 			    {

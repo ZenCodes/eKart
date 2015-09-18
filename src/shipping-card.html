@@ -5,6 +5,7 @@
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 <link rel="import" href="orderreview-service.html">
 <link rel="import" href="buy-service.html">
+<link rel="import" href="socialbuy-service.html">
 <link rel="import" href="social-service.html">
 <polymer-element name="shipping-card">
 
@@ -219,6 +220,7 @@ background-color:rgb(248,139,48);
      </core-ajax>
 <orderreview-service id="ors"></orderreview-service>
 <buy-service id="brs"></buy-service>
+<socialbuy-service id="sbo"></socialbuy-service>
 <social-service id="scs"></social-service>
   </template>
 
@@ -344,20 +346,29 @@ this.val.shiparr[0].phone=this.phone;
 				   						        localStorage.setItem("nnflag",1);
 				   						        sessionStorage.setItem("shipinfo",JSON.stringify(ship));
 				   						         this.$.ajax.go();
-				   						         if(sessionStorage.getItem("buyflag")=="true")
-	                                             {
-	                                             sessionStorage.setItem("buyflag"," ");
-                                                 this.$.brs.buyfun();
 
-	                                             }
-	                                             else if(sessionStorage.getItem("fbinfo")!=null)
+	                                              if(sessionStorage.getItem("fbinfo")!=null)
 	                                             {
-	                                             //alert("From fb");
-												this.$.scs.callfun();
+	                                                  if(sessionStorage.getItem("buyflag")=="true")
+	                                                  {
+	                                                  alert("buy");
+	                                                   sessionStorage.setItem("buyflag"," ");
+												       this.$.sbo.buyfun();
+												       }
+												       else
+												        {
+												          this.$.scs.callfun();
+												         }
+	                                             }
+	                                            else if(sessionStorage.getItem("buyflag")=="true")
+												 {
+												 	  sessionStorage.setItem("buyflag"," ");
+												       this.$.brs.buyfun();
+
 	                                             }
 	                                             else
 	                                             {
-	                                              document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true,true,true,true,true);
+	                                              document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,false,true,true,true,true,true,true);
 													this.$.ors.callfun();
                                                   }
 
