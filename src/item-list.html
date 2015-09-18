@@ -58,9 +58,14 @@
     <div vertical layout  id="d1" >
 <center>
     	          <div> <img id="bor" src="{{product.value[0]}}" width="200px" height="200px"> </div>
+
     	           <paper-button id="{{product.id}}" on-click="{{clickLink}}" style="text-decoration: none;font-family:'Calibri';
 text-transform: none;font-size: 14px;">{{product.value[1]}}</paper-button>
     	           Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[2]}}
+
+    	           <h6><paper-button id="{{product.id}}" on-click="{{clickLink}}" style="font-family:'Ek Mukta';text-transform: none;">{{product.value[1]}}</paper-button></h6>
+    	           <h5 >Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[2]}}</h5>
+
     	           <div  horizontal layout>
     <cb><paper-button id="{{product.id}}" on-click="{{clickEvent}}" style="text-decoration: none;font-family:'Calibri';box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
 text-transform: none;font-size: 17px;left:20px;color:white;background-color: rgb(248,139,48);top:10px;height:30px;text-align:top;">Add to cart</paper-button></cb>
