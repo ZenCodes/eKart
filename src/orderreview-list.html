@@ -59,8 +59,6 @@
               {
                        font-size: 13px;
 			  		   background-color:rgb(248,139,48);
-			  		   width: 150px;
-                      height:40px;
                       color:white;
               }
 
@@ -94,10 +92,11 @@
 
 
 </template>
+
 <h4 style="margin-left:490px;">Total - <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{totamt}}</h4>
 <div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
 </table>
-</div>>
+</div>
 
 <core-ajax id="rajax" auto="false" handleAs="json"
 contentType="application/json" url="http://ekart.iriscouch.com/addtocart/_design/vcart/_view/vcartview?key={{name}}"
