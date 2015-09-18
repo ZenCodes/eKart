@@ -13,7 +13,7 @@
     	        border-radius: 2px;
     	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
     	        left: 0px;
-    	        top: 650px;
+    	        top: 50px;
     	        background-color: rgb(255, 255, 255);
 
   	      }
@@ -115,7 +115,7 @@
   sessionStorage.setItem("socialbuyplaceorder",1);
 //alert(sessionStorage.getItem("buyflag"));
   //localStorage.getItem("buyprice");
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false,true);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false,true,true,true);
  document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('credit-card').setAmount(sessionStorage.getItem("buyprice"));
    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('debit-card').setAmount(sessionStorage.getItem("buyprice"));
   document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('netbanking-card').setAmount(sessionStorage.getItem("buyprice"));

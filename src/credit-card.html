@@ -230,6 +230,10 @@ if(sessionStorage.getItem("buyplaceorder")==1)
 //alert("buy");
 document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('buyplaceorder-service').placeorder(this.totamt);
 }
+else if(sessionStorage.getItem("socialbuyplaceorder")==1)
+{
+document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('payment-card').shadowRoot.querySelector('socialbuyplaceorder-service').placeorder(this.totamt);
+}
 else if(sessionStorage.getItem("fbinfo")!=null)
 {
 //alert("via fb");
