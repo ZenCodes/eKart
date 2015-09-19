@@ -73,6 +73,7 @@
 	          width: 20px;
      height: 33px;
       box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+
       }
 
 #sublist
@@ -106,18 +107,24 @@ margin-top:-10px;
  #cl{
 margin-left:950px;
 margin-top: 10px;
+font-family:Calibri;
 }
 view-trigger{
 margin-left: 210px;
 margin-top:5px;
 }
 #signin{
-font-size:12px;
+font-size:14px;
 padding-left:50px;
+font-family:Calibri;
+text-transform:none;
 }
 #signout{
 margin-left:1000px;
 top: 10px;
+font-family:Calibri;
+text-transform:none;
+font-size:14px;
 }
  #cartcount
  {
@@ -129,7 +136,7 @@ top: 10px;
 font-family:'Ek Mukta';
 font-size:16px;
 text-transform: none;
-text-align:top;
+text-ailgn:top;
 height:10px;
  }
   layered {
@@ -137,6 +144,18 @@ height:10px;
          top: 150px;
 
 
+      }
+      .but{
+        font-family: 'Calibri';
+	        font-size: 18px;
+      text-transform: none;
+      color: white;
+      }
+       paper-item{
+	          font-family: 'Calibri';
+	  	        font-size: 18px;
+	        text-transform: none;
+	        color: white;
       }
 
     </style>
@@ -159,14 +178,14 @@ height:10px;
 <!--<cart-count id="cc"></cart-count>-->
 <paper-tabs selected="0" selectedindex="0" id="paper_tabs" horizontal center layout noink>
 <paper-tab id="paper_tab1" inline flex center-center horizontal layout active>
-				   <paper-button id="Desktop" label="Desktop" on-tap="{{toggle}}" noink style="color:white;font-weight: bold;">Desktop</paper-button>
+				   <paper-button id="Desktop" class="but" label="Desktop" on-tap="{{toggle}}" noink style="color:white;font-weight: bold;">Desktop</paper-button>
 
 
 	  	          <core-dropdown id="d1"  layered relatedTarget="{{$.Desktop}}" on-core-select="{{item}}"  >
 
 	  	          <core-menu style="background-color: rgb(248,139,48);"  id="menu" on-core-select="{{item}}">
-	  	              <paper-item label="PC" id="desk_pc" style="color:white;" on-tap="{{toggleView}}"  >Pc</paper-item>
-	  	  	          <paper-item label="Mac"  id="desk_mac" style="color:white;" on-tap="{{toggleView}}" >Mac</paper-item>
+	  	              <paper-item label="PC" id="desk_pc" style="color:white;font-family: 'Calibri';font-size: 17px;" on-tap="{{toggleView}}"  >Pc</paper-item>
+	  	  	          <paper-item label="Mac"  id="desk_mac" style="color:white;font-family: 'Calibri';font-size: 17px;" on-tap="{{toggleView}}" >Mac</paper-item>
 	  	          </core-menu>
 	  	          </div>
 	              </core-dropdown>
@@ -174,26 +193,26 @@ height:10px;
 	              </paper-tab>
 
 				<paper-tab id="paper_tab2" inline flex center-center horizontal layout active>
-				   <paper-button id="Laptop" label="Laptop" on-tap="{{toggle}}" noink style="color:white;">Laptop</paper-button>
+				   <paper-button id="Laptop" label="Laptop" class="but" on-tap="{{toggle}}" noink style="color:white;">Laptop</paper-button>
 	  	          <core-dropdown id="d2" layered relatedTarget="{{$.Laptop}}" on-core-select="{{item}}">
 	  	          <core-menu style="background-color: rgb(248,139,48);" id="menu" on-core-select="{{item}}">
-	  	              <paper-item id="lap_win" on-tap="{{toggleView}}" style="color:white;" >Windows</paper-item>
-	  	  	          <paper-item  id="lap_mac" on-tap="{{toggleView}}" style="color:white;" >Mac</paper-item>
+	  	              <paper-item id="lap_win" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Windows</paper-item>
+	  	  	          <paper-item  id="lap_mac" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Mac</paper-item>
 	  	          </core-menu>
 	              </core-dropdown>
 	              </paper-tab>
 
 			 <paper-tab id="paper_tab2" inline flex center-center horizontal layout active>
-				<paper-button id="Components" label="lap" on-tap="{{toggle}}" noink style="color:white;">Components</paper-button>
+				<paper-button id="Components" label="lap" class="but" on-tap="{{toggle}}" noink style="color:white;">Components</paper-button>
 
 				<core-dropdown id="d3"  layered relatedTarget="{{$.Components}}" on-core-select="{{item}}">
 
 				  	  	  	  <core-menu style="background-color: rgb(248,139,48);" class="menu">
-				  	  	  	      <paper-item id="comp_mouse" on-tap="{{toggleView}}" style="color:white;" >MICE and trackballs</paper-item>
-						 	  	  <paper-item id="comp_moni" on-tap="{{toggleView}}" style="color:white;" >Monitors</paper-item>
-						 	  	  <paper-item id="comp_print" on-tap="{{toggleView}}" style="color:white;">Printers</paper-item>
-						 	  	  <paper-item id="comp_scan" on-tap="{{toggleView}}" style="color:white;">Scanners</paper-item>
-						 	  	  <paper-item id="comp_camera" on-tap="{{toggleView}}" style="color:white;">Web Cameras</paper-item>
+				  	  	  	      <paper-item id="comp_mouse" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >MICE and trackballs</paper-item>
+						 	  	  <paper-item id="comp_moni" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Monitors</paper-item>
+						 	  	  <paper-item id="comp_print" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Printers</paper-item>
+						 	  	  <paper-item id="comp_scan" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Scanners</paper-item>
+						 	  	  <paper-item id="comp_camera" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Web Cameras</paper-item>
 				  	  	  	  </core-menu>
 							 </core-dropdown>
 	               </paper-tab>
@@ -201,49 +220,49 @@ height:10px;
 
 
                    <paper-tab id="paper_tab3" inline flex center-center horizontal layout active>
-				  				   				<paper-button id="Tablets" label="lap" on-tap="{{toggle}}" noink style="color:white;">Tablets</paper-button>
+				  				   				<paper-button id="Tablets" class="but" label="lap" on-tap="{{toggle}}" noink style="color:white;">Tablets</paper-button>
 
 				  								       <core-dropdown id="d4"  layered relatedTarget="{{$.Tablets}}" on-core-select="{{item}}">
 	  	  	  	  <core-menu style="background-color: rgb(248,139,48);" class="menu">
-	  	  	  	   <paper-item id="tab_win" on-tap="{{toggleView}}" style="color:white;" >Windows</paper-item>
-	  	  	          <paper-item  id="tab_mac" on-tap="{{toggleView}}" style="color:white;" >Mac</paper-item>
+	  	  	  	   <paper-item id="tab_win" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Windows</paper-item>
+	  	  	          <paper-item  id="tab_mac" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Mac</paper-item>
 	  	  	  	  </core-menu>
                   </core-dropdown>
                    </paper-tab>
 	               <paper-tab id="paper_tab4" inline flex center-center horizontal layout active>
-	  	  	  	  <paper-button id="Software" label="lap" on-tap="{{toggle}}" noink style="color:white;">Software</paper-button>
+	  	  	  	  <paper-button id="Software"  class="but" label="lap" on-tap="{{toggle}}" noink style="color:white;">Software</paper-button>
 	  	  	  	  <core-dropdown id="d5"  layered relatedTarget="{{$.Software}}" on-core-select="{{item}}">
 	  	  	  	  <core-menu style="background-color: rgb(248,139,48);" class="menu">
-	  	  	  	   <paper-item id="Windows" on-tap="{{toggleView}}" style="color:white;">Windows</paper-item>
-	  	  	          <paper-item  id="Mac" on-tap="{{toggleView}}" style="color:white;">Mac</paper-item>
+	  	  	  	   <paper-item id="Windows" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Windows</paper-item>
+	  	  	          <paper-item  id="Mac" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Mac</paper-item>
 	  	  	  	  </core-menu>
 	  	  	  	 </core-dropdown>
 	               </paper-tab>
 	                <paper-tab id="paper_tab5" inline flex center-center horizontal layout active>
-				   	  	  	  	  <paper-button id="Phone" label="lap" on-tap="{{toggle}}" noink style="color:white;">Phone</paper-button>
+				   	  	  	  	  <paper-button id="Phone" class="but" label="lap" on-tap="{{toggle}}" noink style="color:white;">Phone</paper-button>
 				   	  	  	  	  <core-dropdown id="d6"  layered relatedTarget="{{$.Phone}}" on-core-select="{{item}}">
 				   	  	  	  	  <core-menu style="background-color: rgb(248,139,48);" class="menu">
 
-				   	  	  	<paper-item id="phone_samsung" on-tap="{{toggleView}}" style="color:white;" >Samsung</paper-item>
-	  	  	                <paper-item  id="phone_sony" on-tap="{{toggleView}}" style="color:white;">Sony</paper-item>
+				   	  	  	<paper-item id="phone_samsung" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Samsung</paper-item>
+	  	  	                <paper-item  id="phone_sony" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Sony</paper-item>
 				   	  	  	  	  </core-menu>
 				   	  	  	  	 </core-dropdown>
 	               </paper-tab>
 	                 <paper-tab id="paper_tab6" inline flex center-center horizontal layout active>
-				   				   	  	  	  	  <paper-button id="Cameras" label="lap" on-tap="{{toggle}}" noink style="color:white;">Cameras</paper-button>
+				   				   	  	  	  	  <paper-button id="Cameras"  class="but" label="lap" on-tap="{{toggle}}" noink style="color:white;">Cameras</paper-button>
 				   				   	  	  	  	  <core-dropdown id="d7"  layered relatedTarget="{{$.Cameras}}" on-core-select="{{item}}">
 				   				   	  	  	  	  <core-menu style="background-color: rgb(248,139,48);" class="menu">
-				   				   	  	  	  	   <paper-item id="cam_can" on-tap="{{toggleView}}" style="color:white;" >Canon</paper-item>
-	  	  	          							<paper-item  id="cam_sony" on-tap="{{toggleView}}" style="color:white;">Sony</paper-item>
+				   				   	  	  	  	   <paper-item id="cam_can" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Canon</paper-item>
+	  	  	          							<paper-item  id="cam_sony" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;">Sony</paper-item>
 				   				   	  	  	  	  </core-menu>
 				   				   	  	  	  	 </core-dropdown>
 	               </paper-tab>
 	                <paper-tab id="paper_tab7" inline flex center-center horizontal layout active>
-				   				   				   	  	  	  	  <paper-button id="MP3Players" label="lap" on-tap="{{toggle}}" noink style="color:white;">MP3Players</paper-button>
+				   				   				   	  	  	  	  <paper-button id="MP3Players" class="but" label="lap" on-tap="{{toggle}}" noink style="color:white;">MP3Players</paper-button>
 				   				   				   	  	  	  	  <core-dropdown id="d8"  layered relatedTarget="{{$.MP3Players}}" on-core-select="{{item}}">
 				   				   				   	  	  	  	  <core-menu style="background-color: rgb(248,139,48);" class="menu">
-				   				   				   	  	  	  	   <paper-item id="mp3_sony" on-tap="{{toggleView}}" style="color:white;" >Sony</paper-item>
-	  	  	          												<paper-item  id="mp3_zeb" on-tap="{{toggleView}}" style="color:white;" >Zebronics</paper-item>
+				   				   				   	  	  	  	   <paper-item id="mp3_sony" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Sony</paper-item>
+	  	  	          												<paper-item  id="mp3_zeb" on-tap="{{toggleView}}" style="color:white;font-family: 'Calibri';font-size: 17px;" >Zebronics</paper-item>
 				   				   				   	  	  	  	  </core-menu>
 				   				   				   	  	  	  	 </core-dropdown>
 	               </paper-tab>
