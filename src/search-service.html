@@ -54,7 +54,7 @@ this.cnt=0;
 this.val="";
  },
  keypress:function(event){
- history.pushState("search", "search", "search-list.html");
+ history.pushState("search", "search", "");
  if (event.keyCode == 13) {
   this.val=(this.searchval).toLowerCase();
  this.$.ajax.go();
@@ -62,7 +62,7 @@ this.val="";
  },
  search:function()
  {
-history.pushState("search", "search", "search-list.html");
+history.pushState("search", "search", "");
  this.waste=[];
 
  this.val=(this.searchval).toLowerCase();

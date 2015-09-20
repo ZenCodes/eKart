@@ -65,14 +65,14 @@ Quantity-{{product.value[6]}}</h5>
   Polymer({
   continue:function()
   {
-  history.pushState("cont", "cont", "cont-list.html");
+  history.pushState("cont", "cont", "");
   //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewContinue(false);
   document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,false,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true,true);
   //document.querySelector('inx-element').shadowRoot.querySelector('product-list').viewTempcard(true);
   },
   proceed:function()
   {
-history.pushState("checksummary", "checksummary", "checkout-summary.html");
+history.pushState("checksummary", "checksummary", "");
    var name=localStorage.getItem("nam");
   if(name==null||name=="")
     {
