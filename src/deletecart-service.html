@@ -71,7 +71,7 @@ this.dri=[];
     for(var n=0;n<this.pr.rows[0].value.length;n++)
     {
     this.count=0;
-    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":""};
+    var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","subtotal":""};
     var id=this.pr.rows[0].value[n].prodid;
     var sno=this.pr.rows[0].value[n].prodsno;
     //alert(id+"   "+sno);
@@ -87,12 +87,14 @@ this.dri=[];
     var des=this.pr.rows[0].value[n].proddes;
     var price=this.pr.rows[0].value[n].prodprice;
     var sno=this.pr.rows[0].value[n].prodsno;
+    var sub=this.pr.rows[0].value[n].subtotal;
     newval.prodid=id;
     newval.prodimg=img;
     newval.proddes=des;
     newval.prodprice=price;
     newval.prodstatus="Tempcart";
     newval.prodsno=sno;
+     newval.subtotal=sub;
     this.newarr.push(newval);
     //alert(JSON.stringify(this.newarr));
     this.prodarr=JSON.stringify(this.newarr);

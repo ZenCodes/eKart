@@ -53,7 +53,7 @@ this.uname="Temp user";
 	for(var n=0;n<this.pr.cartinfo.length;n++)
 	{
 	this.count=0;
-	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":""};
+	var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":"","subtotal":""};
 	var pid=this.pr.cartinfo[n].prodid;
 	var psno=this.pr.cartinfo[n].prodsno;
 	if(this.pid==pid&&this.psno==psno)
@@ -67,6 +67,7 @@ this.uname="Temp user";
 	    var price=this.pr.cartinfo[n].prodprice;
 	    var sno=this.pr.cartinfo[n].prodsno;
 	    var qty=this.pr.cartinfo[n].prodqty;
+	    var sub=this.pr.cartinfo[n].subtotal;
 	    newval.prodid=id;
 	    newval.prodimg=img;
 	    newval.proddes=des;
@@ -74,6 +75,7 @@ this.uname="Temp user";
 	    newval.prodstatus="Incart";
 	    newval.prodsno=sno;
 	    newval.prodqty=qty;
+	    newval.subtotal=sub;
 	    this.newarr.push(newval);
 
         this.prodarr=JSON.stringify(this.newarr);
