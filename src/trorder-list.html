@@ -92,15 +92,20 @@ text-transform:none;
   },
   expand:function(e)
   {
+  alert(e.target.id);
   //var v=this.shadowRoot.querySelectorAll('#trorder-list > #collapse1');
   //v.toggle();
-  this.open=true;
+  alert(this.$.core_card2.querySelector('.collaps').id);
+  this.$.core_card2.querySelector('.collaps').toggle();
+  //this.open=true;
   this.h2=false;
   this.h1=true;
   },
   less:function(e)
   {
-  this.open=false;
+  alert(e.target.id);
+  this.$.core_card2.querySelector('.collaps').toggle();
+  //this.open=false;
   this.h1=false;
   this.h2=true;
   },
