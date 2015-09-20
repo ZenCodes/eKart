@@ -53,7 +53,22 @@ this.header=this.temparr._rev;
 this.uname=this.temparr.username;
 //this.status=this.temparr.prodstatus;
 this.tempprod=this.temparr.products;
-//alert("dbdoc: "+JSON.stringify(this.tempprod));
+//alert(JSON.stringify(this.tempprod.length));
+ this.l="0";
+	for(var i=0;i<this.temparr.products.length;i++)
+						{
+			         if(this.temparr.products[i].prodid==this.pid&&this.temparr.products[i].prodsno==this.psno)
+			          {
+
+			          this.temparr.products[i].prodqty=parseInt(this.temparr.products[i].prodqty)+1;
+			          this.temparr.products[i].subtotal=parseInt(this.temparr.products[i].prodprice)*parseInt(this.temparr.products[i].prodqty);
+			          this.newarr=JSON.stringify(this.temparr.products);
+			          this.l="1";
+			          break;
+			          }
+			          }
+			          if(this.l=="0")
+			          {
 var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":"","prodsno":"","prodqty":"","subtotal":""};
 				 newval.prodid=this.pid;
 				 newval.prodimg=this.pimg;
@@ -64,10 +79,9 @@ var newval={"prodid": "","prodimg": "","proddes":"","prodprice":"","prodstatus":
 				 newval.prodqty=this.pqty;
 				 newval.subtotal=this.subtotal;
 				 //alert(newval.prodid+""+newval.prodimg);
-this.tempprod.push(newval);
-//alert("new doc: "+JSON.stringify(this.tempprod));
+              this.tempprod.push(newval);
 this.newarr=JSON.stringify(this.tempprod);
-
+}
 this.$.tempwriteajax.go();
 alert("Item added!");
 },
