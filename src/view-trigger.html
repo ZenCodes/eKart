@@ -53,13 +53,14 @@
 font-family:Calibri;
 		        border-radius: 7px;
 		  		position: absolute;
-		  		width: 110px;
+		  		//width: 110px;
 	            height: 35px;
-	            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+				left:40px;
+	            //box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
 	      }
   </style>
 
-	  <paper-button class="signin" id="viewcart" on-click="{{clickEvent}}"><img src="../eKart/../res/download.png" width="25px"></img></paper-button>
+	  <core-icon-button class="signin" id="viewcart" src="../eKart/../res/download.png" on-click="{{clickEvent}}"></core-icon-button>
 
 <temp-service id="ts"></temp-service>
 <view-service id="vs"></view-service>
