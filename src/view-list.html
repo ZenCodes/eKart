@@ -23,9 +23,10 @@ font-size: 17px;
   	      border-radius: 2px;
   	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
   	      margin-top: 25px;
-  	      margin-left: 25px;
+  	      margin-left: 225px;
   	      margin-right:25px;
   	      font-family:'Calibri';
+  	      width:550px;
   	      }
 paper-button{
 
@@ -34,6 +35,10 @@ background-color:rgb(248,139,48);
 font-family:'Calibri';
 color: white;
 text-transform:none;
+}
+core-icon-button
+{
+top:40px;
 }
 
   </style>
@@ -45,15 +50,16 @@ text-transform:none;
 <template id="view-list" repeat="{{product in pr}}">
  <div id="card">
  <order-card>
-<div horizontal layout style="padding:15px;">
+<div horizontal layout style="padding:15px; ">
 <div><img id="bor" src="{{product.value[1]}}" width="200" height="200"></div>
-<div style="text-align:center; width:650px;">
-<h3 style="padding-left:100px;">{{product.value[2]}}</h3>
+<div style="padding-left:15px; width:650px;">
+<h4>{{product.value[2]}}</h4>
+<div horizontal layout style="padding-left:25px; ">
 <h5>Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.value[3]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Quantity-{{product.value[6]}}</h5>
-<cb><paper-button style="width:120px;" id="{{product.value[0]}}" label="{{product.value[5]}}" value="{{product.id}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!--<paper-button id="{{product.value[0]}}" label="{{product.value[5]}}" on-click="{{clickEventt}}" >Save for Later</paper-button>-->
+Quantity-{{product.value[6]}}</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
+</div>
+<cb><core-icon-button src="../eKart/../res/delete.png" id="{{product.value[0]}}" label="{{product.value[5]}}" value="{{product.id}}" on-click="{{delete}}" ></core-icon-button></cb>
 </div>
 </order-card>
 </div>
