@@ -55,12 +55,19 @@
               {
                border-bottom:1px solid black;
               }
-              paper-button
-              {
-                       font-size: 13px;
-			  		   background-color:rgb(248,139,48);
-                      color:white;
-              }
+
+#placeorder
+{
+border: 2px solid #F88B30;
+font-size: 17px;
+background-color:rgb(248,139,48);
+font-family:'Calibri';
+color: white;
+text-transform:none;
+width:130px;
+height:40px;
+left:500px;
+}
 
 
 
@@ -94,7 +101,7 @@
 </template>
 
 <h4 style="margin-left:490px;">Total - <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{totamt}}</h4>
-<div style="margin-left:420px;"><paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order<paper-button></div>
+<paper-button id="placeorder" label="placeorder" on-click="{{placeorder}}">Place Order</paper-button>
 </table>
 </div>
 

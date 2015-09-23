@@ -41,6 +41,7 @@
 			padding: 15px;
        }
 
+
     </style>
      <search-service id="ss" pr="{{pr}}"></search-service>
 
@@ -55,8 +56,10 @@
     <h6><paper-button id="{{product.id}}" on-click="{{clickLink}}" style="text-decoration: none;">{{product.des}}</paper-button></h6>
     <h5 >Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.price}}</h5>
     <div  horizontal layout>
-    <cb><paper-button id="{{product._id}}" on-click="{{clickEvent}}" >Add To Cart</paper-button></cb>|
-    <paper-button id="{{product._id}}" on-click="{{buy}}" >Buy Now</paper-button>
+    <cb><paper-button id="{{product._id}}" style="text-decoration: none;font-family:'Calibri';box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+	text-transform: none;font-size: 17px;left:20px;color:white;background-color: rgb(248,139,48);top:20px;height:40px;text-align:top;border: 1px solid #F88B30;" on-click="{{clickEvent}}" >Add To Cart</paper-button></cb>
+    <paper-button id="{{product._id}}" style="text-decoration: none;font-family:'Calibri';box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+	text-transform: none;font-size: 17px;left:20px;color:white;background-color: rgb(248,139,48);top:20px;height:40px;text-align:top;border: 1px solid #F88B30;" on-click="{{buy}}" >Buy Now</paper-button>
     </div>
     </center>
     </div>
