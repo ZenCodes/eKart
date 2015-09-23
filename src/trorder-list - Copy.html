@@ -1,0 +1,126 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-collapse/core-collapse.html">
+<link rel="import" href="order-service.html">
+<link rel="import" href="order-card.html">
+<link rel="import" href="usercancelcart-service.html">
+<link rel="import" href="trackorder-service.html">
+<link rel="import" href="order-tab.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<polymer-element name="trorder-list" attributes="show">
+  <template>
+  <style>
+  #core_card2 {
+    	        position: absolute;
+    	        width: 1144px;
+    	        //height: 450px;
+    	        //border-radius: 2px;
+    	        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	        left: 60px;
+    	        top: 150px;
+    	        background-color: rgb(255, 255, 255);
+  		        padding-top:10px;
+  		        padding-bottom:10px;
+  		        font-family: Calibri;
+    	      }
+    	      #card{
+    	      border-radius: 2px;
+    	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    	      margin-top: 25px;
+    	      margin-left: 25px;
+    	      margin-right:25px;
+  	      }
+  	      .expand,.less{
+  	      margin-left:150px;
+  	      }
+  	      #fset
+  	      {
+  	      border-radius: 2px;
+    	  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+  	      }
+paper-button{
+font-size: 17px;
+background-color:rgb(248,139,48);
+color:white;
+font-family:'Calibri';
+text-transform:none;
+
+}
+  </style>
+<order-service pr="{{pr}}"></order-service>
+
+ <div id="core_card2"   class="core_card2" style="border: 2px solid #F88B30;">
+ <order-tab></order-tab>
+
+ <template id="order-list" repeat="{{product in pr}}">
+ <template id="order-list" if="{{product.value[2]!='Cancelled'}}">
+    <template id="order-list" repeat="{{pro in product.value[0]}}">
+     <fieldset id="fset" style="width:875px;margin-left:50px;height:40px;margin-top:30px;border: 2px solid #E0E0E0 ;">
+	   <legend style="text-align: center;">{{pro.proddes}}</legend>
+        <div layout horizontal style="width:875px;margin-left:50px;height:40px;">
+	    <h4 style="margin-top:10px;margin-left:0px;">Order Number:{{product.value[1]}}</h4>
+		<h5 style="margin-top:10px;margin-left:400px;width:100px;">Total: <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+	    <core-icon-button hidden?="{{h1}}" id="{{product.value[1]}}" class="expand" icon="expand-more"  active="false" on-click="{{expand}}"></core-icon-button>
+	    <core-icon-button hidden?="{{h2}}" id="{{product.value[1]}}" class="less" icon="expand-less"  active="false" on-click="{{less}}" ></core-icon-button>
+	    </div>
+	 </fieldset>
+	<core-collapse id="{{product.value[1]}}" class="collaps" opened="{{open}}">
+  	<div style="width:950px;margin-left:50px;border: 2px solid #E0E0E0 ;" horizontal layout>
+		<div><img id="bor" src="{{pro.prodimg}}" width="200" height="200"></div>
+		<div style="text-align:center;width:650px;">
+		<div layout horizontal><h3 style="padding-left:100px;">{{pro.proddes}}</h3></div>
+	    <h5 >Price <sub><img src="../res/currency.gif" width="20px" height="15px;"/></sub>{{pro.prodprice}}</h5>
+        <paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{cancel}}" >Cancel order</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <paper-button id="{{product.value[6]}}" label="{{product.value[7]}}" value="{{product.id}}" on-click="{{TrackEvent}}" >Track  Order</paper-button>
+  	</div>
+  	</core-collapse>
+    </template>
+ </template>
+</template>
+</div>
+</core-card>
+<usercancelcart-service id="uccs"></usercancelcart-service>
+<trackorder-service id="tos"></trackorder-service>
+</template>
+  <script>
+  Polymer({
+  ready:function()
+  {
+  this.h1=false;
+  this.h2=true;
+  //alert(this.$.collapse1);
+  //alert("hi"+this.shadowRoot.querySelector('#trorder-list'));
+  },
+  expand:function(e)
+  {
+  alert(e.target.id);
+  //var v=this.shadowRoot.querySelectorAll('#trorder-list > #collapse1');
+  //v.toggle();
+  alert(this.$.core_card2.querySelector('.collaps').id);
+  this.$.core_card2.querySelector('.collaps').toggle();
+  //this.open=true;
+  this.h2=false;
+  this.h1=true;
+  },
+  less:function(e)
+  {
+  alert(e.target.id);
+  this.$.core_card2.querySelector('.collaps').toggle();
+  //this.open=false;
+  this.h1=false;
+  this.h2=true;
+  },
+  cancel:function(e)
+  {
+  this.$.uccs.deletefun(e.target.id,e.target.getAttribute('label'),e.target.getAttribute('value'));
+  },
+  TrackEvent:function(e)
+    {
+    history.pushState("track", "track", "");
+    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true);
+    //alert(e.target.getAttribute('value'));
+    this.$.tos.trackstatus(e.target.getAttribute('value'));
+    //alert(this.$.tos);
+  }
+  });
+  </script>
+</polymer-element>

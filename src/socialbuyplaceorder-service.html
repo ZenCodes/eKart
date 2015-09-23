@@ -36,7 +36,7 @@ on-core-response="{{itemLoaded}}">
 
 <core-ajax id="wajax" auto="false" method="POST" handleAs="json"
 contentType="application/json" url="http://ekart.iriscouch.com/socialcart/"
-body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
+body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}","totamt":"{{totamt}}"}'>
 </core-ajax>
 
 
@@ -90,6 +90,7 @@ body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"tracks
   },
   placeorder:function(totamt)
   {
+this.totamt=totamt;
   //alert(totamt);
 sessionStorage.setItem("buyplaceorder",0)
  this.docid=sessionStorage.getItem("buydocid");

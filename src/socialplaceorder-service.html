@@ -23,7 +23,7 @@ on-core-response="{{itemLoaded}}">
 </core-ajax>
 <core-ajax id="wajax" auto="false" method="POST" handleAs="json"
 contentType="application/json" url="http://ekart.iriscouch.com/socialcart/"
-body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}"}'>
+body='{"username":"{{uname}}","orderarr":{{order}},"addrarr":{{address}},"trackstatus":"{{trackstatus}}","orderno":"{{orderno}}","totamt":"{{totamt}}"}'>
 </core-ajax>
 <core-ajax id="orajax" auto="false" handleAs="json"
 contentType="application/json" url="http://ekart.iriscouch.com/orderedcart/1e7a3e96bbb4429bb58908de200001a7"
@@ -70,6 +70,7 @@ contentType="application/json" url="http://ekart.iriscouch.com/tempusercart/{{te
   },
    placeorder:function(totamt)
   {
+  this.totamt=totamt;
  // alert("hello"+totamt);
   //alert("docid"+sessionStorage.getItem("tempid"));
   //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
