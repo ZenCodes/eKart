@@ -86,7 +86,7 @@ this.uname="Temp user";
 	    //alert("Item deleted");
 	    this.$.dajax.go();
 	    //alert("no");
-	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
+	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true);
     }
 //alert(JSON.stringify(this.newarr));
     this.$.writeajax.go();
@@ -94,13 +94,13 @@ this.uname="Temp user";
 	    {
 	     this.$.dajax.go();
 	     //alert("deleted");
-		 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true);
+		 document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true);
         }
 
         alert("deleted");
         //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('cart-count').countValue();
         this.$.vs.callfun();
-        document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
+        document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true);
     },
     deletefun:function(pid,psno,docid)
     {

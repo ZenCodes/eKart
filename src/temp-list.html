@@ -23,8 +23,9 @@
     	      border-radius: 2px;
     	      box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
     	      margin-top: 25px;
-    	      margin-left: 25px;
+    	      margin-left: 225px;
     	      margin-right:25px;
+    	      width:550px;
   	      }
 paper-button{
 //width:120px;
@@ -34,6 +35,10 @@ color:white;
 font-family: 'Calibri';
 text-transform:none;
 
+}
+core-icon-button
+{
+top:40px;
 }
   </style>
 <temp-service pr="{{pr}}"></temp-service>
@@ -45,12 +50,15 @@ text-transform:none;
  <temp-card>
 <div horizontal layout style="padding:15px;">
 <div><img id="bor" src="{{product.prodimg}}" width="200" height="200"></div>
-<div style="text-align:center;width:650px;">
-<h3 style="padding-left:100px;">{{product.proddes}}</h3>
+<div style="padding-left:15px; width:650px;">
+<h4>{{product.proddes}}</h4>
+<div horizontal layout style="padding-left:25px; ">
 <h5 >Price <sub><img src="../eKart/../res/currency.gif" width="20px" height="15px;"/></sub>{{product.prodprice}}</h5>
-<cb><paper-button style="width:120px;color:white;" id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{delete}}" >Delete</paper-button></cb>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!--<paper-button id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{clickEventt}}" >Save for Later</paper-button>-->
 </div>
+</div>
+<cb><core-icon-button src="../eKart/../res/delete.png" id="{{product.prodid}}" label="{{product.prodsno}}" on-click="{{delete}}" ></core-icon-button></cb>
 </div>
 </temp-card>
 </template>
@@ -65,12 +73,12 @@ ready:function(){
   continue:function()
   {
   history.pushState("cont", "cont", "");
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,false,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true,true);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,false,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true);
   },
   proceed:function()
   {
   history.pushState("checksummary", "checksummary", "");
-  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true);
   document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(false,true,true,true,true,true,true,true,true);
  /* if(localStorage.getItem("nam")==""||localStorage.getItem("name")==null)
   //{

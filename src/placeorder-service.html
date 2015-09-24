@@ -71,7 +71,7 @@ contentType="application/json" url="http://ekart.iriscouch.com/addtocart/{{docid
   {
   this.totamt=totamt;
   //alert("hello"+totamt);
-  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false);
+  //document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,false,true,true,true);
     this.name=JSON.stringify(localStorage.getItem("nam"));
     var shipinfo=sessionStorage.getItem("shipinfo");
     var shipval=JSON.parse(shipinfo);
@@ -103,10 +103,8 @@ contentType="application/json" url="http://ekart.iriscouch.com/addtocart/{{docid
     this.$.revajax.go();
     this.$.wajax.go();
      alert("order placed");
-	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').shadowRoot.querySelector('order-succ').setInfo(this.uname,this.orderno);
-   document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('checkout-summary').shadowRoot.querySelector('Checkout-card').hiddenvalue(true,true,true,true,true,true,true,false,true);
-    //window.location.href='successindex.html';
-
+	    document.querySelector('inx-element').shadowRoot.querySelector('product-list').shadowRoot.querySelector('order-succ').setInfo(this.uname,this.orderno);
+  document.querySelector('inx-element').shadowRoot.querySelector('product-list').hiddenVal(true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false);
   }
   });
   </script>
