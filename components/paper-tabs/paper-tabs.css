@@ -42,7 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 .scroll-button > paper-icon-button {
-  transition: opacity 0.18s;
+  transition: opacity 0.1s;
 }
 
 .scroll-button > .hidden {

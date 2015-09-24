@@ -26,11 +26,7 @@
 
 		  		   border-bottom:1px solid black;
 		    	      }
-		    	      h5
-		    	      {
-		    	      padding-right: 70px;
-		    	      padding-left: 30px;
-		    	      }
+
 		    	      h6
 		    	      {
 		    	      width:60px;
@@ -46,9 +42,25 @@
               {
               width:150px;
               }
-              #sp
+              #item
               {
-              padding-right:200px;
+              padding-left:50px;
+
+              }
+               #qty
+			                {
+			                padding-left:250px;
+
+              }
+               #price
+			                {
+			                padding-left:120px;
+
+              }
+               #sub
+			                {
+			                padding-left:80px;
+
               }
 
               #id1
@@ -77,10 +89,10 @@ left:500px;
  <div id="core_card2"   class="core_card2">
  <div vertical layout>
  <div id="id1" horizontal layout>
-<h5 id="sp" style="text-align:center;">ITEM</h5>
-<h5 style="text-align:center;">QTY</h5>
-<h5 style="text-align:center;">PRICE</h5>
-<h5 style="text-align:center;">SUB TOTAL</h5>
+<h5 id="item" style="text-align:center;">ITEM</h5>
+<h5 id="qty" style="text-align:center;">QTY</h5>
+<h5 id="price" style="text-align:center;">PRICE</h5>
+<h5 id="sub" style="text-align:center;">SUB TOTAL</h5>
 </div>
  <template id="view-list" repeat="{{product in pr}}">
 
