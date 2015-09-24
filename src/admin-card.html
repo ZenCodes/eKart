@@ -31,22 +31,17 @@
         top: 10px;
         width: 150px;
         height:40px;
-        background-color: rgb(248,139,48);
-
         left: 10px;
-        padding: 5px 10px;
-		   -webkit-border-radius: 8px;
-		   -moz-border-radius: 8px;
-		   border-radius: 8px;
-		   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-		   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-		   box-shadow: rgba(0,0,0,1) 0 1px 0;
-		   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-		   color: white;
-		   font-size: 14px;
+        text-transform: none;
+        text-decoration: none;
+		   color:rgb(248,139,48);
+		   background-color: white;
+		   font-size: 17px;
 		   font-family:Calibri;
-		   text-decoration: none;
-   vertical-align: middle;
+		   text-align:top;-webkit-box-shadow: inset 0 0 8px rgba(1, 0, 0, 0.1);
+		       -webkit-border-radius: 5px;
+     border-radius: 5px;
+
       }
       #paper_button1 {
 		top: 30px;
@@ -101,7 +96,7 @@
          <paper-input label="productrootid" id="paper_input5" value="{{rootids}}"></paper-input>
          <paper-input label="productsno" id="paper_input6" value="{{sno}}"></paper-input>
          <paper-input label="productkeys" id="paper_input7" value="{{keys}}"></paper-input>
-         <paper-button id="paper_button" on-click="{{add}}">ADD PRODUCTS</paper-button>
+         <paper-button id="paper_button" on-click="{{add}}">Add Products</paper-button>
 
     </core-card>
          <core-ajax id="ajax" auto="false" method="POST" handleAs="json" contentType="application/json" url="http://ekart.iriscouch.com/website/"
