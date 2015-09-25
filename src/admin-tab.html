@@ -24,19 +24,22 @@
 
     paper-tabs[noink][nobar] paper-tab.core-selected {
       color: #ffff8d;
+      text-transform:none;
     }
 
     paper-tabs.transparent-teal {
       background-color: transparent;
-      color: #00bcd4;
+      color: #F88B30;
       box-shadow: none;
       width:550px;
       margin-top:30px;
       margin-left:100px;
+      text-transform:none;
     }
 
     paper-tabs.transparent-teal::shadow #selectionBar {
-      background-color: #00bcd4;
+      background-color: #F88B30;
+      text-transform:none;
     }
 
     h3 {
@@ -48,8 +51,8 @@
 
   <paper-tabs selected="0" class="transparent-teal">
 
-    <paper-tab><paper-button id="add" label="add" on-click="{{add}}">Add Product</paper-button></paper-tab>
-    <paper-tab><paper-button id="view" label="view" on-click="{{view}}">Track Order</paper-button></paper-tab>
+    <paper-tab><paper-button style="font-family:Calibri;font-size:17;font-weight:bold;" id="add" label="add" on-click="{{add}}">Add Product</paper-button></paper-tab>
+    <paper-tab><paper-button style="font-family:Calibri;font-size:17;font-weight:bold;" id="view" label="view" on-click="{{view}}">Track Order</paper-button></paper-tab>
 
   </paper-tabs>
 
